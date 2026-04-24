@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Jobs / 招聘 – Amitabha Foundation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --red:#9aaa6d;--red-d:#6b7a4a;--red-l:#b8c98a;
+  --red-t:#f5f7ee;--red-t2:#eaeed8;
+  --gold:#c9a84c;--gold-l:#f0d98c;
+  --text:#111;--mid:#444;--soft:#888;--border:#ebebeb;
+  --off:#fafafa;--cream:#fdf9f5;
+  --r:16px;--r2:24px;
+  --sh:0 4px 24px rgba(0,0,0,.07);
+  --sh2:0 12px 48px rgba(154,170,109,.12);
+  --t:.28s cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);background:#fff;line-height:1.75;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+img{display:block;max-width:100%}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes pulse-wa{0%,100%{box-shadow:0 6px 24px rgba(37,211,102,.45)}50%{box-shadow:0 6px 32px rgba(37,211,102,.7),0 0 0 8px rgba(37,211,102,.12)}}
+
+/* ANNOUNCE */
+.announce{background:var(--red-d);color:rgba(255,255,255,.85);font-size:.78rem;font-weight:500;padding:.42rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.ann-l{display:flex;gap:1.5rem;align-items:center}
+.ann-l span{display:flex;align-items:center;gap:.38rem}
+.ann-l i{color:var(--gold-l);font-size:.8rem}
+.ann-l a{color:rgba(255,255,255,.85);transition:color var(--t)}
+.ann-l a:hover{color:var(--gold-l)}
+.ann-r{display:flex;align-items:center;gap:.9rem}
+.a-social{display:flex;gap:.45rem}
+.a-social a{color:rgba(255,255,255,.6);width:24px;height:24px;border-radius:5px;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:.78rem;transition:all var(--t)}
+.a-social a:hover{color:var(--red-d);background:var(--gold-l);border-color:var(--gold-l)}
+.lang{display:flex;gap:.28rem}
+.lang a{padding:.15rem .45rem;border-radius:4px;font-size:.72rem;font-weight:700;letter-spacing:.06em;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.18);transition:all var(--t)}
+.lang a.on{background:var(--gold);color:var(--red-d);border-color:var(--gold)}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:300;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(154,170,109,.08);box-shadow:0 2px 20px rgba(154,170,109,.08)}
+.hdr{max-width:1260px;margin:auto;padding:0 1.5rem;height:64px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.logo-link{display:flex;align-items:center;flex-shrink:0}
+.logo-link img{height:40px;width:auto}
+.nav{display:flex;gap:.04rem;align-items:center}
+.nav a{font-size:.82rem;font-weight:500;color:var(--mid);padding:.4rem .65rem;border-radius:8px;transition:all var(--t);white-space:nowrap}
+.nav a:hover,.nav a.on{color:var(--red);background:var(--red-t)}
+.hdr-r{display:flex;align-items:center;gap:.55rem}
+.btn-back{padding:.42rem .95rem;border:1.5px solid rgba(154,170,109,.28);border-radius:50px;font-size:.79rem;font-weight:600;color:var(--red);transition:all var(--t)}
+.btn-back:hover{background:var(--red-t)}
+.btn-donate{padding:.44rem 1.1rem;background:linear-gradient(135deg,var(--red),var(--red-d));color:#fff;border-radius:50px;font-size:.79rem;font-weight:700;display:flex;align-items:center;gap:.32rem;box-shadow:0 3px 12px rgba(154,170,109,.3);transition:all var(--t)}
+.btn-donate:hover{transform:translateY(-1px);box-shadow:0 7px 20px rgba(154,170,109,.42)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.5rem}
+.burger span{display:block;width:22px;height:2px;background:var(--red);border-radius:2px}
+.mob-menu{display:none;flex-direction:column;background:#fff;border-top:2px solid var(--red-t2);padding:.8rem 2rem 1.2rem}
+.mob-menu.open{display:flex}
+.mob-menu a{color:var(--mid);font-size:.93rem;font-weight:500;padding:.58rem .4rem;border-bottom:1px solid var(--border);transition:color var(--t)}
+.mob-menu a:hover,.mob-menu a.on{color:var(--red)}
+
+/* HERO BANNER */
+.jobs-hero{
+  background:linear-gradient(120deg,var(--red-d) 0%,var(--red) 50%,var(--red-l) 100%);
+  padding:4.5rem 2rem 4rem;text-align:center;position:relative;overflow:hidden;
+}
+.jobs-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 50%,rgba(201,168,76,.12),transparent 50%),radial-gradient(circle at 80% 50%,rgba(255,255,255,.05),transparent 50%)}
+.jobs-hero-inner{position:relative;z-index:1;max-width:800px;margin:auto}
+.jobs-pill{display:inline-flex;align-items:center;gap:.45rem;background:rgba(201,168,76,.18);border:1px solid rgba(201,168,76,.38);color:var(--gold-l);padding:.32rem .95rem;border-radius:50px;font-size:.73rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.2rem;animation:fadeUp .6s ease both}
+.jobs-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.6rem);font-weight:700;color:#fff;line-height:1.15;margin-bottom:.8rem;animation:fadeUp .6s .1s ease both}
+.jobs-hero h1 em{color:var(--gold-l);font-style:italic}
+.jobs-hero-zh{font-size:1.1rem;color:rgba(255,255,255,.75);margin-bottom:.5rem;animation:fadeUp .6s .2s ease both}
+.jobs-hero p{font-size:1rem;color:rgba(255,255,255,.75);max-width:620px;margin:0 auto 2rem;line-height:1.8;animation:fadeUp .6s .25s ease both}
+.wa-hero-btn{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 2rem;background:#25d366;color:#fff;border-radius:50px;font-size:.96rem;font-weight:700;box-shadow:0 6px 22px rgba(37,211,102,.4);transition:all var(--t);animation:fadeUp .6s .35s ease both}
+.wa-hero-btn:hover{background:#1ebe5a;transform:translateY(-3px);box-shadow:0 10px 30px rgba(37,211,102,.5)}
+
+/* SECTION */
+.wrap{max-width:1100px;margin:auto;padding:0 2rem}
+.sec{padding:5rem 0}
+.sec-alt{background:var(--off)}
+.tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.71rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:.7rem}
+.tag::before{content:'';display:block;width:18px;height:2px;background:var(--gold);border-radius:2px}
+.sec-h{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:700;color:var(--text);line-height:1.22;margin-bottom:.8rem}
+.sec-h em{color:var(--red);font-style:normal}
+.sec-p{font-size:.97rem;color:var(--mid);max-width:600px;line-height:1.85}
+
+/* STATIC HIRING BANNER */
+.hiring-banner{
+  background:linear-gradient(135deg,var(--red-t),var(--cream));
+  border:2px solid rgba(154,170,109,.12);border-radius:var(--r2);
+  padding:2.5rem 2.5rem 2.2rem;margin-bottom:2.5rem;
+  display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;
+}
+.hb-icon{font-size:2.5rem;margin-bottom:.6rem;line-height:1}
+.hb-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--red-d);margin-bottom:.4rem}
+.hb-zh{font-size:1rem;color:var(--red-l);margin-bottom:.7rem}
+.hb-text{font-size:.93rem;color:var(--mid);line-height:1.8;max-width:560px}
+.hb-cta{display:flex;flex-direction:column;gap:.7rem;align-items:flex-end;flex-shrink:0}
+.wa-cta{display:inline-flex;align-items:center;gap:.45rem;padding:.75rem 1.5rem;background:#25d366;color:#fff;border-radius:50px;font-size:.88rem;font-weight:700;box-shadow:0 4px 16px rgba(37,211,102,.35);transition:all var(--t);white-space:nowrap}
+.wa-cta:hover{background:#1ebe5a;transform:translateY(-2px);box-shadow:0 8px 22px rgba(37,211,102,.45)}
+.hb-number{font-size:.82rem;color:var(--soft);text-align:center}
+
+/* JOB CARDS (from admin localStorage) */
+#job-listings{display:flex;flex-direction:column;gap:1.4rem}
+.job-card{
+  background:#fff;border-radius:var(--r2);padding:2rem;
+  border:1px solid var(--border);
+  display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:start;
+  transition:all var(--t);
+}
+.job-card:hover{border-color:rgba(154,170,109,.18);box-shadow:var(--sh);transform:translateY(-3px)}
+.job-badge{display:inline-flex;align-items:center;gap:.4rem;background:var(--red-t);color:var(--red);border:1px solid rgba(154,170,109,.12);padding:.25rem .7rem;border-radius:50px;font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.7rem}
+.job-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text);margin-bottom:.4rem}
+.job-meta{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:.7rem}
+.job-meta span{display:flex;align-items:center;gap:.3rem;font-size:.8rem;color:var(--soft)}
+.job-meta i{font-size:.78rem;color:var(--red)}
+.job-desc{font-size:.91rem;color:var(--mid);line-height:1.75}
+.job-apply{display:inline-flex;align-items:center;gap:.45rem;padding:.68rem 1.45rem;background:#9aaa6d;color:#fff;border-radius:11px;font-size:.85rem;font-weight:700;box-shadow:0 3px 12px rgba(154,170,109,.25);white-space:nowrap;align-self:center;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:all var(--t)}
+.job-apply:hover{background:#7f9257;transform:translateY(-2px);box-shadow:0 8px 22px rgba(154,170,109,.38)}
+.no-jobs{text-align:center;padding:3rem;color:var(--soft);font-size:.95rem}
+.no-jobs i{font-size:2.5rem;color:var(--red-t2);margin-bottom:.8rem;display:block}
+
+/* WHY JOIN */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2.5rem}
+.why-card{background:#fff;border-radius:var(--r);padding:1.8rem 1.5rem;border:1px solid var(--border);text-align:center;transition:all var(--t)}
+.why-card:hover{transform:translateY(-5px);box-shadow:var(--sh2);border-color:rgba(154,170,109,.12)}
+.why-icon{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--red-t),var(--red-t2));border:1.5px solid rgba(154,170,109,.1);display:flex;align-items:center;justify-content:center;color:var(--red);font-size:1.3rem;margin:0 auto 1rem;transition:all var(--t)}
+.why-card:hover .why-icon{background:linear-gradient(135deg,var(--red),var(--red-d));color:#fff;border-color:transparent}
+.why-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.4rem}
+.why-card p{font-size:.84rem;color:var(--soft);line-height:1.7}
+
+/* FOOTER SLIM */
+footer{background:#1e2413;color:rgba(255,255,255,.45);padding:0}
+.foot-main{max-width:1260px;margin:0 auto;padding:1.8rem 2rem;display:flex;align-items:center;gap:1.6rem;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.06)}
+.foot-logo-box{background:#fff;border-radius:6px;padding:.28rem .65rem;display:inline-flex;align-items:center;flex-shrink:0}
+.foot-logo-box img{height:38px;width:auto;display:block}
+.foot-nav{display:flex;flex-wrap:wrap;gap:.15rem;align-items:center;flex:1}
+.foot-nav a{font-size:.76rem;color:rgba(255,255,255,.42);padding:.25rem .5rem;border-radius:5px;white-space:nowrap;transition:color var(--t),background var(--t)}
+.foot-nav a:hover{color:var(--gold-l);background:rgba(255,255,255,.05)}
+.foot-nav .sep{color:rgba(255,255,255,.15);font-size:.65rem}
+.foot-contact{display:flex;align-items:center;gap:.8rem;flex-shrink:0}
+.foot-phone{display:flex;align-items:center;gap:.4rem;font-size:.76rem;color:rgba(255,255,255,.55)}
+.foot-phone i{color:var(--gold-l);font-size:.75rem}
+.foot-phone a{color:rgba(255,255,255,.55);transition:color var(--t)}
+.foot-phone a:hover{color:var(--gold-l)}
+.foot-wa-btn{display:flex;align-items:center;gap:.35rem;padding:.32rem .75rem;background:#25d366;color:#fff;border-radius:50px;font-size:.74rem;font-weight:700;box-shadow:0 2px 8px rgba(37,211,102,.3);transition:all var(--t)}
+.foot-wa-btn:hover{background:#1ebe5a;transform:translateY(-1px)}
+.foot-donate-btn{display:flex;align-items:center;gap:.35rem;padding:.32rem .75rem;background:linear-gradient(135deg,var(--red),var(--red-d));color:#fff;border-radius:50px;font-size:.74rem;font-weight:700;box-shadow:0 2px 8px rgba(154,170,109,.3);transition:all var(--t)}
+.foot-donate-btn:hover{transform:translateY(-1px)}
+.f-social{display:flex;gap:.35rem}
+.f-social a{width:26px;height:26px;border-radius:5px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.45);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all var(--t)}
+.f-social a:hover{background:var(--gold);color:var(--red-d);border-color:var(--gold)}
+.foot-bot{max-width:1260px;margin:0 auto;padding:.7rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.foot-bot p{font-size:.72rem;color:rgba(255,255,255,.22)}
+.f-legal{display:flex;gap:1rem}
+.f-legal a{font-size:.72rem;color:rgba(255,255,255,.22);transition:color var(--t)}
+.f-legal a:hover{color:var(--gold-l)}
+
+/* FLOAT WA */
+.float-wa{position:fixed;bottom:1.6rem;right:1.6rem;z-index:999}
+.float-wa-btn{width:52px;height:52px;border-radius:50%;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 6px 24px rgba(37,211,102,.45);animation:pulse-wa 2.5s ease-in-out infinite;transition:all var(--t)}
+.float-wa-btn:hover{background:#1ebe5a;transform:scale(1.1)}
+
+@media(max-width:768px){
+  .nav{display:none}.burger{display:flex}
+  .hdr-r .btn-back{display:none}
+  .hiring-banner{grid-template-columns:1fr}
+  .hb-cta{align-items:flex-start}
+  .why-grid{grid-template-columns:1fr}
+  .job-card{grid-template-columns:1fr}
+  .foot-main{flex-direction:column;align-items:flex-start;gap:1rem}
+  .foot-bot{flex-direction:column;text-align:center}
+  .modal-two-col{grid-template-columns:1fr!important}
+}
+
+/* APPLICATION MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1000;display:flex;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(4px)}
+.modal-box{background:#fff;border-radius:var(--r2);width:100%;max-width:560px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.modal-head{padding:1.8rem 2rem 1.2rem;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
+.modal-head h3{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--text);line-height:1.3}
+.modal-head h3 span{color:var(--red-d)}
+.modal-close{background:none;border:none;font-size:1.6rem;color:var(--soft);cursor:pointer;line-height:1;padding:.2rem .4rem;border-radius:6px;transition:all var(--t);flex-shrink:0;margin-top:-.2rem}
+.modal-close:hover{background:var(--red-t);color:var(--red)}
+.modal-body{padding:1.5rem 2rem .5rem}
+.form-group{margin-bottom:1.1rem}
+.form-group label{display:block;font-size:.81rem;font-weight:600;color:var(--mid);margin-bottom:.38rem}
+.form-group label .req{color:#e55;margin-left:.12rem}
+.form-control{width:100%;padding:.62rem .88rem;border:1.5px solid var(--border);border-radius:10px;font-size:.89rem;font-family:'Inter',sans-serif;color:var(--text);background:#fff;transition:border-color var(--t),box-shadow var(--t);outline:none}
+.form-control:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(154,170,109,.18)}
+.form-control[readonly]{background:var(--off);color:var(--soft);cursor:default}
+textarea.form-control{resize:vertical;min-height:88px}
+.cv-upload-area{border:2px dashed rgba(154,170,109,.45);border-radius:12px;padding:1.3rem;text-align:center;cursor:pointer;transition:all var(--t);background:var(--red-t)}
+.cv-upload-area:hover{border-color:var(--red);background:var(--red-t2)}
+.cv-upload-area .cv-icon{font-size:2rem;color:var(--red);margin-bottom:.4rem}
+.cv-upload-area p{font-size:.82rem;color:var(--soft);line-height:1.55}
+.cv-upload-area strong{color:var(--red-d)}
+.cv-file-name{margin-top:.55rem;font-size:.8rem;color:var(--red-d);font-weight:600;display:none}
+.modal-foot{padding:1.2rem 2rem 1.8rem;display:flex;flex-direction:column;gap:.75rem}
+.btn-submit{width:100%;padding:.88rem;background:linear-gradient(135deg,var(--red),var(--red-d));color:#fff;border:none;border-radius:50px;font-size:.95rem;font-weight:700;cursor:pointer;transition:all var(--t);display:flex;align-items:center;justify-content:center;gap:.5rem;font-family:'Inter',sans-serif}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(154,170,109,.4)}
+.btn-submit:disabled{opacity:.6;cursor:not-allowed;transform:none;box-shadow:none}
+.modal-wa-alt{text-align:center;font-size:.81rem;color:var(--soft)}
+.modal-wa-alt a{color:var(--red-d);font-weight:600}
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:.72rem 1.5rem;border-radius:50px;font-size:.86rem;font-weight:500;z-index:2000;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap;max-width:90vw;text-align:center}
+.toast.show{opacity:1}
+  </style>
+</head>
+<body>
+
+<!-- ANNOUNCE -->
+<div class="announce">
+  <div class="ann-l">
+    <span><i class="fa fa-phone"></i><a href="tel:+60127762911">012-776 2911</a></span>
+    <span><i class="fa fa-location-dot"></i>A14, Jalan Rukun 7, Taman Gembira, 58200 KL</span>
+  </div>
+  <div class="ann-r">
+    <div class="a-social">
+      <a href="https://www.facebook.com/profile.php?id=61578688747686" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/amitabhafoundation" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com/@amitabhafoundation" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <div class="lang">
+      <a href="#" class="on">EN</a>
+      <a href="#">中文</a>
+      <a href="#">BM</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="hdr">
+    <a href="index.html" class="logo-link"><img src="00_logo_horizontal.png" alt="Amitabha Foundation"/></a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#gallery">Gallery</a>
+      <a href="index.html#location">Location</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="blog.html">News</a>
+      <a href="jobs.html" class="on">Jobs</a>
+    </nav>
+    <div class="hdr-r">
+      <a href="index.html" class="btn-back"><i class="fa fa-arrow-left fa-xs"></i> Back</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" class="btn-donate" target="_blank" rel="noopener"><i class="fa fa-heart"></i> Donate</a>
+    </div>
+    <div class="burger" onclick="this.parentElement.nextElementSibling.classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <nav class="mob-menu">
+    <a href="index.html">Home</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="blog.html">News / 新闻</a>
+    <a href="jobs.html" style="color:var(--red);font-weight:700;">Jobs / 招聘</a>
+    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:var(--red);font-weight:700;"><i class="fa fa-heart"></i> Donate Now</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="jobs-hero">
+  <div class="jobs-hero-inner">
+    <div class="jobs-pill"><i class="fa fa-briefcase"></i> Career Opportunities</div>
+    <h1>We're <em>Hiring</em> —<br>Join Our Team</h1>
+    <p class="jobs-hero-zh">我们正在招聘！加入我们充满爱与使命感的团队</p>
+    <p>Come join our warm and meaningful team, where your work creates real impact and contributes to the well-being of Malaysia's elderly community. Grow with us while making a difference in the lives of others.</p>
+    <a class="wa-hero-btn" href="https://wa.me/60127762911?text=Hello%2C%20I%20am%20interested%20in%20a%20job%20at%20Amitabha%20Foundation." target="_blank" rel="noopener">
+      <i class="fab fa-whatsapp fa-lg"></i> WhatsApp Us: 012-776 2911
+    </a>
+  </div>
+</section>
+
+<!-- STATIC HIRING NOTICE -->
+<section class="sec">
+  <div class="wrap">
+    <div class="hiring-banner">
+      <div>
+        <div class="hb-icon">🏠</div>
+        <div class="hb-title">We are Hiring — 我们正在招聘！</div>
+        <div class="hb-zh">欢迎加入我们充满爱与使命感的团队，让您的工作为社会带来真正的改变。在成长事业的同时，也为他人的生活带来温暖与关怀。</div>
+        <p class="hb-text">Welcome to join our warm and meaningful team, where your work creates real impact and contributes to the well-being of the community. Grow with us while making a difference in the lives of others.</p>
+        <p style="margin-top:.8rem;font-size:.82rem;color:var(--soft)">#job #hiring #work #care #eldercare</p>
+      </div>
+      <div class="hb-cta">
+        <a class="wa-cta" href="https://wa.me/60127762911?text=Hello%2C%20I%20am%20interested%20in%20a%20job%20at%20Amitabha%20Foundation." target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i> WhatsApp to Apply
+        </a>
+        <div class="hb-number"><i class="fa fa-phone" style="color:var(--red)"></i> 012-776 2911</div>
+      </div>
+    </div>
+
+    <!-- Admin-posted jobs loaded from localStorage -->
+    <div class="tag">Open Positions</div>
+    <h2 class="sec-h" style="margin-bottom:1.5rem">Current <em>Job Openings</em></h2>
+    <div id="job-listings">
+      <!-- filled by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- WHY JOIN US -->
+<section class="sec sec-alt">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:2rem">
+      <div class="tag" style="justify-content:center">Why Join Us</div>
+      <h2 class="sec-h">A Career with <em>Purpose</em></h2>
+      <p class="sec-p" style="margin:0 auto">More than a job — a calling. Here's why our team loves working with us.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon"><i class="fa fa-heart"></i></div>
+        <h4>Meaningful Work</h4>
+        <p>Every day you make a direct, visible difference in the lives of our elderly residents.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fa fa-people-group"></i></div>
+        <h4>Caring Team</h4>
+        <p>Work alongside compassionate colleagues who share your values and support your growth.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fa fa-graduation-cap"></i></div>
+        <h4>Training &amp; Growth</h4>
+        <p>We invest in your development with on-the-job training and professional growth opportunities.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fa fa-calendar-check"></i></div>
+        <h4>Stable Employment</h4>
+        <p>Established since 2000, we offer stable, long-term employment in a trusted organisation.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fa fa-hand-holding-heart"></i></div>
+        <h4>Community Impact</h4>
+        <p>Be part of a recognised nonprofit that positively impacts hundreds of elderly lives every year.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fa fa-comments"></i></div>
+        <h4>Multilingual Team</h4>
+        <p>Our team communicates in Chinese, Mandarin, Cantonese, Hokkien, Malay &amp; English.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-main">
+    <div class="foot-logo-box"><img src="00_logo_horizontal.png" alt="Amitabha Foundation"/></div>
+    <nav class="foot-nav">
+      <a href="index.html">Home</a><span class="sep">·</span>
+      <a href="index.html#services">Services</a><span class="sep">·</span>
+      <a href="index.html#about">About</a><span class="sep">·</span>
+      <a href="index.html#location">Location</a><span class="sep">·</span>
+      <a href="index.html#contact">Contact</a><span class="sep">·</span>
+      <a href="blog.html">News</a><span class="sep">·</span>
+      <a href="jobs.html">Jobs</a><span class="sep">·</span>
+      <a href="admin.html">Admin</a>
+    </nav>
+    <div class="foot-contact">
+      <div class="foot-phone"><i class="fa fa-phone"></i><a href="tel:+60127762911">012-776 2911</a></div>
+      <a class="foot-wa-btn" href="https://wa.me/60127762911?text=Hello%20Amitabha%20Foundation" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      <a class="foot-donate-btn" href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener"><i class="fa fa-heart"></i> Donate</a>
+    </div>
+    <div class="f-social">
+      <a href="https://www.facebook.com/profile.php?id=61578688747686" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/amitabhafoundation" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com/@amitabhafoundation" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+  <div class="foot-bot">
+    <p>&copy; 2024 Amitabha Foundation · Elder Care Programme · 58200 Kuala Lumpur</p>
+    <div class="f-legal"><a href="#">Privacy Policy</a><a href="#">Terms</a></div>
+  </div>
+</footer>
+
+<!-- FLOATING WA -->
+<a class="float-wa" href="https://wa.me/60127762911?text=Hello%2C%20I%20am%20interested%20in%20a%20job%20at%20Amitabha%20Foundation." target="_blank" rel="noopener">
+  <div class="float-wa-btn"><i class="fab fa-whatsapp"></i></div>
+</a>
+
+<!-- APPLICATION MODAL -->
+<div id="apply-modal" class="modal-overlay" style="display:none" onclick="if(event.target===this)closeApplyModal()">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>Apply for <span id="modal-job-title"></span></h3>
+      <button class="modal-close" onclick="closeApplyModal()" aria-label="Close">&times;</button>
+    </div>
+    <form id="apply-form" onsubmit="submitApplication(event)">
+      <div class="modal-body">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem" class="modal-two-col">
+          <div class="form-group">
+            <label>Full Name<span class="req">*</span></label>
+            <input type="text" class="form-control" id="ap-name" placeholder="Your full name" required/>
+          </div>
+          <div class="form-group">
+            <label>Email<span class="req">*</span></label>
+            <input type="email" class="form-control" id="ap-email" placeholder="your@email.com" required/>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem" class="modal-two-col">
+          <div class="form-group">
+            <label>Phone<span class="req">*</span></label>
+            <input type="tel" class="form-control" id="ap-phone" placeholder="01x-xxx xxxx" required/>
+          </div>
+          <div class="form-group">
+            <label>Applying For</label>
+            <input type="text" class="form-control" id="ap-job" readonly/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Cover Message</label>
+          <textarea class="form-control" id="ap-msg" placeholder="Tell us a little about yourself and why you're a great fit…"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Upload CV / Resume<span class="req">*</span></label>
+          <div class="cv-upload-area" onclick="document.getElementById('ap-cv').click()">
+            <div class="cv-icon"><i class="fa fa-file-arrow-up"></i></div>
+            <p>Click to upload your CV<br><strong>PDF, DOC or DOCX</strong> &nbsp;·&nbsp; Max 5 MB</p>
+            <div class="cv-file-name" id="cv-file-label"></div>
+          </div>
+          <input type="file" id="ap-cv"
+            accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            style="display:none" onchange="onCvChange(this)"/>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button type="submit" class="btn-submit" id="btn-submit-app">
+          <i class="fa fa-paper-plane"></i> Submit Application
+        </button>
+        <div class="modal-wa-alt">
+          Or apply via &nbsp;<a id="modal-wa-link" href="https://wa.me/60127762911" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast" class="toast"></div>
+
+<script>
+let _jobs = [];
+let _applyWa = '60127762911';
+
+function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function renderJobs(){
+  const list = document.getElementById('job-listings');
+  _jobs = JSON.parse(localStorage.getItem('af_jobs') || '[]');
+  if(!_jobs.length){
+    list.innerHTML = `<div class="no-jobs"><i class="fa fa-briefcase"></i><p>No job openings posted yet.</p><p style="margin-top:.4rem;font-size:.85rem">Check back soon or WhatsApp us at <strong>012-776 2911</strong> to enquire.</p></div>`;
+    return;
+  }
+  list.innerHTML = _jobs.map((j,i)=>`
+    <div class="job-card">
+      <div>
+        <div class="job-badge"><i class="fa fa-circle" style="font-size:.4rem"></i> ${esc(j.type||'Full-time')}</div>
+        <div class="job-title">${esc(j.titleEn||j.title||'')}</div>
+        ${j.titleZh?`<div style="font-size:.88rem;color:var(--soft);margin-bottom:.35rem">${esc(j.titleZh)}</div>`:''}
+        <div class="job-meta">
+          <span><i class="fa fa-location-dot"></i> ${esc(j.location||'Taman Gembira, KL')}</span>
+          ${j.posted?`<span><i class="fa fa-calendar"></i> ${new Date(j.posted).toLocaleDateString('en-MY',{day:'numeric',month:'long',year:'numeric'})}</span>`:''}
+          ${j.salary?`<span><i class="fa fa-money-bill-wave"></i> ${esc(j.salary)}</span>`:''}
+        </div>
+        <p class="job-desc">${esc(j.descEn||j.desc||'')}</p>
+      </div>
+      <button class="job-apply" onclick="openApply(${i})">
+        <i class="fa fa-file-alt"></i> Apply Now
+      </button>
+    </div>`).join('');
+}
+renderJobs();
+window.addEventListener('storage', e => { if(e.key==='af_jobs') renderJobs(); });
+
+function openApply(idx){
+  const j = _jobs[idx];
+  const title = j.titleEn || j.title || 'Position';
+  _applyWa = j.wa || '60127762911';
+  document.getElementById('modal-job-title').textContent = title;
+  document.getElementById('ap-job').value = title;
+  document.getElementById('modal-wa-link').href =
+    'https://wa.me/' + _applyWa + '?text=' + encodeURIComponent('Hello, I am interested in the ' + title + ' position.');
+  document.getElementById('apply-form').reset();
+  document.getElementById('ap-job').value = title;
+  document.getElementById('cv-file-label').style.display = 'none';
+  document.getElementById('cv-file-label').textContent = '';
+  document.getElementById('btn-submit-app').disabled = false;
+  document.getElementById('btn-submit-app').innerHTML = '<i class="fa fa-paper-plane"></i> Submit Application';
+  document.getElementById('apply-modal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeApplyModal(){
+  document.getElementById('apply-modal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function onCvChange(input){
+  const f = input.files[0];
+  if(!f) return;
+  if(f.size > 5*1024*1024){ showToast('File too large — max 5 MB.'); input.value=''; return; }
+  const label = document.getElementById('cv-file-label');
+  label.textContent = '✓ ' + f.name;
+  label.style.display = 'block';
+}
+
+function submitApplication(e){
+  e.preventDefault();
+  const name     = document.getElementById('ap-name').value.trim();
+  const email    = document.getElementById('ap-email').value.trim();
+  const phone    = document.getElementById('ap-phone').value.trim();
+  const jobTitle = document.getElementById('ap-job').value.trim();
+  const msg      = document.getElementById('ap-msg').value.trim();
+  const cvInput  = document.getElementById('ap-cv');
+  const cvFile   = cvInput.files[0];
+  if(!cvFile){ showToast('Please upload your CV before submitting.'); return; }
+
+  const btn = document.getElementById('btn-submit-app');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Uploading…';
+
+  const reader = new FileReader();
+  reader.onload = function(ev){
+    try{
+      const apps = JSON.parse(localStorage.getItem('af_applications') || '[]');
+      apps.unshift({
+        id: Date.now(), name, email, phone, jobTitle, message: msg,
+        cvName: cvFile.name, cvType: cvFile.type, cvData: ev.target.result,
+        submitted: new Date().toISOString(), read: false
+      });
+      localStorage.setItem('af_applications', JSON.stringify(apps));
+      closeApplyModal();
+      showToast('✓ Application submitted! We will be in touch soon.');
+    } catch(err){
+      showToast('Storage error — your CV may be too large. Try a smaller file.');
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fa fa-paper-plane"></i> Submit Application';
+    }
+  };
+  reader.onerror = function(){
+    showToast('Error reading file. Please try again.');
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fa fa-paper-plane"></i> Submit Application';
+  };
+  reader.readAsDataURL(cvFile);
+}
+
+function showToast(msg, dur=3800){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), dur);
+}
+
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeApplyModal(); });
+</script>
+</body>
+</html>

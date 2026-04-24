@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Admin Dashboard — Amitabha Foundation</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#9aaa6d;--red-d:#6b7a4a;--red-t:rgba(154,170,109,.15);
+  --gold:#c9a84c;--bg:#f7f4f0;--card:#fff;
+  --text:#1a1a1a;--muted:#666;--border:#e0d6cc;
+  --radius:10px;--shadow:0 2px 12px rgba(0,0,0,.09);
+}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+/* ── LOGIN SCREEN ── */
+#login-screen{
+  display:flex;align-items:center;justify-content:center;
+  min-height:100vh;background:linear-gradient(135deg,var(--red-d) 0%,var(--red) 60%,#4a5a30 100%);
+  padding:1.5rem;
+}
+.login-box{
+  background:#fff;border-radius:18px;padding:2.8rem 2.4rem;width:100%;max-width:400px;
+  box-shadow:0 20px 60px rgba(0,0,0,.3);text-align:center;
+}
+.login-logo{height:54px;width:auto;margin-bottom:1.4rem}
+.login-box h1{font-size:1.4rem;color:var(--red);margin-bottom:.3rem}
+.login-box p{font-size:.88rem;color:var(--muted);margin-bottom:1.8rem}
+.form-group{margin-bottom:1.2rem;text-align:left}
+.form-group label{display:block;font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.38rem}
+.form-group input{
+  width:100%;padding:.72rem 1rem;border:1.5px solid var(--border);border-radius:8px;
+  font-size:.95rem;outline:none;transition:border-color .2s;
+}
+.form-group input:focus{border-color:var(--red)}
+.login-btn{
+  width:100%;padding:.8rem;background:var(--red);color:#fff;border:none;
+  border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer;
+  transition:background .2s;margin-top:.4rem;
+}
+.login-btn:hover{background:var(--red-d)}
+.login-err{color:#c00;font-size:.84rem;margin-top:.8rem;display:none}
+
+/* ── ADMIN LAYOUT ── */
+#admin-app{display:none;min-height:100vh;flex-direction:column}
+
+.admin-header{
+  background:linear-gradient(90deg,var(--red-d),var(--red));
+  color:#fff;padding:0 2rem;height:60px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.2);
+}
+.admin-header .brand{display:flex;align-items:center;gap:.8rem}
+.admin-header img{height:32px;background:#fff;border-radius:5px;padding:2px 6px}
+.admin-header span{font-size:1rem;font-weight:700;opacity:.92}
+.logout-btn{
+  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);
+  color:#fff;padding:.38rem .9rem;border-radius:6px;cursor:pointer;
+  font-size:.85rem;transition:background .2s;
+}
+.logout-btn:hover{background:rgba(255,255,255,.3)}
+
+.admin-body{display:flex;flex:1}
+
+/* Sidebar */
+.sidebar{
+  width:220px;background:#fff;border-right:1px solid var(--border);
+  padding:1.5rem 1rem;flex-shrink:0;
+}
+.sidebar h3{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.8rem;padding:0 .5rem}
+.sidebar nav a{
+  display:flex;align-items:center;gap:.65rem;padding:.62rem .8rem;
+  border-radius:8px;text-decoration:none;color:var(--text);
+  font-size:.92rem;font-weight:500;margin-bottom:.2rem;transition:all .15s;
+}
+.sidebar nav a:hover{background:var(--red-t);color:var(--red)}
+.sidebar nav a.active{background:var(--red);color:#fff}
+.sidebar nav a .ic{font-size:1.1rem;width:20px;text-align:center}
+
+/* Badge on sidebar link */
+.nav-badge{
+  margin-left:auto;background:#dc2626;color:#fff;
+  font-size:.68rem;font-weight:700;padding:.1rem .45rem;
+  border-radius:20px;min-width:18px;text-align:center;line-height:1.6;
+}
+.sidebar nav a.active .nav-badge{background:rgba(255,255,255,.3)}
+
+/* Main content */
+.admin-main{flex:1;padding:2rem;overflow-y:auto}
+
+.section-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:1.5rem;flex-wrap:wrap;gap:.8rem;
+}
+.section-header h2{font-size:1.4rem;color:var(--red);font-weight:700}
+
+/* Tabs */
+.tab-pane{display:none}
+.tab-pane.active{display:block}
+
+/* Stats bar */
+.stats-row{display:flex;gap:1rem;margin-bottom:1.8rem;flex-wrap:wrap}
+.stat-card{
+  background:#fff;border-radius:var(--radius);padding:1.1rem 1.4rem;
+  flex:1;min-width:120px;box-shadow:var(--shadow);border-left:4px solid var(--red);
+}
+.stat-card .num{font-size:1.8rem;font-weight:800;color:var(--red)}
+.stat-card .lbl{font-size:.8rem;color:var(--muted);margin-top:.15rem}
+
+/* Form card */
+.form-card{
+  background:#fff;border-radius:var(--radius);padding:1.8rem;
+  box-shadow:var(--shadow);margin-bottom:1.5rem;
+}
+.form-card h3{font-size:1.05rem;font-weight:700;color:var(--red);margin-bottom:1.2rem;
+  padding-bottom:.7rem;border-bottom:1px solid var(--border)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+.f-group{margin-bottom:1rem}
+.f-group label{display:block;font-size:.82rem;font-weight:600;margin-bottom:.35rem;color:var(--muted)}
+.f-group input,.f-group select,.f-group textarea{
+  width:100%;padding:.65rem .9rem;border:1.5px solid var(--border);border-radius:8px;
+  font-size:.92rem;font-family:inherit;outline:none;transition:border-color .2s;
+}
+.f-group input:focus,.f-group select:focus,.f-group textarea:focus{border-color:var(--red)}
+.f-group textarea{resize:vertical;min-height:100px}
+.f-group.full{grid-column:1/-1}
+
+.btn-row{display:flex;gap:.8rem;justify-content:flex-end;margin-top:.5rem}
+.btn{
+  padding:.62rem 1.4rem;border-radius:8px;font-size:.92rem;font-weight:600;
+  cursor:pointer;border:none;transition:all .15s;
+}
+.btn-primary{background:var(--red);color:#fff}
+.btn-primary:hover{background:var(--red-d)}
+.btn-ghost{background:transparent;color:var(--red);border:1.5px solid var(--red)}
+.btn-ghost:hover{background:var(--red-t)}
+.btn-sm{padding:.38rem .8rem;font-size:.8rem}
+.btn-danger{background:#dc2626;color:#fff}
+.btn-danger:hover{background:#b91c1c}
+.btn-edit{background:#1d4ed8;color:#fff}
+.btn-edit:hover{background:#1e40af}
+.btn-teal{background:var(--red);color:#fff}
+.btn-teal:hover{background:var(--red-d)}
+
+/* Posts list */
+.posts-list{display:flex;flex-direction:column;gap:.9rem}
+.post-item{
+  background:#fff;border-radius:var(--radius);padding:1.1rem 1.3rem;
+  box-shadow:var(--shadow);display:flex;align-items:flex-start;gap:1rem;
+}
+.post-item .post-badge{
+  font-size:.72rem;font-weight:700;padding:.25rem .65rem;border-radius:20px;
+  background:var(--red-t);color:var(--red);white-space:nowrap;margin-top:.1rem;flex-shrink:0;
+}
+.post-item .post-info{flex:1;min-width:0}
+.post-item .post-title{font-weight:700;font-size:.97rem;margin-bottom:.22rem;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.post-item .post-meta{font-size:.8rem;color:var(--muted)}
+.post-item .post-actions{display:flex;gap:.5rem;flex-shrink:0;align-items:center}
+.empty-state{
+  text-align:center;padding:3rem 2rem;color:var(--muted);
+  background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);
+}
+.empty-state .ei{font-size:2.5rem;margin-bottom:.7rem}
+.empty-state p{font-size:.93rem}
+
+/* ── GALLERY ADMIN ── */
+.upload-zone{
+  border:2px dashed var(--border);border-radius:var(--radius);
+  padding:2rem;text-align:center;cursor:pointer;transition:all .2s;
+  background:#fafafa;position:relative;overflow:hidden;
+}
+.upload-zone:hover,.upload-zone.drag{border-color:var(--red);background:var(--red-t)}
+.upload-zone input[type=file]{
+  position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;
+}
+.upload-zone .uz-icon{font-size:2.2rem;margin-bottom:.5rem;color:var(--red);opacity:.6}
+.upload-zone p{font-size:.88rem;color:var(--muted)}
+.upload-zone small{font-size:.78rem;color:var(--muted);opacity:.7}
+
+.photo-preview-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));
+  gap:.8rem;margin-top:1rem;
+}
+.photo-thumb{
+  position:relative;aspect-ratio:1;border-radius:8px;overflow:hidden;
+  background:var(--bg);border:1px solid var(--border);
+}
+.photo-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-thumb .ph-del{
+  position:absolute;top:4px;right:4px;width:24px;height:24px;border-radius:50%;
+  background:rgba(0,0,0,.6);color:#fff;border:none;cursor:pointer;
+  font-size:.75rem;display:flex;align-items:center;justify-content:center;
+  transition:background .15s;
+}
+.photo-thumb .ph-del:hover{background:#dc2626}
+.photo-thumb .ph-cap{
+  position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);
+  color:#fff;font-size:.65rem;padding:.2rem .4rem;text-align:center;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+
+.gal-list-item{
+  display:flex;align-items:center;gap:1rem;
+  background:#fff;border-radius:var(--radius);padding:.8rem 1rem;
+  box-shadow:var(--shadow);
+}
+.gal-list-item .gl-thumb{
+  width:56px;height:56px;border-radius:7px;object-fit:cover;flex-shrink:0;
+  background:var(--bg);border:1px solid var(--border);
+}
+.gal-list-item .gl-info{flex:1;min-width:0}
+.gal-list-item .gl-cap{font-weight:600;font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gal-list-item .gl-meta{font-size:.78rem;color:var(--muted);margin-top:.12rem}
+.url-hint{font-size:.77rem;color:var(--muted);margin-top:.3rem;line-height:1.5}
+
+/* ── APPLICATIONS ── */
+.apps-filter-row{
+  display:flex;align-items:center;gap:.7rem;margin-bottom:1.2rem;flex-wrap:wrap;
+}
+.apps-filter-row span{font-size:.85rem;color:var(--muted);font-weight:600}
+.filter-btn{
+  padding:.32rem .9rem;border-radius:20px;font-size:.82rem;font-weight:600;
+  cursor:pointer;border:1.5px solid var(--border);background:#fff;color:var(--muted);
+  transition:all .15s;
+}
+.filter-btn.active,.filter-btn:hover{
+  border-color:var(--red);background:var(--red-t);color:var(--red);
+}
+
+.app-card{
+  background:#fff;border-radius:var(--radius);padding:1.2rem 1.4rem;
+  box-shadow:var(--shadow);border-left:4px solid var(--red);
+  margin-bottom:.9rem;
+}
+.app-card-header{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  gap:.8rem;flex-wrap:wrap;margin-bottom:.65rem;
+}
+.app-card-name{font-weight:700;font-size:1rem;color:var(--text)}
+.app-card-meta{font-size:.82rem;color:var(--muted);margin-top:.18rem}
+.app-card-meta a{color:var(--red);text-decoration:none}
+.app-card-meta a:hover{text-decoration:underline}
+.app-job-badge{
+  font-size:.72rem;font-weight:700;padding:.22rem .7rem;border-radius:20px;
+  background:var(--red-t);color:var(--red);white-space:nowrap;flex-shrink:0;
+}
+.app-card-msg{
+  font-size:.86rem;color:var(--text);background:var(--bg);
+  border-radius:7px;padding:.6rem .85rem;margin-bottom:.8rem;
+  line-height:1.55;border-left:3px solid var(--border);
+}
+.app-card-msg em{color:var(--muted);font-style:normal}
+.app-card-actions{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.app-date{font-size:.76rem;color:var(--muted);margin-left:auto}
+
+/* Toast */
+#toast{
+  position:fixed;bottom:1.5rem;right:1.5rem;
+  background:#1a1a1a;color:#fff;padding:.8rem 1.3rem;
+  border-radius:8px;font-size:.9rem;z-index:9999;
+  opacity:0;transform:translateY(12px);transition:all .3s;pointer-events:none;
+}
+#toast.show{opacity:1;transform:translateY(0)}
+
+/* Edit modal */
+.modal-bg{
+  position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;
+  display:none;align-items:center;justify-content:center;padding:1rem;
+}
+.modal-bg.open{display:flex}
+.modal{background:#fff;border-radius:14px;padding:2rem;width:100%;max-width:580px;
+  max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.modal h3{font-size:1.1rem;font-weight:700;color:var(--red);margin-bottom:1.2rem;
+  padding-bottom:.7rem;border-bottom:1px solid var(--border)}
+.modal-btns{display:flex;gap:.8rem;justify-content:flex-end;margin-top:1rem}
+
+@media(max-width:720px){
+  .sidebar{display:none}
+  .admin-main{padding:1.2rem}
+  .grid-2,.grid-3{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="login-screen">
+  <div class="login-box">
+    <img src="00_logo_horizontal.png" alt="Amitabha Foundation" class="login-logo">
+    <h1>Admin Dashboard</h1>
+    <p>Sign in to manage jobs, events &amp; news</p>
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" id="inp-user" placeholder="admin" autocomplete="username"/>
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="inp-pass" placeholder="••••••••" autocomplete="current-password"
+             onkeydown="if(event.key==='Enter')doLogin()"/>
+    </div>
+    <button class="login-btn" onclick="doLogin()">Sign In</button>
+    <p class="login-err" id="login-err">Incorrect username or password.</p>
+  </div>
+</div>
+
+<!-- ADMIN APP -->
+<div id="admin-app">
+
+  <!-- Header -->
+  <div class="admin-header">
+    <div class="brand">
+      <img src="00_logo_horizontal.png" alt=""/>
+      <span>Admin Panel</span>
+    </div>
+    <button class="logout-btn" onclick="doLogout()">Sign Out</button>
+  </div>
+
+  <div class="admin-body">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h3>Manage</h3>
+      <nav>
+        <a href="#" class="active" onclick="showTab('dash');return false"><span class="ic">🏠</span> Dashboard</a>
+        <a href="#" onclick="showTab('jobs');return false"><span class="ic">💼</span> Job Listings</a>
+        <a href="#" onclick="showTab('news');return false"><span class="ic">📰</span> News &amp; Events</a>
+        <a href="#" onclick="showTab('gallery');return false"><span class="ic">🖼️</span> Gallery Photos</a>
+        <a href="#" onclick="showTab('apps');return false"><span class="ic">📋</span> Applications<span class="nav-badge" id="apps-nav-badge" style="display:none">0</span></a>
+      </nav>
+      <h3 style="margin-top:1.8rem">Preview</h3>
+      <nav>
+        <a href="jobs.html" target="_blank"><span class="ic">👁</span> Jobs Page</a>
+        <a href="index.html" target="_blank"><span class="ic">🌐</span> Main Website</a>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <main class="admin-main">
+
+      <!-- DASHBOARD -->
+      <div class="tab-pane active" id="tab-dash">
+        <div class="section-header"><h2>Dashboard</h2></div>
+        <div class="stats-row">
+          <div class="stat-card"><div class="num" id="stat-jobs">0</div><div class="lbl">Job Listings</div></div>
+          <div class="stat-card"><div class="num" id="stat-news">0</div><div class="lbl">News &amp; Events</div></div>
+          <div class="stat-card"><div class="num" id="stat-gallery">0</div><div class="lbl">Gallery Photos</div></div>
+          <div class="stat-card"><div class="num" id="stat-apps">0</div><div class="lbl">Applications</div></div>
+        </div>
+        <div class="form-card" style="border-left:4px solid var(--gold)">
+          <h3 style="color:#7a5e00">Quick Actions</h3>
+          <div style="display:flex;gap:.8rem;flex-wrap:wrap">
+            <button class="btn btn-primary" onclick="showTab('jobs')">+ Post a Job</button>
+            <button class="btn btn-ghost" onclick="showTab('news')">+ Add News / Event</button>
+            <button class="btn btn-ghost" onclick="showTab('gallery')">+ Upload Photos</button>
+            <button class="btn btn-ghost" onclick="showTab('apps')">+ View Applications</button>
+          </div>
+        </div>
+        <div class="form-card">
+          <h3>Recent Activity</h3>
+          <div id="recent-list"><p style="color:var(--muted);font-size:.9rem">No posts yet.</p></div>
+        </div>
+      </div>
+
+      <!-- JOBS -->
+      <div class="tab-pane" id="tab-jobs">
+        <div class="section-header"><h2>Job Listings</h2></div>
+        <div class="form-card">
+          <h3>Post a New Job</h3>
+          <div class="grid-2">
+            <div class="f-group">
+              <label>Job Title (English)</label>
+              <input type="text" id="j-title-en" placeholder="e.g. Caregiver / 看护员"/>
+            </div>
+            <div class="f-group">
+              <label>职位名称 (中文)</label>
+              <input type="text" id="j-title-zh" placeholder="例：看护员"/>
+            </div>
+            <div class="f-group">
+              <label>Job Type</label>
+              <select id="j-type">
+                <option value="Full-Time">Full-Time 全职</option>
+                <option value="Part-Time">Part-Time 兼职</option>
+                <option value="Contract">Contract 合约</option>
+              </select>
+            </div>
+            <div class="f-group">
+              <label>Location</label>
+              <input type="text" id="j-loc" value="Old Klang Road, Kuala Lumpur"/>
+            </div>
+            <div class="f-group">
+              <label>Salary / Allowance (optional)</label>
+              <input type="text" id="j-salary" placeholder="e.g. RM 1,800 – RM 2,200"/>
+            </div>
+            <div class="f-group">
+              <label>Contact / WhatsApp</label>
+              <input type="text" id="j-wa" value="60127762911"/>
+            </div>
+            <div class="f-group full">
+              <label>Job Description (English)</label>
+              <textarea id="j-desc-en" rows="4" placeholder="Responsibilities, requirements, benefits..."></textarea>
+            </div>
+            <div class="f-group full">
+              <label>职位描述 (中文)</label>
+              <textarea id="j-desc-zh" rows="4" placeholder="职责、要求、福利..."></textarea>
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-ghost" onclick="clearJobForm()">Clear</button>
+            <button class="btn btn-primary" onclick="saveJob()">Publish Job</button>
+          </div>
+        </div>
+        <div class="form-card">
+          <h3>All Job Listings</h3>
+          <div class="posts-list" id="jobs-list"></div>
+        </div>
+      </div>
+
+      <!-- NEWS & EVENTS -->
+      <div class="tab-pane" id="tab-news">
+        <div class="section-header"><h2>News &amp; Events</h2></div>
+        <div class="form-card">
+          <h3>Add News / Event</h3>
+          <div class="grid-2">
+            <div class="f-group">
+              <label>Title (English)</label>
+              <input type="text" id="n-title-en" placeholder="e.g. Annual Charity Dinner 2025"/>
+            </div>
+            <div class="f-group">
+              <label>标题 (中文，选填)</label>
+              <input type="text" id="n-title-zh" placeholder="例：2025年慈善晚宴"/>
+            </div>
+            <div class="f-group">
+              <label>Category</label>
+              <select id="n-cat">
+                <option value="Event">Event 活动</option>
+                <option value="News">News 新闻</option>
+                <option value="Announcement">Announcement 通告</option>
+                <option value="Fundraising">Fundraising 筹款</option>
+              </select>
+            </div>
+            <div class="f-group">
+              <label>Event Date (if applicable)</label>
+              <input type="date" id="n-date"/>
+            </div>
+            <div class="f-group full">
+              <label>Content / Details</label>
+              <textarea id="n-content" rows="5" placeholder="Describe the news or event..."></textarea>
+            </div>
+            <div class="f-group full">
+              <label>内容 (中文，选填)</label>
+              <textarea id="n-content-zh" rows="4" placeholder="活动详情..."></textarea>
+            </div>
+            <div class="f-group">
+              <label>Link (optional)</label>
+              <input type="url" id="n-link" placeholder="https://..."/>
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-ghost" onclick="clearNewsForm()">Clear</button>
+            <button class="btn btn-primary" onclick="saveNews()">Publish</button>
+          </div>
+        </div>
+        <div class="form-card">
+          <h3>All News &amp; Events</h3>
+          <div class="posts-list" id="news-list"></div>
+        </div>
+      </div>
+
+      <!-- GALLERY -->
+      <div class="tab-pane" id="tab-gallery">
+        <div class="section-header"><h2>Gallery Photos</h2></div>
+
+        <!-- Upload / Add Photo -->
+        <div class="form-card">
+          <h3>Add a Photo</h3>
+          <div class="grid-2">
+            <div class="f-group full">
+              <label>Upload from device</label>
+              <div class="upload-zone" id="upload-zone">
+                <input type="file" id="gal-file" accept="image/*" multiple onchange="handleFileUpload(this)"/>
+                <div class="uz-icon">📷</div>
+                <p>Click or drag photos here</p>
+                <small>JPG, PNG, WEBP · Max 2 MB per photo · Up to 6 shown in gallery</small>
+              </div>
+            </div>
+            <div class="f-group">
+              <label>Or paste an image URL</label>
+              <input type="url" id="gal-url" placeholder="https://example.com/photo.jpg"/>
+              <p class="url-hint">You can use Google Drive shared links, Facebook photos, Imgur, etc.</p>
+            </div>
+            <div class="f-group">
+              <label>Caption (shown on hover)</label>
+              <input type="text" id="gal-caption" placeholder="e.g. Elder Support Programme"/>
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-ghost" onclick="document.getElementById('gal-url').value='';document.getElementById('gal-caption').value=''">Clear</button>
+            <button class="btn btn-primary" onclick="savePhotoUrl()">Add URL Photo</button>
+          </div>
+          <p id="gal-upload-status" style="font-size:.82rem;color:var(--muted);margin-top:.6rem"></p>
+        </div>
+
+        <!-- Gallery list -->
+        <div class="form-card">
+          <h3>All Gallery Photos <span style="font-weight:400;font-size:.85rem;color:var(--muted)">(max 6 shown on website)</span></h3>
+          <div id="gallery-list" style="display:flex;flex-direction:column;gap:.8rem"></div>
+        </div>
+      </div>
+
+      <!-- APPLICATIONS -->
+      <div class="tab-pane" id="tab-apps">
+        <div class="section-header"><h2>Job Applications</h2></div>
+
+        <div class="form-card">
+          <h3>Submitted Applications</h3>
+
+          <!-- Filter row -->
+          <div class="apps-filter-row">
+            <span>Show:</span>
+            <button class="filter-btn active" id="filter-all" onclick="setAppFilter('all')">All</button>
+            <button class="filter-btn" id="filter-unread" onclick="setAppFilter('unread')">Unread</button>
+          </div>
+
+          <!-- Applications list -->
+          <div id="apps-list"></div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- Edit Job Modal -->
+<div class="modal-bg" id="job-modal">
+  <div class="modal">
+    <h3>Edit Job Listing</h3>
+    <input type="hidden" id="ej-id"/>
+    <div class="grid-2">
+      <div class="f-group"><label>Title (EN)</label><input type="text" id="ej-title-en"/></div>
+      <div class="f-group"><label>标题 (中文)</label><input type="text" id="ej-title-zh"/></div>
+      <div class="f-group"><label>Type</label>
+        <select id="ej-type">
+          <option>Full-Time</option><option>Part-Time</option><option>Contract</option>
+        </select>
+      </div>
+      <div class="f-group"><label>Location</label><input type="text" id="ej-loc"/></div>
+      <div class="f-group"><label>Salary</label><input type="text" id="ej-salary"/></div>
+      <div class="f-group"><label>WhatsApp</label><input type="text" id="ej-wa"/></div>
+      <div class="f-group full"><label>Description (EN)</label><textarea id="ej-desc-en" rows="4"></textarea></div>
+      <div class="f-group full"><label>描述 (中文)</label><textarea id="ej-desc-zh" rows="4"></textarea></div>
+    </div>
+    <div class="modal-btns">
+      <button class="btn btn-ghost" onclick="closeModal('job-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="updateJob()">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<!-- Edit News Modal -->
+<div class="modal-bg" id="news-modal">
+  <div class="modal">
+    <h3>Edit News / Event</h3>
+    <input type="hidden" id="en-id"/>
+    <div class="grid-2">
+      <div class="f-group"><label>Title (EN)</label><input type="text" id="en-title-en"/></div>
+      <div class="f-group"><label>标题 (中文)</label><input type="text" id="en-title-zh"/></div>
+      <div class="f-group"><label>Category</label>
+        <select id="en-cat">
+          <option>Event</option><option>News</option><option>Announcement</option><option>Fundraising</option>
+        </select>
+      </div>
+      <div class="f-group"><label>Date</label><input type="date" id="en-date"/></div>
+      <div class="f-group full"><label>Content</label><textarea id="en-content" rows="4"></textarea></div>
+      <div class="f-group full"><label>内容 (中文)</label><textarea id="en-content-zh" rows="3"></textarea></div>
+      <div class="f-group"><label>Link</label><input type="url" id="en-link"/></div>
+    </div>
+    <div class="modal-btns">
+      <button class="btn btn-ghost" onclick="closeModal('news-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="updateNews()">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+/* ── AUTH ── */
+const CREDS = {user:'admin', pass:'amitabha2024'};
+
+function doLogin(){
+  const u = document.getElementById('inp-user').value.trim();
+  const p = document.getElementById('inp-pass').value;
+  if(u === CREDS.user && p === CREDS.pass){
+    sessionStorage.setItem('af_admin','1');
+    document.getElementById('login-screen').style.display='none';
+    const app = document.getElementById('admin-app');
+    app.style.display='flex'; app.style.flexDirection='column';
+    initApp();
+  } else {
+    document.getElementById('login-err').style.display='block';
+  }
+}
+function doLogout(){ sessionStorage.removeItem('af_admin'); location.reload(); }
+
+/* ── STORAGE ── */
+function getJobs()    { return JSON.parse(localStorage.getItem('af_jobs')        || '[]') }
+function setJobs(a)   { localStorage.setItem('af_jobs',        JSON.stringify(a)) }
+function getNews()    { return JSON.parse(localStorage.getItem('af_news')        || '[]') }
+function setNews(a)   { localStorage.setItem('af_news',        JSON.stringify(a)) }
+function getGallery() { return JSON.parse(localStorage.getItem('af_gallery')     || '[]') }
+function setGallery(a){ localStorage.setItem('af_gallery',     JSON.stringify(a)) }
+function getApps()    { return JSON.parse(localStorage.getItem('af_applications')|| '[]') }
+function setApps(a)   { localStorage.setItem('af_applications',JSON.stringify(a)) }
+function uid()        { return Date.now().toString(36)+Math.random().toString(36).slice(2,6) }
+
+/* ── TABS ── */
+function showTab(name){
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.sidebar nav a').forEach(a=>a.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  document.querySelectorAll('.sidebar nav a').forEach(a=>{
+    if(a.getAttribute('onclick')&&a.getAttribute('onclick').includes("'"+name+"'")) a.classList.add('active');
+  });
+  // Mark applications as read when tab is opened
+  if(name==='apps') markAppsRead();
+  renderAll();
+}
+
+/* ── TOAST ── */
+function toast(msg, dur=2400){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), dur);
+}
+
+/* ── JOBS ── */
+function saveJob(){
+  const te=document.getElementById('j-title-en').value.trim();
+  if(!te){toast('Please enter a job title.');return}
+  const job={
+    id:uid(), titleEn:te, titleZh:document.getElementById('j-title-zh').value.trim(),
+    type:document.getElementById('j-type').value,
+    location:document.getElementById('j-loc').value.trim(),
+    salary:document.getElementById('j-salary').value.trim(),
+    wa:document.getElementById('j-wa').value.trim()||'60127762911',
+    descEn:document.getElementById('j-desc-en').value.trim(),
+    descZh:document.getElementById('j-desc-zh').value.trim(),
+    posted:new Date().toISOString().slice(0,10)
+  };
+  const jobs=getJobs(); jobs.unshift(job); setJobs(jobs);
+  clearJobForm(); renderAll(); toast('✅ Job published successfully!');
+}
+function clearJobForm(){
+  ['j-title-en','j-title-zh','j-salary','j-desc-en','j-desc-zh'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('j-type').value='Full-Time';
+  document.getElementById('j-loc').value='Old Klang Road, Kuala Lumpur';
+  document.getElementById('j-wa').value='60127762911';
+}
+function deleteJob(id){
+  if(!confirm('Delete this job listing?'))return;
+  setJobs(getJobs().filter(j=>j.id!==id)); renderAll(); toast('Job deleted.');
+}
+function openEditJob(id){
+  const j=getJobs().find(x=>x.id===id); if(!j)return;
+  document.getElementById('ej-id').value=j.id;
+  document.getElementById('ej-title-en').value=j.titleEn||'';
+  document.getElementById('ej-title-zh').value=j.titleZh||'';
+  document.getElementById('ej-type').value=j.type||'Full-Time';
+  document.getElementById('ej-loc').value=j.location||'';
+  document.getElementById('ej-salary').value=j.salary||'';
+  document.getElementById('ej-wa').value=j.wa||'';
+  document.getElementById('ej-desc-en').value=j.descEn||'';
+  document.getElementById('ej-desc-zh').value=j.descZh||'';
+  document.getElementById('job-modal').classList.add('open');
+}
+function updateJob(){
+  const id=document.getElementById('ej-id').value;
+  const jobs=getJobs(); const i=jobs.findIndex(j=>j.id===id); if(i<0)return;
+  jobs[i]={...jobs[i],
+    titleEn:document.getElementById('ej-title-en').value.trim(),
+    titleZh:document.getElementById('ej-title-zh').value.trim(),
+    type:document.getElementById('ej-type').value,
+    location:document.getElementById('ej-loc').value.trim(),
+    salary:document.getElementById('ej-salary').value.trim(),
+    wa:document.getElementById('ej-wa').value.trim(),
+    descEn:document.getElementById('ej-desc-en').value.trim(),
+    descZh:document.getElementById('ej-desc-zh').value.trim(),
+  };
+  setJobs(jobs); closeModal('job-modal'); renderAll(); toast('✅ Job updated!');
+}
+function renderJobs(){
+  const jobs=getJobs();
+  const el=document.getElementById('jobs-list');
+  if(!jobs.length){
+    el.innerHTML='<div class="empty-state"><div class="ei">💼</div><p>No job listings yet.</p></div>'; return;
+  }
+  el.innerHTML=jobs.map(j=>`
+    <div class="post-item">
+      <span class="post-badge">${j.type||'Full-Time'}</span>
+      <div class="post-info">
+        <div class="post-title">${j.titleEn||''}${j.titleZh?' / '+j.titleZh:''}</div>
+        <div class="post-meta">📍 ${j.location||''} ${j.salary?'· 💰 '+j.salary:''} · ${j.posted||''}</div>
+      </div>
+      <div class="post-actions">
+        <button class="btn btn-sm btn-edit" onclick="openEditJob('${j.id}')">Edit</button>
+        <button class="btn btn-sm btn-danger" onclick="deleteJob('${j.id}')">Delete</button>
+      </div>
+    </div>`).join('');
+}
+
+/* ── NEWS ── */
+function saveNews(){
+  const te=document.getElementById('n-title-en').value.trim();
+  if(!te){toast('Please enter a title.');return}
+  const item={
+    id:uid(), titleEn:te, titleZh:document.getElementById('n-title-zh').value.trim(),
+    cat:document.getElementById('n-cat').value,
+    date:document.getElementById('n-date').value,
+    content:document.getElementById('n-content').value.trim(),
+    contentZh:document.getElementById('n-content-zh').value.trim(),
+    link:document.getElementById('n-link').value.trim(),
+    posted:new Date().toISOString().slice(0,10)
+  };
+  const news=getNews(); news.unshift(item); setNews(news);
+  clearNewsForm(); renderAll(); toast('✅ News / Event published!');
+}
+function clearNewsForm(){
+  ['n-title-en','n-title-zh','n-date','n-content','n-content-zh','n-link'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('n-cat').value='Event';
+}
+function deleteNews(id){
+  if(!confirm('Delete this item?'))return;
+  setNews(getNews().filter(n=>n.id!==id)); renderAll(); toast('Deleted.');
+}
+function openEditNews(id){
+  const n=getNews().find(x=>x.id===id); if(!n)return;
+  document.getElementById('en-id').value=n.id;
+  document.getElementById('en-title-en').value=n.titleEn||'';
+  document.getElementById('en-title-zh').value=n.titleZh||'';
+  document.getElementById('en-cat').value=n.cat||'Event';
+  document.getElementById('en-date').value=n.date||'';
+  document.getElementById('en-content').value=n.content||'';
+  document.getElementById('en-content-zh').value=n.contentZh||'';
+  document.getElementById('en-link').value=n.link||'';
+  document.getElementById('news-modal').classList.add('open');
+}
+function updateNews(){
+  const id=document.getElementById('en-id').value;
+  const news=getNews(); const i=news.findIndex(n=>n.id===id); if(i<0)return;
+  news[i]={...news[i],
+    titleEn:document.getElementById('en-title-en').value.trim(),
+    titleZh:document.getElementById('en-title-zh').value.trim(),
+    cat:document.getElementById('en-cat').value,
+    date:document.getElementById('en-date').value,
+    content:document.getElementById('en-content').value.trim(),
+    contentZh:document.getElementById('en-content-zh').value.trim(),
+    link:document.getElementById('en-link').value.trim(),
+  };
+  setNews(news); closeModal('news-modal'); renderAll(); toast('✅ Updated!');
+}
+function renderNews(){
+  const news=getNews();
+  const el=document.getElementById('news-list');
+  if(!news.length){
+    el.innerHTML='<div class="empty-state"><div class="ei">📰</div><p>No news or events yet.</p></div>'; return;
+  }
+  el.innerHTML=news.map(n=>`
+    <div class="post-item">
+      <span class="post-badge">${n.cat||'News'}</span>
+      <div class="post-info">
+        <div class="post-title">${n.titleEn||''}${n.titleZh?' · '+n.titleZh:''}</div>
+        <div class="post-meta">${n.date?'📅 '+n.date+' · ':''}Posted: ${n.posted||''}</div>
+      </div>
+      <div class="post-actions">
+        <button class="btn btn-sm btn-edit" onclick="openEditNews('${n.id}')">Edit</button>
+        <button class="btn btn-sm btn-danger" onclick="deleteNews('${n.id}')">Delete</button>
+      </div>
+    </div>`).join('');
+}
+
+/* ── GALLERY ── */
+function handleFileUpload(input){
+  const files = Array.from(input.files);
+  const status = document.getElementById('gal-upload-status');
+  if(!files.length) return;
+  let processed = 0;
+  files.forEach(file=>{
+    if(file.size > 2*1024*1024){
+      toast(`"${file.name}" is over 2 MB — skipped.`); processed++; return;
+    }
+    const reader = new FileReader();
+    reader.onload = e => {
+      const caption = document.getElementById('gal-caption').value.trim() || file.name.replace(/\.[^.]+$/,'');
+      const photo = { id:uid(), src:e.target.result, caption, posted:new Date().toISOString().slice(0,10) };
+      const g = getGallery(); g.push(photo); setGallery(g);
+      processed++;
+      if(processed === files.length){
+        renderAll();
+        toast(`✅ ${files.length} photo(s) uploaded!`);
+        status.textContent = '';
+        input.value = '';
+      }
+    };
+    reader.readAsDataURL(file);
+  });
+  status.textContent = 'Uploading…';
+}
+
+function savePhotoUrl(){
+  const url = document.getElementById('gal-url').value.trim();
+  const caption = document.getElementById('gal-caption').value.trim();
+  if(!url){ toast('Please enter a photo URL.'); return; }
+  const photo = { id:uid(), src:url, caption, posted:new Date().toISOString().slice(0,10) };
+  const g = getGallery(); g.push(photo); setGallery(g);
+  document.getElementById('gal-url').value = '';
+  document.getElementById('gal-caption').value = '';
+  renderAll(); toast('✅ Photo added to gallery!');
+}
+
+function deletePhoto(id){
+  if(!confirm('Remove this photo from the gallery?'))return;
+  setGallery(getGallery().filter(p=>p.id!==id));
+  renderAll(); toast('Photo removed.');
+}
+
+function movePhoto(id, dir){
+  const g = getGallery();
+  const i = g.findIndex(p=>p.id===id); if(i<0)return;
+  const j = i + dir;
+  if(j<0||j>=g.length) return;
+  [g[i],g[j]] = [g[j],g[i]];
+  setGallery(g); renderAll();
+}
+
+function renderGalleryAdmin(){
+  const photos = getGallery();
+  const el = document.getElementById('gallery-list');
+  if(!photos.length){
+    el.innerHTML='<div class="empty-state"><div class="ei">🖼️</div><p>No photos yet. Upload or add a URL above.<br><small>The first 6 photos appear in the website gallery.</small></p></div>';
+    return;
+  }
+  el.innerHTML = photos.map((p,i)=>`
+    <div class="gal-list-item">
+      <img class="gl-thumb" src="${p.src||''}" alt="${p.caption||''}" onerror="this.style.background='#eee';this.alt='?'"/>
+      <div class="gl-info">
+        <div class="gl-cap">${p.caption||'(no caption)'}</div>
+        <div class="gl-meta">Position: ${i+1} of ${photos.length} · ${p.posted||''} ${i<6?'· <span style="color:#16a34a;font-weight:600">Visible on website</span>':'· <span style="color:#888">Hidden (past 6th)</span>'}</div>
+      </div>
+      <div class="post-actions">
+        ${i>0?`<button class="btn btn-sm btn-ghost" onclick="movePhoto('${p.id}',-1)" title="Move up">↑</button>`:''}
+        ${i<photos.length-1?`<button class="btn btn-sm btn-ghost" onclick="movePhoto('${p.id}',1)" title="Move down">↓</button>`:''}
+        <button class="btn btn-sm btn-danger" onclick="deletePhoto('${p.id}')">Remove</button>
+      </div>
+    </div>`).join('');
+}
+
+/* ── APPLICATIONS ── */
+let _appFilter = 'all';
+
+function setAppFilter(f){
+  _appFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('filter-'+f).classList.add('active');
+  renderApps();
+}
+
+function markAppsRead(){
+  const apps = getApps();
+  let changed = false;
+  apps.forEach(a=>{ if(!a.read){ a.read=true; changed=true; } });
+  if(changed){ setApps(apps); updateAppsBadge(); }
+}
+
+function updateAppsBadge(){
+  const unread = getApps().filter(a=>!a.read).length;
+  const badge = document.getElementById('apps-nav-badge');
+  if(unread > 0){
+    badge.textContent = unread;
+    badge.style.display = 'inline-block';
+  } else {
+    badge.style.display = 'none';
+  }
+}
+
+function downloadCV(id){
+  const app = getApps().find(a => a.id === id);
+  if(!app || !app.cvData) return;
+  const link = document.createElement('a');
+  link.href = app.cvData; // already a data URL
+  link.download = app.cvName || 'CV';
+  link.click();
+}
+
+function deleteApp(id){
+  if(!confirm('Delete this application? This cannot be undone.')) return;
+  setApps(getApps().filter(a=>a.id!==id));
+  renderAll();
+  toast('Application deleted.');
+}
+
+function fmtDate(iso){
+  if(!iso) return '';
+  try{
+    return new Date(iso).toLocaleDateString('en-MY',{day:'numeric',month:'short',year:'numeric'});
+  } catch(e){ return iso.slice(0,10); }
+}
+
+function escHtml(s){
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function renderApps(){
+  const all = getApps();
+  const list = _appFilter === 'unread' ? all.filter(a=>!a.read) : all;
+  const el = document.getElementById('apps-list');
+  if(!list.length){
+    const msg = _appFilter==='unread'
+      ? 'No unread applications.'
+      : 'No applications submitted yet.';
+    el.innerHTML=`<div class="empty-state"><div class="ei">📋</div><p>${msg}</p></div>`;
+    return;
+  }
+  el.innerHTML = list.map(a=>{
+    const msgText = a.message ? escHtml(a.message).slice(0,200)+(a.message.length>200?'…':'') : '';
+    const hasCv = !!(a.cvData);
+    return `
+    <div class="app-card" id="appcard-${a.id}">
+      <div class="app-card-header">
+        <div>
+          <div class="app-card-name">${escHtml(a.name||'Unknown Applicant')}</div>
+          <div class="app-card-meta">
+            ${a.email?`<a href="mailto:${escHtml(a.email)}">${escHtml(a.email)}</a>`:''}
+            ${a.email&&a.phone?' &nbsp;·&nbsp; ':''}
+            ${a.phone?escHtml(a.phone):''}
+          </div>
+        </div>
+        <span class="app-job-badge">${escHtml(a.jobTitle||'General Application')}</span>
+      </div>
+      ${msgText?`<div class="app-card-msg">${msgText}</div>`:''}
+      <div class="app-card-actions">
+        ${hasCv
+          ? `<button class="btn btn-sm btn-teal" onclick="downloadCV('${a.id}')">⬇ Download CV${a.cvName?' ('+escHtml(a.cvName)+')':''}</button>`
+          : `<span style="font-size:.8rem;color:var(--muted)">No CV attached</span>`
+        }
+        <button class="btn btn-sm btn-danger" onclick="deleteApp('${a.id}')">Delete</button>
+        <span class="app-date">${fmtDate(a.submitted)}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* ── STATS + RECENT ── */
+function renderStats(){
+  document.getElementById('stat-jobs').textContent    = getJobs().length;
+  document.getElementById('stat-news').textContent    = getNews().length;
+  document.getElementById('stat-gallery').textContent = getGallery().length;
+  document.getElementById('stat-apps').textContent    = getApps().length;
+  updateAppsBadge();
+}
+
+function renderRecent(){
+  const all=[
+    ...getJobs().map(j=>({type:'Job',title:j.titleEn+(j.titleZh?' / '+j.titleZh:''),date:j.posted})),
+    ...getNews().map(n=>({type:n.cat||'News',title:n.titleEn,date:n.posted})),
+    ...getGallery().map(p=>({type:'Photo',title:p.caption||'Gallery Photo',date:p.posted})),
+    ...getApps().map(a=>({type:'Application',title:(a.name||'Applicant')+' — '+(a.jobTitle||'General'),date:(a.submitted||'').slice(0,10)}))
+  ].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,8);
+  const el=document.getElementById('recent-list');
+  if(!all.length){el.innerHTML='<p style="color:var(--muted);font-size:.9rem">No posts yet.</p>';return}
+  el.innerHTML='<div class="posts-list">'+all.map(a=>`
+    <div class="post-item">
+      <span class="post-badge">${a.type}</span>
+      <div class="post-info"><div class="post-title">${escHtml(a.title)}</div><div class="post-meta">${a.date}</div></div>
+    </div>`).join('')+'</div>';
+}
+
+function renderAll(){ renderStats(); renderJobs(); renderNews(); renderGalleryAdmin(); renderApps(); renderRecent(); }
+
+/* ── MODAL ── */
+function closeModal(id){ document.getElementById(id).classList.remove('open') }
+document.querySelectorAll('.modal-bg').forEach(m=>{
+  m.addEventListener('click',e=>{ if(e.target===m) m.classList.remove('open') });
+});
+
+/* ── DRAG ON UPLOAD ZONE ── */
+const uz = document.getElementById('upload-zone');
+uz.addEventListener('dragover',e=>{e.preventDefault();uz.classList.add('drag')});
+uz.addEventListener('dragleave',()=>uz.classList.remove('drag'));
+uz.addEventListener('drop',e=>{
+  e.preventDefault(); uz.classList.remove('drag');
+  const fi = document.getElementById('gal-file');
+  fi.files = e.dataTransfer.files;
+  handleFileUpload(fi);
+});
+
+/* ── INIT ── */
+function initApp(){ renderAll(); }
+
+if(sessionStorage.getItem('af_admin')==='1'){
+  document.getElementById('login-screen').style.display='none';
+  const app=document.getElementById('admin-app');
+  app.style.display='flex'; app.style.flexDirection='column';
+  initApp();
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>News &amp; Updates — Amitabha Foundation Elder Care</title>
+<meta name="description" content="Latest news, events, announcements and fundraising updates from Amitabha Foundation Elder Care."/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#9aaa6d;
+  --teal-d:#6b7a4a;
+  --teal-t:rgba(154,170,109,.12);
+  --teal-t2:rgba(154,170,109,.22);
+  --blue:#3b82f6;
+  --amber:#f59e0b;
+  --pink:#ec4899;
+  --bg:#f8f9fa;
+  --card:#ffffff;
+  --text:#1a1a1a;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+  --radius:12px;
+  --shadow:0 1px 4px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.07);
+  --shadow-hover:0 4px 12px rgba(0,0,0,.1),0 12px 32px rgba(0,0,0,.1);
+}
+
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.7;font-size:1rem;
+  min-height:100vh;
+}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+
+/* ── HEADER ── */
+.site-header{
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:200;
+}
+.header-inner{
+  max-width:1200px;margin:0 auto;padding:0 1.5rem;
+  height:62px;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;
+}
+.header-logo img{height:40px;width:auto;display:block}
+.header-nav{display:flex;align-items:center;gap:.25rem}
+.header-nav a{
+  padding:.45rem .85rem;border-radius:7px;font-size:.88rem;font-weight:500;
+  color:var(--muted);transition:background .18s,color .18s;white-space:nowrap;
+}
+.header-nav a:hover{background:var(--teal-t);color:var(--teal-d)}
+.header-nav a.active{color:var(--teal-d);font-weight:600}
+.nav-donate{
+  background:var(--teal)!important;color:#fff!important;
+  padding:.45rem 1.05rem!important;border-radius:7px;
+  font-weight:600!important;
+}
+.nav-donate:hover{background:var(--teal-d)!important}
+.hamburger{
+  display:none;background:none;border:none;cursor:pointer;
+  padding:.4rem;border-radius:7px;color:var(--muted);
+  flex-direction:column;gap:5px;align-items:center;justify-content:center;
+}
+.hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:2px;transition:.2s}
+.mobile-nav{
+  display:none;background:#fff;border-top:1px solid var(--border);
+  padding:.75rem 1.5rem 1rem;flex-direction:column;gap:.15rem;
+}
+.mobile-nav a{
+  display:block;padding:.6rem .85rem;border-radius:7px;font-size:.92rem;
+  font-weight:500;color:var(--muted);
+}
+.mobile-nav a:hover{background:var(--teal-t);color:var(--teal-d)}
+.mobile-nav .nav-donate{background:var(--teal);color:#fff;text-align:center;margin-top:.3rem}
+
+/* ── PAGE TITLE ── */
+.page-title-section{
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  padding:3rem 1.5rem 2.5rem;
+  text-align:center;
+}
+.page-title-section h1{
+  font-size:clamp(1.9rem,4vw,2.8rem);
+  font-weight:700;color:var(--text);
+  letter-spacing:-.02em;margin-bottom:.6rem;
+}
+.title-accent{
+  display:inline-block;width:56px;height:4px;
+  background:var(--teal);border-radius:2px;margin:0 auto .9rem;
+}
+.page-title-section p{
+  font-size:1rem;color:var(--muted);max-width:520px;margin:0 auto;
+}
+
+/* ── FILTER TABS ── */
+.filter-bar{
+  max-width:1200px;margin:0 auto;
+  padding:1.75rem 1.5rem 0;
+  display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;
+}
+.filter-btn{
+  padding:.48rem 1.1rem;border-radius:30px;
+  border:1.5px solid var(--border);background:#fff;
+  font-size:.84rem;font-weight:600;color:var(--muted);
+  cursor:pointer;transition:all .18s;white-space:nowrap;
+}
+.filter-btn:hover{border-color:var(--teal);color:var(--teal-d)}
+.filter-btn.active{
+  background:var(--teal);color:#fff;border-color:var(--teal);
+}
+.filter-btn[data-cat="Event"].active   {background:var(--teal);border-color:var(--teal)}
+.filter-btn[data-cat="News"].active    {background:var(--blue);border-color:var(--blue);color:#fff}
+.filter-btn[data-cat="Announcement"].active{background:var(--amber);border-color:var(--amber);color:#fff}
+.filter-btn[data-cat="Fundraising"].active {background:var(--pink);border-color:var(--pink);color:#fff}
+
+/* ── GRID ── */
+.posts-wrap{
+  max-width:1200px;margin:0 auto;
+  padding:1.5rem 1.5rem 4rem;
+}
+.posts-grid{
+  columns:3 320px;
+  column-gap:1.25rem;
+}
+
+/* ── CARD ── */
+.post-card{
+  break-inside:avoid;
+  background:var(--card);border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  margin-bottom:1.25rem;
+  overflow:hidden;
+  transition:box-shadow .22s,transform .22s;
+  cursor:pointer;
+  display:flex;flex-direction:column;
+}
+.post-card:hover{
+  box-shadow:var(--shadow-hover);
+  transform:translateY(-3px);
+}
+.card-img{
+  width:100%;aspect-ratio:16/9;
+  background:linear-gradient(135deg,var(--teal-t) 0%,var(--teal-t2) 100%);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;flex-shrink:0;
+}
+.card-img img{width:100%;height:100%;object-fit:cover;display:block}
+.card-img-placeholder{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:.5rem;color:var(--teal-d);opacity:.5;width:100%;height:100%;
+  padding:1.5rem;
+}
+.card-img-placeholder svg{width:38px;height:38px}
+.card-body{padding:1.2rem 1.3rem 1.4rem;flex:1;display:flex;flex-direction:column;gap:.55rem}
+.card-meta{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.cat-badge{
+  font-size:.72rem;font-weight:700;
+  padding:.22rem .65rem;border-radius:20px;
+  letter-spacing:.03em;white-space:nowrap;
+}
+.cat-Event        {background:var(--teal);color:#fff}
+.cat-News         {background:var(--blue);color:#fff}
+.cat-Announcement {background:var(--amber);color:#fff}
+.cat-Fundraising  {background:var(--pink);color:#fff}
+.card-date{font-size:.78rem;color:var(--muted)}
+.card-title{
+  font-size:1rem;font-weight:700;color:var(--text);
+  line-height:1.4;
+}
+.card-excerpt{
+  font-size:.87rem;color:var(--muted);
+  line-height:1.6;flex:1;
+}
+.card-read-more{
+  display:inline-flex;align-items:center;gap:.35rem;
+  font-size:.82rem;font-weight:600;color:var(--teal-d);
+  margin-top:.2rem;transition:gap .18s;
+}
+.card-read-more:hover{gap:.6rem}
+.card-read-more svg{width:14px;height:14px;flex-shrink:0}
+
+/* ── EMPTY STATE ── */
+.empty-state{
+  text-align:center;padding:5rem 2rem;
+  grid-column:1/-1;
+}
+.empty-icon{
+  width:72px;height:72px;border-radius:50%;
+  background:var(--teal-t);display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1.2rem;
+}
+.empty-icon svg{width:32px;height:32px;color:var(--teal);stroke:var(--teal)}
+.empty-state h3{font-size:1.25rem;font-weight:700;margin-bottom:.5rem;color:var(--text)}
+.empty-state p{font-size:.93rem;color:var(--muted);margin-bottom:1.3rem;max-width:340px;margin-left:auto;margin-right:auto}
+.empty-cta{
+  display:inline-flex;align-items:center;gap:.45rem;
+  padding:.6rem 1.4rem;border-radius:8px;
+  background:var(--teal);color:#fff;font-size:.9rem;font-weight:600;
+  transition:background .18s;
+}
+.empty-cta:hover{background:var(--teal-d)}
+
+/* ── MODAL ── */
+.modal-bg{
+  position:fixed;inset:0;z-index:500;
+  background:rgba(10,14,20,.55);
+  backdrop-filter:blur(4px);
+  display:none;align-items:flex-start;justify-content:center;
+  padding:2rem 1rem;overflow-y:auto;
+}
+.modal-bg.open{display:flex}
+.modal-box{
+  background:#fff;border-radius:16px;
+  width:100%;max-width:680px;
+  box-shadow:0 24px 80px rgba(0,0,0,.22);
+  position:relative;
+  animation:modalIn .22s cubic-bezier(.34,1.2,.64,1) both;
+  margin:auto;
+}
+@keyframes modalIn{
+  from{opacity:0;transform:scale(.93) translateY(16px)}
+  to{opacity:1;transform:scale(1) translateY(0)}
+}
+.modal-close{
+  position:absolute;top:1rem;right:1rem;
+  width:34px;height:34px;border-radius:50%;
+  border:none;background:var(--bg);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);transition:background .18s,color .18s;
+  z-index:2;
+}
+.modal-close:hover{background:var(--border);color:var(--text)}
+.modal-close svg{width:17px;height:17px}
+.modal-header{
+  padding:1.8rem 2rem 1.2rem;
+  border-bottom:1px solid var(--border);
+}
+.modal-meta{display:flex;align-items:center;gap:.65rem;flex-wrap:wrap;margin-bottom:.85rem}
+.modal-date{font-size:.82rem;color:var(--muted)}
+.modal-header h2{
+  font-size:clamp(1.15rem,3vw,1.5rem);
+  font-weight:700;line-height:1.35;color:var(--text);
+  padding-right:2rem;
+}
+.modal-title-zh{
+  font-size:1.05rem;color:var(--muted);
+  margin-top:.35rem;line-height:1.4;
+}
+.modal-body{padding:1.5rem 2rem 2rem}
+.modal-content-en{
+  font-size:.95rem;line-height:1.8;color:var(--text);
+  white-space:pre-wrap;word-break:break-word;
+}
+.modal-divider{
+  border:none;border-top:1px solid var(--border);
+  margin:1.3rem 0;
+}
+.modal-content-zh-label{
+  font-size:.75rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.09em;
+  color:var(--muted);margin-bottom:.6rem;
+}
+.modal-content-zh{
+  font-size:.93rem;line-height:1.9;color:var(--muted);
+  white-space:pre-wrap;word-break:break-word;
+}
+.modal-link{
+  display:inline-flex;align-items:center;gap:.4rem;
+  margin-top:1.2rem;
+  padding:.55rem 1.2rem;border-radius:8px;
+  background:var(--teal-t);color:var(--teal-d);
+  font-size:.87rem;font-weight:600;
+  transition:background .18s;
+}
+.modal-link:hover{background:var(--teal-t2)}
+.modal-link svg{width:14px;height:14px;flex-shrink:0}
+
+/* ── FOOTER ── */
+.site-footer{
+  border-top:1px solid var(--border);
+  background:#fff;
+  padding:1.2rem 1.5rem;
+}
+.footer-inner{
+  max-width:1200px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:.75rem;
+}
+.footer-copy{font-size:.82rem;color:var(--muted)}
+.footer-links{display:flex;align-items:center;gap:1.1rem;flex-wrap:wrap}
+.footer-links a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.footer-links a:hover{color:var(--teal-d)}
+
+/* ── WHATSAPP FAB ── */
+.wa-fab{
+  position:fixed;bottom:1.6rem;right:1.6rem;z-index:300;
+  width:54px;height:54px;border-radius:50%;
+  background:#25d366;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 18px rgba(37,211,102,.5);
+  transition:transform .2s,box-shadow .2s;
+}
+.wa-fab:hover{transform:scale(1.08);box-shadow:0 6px 24px rgba(37,211,102,.65)}
+.wa-fab svg{width:28px;height:28px;fill:#fff}
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px){
+  .posts-grid{columns:2 280px}
+}
+@media(max-width:580px){
+  .posts-grid{columns:1}
+  .header-nav{display:none}
+  .hamburger{display:flex}
+  .mobile-nav.open{display:flex}
+  .modal-header,.modal-body{padding-left:1.3rem;padding-right:1.3rem}
+  .modal-bg{padding:1rem .5rem}
+  .footer-inner{flex-direction:column;align-items:flex-start;gap:.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="header-logo" href="index.html" aria-label="Amitabha Foundation Home">
+      <img src="00_logo_horizontal.png" height="40" alt="Amitabha Foundation Elder Care"/>
+    </a>
+    <nav class="header-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="blog.html" class="active">News</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" class="nav-donate">Donate</a>
+    </nav>
+    <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="jobs.html">Jobs</a>
+    <a href="blog.html">News</a>
+    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" class="nav-donate">Donate</a>
+  </nav>
+</header>
+
+<!-- ── PAGE TITLE ── -->
+<section class="page-title-section">
+  <h1>News &amp; Updates</h1>
+  <div class="title-accent"></div>
+  <p>Stay informed about our latest events, announcements and community programmes at Amitabha Foundation Elder Care.</p>
+</section>
+
+<!-- ── FILTER BAR ── -->
+<div class="filter-bar" role="group" aria-label="Filter posts by category">
+  <button class="filter-btn active" data-cat="All" onclick="setFilter('All',this)">All</button>
+  <button class="filter-btn" data-cat="Event" onclick="setFilter('Event',this)">Events</button>
+  <button class="filter-btn" data-cat="News" onclick="setFilter('News',this)">News</button>
+  <button class="filter-btn" data-cat="Announcement" onclick="setFilter('Announcement',this)">Announcements</button>
+  <button class="filter-btn" data-cat="Fundraising" onclick="setFilter('Fundraising',this)">Fundraising</button>
+</div>
+
+<!-- ── POSTS GRID ── -->
+<main class="posts-wrap">
+  <div class="posts-grid" id="posts-grid" aria-live="polite"></div>
+</main>
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span class="footer-copy">&copy; <span id="footer-year"></span> Amitabha Foundation Elder Care. All rights reserved.</span>
+    <nav class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="index.html">Main Site</a>
+      <a href="https://www.facebook.com/profile.php?id=61578688747686" target="_blank" rel="noopener">Facebook</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- ── POST MODAL ── -->
+<div class="modal-bg" id="post-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-box" id="modal-box">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <div class="modal-header">
+      <div class="modal-meta">
+        <span class="cat-badge" id="modal-badge"></span>
+        <span class="modal-date" id="modal-date"></span>
+      </div>
+      <h2 id="modal-title"></h2>
+      <p class="modal-title-zh" id="modal-title-zh" style="display:none"></p>
+    </div>
+    <div class="modal-body">
+      <div class="modal-content-en" id="modal-content-en"></div>
+      <div id="modal-zh-block" style="display:none">
+        <hr class="modal-divider"/>
+        <p class="modal-content-zh-label">中文内容</p>
+        <div class="modal-content-zh" id="modal-content-zh"></div>
+      </div>
+      <div id="modal-link-wrap" style="display:none">
+        <a class="modal-link" id="modal-link" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+            <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+          View Full Details
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── WHATSAPP FAB ── -->
+<a class="wa-fab" href="https://wa.me/60127762911" target="_blank" rel="noopener" aria-label="Contact us on WhatsApp">
+  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 2C8.268 2 2 8.268 2 16c0 2.52.672 4.88 1.848 6.916L2 30l7.32-1.82A13.94 13.94 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.6a11.56 11.56 0 0 1-5.896-1.608l-.424-.252-4.344 1.08 1.1-4.232-.276-.44A11.552 11.552 0 0 1 4.4 16C4.4 9.594 9.594 4.4 16 4.4S27.6 9.594 27.6 16 22.406 27.6 16 27.6zm6.344-8.664c-.348-.176-2.06-1.016-2.38-1.132-.32-.116-.552-.176-.784.176s-.9 1.132-1.1 1.364-.404.264-.752.088c-.348-.176-1.472-.544-2.804-1.732a10.52 10.52 0 0 1-1.94-2.416c-.204-.348-.022-.536.152-.708.156-.156.348-.404.524-.608.176-.204.232-.348.348-.58.116-.232.06-.436-.028-.612-.088-.176-.784-1.892-1.076-2.592-.284-.68-.572-.588-.784-.6l-.668-.012c-.232 0-.608.088-.928.436s-1.216 1.188-1.216 2.896 1.244 3.36 1.416 3.592c.176.232 2.448 3.736 5.932 5.24.828.36 1.476.576 1.98.736.832.268 1.588.228 2.188.14.668-.1 2.06-.844 2.352-1.66.292-.816.292-1.516.204-1.66-.088-.144-.32-.232-.668-.408z"/>
+  </svg>
+</a>
+
+<script>
+/* ── DATA ── */
+function getPosts(){
+  try{return JSON.parse(localStorage.getItem('af_news')||'[]')}
+  catch(e){return []}
+}
+
+/* ── STATE ── */
+let activeFilter = 'All';
+
+/* ── FILTER ── */
+function setFilter(cat, btn){
+  activeFilter = cat;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGrid();
+}
+
+/* ── FORMAT DATE ── */
+function fmtDate(d){
+  if(!d) return '';
+  try{
+    const dt = new Date(d+'T00:00:00');
+    if(isNaN(dt)) return d;
+    return dt.toLocaleDateString('en-MY',{year:'numeric',month:'long',day:'numeric'});
+  } catch(e){ return d }
+}
+
+/* ── EXCERPT ── */
+function excerpt(text, max){
+  if(!text) return '';
+  const clean = text.replace(/\s+/g,' ').trim();
+  if(clean.length <= max) return clean;
+  return clean.slice(0, max).trimEnd() + '…';
+}
+
+/* ── PLACEHOLDER SVG ── */
+function placeholderSvg(cat){
+  const icons = {
+    Event:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
+    News:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg>`,
+    Announcement:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
+    Fundraising:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`
+  };
+  return icons[cat] || icons.News;
+}
+
+/* ── RENDER GRID ── */
+function renderGrid(){
+  const grid = document.getElementById('posts-grid');
+  const all = getPosts();
+  const posts = activeFilter === 'All'
+    ? all
+    : all.filter(p => p.cat === activeFilter);
+
+  if(!posts.length){
+    grid.innerHTML = buildEmpty();
+    return;
+  }
+
+  grid.innerHTML = posts.map((p,i) => buildCard(p,i)).join('');
+}
+
+function buildCard(p, i){
+  const dateStr = fmtDate(p.date || p.posted);
+  const exc = excerpt(p.content, 120);
+  return `
+    <article class="post-card" onclick="openModal(${JSON.stringify(JSON.stringify(p))})" role="button" tabindex="0"
+      onkeydown="if(event.key==='Enter'||event.key===' ')openModal(${JSON.stringify(JSON.stringify(p))})"
+      aria-label="${escAttr(p.titleEn||'')}">
+      <div class="card-img">
+        <div class="card-img-placeholder">
+          ${placeholderSvg(p.cat)}
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="cat-badge cat-${escAttr(p.cat||'News')}">${escHtml(p.cat||'News')}</span>
+          ${dateStr ? `<span class="card-date">${escHtml(dateStr)}</span>` : ''}
+        </div>
+        <h3 class="card-title">${escHtml(p.titleEn||'Untitled')}</h3>
+        ${exc ? `<p class="card-excerpt">${escHtml(exc)}</p>` : ''}
+        <span class="card-read-more" aria-hidden="true">
+          Read more
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </span>
+      </div>
+    </article>`;
+}
+
+function buildEmpty(){
+  const isFiltered = activeFilter !== 'All';
+  return `
+    <div class="empty-state">
+      <div class="empty-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/>
+          <path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/>
+        </svg>
+      </div>
+      <h3>${isFiltered ? 'No ' + activeFilter + ' posts yet' : 'No posts yet'}</h3>
+      <p>${isFiltered
+        ? 'There are currently no posts in this category. Check back soon or browse all updates.'
+        : 'We have not published any news or updates yet. Check back soon!'}</p>
+      ${isFiltered
+        ? `<button class="empty-cta" onclick="setFilter('All', document.querySelector('[data-cat=All]'))">View all posts</button>`
+        : `<a class="empty-cta" href="index.html">Visit main site</a>`}
+    </div>`;
+}
+
+/* ── MODAL ── */
+function openModal(jsonStr){
+  const p = JSON.parse(jsonStr);
+  const badge = document.getElementById('modal-badge');
+  badge.textContent = p.cat || 'News';
+  badge.className = 'cat-badge cat-' + (p.cat || 'News');
+
+  document.getElementById('modal-date').textContent = fmtDate(p.date || p.posted) || '';
+
+  document.getElementById('modal-title').textContent = p.titleEn || 'Untitled';
+
+  const titleZhEl = document.getElementById('modal-title-zh');
+  if(p.titleZh && p.titleZh.trim()){
+    titleZhEl.textContent = p.titleZh;
+    titleZhEl.style.display = '';
+  } else {
+    titleZhEl.style.display = 'none';
+  }
+
+  document.getElementById('modal-content-en').textContent = p.content || '';
+
+  const zhBlock = document.getElementById('modal-zh-block');
+  if(p.contentZh && p.contentZh.trim()){
+    document.getElementById('modal-content-zh').textContent = p.contentZh;
+    zhBlock.style.display = '';
+  } else {
+    zhBlock.style.display = 'none';
+  }
+
+  const linkWrap = document.getElementById('modal-link-wrap');
+  const linkEl = document.getElementById('modal-link');
+  if(p.link && p.link.trim()){
+    linkEl.href = p.link;
+    linkWrap.style.display = '';
+  } else {
+    linkWrap.style.display = 'none';
+  }
+
+  const modal = document.getElementById('post-modal');
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // Scroll modal content to top
+  document.getElementById('modal-box').scrollTop = 0;
+}
+
+function closeModal(){
+  document.getElementById('post-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Close on backdrop click
+document.getElementById('post-modal').addEventListener('click', function(e){
+  if(e.target === this) closeModal();
+});
+
+// Close on Escape
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeModal();
+});
+
+/* ── MOBILE NAV ── */
+function toggleMobileNav(){
+  const nav = document.getElementById('mobile-nav');
+  const btn = document.getElementById('hamburger-btn');
+  const open = nav.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+
+/* ── ESCAPE HELPERS ── */
+function escHtml(s){
+  return String(s)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#39;');
+}
+function escAttr(s){
+  return String(s).replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+/* ── INIT ── */
+document.getElementById('footer-year').textContent = new Date().getFullYear();
+renderGrid();
+</script>
+</body>
+</html>

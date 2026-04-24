@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Elder Support – Amitabha Foundation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+/* ════════════════════════════════
+   TOKENS
+════════════════════════════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --red:    #9aaa6d; --red-d:  #6b7a4a; --red-l:  #b8c98a;
+  --red-t:  #f5f7ee; --red-t2: #eaeed8;
+  --gold:   #c9a84c; --gold-l: #f0d98c;
+  --white:  #ffffff; --off:    #fafafa; --cream:  #fdf9f5;
+  --text:   #111111; --mid:    #444444; --soft:   #888888;
+  --border: #ebebeb;
+  --r:16px; --r2:24px;
+  --sh:  0 4px 24px rgba(0,0,0,.07);
+  --sh2: 0 12px 48px rgba(154,170,109,.13);
+  --t:   .28s cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);background:#fff;line-height:1.75;font-size:1rem;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+
+/* ════════════════════════════════
+   KEYFRAME ANIMATIONS
+════════════════════════════════ */
+@keyframes marquee   {0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes fadeUp    {from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@keyframes fadeLeft  {from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:none}}
+@keyframes fadeRight {from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}
+@keyframes floatY    {0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes pulse-wa  {0%,100%{box-shadow:0 6px 24px rgba(37,211,102,.45)}
+                       50%{box-shadow:0 6px 32px rgba(37,211,102,.7),0 0 0 8px rgba(37,211,102,.12)}}
+@keyframes pulse-red {0%,100%{box-shadow:0 3px 12px rgba(154,170,109,.3)}
+                       50%{box-shadow:0 3px 20px rgba(154,170,109,.55),0 0 0 6px rgba(154,170,109,.08)}}
+@keyframes shimmer   {0%{background-position:200% center}100%{background-position:-200% center}}
+@keyframes scaleIn   {from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+@keyframes spinOnce  {from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+/* ════════════════════════════════
+   ANNOUNCE BAR
+════════════════════════════════ */
+.announce{
+  background:var(--red-d);color:rgba(255,255,255,.88);
+  font-size:.78rem;font-weight:500;padding:.42rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+}
+.announce-left{display:flex;gap:1.5rem;align-items:center}
+.announce-left span{display:flex;align-items:center;gap:.38rem}
+.announce-left i{color:var(--gold-l);font-size:.8rem}
+.announce-left a{color:rgba(255,255,255,.88);transition:color var(--t)}
+.announce-left a:hover{color:var(--gold-l)}
+.announce-right{display:flex;align-items:center;gap:.9rem}
+.a-social{display:flex;gap:.45rem}
+.a-social a{
+  color:rgba(255,255,255,.65);width:24px;height:24px;border-radius:5px;
+  border:1px solid rgba(255,255,255,.15);
+  display:flex;align-items:center;justify-content:center;font-size:.78rem;
+  transition:all var(--t);
+}
+.a-social a:hover{color:var(--red-d);background:var(--gold-l);border-color:var(--gold-l);transform:translateY(-2px)}
+.lang{display:flex;gap:.28rem}
+.lang a{
+  padding:.15rem .45rem;border-radius:4px;font-size:.72rem;font-weight:700;letter-spacing:.06em;
+  color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.18);transition:all var(--t);
+}
+.lang a.on{background:var(--gold);color:var(--red-d);border-color:var(--gold)}
+/* i18n hidden helpers */
+[data-i18n-zh],[data-i18n-ms]{display:none}
+body.lang-zh [data-i18n-zh]{display:inline}
+body.lang-zh [data-i18n-en]{display:none}
+body.lang-ms [data-i18n-ms]{display:inline}
+body.lang-ms [data-i18n-en]{display:none}
+
+/* ════════════════════════════════
+   HEADER
+════════════════════════════════ */
+header{
+  position:sticky;top:0;z-index:300;
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(20px) saturate(160%);
+  -webkit-backdrop-filter:blur(20px) saturate(160%);
+  border-bottom:1px solid rgba(154,170,109,.08);
+  transition:background var(--t),box-shadow var(--t);
+}
+header.scrolled{background:rgba(255,255,255,.97);box-shadow:0 2px 20px rgba(154,170,109,.1)}
+.hdr{
+  max-width:1260px;margin:auto;padding:0 1.5rem;height:64px;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+}
+/* Logo image */
+.logo-link{display:flex;align-items:center;flex-shrink:0}
+.logo-link img{height:40px;width:auto;display:block;transition:opacity var(--t)}
+.logo-link:hover img{opacity:.85}
+/* nav */
+.nav{display:flex;gap:.04rem;align-items:center}
+.nav a{
+  font-size:.82rem;font-weight:500;color:var(--mid);
+  padding:.4rem .65rem;border-radius:8px;
+  transition:all var(--t);white-space:nowrap;
+}
+.nav a:hover,.nav a.on{color:var(--red);background:var(--red-t)}
+/* header right */
+.hdr-r{display:flex;align-items:center;gap:.55rem;flex-shrink:0}
+.btn-seek{
+  padding:.42rem .95rem;border:1.5px solid rgba(154,170,109,.28);
+  border-radius:50px;font-size:.79rem;font-weight:600;color:var(--red);
+  transition:all var(--t);white-space:nowrap;
+}
+.btn-seek:hover{background:var(--red-t)}
+.btn-wa-hdr{
+  padding:.44rem 1rem;background:#25d366;color:#fff;border-radius:50px;
+  font-size:.79rem;font-weight:700;display:flex;align-items:center;gap:.32rem;
+  box-shadow:0 3px 12px rgba(37,211,102,.35);white-space:nowrap;transition:all var(--t);
+}
+.btn-wa-hdr:hover{background:#1ebe5a;transform:translateY(-1px);box-shadow:0 6px 18px rgba(37,211,102,.45)}
+.btn-donate{
+  padding:.44rem 1.1rem;
+  background:linear-gradient(135deg,var(--red),var(--red-d));
+  color:#fff;border-radius:50px;font-size:.79rem;font-weight:700;
+  display:flex;align-items:center;gap:.32rem;
+  animation:pulse-red 2.8s ease-in-out infinite;
+  white-space:nowrap;transition:all var(--t);
+}
+.btn-donate:hover{transform:translateY(-2px);box-shadow:0 7px 20px rgba(154,170,109,.42);animation:none}
+/* hamburger */
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.5rem;flex-shrink:0}
+.burger span{display:block;width:22px;height:2px;background:var(--red);border-radius:2px;transition:all var(--t)}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+/* mobile menu */
+.mob-menu{
+  display:none;flex-direction:column;
+  background:#fff;border-top:2px solid var(--red-t2);
+  padding:.8rem 2rem 1.2rem;
+}
+.mob-menu.open{display:flex}
+.mob-menu a{
+  color:var(--mid);font-size:.93rem;font-weight:500;
+  padding:.58rem .4rem;border-bottom:1px solid var(--border);transition:color var(--t);
+}
+.mob-menu a:last-child{border-bottom:none}
+.mob-menu a:hover,.mob-menu a.on{color:var(--red)}
+
+/* ════════════════════════════════
+   HERO
+════════════════════════════════ */
+.hero{position:relative;min-height:90vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(110deg,rgba(18,25,8,.88) 0%,rgba(154,170,109,.5) 45%,rgba(0,0,0,.25) 100%),
+    url('https://images.unsplash.com/photo-1576765608866-5b51046452be?w=1800&q=85&fit=crop') center/cover no-repeat;
+}
+.hero-inner{
+  position:relative;z-index:2;max-width:1260px;margin:auto;padding:5rem 2rem;
+  display:grid;grid-template-columns:1fr 420px;gap:3.5rem;align-items:center;
+}
+.hero-pill{
+  display:inline-flex;align-items:center;gap:.45rem;
+  background:rgba(201,168,76,.18);border:1px solid rgba(201,168,76,.38);
+  color:var(--gold-l);padding:.32rem .95rem;border-radius:50px;
+  font-size:.73rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:1.3rem;animation:fadeLeft .7s ease both;
+}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.8rem,5.5vw,4.4rem);font-weight:700;color:#fff;line-height:1.12;
+  margin-bottom:1.2rem;animation:fadeUp .8s .15s ease both;
+}
+.hero h1 em{color:var(--gold-l);font-style:italic}
+.hero-sub{
+  font-size:1.05rem;color:rgba(255,255,255,.8);line-height:1.82;max-width:500px;margin-bottom:2rem;
+  display:-webkit-box;-webkit-line-clamp:3;line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+  animation:fadeUp .8s .25s ease both;
+}
+.hero-btns{display:flex;gap:.9rem;flex-wrap:wrap;animation:fadeUp .8s .35s ease both}
+.btn-h-solid{
+  padding:.82rem 2rem;background:linear-gradient(135deg,var(--red),var(--red-d));
+  color:#fff;border-radius:50px;font-size:.94rem;font-weight:700;
+  display:inline-flex;align-items:center;gap:.45rem;
+  box-shadow:0 6px 22px rgba(154,170,109,.42);transition:all var(--t);
+}
+.btn-h-solid:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(154,170,109,.52)}
+.btn-h-outline{
+  padding:.82rem 2rem;border:2px solid rgba(255,255,255,.5);color:#fff;border-radius:50px;
+  font-size:.94rem;font-weight:600;display:inline-flex;align-items:center;gap:.45rem;transition:all var(--t);
+}
+.btn-h-outline:hover{background:rgba(255,255,255,.12);border-color:#fff}
+.hero-trust{
+  display:flex;gap:1.6rem;flex-wrap:wrap;margin-top:2.4rem;padding-top:2rem;
+  border-top:1px solid rgba(255,255,255,.18);animation:fadeUp .8s .45s ease both;
+}
+.ht-item{display:flex;align-items:center;gap:.45rem}
+.ht-item i{color:var(--gold-l);font-size:.9rem}
+.ht-item span{font-size:.82rem;color:rgba(255,255,255,.75);font-weight:500}
+.hero-wa{
+  display:inline-flex;align-items:center;gap:.6rem;margin-top:1.5rem;padding:.7rem 1.4rem;
+  background:#25d366;color:#fff;border-radius:50px;font-size:.85rem;font-weight:700;
+  box-shadow:0 4px 16px rgba(37,211,102,.4);transition:all var(--t);
+  animation:fadeUp .8s .55s ease both;
+}
+.hero-wa:hover{background:#1ebe5a;transform:translateY(-2px);box-shadow:0 8px 22px rgba(37,211,102,.5)}
+/* hero panel */
+.hero-panel{
+  background:rgba(255,255,255,.1);backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.2);border-radius:22px;padding:2rem;color:#fff;
+  animation:floatY 5s ease-in-out infinite;
+}
+.hero-panel h3{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--gold-l);margin-bottom:.5rem}
+.hero-panel p{font-size:.88rem;color:rgba(255,255,255,.75);line-height:1.75;margin-bottom:1.5rem}
+.panel-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.15)}
+.ps{text-align:center}
+.ps .n{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#fff;line-height:1}
+.ps .n sup{font-size:.9rem;color:var(--gold-l)}
+.ps .l{font-size:.68rem;color:rgba(255,255,255,.58);text-transform:uppercase;letter-spacing:.06em;margin-top:.2rem}
+
+/* ════════════════════════════════
+   MARQUEE
+════════════════════════════════ */
+.marquee-strip{
+  background:var(--red);padding:.7rem 0;overflow:hidden;
+  border-top:3px solid var(--gold);border-bottom:3px solid var(--gold);
+}
+.marquee-track{display:flex;width:max-content;animation:marquee 28s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+.m-item{
+  display:flex;align-items:center;gap:.6rem;white-space:nowrap;padding:0 2.5rem;
+  font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,255,255,.9);
+}
+.m-dot{color:var(--gold-l);font-size:.55rem}
+
+/* ════════════════════════════════
+   IMPACT BAR
+════════════════════════════════ */
+.impact-bar{background:#fff;border-bottom:1px solid var(--border)}
+.impact-inner{max-width:1260px;margin:auto;padding:0 2rem;display:grid;grid-template-columns:repeat(4,1fr)}
+.ib-item{
+  padding:1.8rem 1.5rem;display:flex;align-items:center;gap:1rem;
+  border-right:1px solid var(--border);transition:background var(--t);cursor:default;
+}
+.ib-item:last-child{border-right:none}
+.ib-item:hover{background:var(--red-t)}
+.ib-item:hover .ib-icon{background:linear-gradient(135deg,var(--red),var(--red-d));color:#fff;border-color:transparent;transform:rotate(10deg) scale(1.08)}
+.ib-icon{
+  width:48px;height:48px;border-radius:13px;
+  background:linear-gradient(135deg,var(--red-t),var(--red-t2));
+  border:1.5px solid rgba(154,170,109,.1);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--red);font-size:1.2rem;flex-shrink:0;transition:all var(--t);
+}
+.ib-text .n{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:var(--red-d);line-height:1}
+.ib-text .n span{color:var(--gold)}
+.ib-text .l{font-size:.74rem;color:var(--soft);font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-top:.2rem}
+
+/* ════════════════════════════════
+   SECTION HELPERS
+════════════════════════════════ */
+.sec{padding:6rem 0}
+.sec-alt{background:var(--off)}
+.sec-cream{background:var(--cream)}
+.wrap{max-width:1260px;margin:auto;padding:0 2rem}
+.tag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.71rem;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--red);margin-bottom:.7rem;
+}
+.tag::before{content:'';display:block;width:18px;height:2px;background:var(--gold);border-radius:2px}
+.sec-h{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,4vw,3rem);font-weight:700;
+  color:var(--text);line-height:1.2;margin-bottom:.9rem;
+}
+.sec-h em{color:var(--red);font-style:normal}
+.sec-p{font-size:1rem;color:var(--mid);max-width:580px;line-height:1.85}
+.sh{margin-bottom:3.5rem}
+.sh.c{text-align:center}.sh.c .tag{justify-content:center}.sh.c .sec-p{margin:0 auto}
+
+/* ════════════════════════════════
+   SERVICES
+════════════════════════════════ */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+.svc-card{
+  background:#fff;border-radius:var(--r2);padding:2.5rem 2rem;
+  border:1px solid var(--border);transition:all var(--t);
+  display:flex;flex-direction:column;position:relative;overflow:hidden;
+}
+.svc-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--red),var(--gold));
+  transform:scaleX(0);transform-origin:left;transition:transform var(--t);
+}
+.svc-card:hover{transform:translateY(-8px);box-shadow:0 20px 48px rgba(154,170,109,.13);border-color:rgba(154,170,109,.12)}
+.svc-card:hover::after{transform:scaleX(1)}
+.svc-icon{
+  width:58px;height:58px;border-radius:15px;
+  background:linear-gradient(135deg,var(--red-t),var(--red-t2));
+  border:1.5px solid rgba(154,170,109,.1);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--red);font-size:1.4rem;margin-bottom:1.4rem;transition:all var(--t);
+}
+.svc-card:hover .svc-icon{background:linear-gradient(135deg,var(--red),var(--red-d));color:#fff;border-color:transparent;box-shadow:0 6px 18px rgba(154,170,109,.28)}
+.svc-card h3{font-family:'Playfair Display',serif;font-size:1.22rem;font-weight:700;color:var(--text);margin-bottom:.7rem}
+.svc-card p{font-size:.94rem;color:var(--mid);line-height:1.82;flex:1}
+.svc-more{
+  display:inline-flex;align-items:center;gap:.4rem;
+  color:var(--red);font-weight:700;font-size:.85rem;margin-top:1.4rem;transition:gap var(--t);
+}
+.svc-more:hover{gap:.7rem}
+
+/* ════════════════════════════════
+   ABOUT
+════════════════════════════════ */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.story-img{
+  position:relative;border-radius:var(--r2);overflow:hidden;aspect-ratio:4/5;
+  background:linear-gradient(135deg,var(--red-t2),var(--cream));
+  box-shadow:var(--sh2);display:flex;align-items:center;justify-content:center;
+}
+.story-img::before{
+  content:'';position:absolute;top:-12px;left:-12px;right:12px;bottom:-12px;
+  border:2px solid var(--gold);border-radius:var(--r2);opacity:.45;z-index:0;
+}
+.story-img-ph{display:flex;flex-direction:column;align-items:center;gap:.7rem;color:var(--red);opacity:.4}
+.story-img-ph i{font-size:4rem}
+.story-img-ph p{font-size:.85rem;font-weight:500}
+.story-badge{
+  position:absolute;bottom:-18px;right:-18px;z-index:2;
+  background:linear-gradient(135deg,var(--red),var(--red-d));
+  color:#fff;border-radius:16px;padding:1.1rem 1.3rem;text-align:center;box-shadow:var(--sh2);
+}
+.story-badge .bn{font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:700;line-height:1}
+.story-badge .bl{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.7);margin-top:.18rem}
+.value-list{margin-top:1.8rem;display:flex;flex-direction:column;gap:.85rem}
+.v-item{display:flex;align-items:flex-start;gap:.9rem;font-size:.96rem;color:var(--mid);line-height:1.7}
+.v-icon{
+  width:30px;height:30px;border-radius:8px;flex-shrink:0;margin-top:.12rem;
+  background:var(--red-t);border:1px solid rgba(154,170,109,.1);
+  display:flex;align-items:center;justify-content:center;color:var(--red);font-size:.8rem;
+  transition:all var(--t);
+}
+.v-item:hover .v-icon{background:var(--red);color:#fff;border-color:transparent}
+
+/* ════════════════════════════════
+   STEPS
+════════════════════════════════ */
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;position:relative}
+.steps-grid::before{
+  content:'';position:absolute;top:32px;left:10%;right:10%;height:2px;
+  background:linear-gradient(90deg,var(--red-t2),var(--red),var(--red-t2));z-index:0;
+}
+.step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 1rem 1rem;position:relative;z-index:1}
+.step-n{
+  width:64px;height:64px;border-radius:50%;background:#fff;border:2.5px solid var(--red-t2);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--red);
+  margin-bottom:1.3rem;box-shadow:var(--sh);transition:all var(--t);
+}
+.step:hover .step-n{background:var(--red);color:#fff;border-color:var(--red);box-shadow:0 6px 20px rgba(154,170,109,.3);transform:scale(1.08)}
+.step h4{font-size:.97rem;font-weight:700;color:var(--text);margin-bottom:.45rem}
+.step p{font-size:.87rem;color:var(--soft);line-height:1.7}
+
+/* ════════════════════════════════
+   TRANSPARENCY
+════════════════════════════════ */
+.trans-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start}
+.trans-l h2{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--text);margin-bottom:.8rem}
+.trans-l p{font-size:.97rem;color:var(--mid);line-height:1.85;margin-bottom:1.5rem}
+.trans-wa{
+  display:inline-flex;align-items:center;gap:.55rem;padding:.7rem 1.5rem;
+  background:#25d366;color:#fff;border-radius:50px;font-size:.88rem;font-weight:700;
+  box-shadow:0 4px 16px rgba(37,211,102,.35);transition:all var(--t);
+}
+.trans-wa:hover{background:#1ebe5a;transform:translateY(-2px);box-shadow:0 8px 22px rgba(37,211,102,.45)}
+.fund-list{display:flex;flex-direction:column;gap:.65rem}
+.f-item{
+  display:flex;align-items:center;gap:1rem;padding:1rem 1.3rem;
+  background:#fff;border-radius:var(--r);border:1px solid var(--border);transition:all var(--t);
+}
+.f-item:hover{border-color:rgba(154,170,109,.18);box-shadow:var(--sh);transform:translateX(5px)}
+.f-icon{
+  width:38px;height:38px;border-radius:10px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--red),var(--red-l));
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:.9rem;
+}
+.f-item span{font-size:.93rem;color:var(--mid);font-weight:500;line-height:1.5}
+
+/* ════════════════════════════════
+   GALLERY
+════════════════════════════════ */
+.gal-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  grid-template-rows:220px 220px;gap:1rem;
+}
+.g-card{border-radius:var(--r);overflow:hidden;position:relative;cursor:pointer;background:linear-gradient(135deg,var(--red-t2),#f8dfdf)}
+.g-card:first-child{grid-column:span 2}
+.g-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.g-card:hover img{transform:scale(1.06)}
+.g-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;color:var(--red);opacity:.38}
+.g-ph i{font-size:2.2rem}
+.g-ph span{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.g-ov{
+  position:absolute;inset:0;background:linear-gradient(to top,rgba(18,25,8,.65),transparent);
+  opacity:0;transition:opacity var(--t);display:flex;align-items:flex-end;padding:1rem 1.2rem;
+}
+.g-card:hover .g-ov{opacity:1}
+.g-ov span{color:#fff;font-size:.8rem;font-weight:600}
+
+/* ════════════════════════════════
+   MAP / LOCATION
+════════════════════════════════ */
+.map-section{padding:0}
+.map-header{
+  background:linear-gradient(135deg,var(--red-d),var(--red));
+  padding:3rem 2rem 2.5rem;text-align:center;
+}
+.map-header .tag{color:var(--gold-l);justify-content:center}
+.map-header .tag::before{background:rgba(255,255,255,.5)}
+.map-header h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:700;color:#fff;margin-bottom:.5rem;
+}
+.map-header p{color:rgba(255,255,255,.78);font-size:.97rem;max-width:520px;margin:0 auto}
+.map-body{
+  display:grid;grid-template-columns:1fr 360px;
+  max-width:100%;
+}
+.map-iframe-wrap{position:relative;height:400px;overflow:hidden}
+.map-iframe-wrap iframe{width:100%;height:100%;border:none;display:block}
+.map-info{
+  background:#fff;padding:2.5rem 2rem;
+  display:flex;flex-direction:column;justify-content:center;gap:1rem;
+  border-left:1px solid var(--border);
+}
+.map-info h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--text);margin-bottom:.2rem}
+.mi-row{display:flex;align-items:flex-start;gap:.9rem}
+.mi-ico{
+  width:38px;height:38px;border-radius:9px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--red),var(--red-d));
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:.9rem;
+}
+.mi-body .lb{font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:.15rem}
+.mi-body .vl{font-size:.9rem;color:var(--mid);font-weight:500;line-height:1.5}
+.mi-body a{color:var(--red-d);transition:color var(--t)}
+.mi-body a:hover{color:var(--red)}
+.map-cta{
+  display:flex;align-items:center;gap:.7rem;margin-top:.5rem;padding:.9rem 1.2rem;
+  background:#25d366;border-radius:12px;color:#fff;
+  box-shadow:0 4px 16px rgba(37,211,102,.3);transition:all var(--t);
+}
+.map-cta:hover{background:#1ebe5a;transform:translateY(-2px);box-shadow:0 8px 22px rgba(37,211,102,.42)}
+.map-cta i{font-size:1.4rem}
+.map-cta .mc-t{font-weight:700;font-size:.88rem}
+.map-cta .mc-s{font-size:.75rem;color:rgba(255,255,255,.78)}
+
+/* ════════════════════════════════
+   CONTACT
+════════════════════════════════ */
+.contact-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:4rem;align-items:start}
+.cd-list{display:flex;flex-direction:column;gap:.8rem;margin-top:2rem}
+.cd{
+  display:flex;align-items:flex-start;gap:1rem;padding:1rem 1.2rem;
+  background:var(--red-t);border-radius:var(--r);border:1px solid rgba(154,170,109,.1);transition:all var(--t);
+}
+.cd:hover{background:var(--red-t2);border-color:rgba(154,170,109,.2);transform:translateX(4px)}
+.cd-ico{
+  width:40px;height:40px;border-radius:9px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--red),var(--red-d));
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:.95rem;
+}
+.cd-body .lb{font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:.18rem}
+.cd-body .vl{font-size:.93rem;color:var(--text);font-weight:500}
+.cd-body a{color:var(--red-d)}.cd-body a:hover{text-decoration:underline}
+.contact-wa{
+  display:flex;align-items:center;gap:1rem;margin-top:1.8rem;padding:1.2rem 1.4rem;
+  background:linear-gradient(135deg,#25d366,#1aa84e);border-radius:var(--r);color:#fff;
+  box-shadow:0 4px 18px rgba(37,211,102,.32);transition:all var(--t);
+}
+.contact-wa:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.44)}
+.contact-wa i{font-size:1.6rem}
+.contact-wa .wt{font-weight:700;font-size:.95rem}
+.contact-wa .ws{font-size:.8rem;color:rgba(255,255,255,.8)}
+.form-box{
+  background:#fff;border-radius:var(--r2);padding:2.4rem;
+  border:1px solid var(--border);box-shadow:var(--sh);
+}
+.form-box h3{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;color:var(--text);margin-bottom:1.5rem}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fg{margin-bottom:1rem}
+.fg label{display:block;font-size:.74rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);margin-bottom:.38rem}
+.fg input,.fg select,.fg textarea{
+  width:100%;padding:.72rem 1rem;border:1.5px solid var(--border);border-radius:10px;
+  font-family:'Inter',sans-serif;font-size:.91rem;color:var(--text);background:var(--off);outline:none;
+  transition:border-color var(--t),box-shadow var(--t);
+}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(154,170,109,.08);background:#fff}
+.fg textarea{min-height:105px;resize:vertical}
+.btn-sub{
+  width:100%;padding:.88rem;background:linear-gradient(135deg,var(--red),var(--red-d));
+  color:#fff;border:none;border-radius:50px;font-family:'Inter',sans-serif;
+  font-size:.95rem;font-weight:700;letter-spacing:.04em;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  box-shadow:0 4px 18px rgba(154,170,109,.3);transition:all var(--t);margin-top:.3rem;
+}
+.btn-sub:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(154,170,109,.42)}
+
+/* ════════════════════════════════
+   CTA BAND
+════════════════════════════════ */
+.cta-band{
+  background:linear-gradient(135deg,var(--red-d) 0%,var(--red) 55%,var(--red-l) 100%);
+  padding:5rem 0;text-align:center;position:relative;overflow:hidden;
+}
+.cta-band::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 25% 50%,rgba(201,168,76,.1) 0%,transparent 50%),
+             radial-gradient(circle at 75% 50%,rgba(255,255,255,.04) 0%,transparent 50%);
+}
+.cta-band h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.1rem);font-weight:700;color:#fff;margin-bottom:.7rem;position:relative}
+.cta-band p{color:rgba(255,255,255,.78);font-size:1.05rem;max-width:540px;margin:0 auto 2.5rem;position:relative}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative}
+.btn-donate-main{
+  padding:.9rem 2.2rem;
+  background:linear-gradient(135deg,var(--gold),#b8923e);
+  color:var(--red-d);border-radius:50px;font-weight:800;font-size:.96rem;
+  display:inline-flex;align-items:center;gap:.5rem;
+  box-shadow:0 6px 22px rgba(201,168,76,.4);transition:all var(--t);
+}
+.btn-donate-main:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(201,168,76,.55)}
+.btn-wh{
+  padding:.9rem 2.2rem;border:2px solid rgba(255,255,255,.45);color:#fff;
+  border-radius:50px;font-weight:600;font-size:.96rem;
+  display:inline-flex;align-items:center;gap:.5rem;transition:all var(--t);
+}
+.btn-wh:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.btn-cta-wa{
+  padding:.9rem 2.2rem;background:#25d366;color:#fff;border-radius:50px;
+  font-weight:700;font-size:.96rem;display:inline-flex;align-items:center;gap:.5rem;
+  box-shadow:0 6px 22px rgba(37,211,102,.4);transition:all var(--t);
+}
+.btn-cta-wa:hover{background:#1ebe5a;transform:translateY(-3px);box-shadow:0 12px 32px rgba(37,211,102,.5)}
+
+/* ════════════════════════════════
+   FOOTER  (slim one-strip)
+════════════════════════════════ */
+footer{background:#1e2413;color:rgba(255,255,255,.45);padding:0}
+
+/* Main strip */
+.foot-main{
+  max-width:1260px;margin:0 auto;padding:1.8rem 2rem;
+  display:flex;align-items:center;gap:1.6rem;flex-wrap:wrap;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.foot-logo-box{
+  background:#fff;border-radius:6px;padding:.28rem .65rem;
+  display:inline-flex;align-items:center;flex-shrink:0;
+}
+.foot-logo-box img{height:38px;width:auto;display:block}
+
+/* inline nav */
+.foot-nav{display:flex;flex-wrap:wrap;gap:.15rem;align-items:center;flex:1}
+.foot-nav a{
+  font-size:.76rem;color:rgba(255,255,255,.42);
+  padding:.25rem .5rem;border-radius:5px;white-space:nowrap;
+  transition:color var(--t),background var(--t);
+}
+.foot-nav a:hover{color:var(--gold-l);background:rgba(255,255,255,.05)}
+.foot-nav .sep{color:rgba(255,255,255,.15);font-size:.65rem;line-height:1;padding:0 .05rem}
+
+/* contact + wa */
+.foot-contact{display:flex;align-items:center;gap:.8rem;flex-shrink:0}
+.foot-phone{
+  display:flex;align-items:center;gap:.4rem;
+  font-size:.76rem;color:rgba(255,255,255,.55);
+}
+.foot-phone i{color:var(--gold-l);font-size:.75rem}
+.foot-phone a{color:rgba(255,255,255,.55);transition:color var(--t)}
+.foot-phone a:hover{color:var(--gold-l)}
+.foot-wa-btn{
+  display:flex;align-items:center;gap:.35rem;
+  padding:.32rem .75rem;background:#25d366;color:#fff;border-radius:50px;
+  font-size:.74rem;font-weight:700;white-space:nowrap;
+  box-shadow:0 2px 8px rgba(37,211,102,.3);transition:all var(--t);
+}
+.foot-wa-btn:hover{background:#1ebe5a;transform:translateY(-1px)}
+.foot-donate-btn{
+  display:flex;align-items:center;gap:.35rem;
+  padding:.32rem .75rem;
+  background:linear-gradient(135deg,var(--red),var(--red-d));
+  color:#fff;border-radius:50px;
+  font-size:.74rem;font-weight:700;white-space:nowrap;
+  box-shadow:0 2px 8px rgba(154,170,109,.3);transition:all var(--t);
+}
+.foot-donate-btn:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(154,170,109,.42)}
+
+/* social */
+.f-social{display:flex;gap:.35rem;flex-shrink:0}
+.f-social a{
+  width:26px;height:26px;border-radius:5px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.08);
+  color:rgba(255,255,255,.45);display:flex;align-items:center;justify-content:center;
+  font-size:.75rem;transition:all var(--t);
+}
+.f-social a:hover{background:var(--gold);color:var(--red-d);border-color:var(--gold);transform:translateY(-1px)}
+
+/* Bottom bar */
+.foot-bot{
+  max-width:1260px;margin:0 auto;padding:.7rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;
+}
+.foot-bot p{font-size:.72rem;color:rgba(255,255,255,.22)}
+.f-legal{display:flex;gap:1rem}
+.f-legal a{font-size:.72rem;color:rgba(255,255,255,.22);transition:color var(--t)}
+.f-legal a:hover{color:var(--gold-l)}
+
+/* ════════════════════════════════
+   FLOATING WHATSAPP
+════════════════════════════════ */
+.float-wa{position:fixed;bottom:1.6rem;right:1.6rem;z-index:999;display:flex;flex-direction:column;align-items:flex-end;gap:.45rem}
+.float-wa-bubble{
+  background:#fff;border-radius:12px;padding:.6rem .9rem;
+  font-size:.78rem;font-weight:600;color:var(--text);
+  box-shadow:0 4px 20px rgba(0,0,0,.14);white-space:nowrap;
+  display:none;border:1px solid var(--border);animation:fadeRight .25s ease both;
+}
+.float-wa:hover .float-wa-bubble{display:block}
+.float-wa-btn{
+  width:52px;height:52px;border-radius:50%;background:#25d366;color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:1.5rem;
+  box-shadow:0 6px 24px rgba(37,211,102,.45);transition:all var(--t);
+  animation:pulse-wa 2.5s ease-in-out infinite;
+}
+.float-wa-btn:hover{background:#1ebe5a;transform:scale(1.1);box-shadow:0 10px 30px rgba(37,211,102,.55);animation:none}
+
+/* ════════════════════════════════
+   BACK TO TOP
+════════════════════════════════ */
+.back-top{
+  position:fixed;bottom:1.6rem;right:5rem;z-index:998;
+  width:42px;height:42px;border-radius:50%;
+  background:var(--red);color:#fff;border:none;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.88rem;cursor:pointer;
+  box-shadow:0 4px 16px rgba(154,170,109,.35);
+  opacity:0;transform:translateY(10px);transition:all var(--t);
+}
+.back-top.show{opacity:1;transform:translateY(0)}
+.back-top:hover{background:var(--red-d);transform:translateY(-2px)}
+
+/* ════════════════════════════════
+   AOS
+════════════════════════════════ */
+.aos      {opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
+.aos-l    {opacity:0;transform:translateX(-26px);transition:opacity .65s ease,transform .65s ease}
+.aos-r    {opacity:0;transform:translateX(26px);transition:opacity .65s ease,transform .65s ease}
+.aos-s    {opacity:0;transform:scale(.9);transition:opacity .6s ease,transform .6s ease}
+.aos.in,.aos-l.in,.aos-r.in,.aos-s.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+/* ════════════════════════════════
+   RESPONSIVE
+════════════════════════════════ */
+@media(max-width:1080px){
+  .foot-main{flex-wrap:wrap;gap:1rem}
+  .about-grid{grid-template-columns:1fr;gap:3rem}
+  .trans-grid{grid-template-columns:1fr;gap:2.5rem}
+  .story-img{max-width:460px;margin:auto}
+  .map-body{grid-template-columns:1fr}
+  .map-info{border-left:none;border-top:1px solid var(--border)}
+}
+@media(max-width:768px){
+  /* Section spacing */
+  .sec{padding:3.5rem 0}
+  .wrap{padding:0 1.2rem}
+  .sh{margin-bottom:2rem}
+  .cta-band{padding:3rem 0}
+  /* Hero */
+  .hero{min-height:auto}
+  .hero-inner{grid-template-columns:1fr;padding:3rem 1.5rem;gap:2rem}
+  .hero-panel{display:none}
+  .hero-sub{-webkit-line-clamp:unset;line-clamp:unset;overflow:visible;display:block;font-size:.97rem}
+  .hero-trust{gap:1rem}
+  /* Impact */
+  .impact-inner{grid-template-columns:1fr 1fr}
+  .ib-item{border-right:none;border-bottom:1px solid var(--border)}
+  /* Services / About / Steps */
+  .svc-grid{grid-template-columns:1fr}
+  .about-grid{gap:2rem}
+  .steps-grid{grid-template-columns:1fr 1fr}
+  .steps-grid::before{display:none}
+  .trans-grid{gap:2rem}
+  /* Contact */
+  .contact-grid{grid-template-columns:1fr;gap:2rem}
+  /* Gallery */
+  .gal-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .g-card{min-height:160px}
+  .g-card:first-child{grid-column:span 2}
+  /* CTA buttons */
+  .cta-btns{flex-direction:column;align-items:center}
+  /* Footer / Nav */
+  .foot-main{flex-direction:column;align-items:flex-start;gap:1rem}
+  .nav{display:none}
+  .burger{display:flex}
+  .hdr-r .btn-seek,.hdr-r .btn-wa-hdr{display:none}
+  .f-row{grid-template-columns:1fr}
+  .foot-bot{flex-direction:column;text-align:center}
+  .announce-left .hide-sm{display:none}
+  .back-top{right:4.8rem}
+  .map-iframe-wrap{height:280px}
+}
+@media(max-width:480px){
+  /* Even tighter for phones */
+  .sec{padding:2.5rem 0}
+  .wrap{padding:0 1rem}
+  .announce{padding:.38rem .9rem;font-size:.72rem}
+  .hdr{padding:0 1rem;height:56px}
+  .logo-link img{height:34px}
+  /* Hero */
+  .hero-inner{padding:2rem 1rem}
+  .hero h1{font-size:clamp(2rem,8.5vw,2.5rem)}
+  .hero-sub{font-size:.9rem}
+  .hero-btns{flex-direction:column;gap:.6rem}
+  .btn-h-solid,.btn-h-outline{width:100%;justify-content:center;padding:.75rem 1.4rem;font-size:.88rem}
+  .hero-trust{gap:.7rem;padding-top:1.4rem;margin-top:1.4rem}
+  .ht-item span{font-size:.76rem}
+  .hero-wa{font-size:.8rem;padding:.6rem 1.1rem}
+  /* Impact */
+  .impact-inner{grid-template-columns:1fr}
+  .ib-item{border-bottom:1px solid var(--border)}
+  /* Steps */
+  .steps-grid{grid-template-columns:1fr}
+  /* Gallery */
+  .gal-grid{grid-template-columns:1fr}
+  .g-card{min-height:200px}
+  .g-card:first-child{grid-column:span 1}
+  /* Service cards */
+  .svc-card{padding:1.8rem 1.4rem}
+  /* Map */
+  .map-info{padding:1.5rem 1.2rem;gap:.8rem}
+  .map-header{padding:2rem 1rem 1.8rem}
+  /* CTA */
+  .cta-btns{gap:.65rem}
+  .btn-donate-main,.btn-cta-wa,.btn-wh{width:100%;justify-content:center;padding:.8rem 1.5rem;font-size:.9rem}
+  /* Footer */
+  .foot-contact{flex-wrap:wrap;gap:.5rem}
+  .foot-main{padding:1.4rem 1rem}
+  .foot-bot{padding:.7rem 1rem}
+  /* Floating buttons */
+  .float-wa-btn{width:48px;height:48px;font-size:1.3rem}
+  .back-top{right:4.7rem;width:38px;height:38px;font-size:.8rem}
+  /* Story badge */
+  .story-badge{bottom:-10px;right:-10px;padding:.8rem 1rem}
+  .story-badge .bn{font-size:1.6rem}
+}
+  </style>
+</head>
+<body>
+
+<!-- ══ ANNOUNCE BAR ══ -->
+<div class="announce">
+  <div class="announce-left">
+    <span><i class="fa fa-phone"></i><a href="tel:+60378903700">+603-7890 3700</a></span>
+    <span class="hide-sm"><i class="fa fa-location-dot"></i>A14, Jalan Rukun 7, Taman Gembira, 58200 KL</span>
+  </div>
+  <div class="announce-right">
+    <div class="a-social">
+      <a href="https://www.facebook.com/profile.php?id=61578688747686" target="_blank" rel="noopener" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/amitabhafoundation" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com/@amitabhafoundation" target="_blank" rel="noopener" title="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="#" title="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+    </div>
+    <div class="lang" id="lang-btns">
+      <a href="#" class="on" onclick="setLang('en');return false">EN</a>
+      <a href="#" onclick="setLang('zh');return false">中文</a>
+      <a href="#" onclick="setLang('ms');return false">BM</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ HEADER ══ -->
+<header id="site-hdr">
+  <div class="hdr">
+    <a href="#home" class="logo-link">
+      <img src="00_logo_horizontal.png" alt="Amitabha Foundation" />
+    </a>
+    <nav class="nav">
+      <a href="#home" class="on" data-i18n="nav_home">Home</a>
+      <a href="#services" data-i18n="nav_services">Services</a>
+      <a href="#about" data-i18n="nav_about">About</a>
+      <a href="#how" data-i18n="nav_how">How It Works</a>
+      <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
+      <a href="#location" data-i18n="nav_loc">Location</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+      <a href="blog.html" data-i18n="nav_blog">News</a>
+      <a href="jobs.html" style="color:var(--red);font-weight:700;" data-i18n="nav_jobs">Jobs</a>
+    </nav>
+    <div class="hdr-r">
+      <a href="https://forms.office.com/pages/responsepage.aspx?id=vDJxN1cn9kOSp13PIzOThUzYNa5kXKZKpgtQL4qKkhlUOUtMUUcwSFMwTTFTNUVWVlA4VEdZMEVTTS4u&route=shorturl" class="btn-seek" target="_blank" rel="noopener" data-i18n="seek_btn">Seek Help</a>
+      <a href="https://wa.me/60127762911?text=Hello%20Amitabha%20Foundation%2C%20I%20would%20like%20to%20enquire%20about%20Elder%20Support." class="btn-wa-hdr" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+      <a href="https://m.amitabhafoundation.my/en/donation" class="btn-donate" target="_blank" rel="noopener">
+        <i class="fa fa-heart"></i> Donate Now
+      </a>
+    </div>
+    <div class="burger" id="burger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <nav class="mob-menu" id="mob-menu">
+    <a href="#home"     onclick="closeMenu()" class="on">Home</a>
+    <a href="#services" onclick="closeMenu()">Services</a>
+    <a href="#about"    onclick="closeMenu()">About</a>
+    <a href="#how"      onclick="closeMenu()">How It Works</a>
+    <a href="#gallery"  onclick="closeMenu()">Gallery</a>
+    <a href="#location" onclick="closeMenu()">Location</a>
+    <a href="#contact"  onclick="closeMenu()">Contact</a>
+    <a href="blog.html" onclick="closeMenu()">News / 新闻</a>
+    <a href="jobs.html" onclick="closeMenu()" style="color:var(--red);font-weight:700;">Jobs / 招聘</a>
+    <a href="https://forms.office.com/pages/responsepage.aspx?id=vDJxN1cn9kOSp13PIzOThUzYNa5kXKZKpgtQL4qKkhlUOUtMUUcwSFMwTTFTNUVWVlA4VEdZMEVTTS4u&route=shorturl" target="_blank" rel="noopener" onclick="closeMenu()">Seek Help</a>
+    <a href="https://wa.me/60127762911?text=Hello%20Amitabha%20Foundation%2C%20I%20would%20like%20to%20enquire%20about%20Elder%20Support." target="_blank" rel="noopener" style="color:#25d366;font-weight:700;" onclick="closeMenu()"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:var(--red);font-weight:700;" onclick="closeMenu()"><i class="fa fa-heart"></i> Donate Now</a>
+  </nav>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-pill"><i class="fa fa-star-of-life"></i> <span data-i18n="hero_badge">Amitabha Elder Support</span></div>
+      <h1><span data-i18n="hero_h1">Dignity in</span><br><em data-i18n="hero_em">Golden Years</em></h1>
+      <p class="hero-sub" data-i18n="hero_sub">Every elderly person deserves to live with dignity, respect, and care. Our Elder Support initiative provides a range of services catering to the unique needs of senior citizens, ensuring they live their golden years in comfort and peace.</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-h-solid"><i class="fa fa-hands-holding-heart"></i> <span data-i18n="hero_btn1">View Our Services</span></a>
+        <a href="https://m.amitabhafoundation.my/en/donation" class="btn-h-outline" target="_blank" rel="noopener"><i class="fa fa-heart"></i> <span data-i18n="hero_btn2">Donate Now</span></a>
+      </div>
+      <div class="hero-trust">
+        <div class="ht-item"><i class="fa fa-clock"></i><span>24/7 Care</span></div>
+        <div class="ht-item"><i class="fa fa-stethoscope"></i><span>Medical Support</span></div>
+        <div class="ht-item"><i class="fa fa-bowl-food"></i><span>Nutritious Meals</span></div>
+        <div class="ht-item"><i class="fa fa-house-heart"></i><span>Safe Homes</span></div>
+      </div>
+      <a href="https://wa.me/60127762911?text=Hello%20Amitabha%20Foundation%2C%20I%20need%20help%20with%20Elder%20Support." class="hero-wa" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp fa-lg"></i> Chat With Us on WhatsApp
+      </a>
+    </div>
+    <div class="hero-panel">
+      <h3>Care With Dignity</h3>
+      <p>Comprehensive elder care services — from financial support to full-time home placement — so no senior is ever left without the love and care they deserve.</p>
+      <div class="panel-stats">
+        <div class="ps"><div class="n">3<sup>+</sup></div><div class="l">Services</div></div>
+        <div class="ps"><div class="n">24<sup>/7</sup></div><div class="l">Support</div></div>
+        <div class="ps"><div class="n">100<sup>%</sup></div><div class="l">Dedicated</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MARQUEE ══ -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span class="m-item">Dignity &amp; Respect <span class="m-dot">✦</span></span>
+    <span class="m-item">Financial Assistance <span class="m-dot">✦</span></span>
+    <span class="m-item">Elderly Home Placement <span class="m-dot">✦</span></span>
+    <span class="m-item">Collaborative Support <span class="m-dot">✦</span></span>
+    <span class="m-item">24/7 Care Available <span class="m-dot">✦</span></span>
+    <span class="m-item">Medical Assistance <span class="m-dot">✦</span></span>
+    <span class="m-item">Compassionate Community <span class="m-dot">✦</span></span>
+    <span class="m-item">In Compassion We Change The World <span class="m-dot">✦</span></span>
+    <span class="m-item">Dignity &amp; Respect <span class="m-dot">✦</span></span>
+    <span class="m-item">Financial Assistance <span class="m-dot">✦</span></span>
+    <span class="m-item">Elderly Home Placement <span class="m-dot">✦</span></span>
+    <span class="m-item">Collaborative Support <span class="m-dot">✦</span></span>
+    <span class="m-item">24/7 Care Available <span class="m-dot">✦</span></span>
+    <span class="m-item">Medical Assistance <span class="m-dot">✦</span></span>
+    <span class="m-item">Compassionate Community <span class="m-dot">✦</span></span>
+    <span class="m-item">In Compassion We Change The World <span class="m-dot">✦</span></span>
+  </div>
+</div>
+
+<!-- ══ IMPACT BAR ══ -->
+<div class="impact-bar">
+  <div class="impact-inner">
+    <div class="ib-item">
+      <div class="ib-icon"><i class="fa fa-clock"></i></div>
+      <div class="ib-text"><div class="n" data-count="24">0</div><div class="l">Hours Care / Day</div></div>
+    </div>
+    <div class="ib-item">
+      <div class="ib-icon"><i class="fa fa-stethoscope"></i></div>
+      <div class="ib-text"><div class="n"><span style="font-size:1.2rem">Full</span></div><div class="l">Medical Assistance</div></div>
+    </div>
+    <div class="ib-item">
+      <div class="ib-icon"><i class="fa fa-bowl-food"></i></div>
+      <div class="ib-text"><div class="n"><span style="font-size:1.2rem">Daily</span></div><div class="l">Nutritious Meals</div></div>
+    </div>
+    <div class="ib-item">
+      <div class="ib-icon"><i class="fa fa-people-group"></i></div>
+      <div class="ib-text"><div class="n" data-count="500">0</div><div class="l">Seniors Supported</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SERVICES ══ -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sh">
+      <div class="tag">What We Offer</div>
+      <h2 class="sec-h">Our Elder Support<br><em>Service Pillars</em></h2>
+      <p class="sec-p">A comprehensive range of care services, each thoughtfully designed to meet the unique needs of every senior citizen we are privileged to serve.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card aos">
+        <div class="svc-icon"><i class="fa fa-hand-holding-dollar"></i></div>
+        <h3>Financial Assistance</h3>
+        <p>We provide meaningful financial support to elderly individuals facing hardship, covering essential medical expenses and daily living costs so they can live with security, stability, and peace of mind throughout their golden years.</p>
+        <a href="#contact" class="svc-more">Learn more <i class="fa fa-arrow-right fa-xs"></i></a>
+      </div>
+      <div class="svc-card aos d1">
+        <div class="svc-icon"><i class="fa fa-house-heart"></i></div>
+        <h3>Elderly Home Placement</h3>
+        <p>We offer a compassionate and loving space in our elderly home for seniors in need — a safe and supportive environment complete with full-time care, dedicated staff, and comprehensive medical assistance to ensure their complete wellbeing.</p>
+        <a href="#contact" class="svc-more">Learn more <i class="fa fa-arrow-right fa-xs"></i></a>
+      </div>
+      <div class="svc-card aos d2">
+        <div class="svc-icon"><i class="fa fa-handshake-angle"></i></div>
+        <h3>Collaborative Support</h3>
+        <p>We actively collaborate with partner elderly homes to expand our care network, providing mutual support to seniors across communities throughout Malaysia — because no elder should ever be without help or companionship.</p>
+        <a href="#contact" class="svc-more">Learn more <i class="fa fa-arrow-right fa-xs"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section class="sec sec-cream" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="story-img aos-l">
+        <div class="story-img-ph">
+          <i class="fa fa-image"></i>
+          <p>Add your story photo here</p>
+        </div>
+        <div class="story-badge">
+          <div class="bn">10<span style="color:var(--gold-l)">+</span></div>
+          <div class="bl">Years of<br>Service</div>
+        </div>
+      </div>
+      <div class="aos-r d1">
+        <div class="tag">The Heart of Amitabha</div>
+        <h2 class="sec-h">In Compassion,<br>We <em>Change The World</em></h2>
+        <p class="sec-p" data-i18n="about_desc">Founded in 2000, Amitabha Foundation Elder Home (Old Klang Road) has been providing four daily meals, 24/7 round-the-clock care, and spiritual support to seniors — so that every elder lives their golden years with dignity. Donations are welcome and are tax-deductible.</p>
+        <p class="sec-p" style="margin-top:.8rem;font-size:.88rem;color:var(--soft)" data-i18n="about_zh">阿弥陀佛关怀老人院（旧巴生路）于2000年成立，提供四餐、全天照护与心灵支持，让长者安享晚年。接受捐款，并可申请税务减免。</p>
+        <ul class="value-list">
+          <li class="v-item"><div class="v-icon"><i class="fa fa-calendar-check"></i></div><span><strong>Est. 2000</strong> — Over 20 years of dedicated elder care on Old Klang Road, Kuala Lumpur.</span></li>
+          <li class="v-item"><div class="v-icon"><i class="fa fa-utensils"></i></div><span><strong>4 Meals Daily</strong> — Nutritious meals served four times a day to every resident in our care.</span></li>
+          <li class="v-item"><div class="v-icon"><i class="fa fa-shield-heart"></i></div><span><strong>24/7 Care &amp; Spiritual Support</strong> — Full-time staff and compassionate spiritual guidance throughout.</span></li>
+          <li class="v-item"><div class="v-icon"><i class="fa fa-receipt"></i></div><span><strong>Tax-Deductible Donations</strong> — Your contributions are welcome and qualify for tax exemption.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section class="sec sec-alt" id="how">
+  <div class="wrap">
+    <div class="sh c">
+      <div class="tag">How It Works</div>
+      <h2 class="sec-h">Getting Help Is <em>Simple</em></h2>
+      <p class="sec-p">We have made it as easy as possible for families and seniors to access the care and support they deserve.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step aos"><div class="step-n">01</div><h4>Reach Out</h4><p>Call our hotline, WhatsApp us, or fill in the contact form. We are always ready to listen with compassion.</p></div>
+      <div class="step aos d1"><div class="step-n">02</div><h4>Needs Assessment</h4><p>Our team meets with you to understand the specific needs and situation of your loved one in detail.</p></div>
+      <div class="step aos d2"><div class="step-n">03</div><h4>Care Plan</h4><p>We develop a personalised support plan — financial aid, home placement, or collaborative network care.</p></div>
+      <div class="step aos d3"><div class="step-n">04</div><h4>Ongoing Support</h4><p>We remain by your side with continuous check-ins, adjustments, and unwavering compassionate care.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRANSPARENCY ══ -->
+<section class="sec sec-cream">
+  <div class="wrap">
+    <div class="trans-grid">
+      <div class="trans-l aos-l">
+        <div class="tag">Transparency &amp; Trust</div>
+        <h2>How Your<br>Support Helps</h2>
+        <p>Every ringgit donated to our Elder Support programme goes directly to improving the lives of vulnerable seniors. Here is how your generous contributions are put to work.</p>
+        <a href="https://m.amitabhafoundation.my/en/donation" class="trans-wa" target="_blank" rel="noopener"><i class="fa fa-heart"></i> Donate Now</a>
+      </div>
+      <div class="aos-r d1">
+        <ul class="fund-list">
+          <li class="f-item"><div class="f-icon"><i class="fa fa-stethoscope"></i></div><span>Medical expenses — consultations, medications, and specialist treatments for elderly in need</span></li>
+          <li class="f-item"><div class="f-icon"><i class="fa fa-bowl-food"></i></div><span>Nutritious daily meals and dietary supplements to maintain the health of seniors in our care</span></li>
+          <li class="f-item"><div class="f-icon"><i class="fa fa-house-heart"></i></div><span>Safe shelter, utilities, and maintenance costs for our elder homes and partner facilities</span></li>
+          <li class="f-item"><div class="f-icon"><i class="fa fa-hand-holding-dollar"></i></div><span>Direct financial assistance to elderly individuals facing hardship in the community</span></li>
+          <li class="f-item"><div class="f-icon"><i class="fa fa-people-arrows"></i></div><span>Staff training, outreach programmes, and collaborative network expansion across Malaysia</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GALLERY ══ -->
+<section class="sec" id="gallery">
+  <div class="wrap">
+    <div class="sh">
+      <div class="tag">Gallery</div>
+      <h2 class="sec-h">Moments of <em>Care &amp; Joy</em></h2>
+      <p class="sec-p">A warm glimpse into the compassionate environment we create for every senior in our programmes.</p>
+    </div>
+    <div class="gal-grid" id="gal-grid">
+      <div class="g-card aos-s"><div class="g-ph"><i class="fa fa-image"></i><span>Elder Support</span></div><div class="g-ov"><span>Elder Support Programme</span></div></div>
+      <div class="g-card aos-s d1"><div class="g-ph"><i class="fa fa-image"></i><span>Community Care</span></div><div class="g-ov"><span>Community Care</span></div></div>
+      <div class="g-card aos-s d1"><div class="g-ph"><i class="fa fa-image"></i><span>Home Activities</span></div><div class="g-ov"><span>Daily Activities</span></div></div>
+      <div class="g-card aos-s d2"><div class="g-ph"><i class="fa fa-image"></i><span>Medical</span></div><div class="g-ov"><span>Medical Support</span></div></div>
+      <div class="g-card aos-s d2"><div class="g-ph"><i class="fa fa-image"></i><span>Volunteers</span></div><div class="g-ov"><span>Our Volunteers</span></div></div>
+      <div class="g-card aos-s d3"><div class="g-ph"><i class="fa fa-image"></i><span>Events</span></div><div class="g-ov"><span>Community Events</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MAP / LOCATION ══ -->
+<div class="map-section" id="location">
+  <div class="map-header">
+    <div class="tag">Our Location</div>
+    <h2>Find Our Centre</h2>
+    <p>Visit us at our centre in Kuala Lumpur. Our team is ready to welcome you and your loved ones.</p>
+  </div>
+  <div class="map-body">
+    <div class="map-iframe-wrap">
+      <iframe
+        src="https://maps.google.com/maps?q=Taman+Gembira+Jalan+Rukun+7+58200+Kuala+Lumpur+Malaysia&output=embed&z=16"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Amitabha Foundation Location">
+      </iframe>
+    </div>
+    <div class="map-info">
+      <h3>Amitabha Foundation<br>Elder Care Centre</h3>
+      <div class="mi-row">
+        <div class="mi-ico"><i class="fa fa-location-dot"></i></div>
+        <div class="mi-body">
+          <div class="lb">Address</div>
+          <div class="vl">A14, Jalan Rukun 7<br>Taman Gembira<br>58200 Kuala Lumpur, Malaysia</div>
+        </div>
+      </div>
+      <div class="mi-row">
+        <div class="mi-ico"><i class="fa fa-phone"></i></div>
+        <div class="mi-body">
+          <div class="lb">Phone</div>
+          <div class="vl"><a href="tel:+60378903700">+603-7890 3700</a></div>
+        </div>
+      </div>
+      <div class="mi-row">
+        <div class="mi-ico"><i class="fa fa-headset"></i></div>
+        <div class="mi-body">
+          <div class="lb">Hotline</div>
+          <div class="vl"><a href="tel:+60127762911">012-776 2911</a></div>
+        </div>
+      </div>
+      <div class="mi-row">
+        <div class="mi-ico"><i class="fa fa-clock"></i></div>
+        <div class="mi-body">
+          <div class="lb">Opening Hours</div>
+          <div class="vl">Mon – Fri: 9:00am – 5:00pm<br>Sat: 9:00am – 1:00pm</div>
+        </div>
+      </div>
+      <a class="map-cta" href="https://wa.me/60127762911?text=Hello%2C%20I%20would%20like%20to%20visit%20the%20Amitabha%20Foundation%20centre." target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i>
+        <div><div class="mc-t">Ask for Directions</div><div class="mc-s">WhatsApp us for help</div></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CONTACT ══ -->
+<section class="sec sec-alt" id="contact">
+  <div class="wrap">
+    <div class="sh">
+      <div class="tag">Get In Touch</div>
+      <h2 class="sec-h">We're Here<br>to <em>Help You</em></h2>
+      <p class="sec-p">Whether you need support for yourself or a loved one, our compassionate team is ready. Reach out today.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="aos-l">
+        <div class="cd-list">
+          <div class="cd"><div class="cd-ico"><i class="fa fa-phone"></i></div><div class="cd-body"><div class="lb">Main Office</div><div class="vl"><a href="tel:+60378903700">+603-7890 3700</a></div></div></div>
+          <div class="cd"><div class="cd-ico"><i class="fa fa-headset"></i></div><div class="cd-body"><div class="lb">Amitabha Hotline</div><div class="vl"><a href="tel:+60127762911">012-776 2911</a></div></div></div>
+          <div class="cd"><div class="cd-ico"><i class="fa fa-location-dot"></i></div><div class="cd-body"><div class="lb">Our Address</div><div class="vl">A14, Jalan Rukun 7, Taman Gembira,<br>58200 Kuala Lumpur</div></div></div>
+        </div>
+        <a class="contact-wa" href="https://wa.me/60127762911?text=Hello%20Amitabha%20Foundation%2C%20I%20would%20like%20to%20enquire%20about%20Elder%20Support." target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i>
+          <div><div class="wt">Chat Directly on WhatsApp</div><div class="ws">012-776 2911 · Fastest response</div></div>
+        </a>
+        <div style="margin-top:1.8rem">
+          <div style="font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin-bottom:.8rem">Follow Us</div>
+          <div class="f-social" style="gap:.5rem">
+            <a href="https://www.facebook.com/profile.php?id=61578688747686" target="_blank" rel="noopener" style="background:var(--red-t);border-color:rgba(154,170,109,.12);color:var(--red)"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/amitabhafoundation" target="_blank" rel="noopener" style="background:var(--red-t);border-color:rgba(154,170,109,.12);color:var(--red)"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@amitabhafoundation" target="_blank" rel="noopener" style="background:var(--red-t);border-color:rgba(154,170,109,.12);color:var(--red)"><i class="fab fa-youtube"></i></a>
+            <a href="#" style="background:var(--red-t);border-color:rgba(154,170,109,.12);color:var(--red)"><i class="fab fa-tiktok"></i></a>
+            <a href="#" style="background:var(--red-t);border-color:rgba(154,170,109,.12);color:var(--red)"><i class="fab fa-telegram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="form-box aos-r d1" style="padding:0;overflow:hidden;display:flex;flex-direction:column">
+        <div style="padding:1.6rem 2rem 1rem;border-bottom:1px solid var(--border)">
+          <h3 style="margin-bottom:.3rem">Seek Help Form</h3>
+          <p style="font-size:.84rem;color:var(--soft)">Fill in the form below and our team will get back to you as soon as possible.</p>
+        </div>
+        <iframe
+          src="https://forms.office.com/pages/responsepage.aspx?id=vDJxN1cn9kOSp13PIzOThUzYNa5kXKZKpgtQL4qKkhlUOUtMUUcwSFMwTTFTNUVWVlA4VEdZMEVTTS4u&route=shorturl&embed=true"
+          width="100%"
+          height="520"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          style="border:none;display:block;flex:1"
+          title="Seek Help Form — Amitabha Foundation"
+          allowfullscreen>
+        </iframe>
+        <div style="padding:.9rem 2rem;background:var(--red-t);border-top:1px solid rgba(154,170,109,.08);display:flex;align-items:center;gap:.7rem;flex-wrap:wrap">
+          <span style="font-size:.8rem;color:var(--mid)">Prefer a quicker response?</span>
+          <a href="https://wa.me/60127762911?text=Hello%20Amitabha%20Foundation%2C%20I%20need%20help." target="_blank" rel="noopener"
+             style="display:inline-flex;align-items:center;gap:.4rem;background:#25d366;color:#fff;padding:.38rem .9rem;border-radius:50px;font-size:.8rem;font-weight:700;text-decoration:none">
+            <i class="fab fa-whatsapp"></i> WhatsApp Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA BAND ══ -->
+<div class="cta-band" id="donate">
+  <div class="wrap">
+    <h2>In Compassion, We Change The World</h2>
+    <p>Your generosity transforms lives. Join us in giving Malaysia's elderly the dignity, love, and care they truly deserve.</p>
+    <div class="cta-btns">
+      <a href="https://m.amitabhafoundation.my/en/donation" class="btn-donate-main" target="_blank" rel="noopener">
+        <i class="fa fa-heart"></i> Donate Now
+      </a>
+      <a href="https://wa.me/60127762911?text=Hello%2C%20I%20would%20like%20to%20volunteer%20for%20Amitabha%20Foundation%20Elder%20Care." class="btn-cta-wa" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i> Volunteer via WhatsApp
+      </a>
+      <a href="https://forms.office.com/pages/responsepage.aspx?id=vDJxN1cn9kOSp13PIzOThUzYNa5kXKZKpgtQL4qKkhlUOUtMUUcwSFMwTTFTNUVWVlA4VEdZMEVTTS4u&route=shorturl" class="btn-wh" target="_blank" rel="noopener">
+        <i class="fa fa-hand-holding-heart"></i> Seek Help
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER (slim) ══ -->
+<footer id="footer">
+  <!-- Single main strip -->
+  <div class="foot-main">
+    <!-- Logo -->
+    <div class="foot-logo-box">
+      <img src="00_logo_horizontal.png" alt="Amitabha Foundation"/>
+    </div>
+    <!-- Inline nav links -->
+    <nav class="foot-nav">
+      <a href="#home">Home</a><span class="sep">·</span>
+      <a href="#services">Services</a><span class="sep">·</span>
+      <a href="#about">About</a><span class="sep">·</span>
+      <a href="#how">How It Works</a><span class="sep">·</span>
+      <a href="#gallery">Gallery</a><span class="sep">·</span>
+      <a href="#location">Location</a><span class="sep">·</span>
+      <a href="#contact">Contact</a><span class="sep">·</span>
+      <a href="blog.html">News</a><span class="sep">·</span>
+      <a href="jobs.html">Jobs</a><span class="sep">·</span>
+      <a href="https://amitabhafoundation.my" target="_blank" rel="noopener">Children Home</a><span class="sep">·</span>
+      <a href="https://amitabhafoundation.my" target="_blank" rel="noopener">Dialysis Centre</a>
+    </nav>
+    <!-- Contact + action buttons -->
+    <div class="foot-contact">
+      <div class="foot-phone">
+        <i class="fa fa-phone"></i>
+        <a href="tel:+60378903700">+603-7890 3700</a>
+      </div>
+      <a class="foot-wa-btn" href="https://wa.me/60127762911?text=Hello%20Amitabha%20Foundation%2C%20I%20need%20Elder%20Support." target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+      <a class="foot-donate-btn" href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener">
+        <i class="fa fa-heart"></i> Donate
+      </a>
+    </div>
+    <!-- Social -->
+    <div class="f-social">
+      <a href="https://www.facebook.com/profile.php?id=61578688747686" target="_blank" rel="noopener" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/amitabhafoundation" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com/@amitabhafoundation" target="_blank" rel="noopener" title="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="#" title="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+    </div>
+  </div>
+  <!-- Bottom bar -->
+  <div class="foot-bot">
+    <p>&copy; 2024 Amitabha Foundation · Elder Care Programme · A14, Jalan Rukun 7, Taman Gembira, 58200 KL</p>
+    <div class="f-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms &amp; Conditions</a>
+      <a href="#">Refund &amp; Return</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ FLOATING WHATSAPP ══ -->
+<div class="float-wa">
+  <div class="float-wa-bubble">💬 Chat with us on WhatsApp!</div>
+  <a class="float-wa-btn" href="https://wa.me/60127762911?text=Hello%20Amitabha%20Foundation%2C%20I%20would%20like%20to%20enquire%20about%20Elder%20Support." target="_blank" rel="noopener" title="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</div>
+
+<!-- ══ BACK TO TOP ══ -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">
+  <i class="fa fa-arrow-up"></i>
+</button>
+
+<script>
+/* ── Scroll effects ── */
+const hdr    = document.getElementById('site-hdr');
+const bt     = document.getElementById('backTop');
+const burger = document.getElementById('burger');
+const navAs  = document.querySelectorAll('.nav a, .mob-menu a');
+const secs   = document.querySelectorAll('section[id], div[id]');
+
+window.addEventListener('scroll', () => {
+  const s = window.scrollY;
+  hdr.classList.toggle('scrolled', s > 50);
+  bt.classList.toggle('show', s > 400);
+  let cur = '';
+  secs.forEach(sec => { if (s >= sec.offsetTop - 110) cur = sec.id; });
+  navAs.forEach(a => {
+    a.classList.remove('on');
+    if (a.getAttribute('href') === '#' + cur) a.classList.add('on');
+  });
+});
+
+/* ── Language switcher ── */
+const TRANS = {
+  en:{
+    nav_home:'Home',nav_services:'Services',nav_about:'About',nav_how:'How It Works',
+    nav_gallery:'Gallery',nav_loc:'Location',nav_contact:'Contact',nav_blog:'News',nav_jobs:'Jobs',
+    hero_badge:'Amitabha Elder Support',hero_h1:'Dignity in',hero_em:'Golden Years',
+    hero_sub:'Every elderly person deserves to live with dignity, respect, and care. Our Elder Support initiative provides a range of services catering to the unique needs of senior citizens.',
+    hero_btn1:'View Our Services',hero_btn2:'Donate Now',hero_wa:'Chat With Us on WhatsApp',
+    sec_services:'Service Pillars',sec_about:'About Us',sec_how:'How It Works',
+    sec_gallery:'Gallery',sec_contact:'Contact Us',sec_loc:'Our Location',
+    donate_btn:'Donate Now',seek_btn:'Seek Help',wa_btn:'WhatsApp Us',
+    jobs_nav:'Jobs'
+  },
+  zh:{
+    nav_home:'首页',nav_services:'服务',nav_about:'关于我们',nav_how:'如何帮助',
+    nav_gallery:'图库',nav_loc:'地址',nav_contact:'联系我们',nav_blog:'新闻',nav_jobs:'职位招聘',
+    hero_badge:'阿弥陀佛关怀老人院',hero_h1:'在晚年中',hero_em:'安享尊严',
+    hero_sub:'每一位长者都值得以尊严、尊重与关爱安享晚年。我们的关怀老人计划提供全面服务，满足每位长者的独特需求。',
+    hero_btn1:'了解我们的服务',hero_btn2:'立即捐款',hero_wa:'WhatsApp 联系我们',
+    sec_services:'服务支柱',sec_about:'关于我们',sec_how:'如何获得帮助',
+    sec_gallery:'图库',sec_contact:'联系我们',sec_loc:'我们的地址',
+    donate_btn:'立即捐款',seek_btn:'寻求帮助',wa_btn:'WhatsApp',
+    jobs_nav:'招聘职位'
+  },
+  ms:{
+    nav_home:'Laman Utama',nav_services:'Perkhidmatan',nav_about:'Tentang Kami',nav_how:'Cara Kerja',
+    nav_gallery:'Galeri',nav_loc:'Lokasi',nav_contact:'Hubungi',nav_blog:'Berita',nav_jobs:'Pekerjaan',
+    hero_badge:'Sokongan Warga Emas Amitabha',hero_h1:'Maruah di',hero_em:'Usia Emas',
+    hero_sub:'Setiap warga emas berhak hidup dengan maruah, hormat dan penjagaan. Inisiatif kami menyediakan pelbagai perkhidmatan untuk keperluan unik warga emas.',
+    hero_btn1:'Lihat Perkhidmatan',hero_btn2:'Derma Sekarang',hero_wa:'Sembang di WhatsApp',
+    sec_services:'Tiang Perkhidmatan',sec_about:'Tentang Kami',sec_how:'Cara Mendapat Bantuan',
+    sec_gallery:'Galeri',sec_contact:'Hubungi Kami',sec_loc:'Lokasi Kami',
+    donate_btn:'Derma Sekarang',seek_btn:'Dapatkan Bantuan',wa_btn:'WhatsApp',
+    jobs_nav:'Jawatan Kosong'
+  }
+};
+function setLang(lang){
+  document.body.className = document.body.className.replace(/lang-\w+/g,'').trim();
+  if(lang !== 'en') document.body.classList.add('lang-'+lang);
+  const t = TRANS[lang] || TRANS.en;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.dataset.i18n;
+    if(t[k] !== undefined) el.textContent = t[k];
+  });
+  document.querySelectorAll('#lang-btns a').forEach((a,i)=>{
+    a.classList.toggle('on', ['en','zh','ms'][i]===lang);
+  });
+  localStorage.setItem('af_lang', lang);
+}
+(function(){ const l=localStorage.getItem('af_lang'); if(l && l!=='en') setLang(l); })();
+
+/* ── Mobile menu ── */
+function toggleMenu() {
+  const m = document.getElementById('mob-menu');
+  m.classList.toggle('open');
+  burger.classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('mob-menu').classList.remove('open');
+  burger.classList.remove('open');
+}
+
+/* ── AOS (all variants) ── */
+const obsOpts = { threshold: 0.1 };
+const aosObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, obsOpts);
+document.querySelectorAll('.aos,.aos-l,.aos-r,.aos-s').forEach(el => aosObs.observe(el));
+
+/* ── Number counter animation ── */
+function animateCount(el, target, suffix) {
+  let start = 0;
+  const dur  = 1800;
+  const step = target / (dur / 16);
+  const tick = () => {
+    start = Math.min(start + step, target);
+    el.textContent = Math.round(start) + (suffix || '');
+    if (start < target) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+const countObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const el  = e.target;
+      const val = parseInt(el.dataset.count);
+      const sfx = el.dataset.suffix || (val === 24 ? '/7' : '+');
+      animateCount(el, val, sfx);
+      countObs.unobserve(el);
+    }
+  });
+}, { threshold: 0.6 });
+document.querySelectorAll('[data-count]').forEach(el => countObs.observe(el));
+
+/* ── Gallery: load photos uploaded via admin ── */
+function renderGallery() {
+  const photos = JSON.parse(localStorage.getItem('af_gallery') || '[]');
+  const grid   = document.getElementById('gal-grid');
+  if (!photos.length) return;
+  const delays = ['','d1','d1','d2','d2','d3'];
+  grid.innerHTML = photos.slice(0, 6).map((p, i) => `
+    <div class="g-card aos-s${delays[i] ? ' '+delays[i] : ''}">
+      ${p.src
+        ? `<img src="${p.src}" alt="${p.caption||'Photo'}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>`
+        : `<div class="g-ph"><i class="fa fa-image"></i><span>${p.caption||''}</span></div>`}
+      <div class="g-ov"><span>${p.caption||''}</span></div>
+    </div>`).join('');
+  grid.querySelectorAll('.aos-s').forEach(el => aosObs.observe(el));
+}
+renderGallery();
+window.addEventListener('storage', e => { if (e.key === 'af_gallery') renderGallery(); });
+</script>
+</body>
+</html>
