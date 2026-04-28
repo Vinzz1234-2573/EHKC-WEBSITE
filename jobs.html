@@ -6,6 +6,8 @@
   <title>Jobs / 招聘 – Amitabha Foundation</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="supabase-config.js"></script>
   <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -179,34 +181,45 @@ footer{background:#1e2413;color:rgba(255,255,255,.45);padding:0}
 }
 
 /* APPLICATION MODAL */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1000;display:flex;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(4px)}
-.modal-box{background:#fff;border-radius:var(--r2);width:100%;max-width:560px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.25)}
-.modal-head{padding:1.8rem 2rem 1.2rem;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
-.modal-head h3{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--text);line-height:1.3}
+@keyframes popIn{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.52);z-index:1000;display:flex;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(6px)}
+.modal-box{background:#fff;border-radius:22px;width:100%;max-width:600px;max-height:92vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,.22)}
+.modal-head{padding:1.5rem 1.8rem 1.3rem;background:linear-gradient(135deg,var(--red-t),#fff);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:1rem;border-radius:22px 22px 0 0;position:sticky;top:0;z-index:2}
+.modal-head-left{display:flex;align-items:center;gap:.85rem}
+.modal-head-icon{width:40px;height:40px;border-radius:10px;background:#9aaa6d;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.95rem;flex-shrink:0}
+.modal-head h3{font-family:'Playfair Display',serif;font-size:1.12rem;font-weight:700;color:var(--text);line-height:1.3;margin:0}
 .modal-head h3 span{color:var(--red-d)}
-.modal-close{background:none;border:none;font-size:1.6rem;color:var(--soft);cursor:pointer;line-height:1;padding:.2rem .4rem;border-radius:6px;transition:all var(--t);flex-shrink:0;margin-top:-.2rem}
+.modal-head-sub{font-size:.74rem;color:var(--soft);margin-top:.1rem}
+.modal-close{background:none;border:none;font-size:1.5rem;color:var(--soft);cursor:pointer;line-height:1;padding:.3rem .45rem;border-radius:8px;transition:all var(--t);flex-shrink:0}
 .modal-close:hover{background:var(--red-t);color:var(--red)}
-.modal-body{padding:1.5rem 2rem .5rem}
-.form-group{margin-bottom:1.1rem}
-.form-group label{display:block;font-size:.81rem;font-weight:600;color:var(--mid);margin-bottom:.38rem}
-.form-group label .req{color:#e55;margin-left:.12rem}
-.form-control{width:100%;padding:.62rem .88rem;border:1.5px solid var(--border);border-radius:10px;font-size:.89rem;font-family:'Inter',sans-serif;color:var(--text);background:#fff;transition:border-color var(--t),box-shadow var(--t);outline:none}
-.form-control:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(154,170,109,.18)}
-.form-control[readonly]{background:var(--off);color:var(--soft);cursor:default}
-textarea.form-control{resize:vertical;min-height:88px}
-.cv-upload-area{border:2px dashed rgba(154,170,109,.45);border-radius:12px;padding:1.3rem;text-align:center;cursor:pointer;transition:all var(--t);background:var(--red-t)}
-.cv-upload-area:hover{border-color:var(--red);background:var(--red-t2)}
-.cv-upload-area .cv-icon{font-size:2rem;color:var(--red);margin-bottom:.4rem}
-.cv-upload-area p{font-size:.82rem;color:var(--soft);line-height:1.55}
+.modal-body{padding:1.5rem 1.8rem .6rem}
+.form-group{margin-bottom:1.05rem}
+.form-group label{display:block;font-size:.79rem;font-weight:700;color:var(--mid);margin-bottom:.38rem;letter-spacing:.01em}
+.form-group label .req{color:#e55;margin-left:.1rem}
+.form-control{width:100%;padding:.68rem 1rem;border:1.5px solid #e0e0e0;border-radius:11px;font-size:.9rem;font-family:'Inter',sans-serif;color:var(--text);background:#fff;transition:border-color var(--t),box-shadow var(--t);outline:none}
+.form-control:focus{border-color:#9aaa6d;box-shadow:0 0 0 3px rgba(154,170,109,.15)}
+.form-control[readonly]{background:#f8f8f8;color:var(--soft);cursor:default}
+textarea.form-control{resize:vertical;min-height:90px}
+.cv-upload-area{border:2.5px dashed rgba(154,170,109,.42);border-radius:14px;padding:1.5rem 1rem;text-align:center;cursor:pointer;transition:all var(--t);background:var(--red-t)}
+.cv-upload-area:hover{border-color:#9aaa6d;background:var(--red-t2)}
+.cv-upload-area.uploaded{border-color:#22c55e;border-style:solid;background:#f0fdf4}
+.cv-upload-area.drag-over{border-color:#9aaa6d;background:var(--red-t2);transform:scale(1.01)}
+.cv-up-icon{font-size:2rem;color:#9aaa6d;margin-bottom:.45rem;transition:color var(--t);display:block}
+.cv-upload-area.uploaded .cv-up-icon{color:#22c55e}
+.cv-upload-area p{font-size:.82rem;color:var(--soft);line-height:1.6}
 .cv-upload-area strong{color:var(--red-d)}
-.cv-file-name{margin-top:.55rem;font-size:.8rem;color:var(--red-d);font-weight:600;display:none}
-.modal-foot{padding:1.2rem 2rem 1.8rem;display:flex;flex-direction:column;gap:.75rem}
-.btn-submit{width:100%;padding:.88rem;background:linear-gradient(135deg,var(--red),var(--red-d));color:#fff;border:none;border-radius:50px;font-size:.95rem;font-weight:700;cursor:pointer;transition:all var(--t);display:flex;align-items:center;justify-content:center;gap:.5rem;font-family:'Inter',sans-serif}
-.btn-submit:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(154,170,109,.4)}
+.cv-file-name{margin-top:.6rem;font-size:.82rem;color:#16a34a;font-weight:700;display:none;animation:popIn .3s ease}
+.trust-row{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-top:.9rem;padding:.6rem .8rem;background:var(--red-t);border-radius:9px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:.32rem;font-size:.73rem;color:var(--mid);font-weight:500}
+.trust-item i{color:#9aaa6d;font-size:.8rem}
+.modal-foot{padding:.9rem 1.8rem 1.8rem;display:flex;flex-direction:column;gap:.75rem}
+.btn-submit{width:100%;padding:.92rem 1.5rem;background:#9aaa6d;color:#fff;border:none;border-radius:11px;font-size:.95rem;font-weight:700;cursor:pointer;transition:all var(--t);display:flex;align-items:center;justify-content:center;gap:.5rem;font-family:'Inter',sans-serif}
+.btn-submit:hover{background:#7f9257;transform:translateY(-2px);box-shadow:0 8px 24px rgba(154,170,109,.38)}
+.btn-submit:active{transform:none;box-shadow:none}
 .btn-submit:disabled{opacity:.6;cursor:not-allowed;transform:none;box-shadow:none}
-.modal-wa-alt{text-align:center;font-size:.81rem;color:var(--soft)}
+.modal-wa-alt{text-align:center;font-size:.8rem;color:var(--soft)}
 .modal-wa-alt a{color:var(--red-d);font-weight:600}
-.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:.72rem 1.5rem;border-radius:50px;font-size:.86rem;font-weight:500;z-index:2000;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap;max-width:90vw;text-align:center}
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#fff;padding:.75rem 1.6rem;border-radius:50px;font-size:.86rem;font-weight:500;z-index:2000;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap;max-width:90vw;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.22)}
 .toast.show{opacity:1}
   </style>
 </head>
@@ -390,7 +403,13 @@ textarea.form-control{resize:vertical;min-height:88px}
 <div id="apply-modal" class="modal-overlay" style="display:none" onclick="if(event.target===this)closeApplyModal()">
   <div class="modal-box">
     <div class="modal-head">
-      <h3>Apply for <span id="modal-job-title"></span></h3>
+      <div class="modal-head-left">
+        <div class="modal-head-icon"><i class="fa fa-file-lines"></i></div>
+        <div>
+          <h3>Apply — <span id="modal-job-title"></span></h3>
+          <div class="modal-head-sub">We review every application personally</div>
+        </div>
+      </div>
       <button class="modal-close" onclick="closeApplyModal()" aria-label="Close">&times;</button>
     </div>
     <form id="apply-form" onsubmit="submitApplication(event)">
@@ -407,28 +426,31 @@ textarea.form-control{resize:vertical;min-height:88px}
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem" class="modal-two-col">
           <div class="form-group">
-            <label>Phone<span class="req">*</span></label>
+            <label>Phone Number<span class="req">*</span></label>
             <input type="tel" class="form-control" id="ap-phone" placeholder="01x-xxx xxxx" required/>
           </div>
           <div class="form-group">
-            <label>Applying For</label>
+            <label>Position Applied</label>
             <input type="text" class="form-control" id="ap-job" readonly/>
           </div>
         </div>
         <div class="form-group">
-          <label>Cover Message</label>
-          <textarea class="form-control" id="ap-msg" placeholder="Tell us a little about yourself and why you're a great fit…"></textarea>
+          <label>Cover Letter / Short Message</label>
+          <textarea class="form-control" id="ap-msg" placeholder="Tell us about yourself, your experience, and why you'd be a great fit…"></textarea>
         </div>
         <div class="form-group">
           <label>Upload CV / Resume<span class="req">*</span></label>
-          <div class="cv-upload-area" onclick="document.getElementById('ap-cv').click()">
-            <div class="cv-icon"><i class="fa fa-file-arrow-up"></i></div>
-            <p>Click to upload your CV<br><strong>PDF, DOC or DOCX</strong> &nbsp;·&nbsp; Max 5 MB</p>
+          <div class="cv-upload-area" id="cv-drop-zone" onclick="document.getElementById('ap-cv').click()">
+            <i class="fa fa-file-arrow-up cv-up-icon" id="cv-up-icon"></i>
+            <p id="cv-up-text">Click to upload or <strong>drag &amp; drop</strong><br><strong>Any format accepted</strong> (PDF, DOC, DOCX, JPG, PNG…) &nbsp;·&nbsp; Max 10 MB</p>
             <div class="cv-file-name" id="cv-file-label"></div>
           </div>
-          <input type="file" id="ap-cv"
-            accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-            style="display:none" onchange="onCvChange(this)"/>
+          <input type="file" id="ap-cv" style="display:none" onchange="onCvChange(this)"/>
+        </div>
+        <div class="trust-row">
+          <span class="trust-item"><i class="fa fa-lock"></i> Your data is secure</span>
+          <span class="trust-item"><i class="fa fa-shield-halved"></i> We respect your privacy</span>
+          <span class="trust-item"><i class="fa fa-clock"></i> We reply within 3 days</span>
         </div>
       </div>
       <div class="modal-foot">
@@ -436,7 +458,7 @@ textarea.form-control{resize:vertical;min-height:88px}
           <i class="fa fa-paper-plane"></i> Submit Application
         </button>
         <div class="modal-wa-alt">
-          Or apply via &nbsp;<a id="modal-wa-link" href="https://wa.me/60127762911" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          Prefer WhatsApp? &nbsp;<a id="modal-wa-link" href="https://wa.me/60127762911" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Apply via WhatsApp</a>
         </div>
       </div>
     </form>
@@ -448,13 +470,23 @@ textarea.form-control{resize:vertical;min-height:88px}
 
 <script>
 let _jobs = [];
+let _applyJobId = null;
 let _applyWa = '60127762911';
 
 function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-function renderJobs(){
+/* ── LOAD JOBS FROM SUPABASE ── */
+async function renderJobs(){
   const list = document.getElementById('job-listings');
-  _jobs = JSON.parse(localStorage.getItem('af_jobs') || '[]');
+  list.innerHTML = '<div class="no-jobs"><i class="fa fa-spinner fa-spin"></i><p>Loading…</p></div>';
+  try {
+    const { data, error } = await sb.from('jobs').select('*').order('created_at', { ascending: false });
+    if(error) throw error;
+    _jobs = data || [];
+  } catch(err) {
+    /* Fallback to localStorage if Supabase not configured yet */
+    _jobs = JSON.parse(localStorage.getItem('af_jobs') || '[]');
+  }
   if(!_jobs.length){
     list.innerHTML = `<div class="no-jobs"><i class="fa fa-briefcase"></i><p>No job openings posted yet.</p><p style="margin-top:.4rem;font-size:.85rem">Check back soon or WhatsApp us at <strong>012-776 2911</strong> to enquire.</p></div>`;
     return;
@@ -462,15 +494,15 @@ function renderJobs(){
   list.innerHTML = _jobs.map((j,i)=>`
     <div class="job-card">
       <div>
-        <div class="job-badge"><i class="fa fa-circle" style="font-size:.4rem"></i> ${esc(j.type||'Full-time')}</div>
-        <div class="job-title">${esc(j.titleEn||j.title||'')}</div>
-        ${j.titleZh?`<div style="font-size:.88rem;color:var(--soft);margin-bottom:.35rem">${esc(j.titleZh)}</div>`:''}
+        <div class="job-badge"><i class="fa fa-circle" style="font-size:.4rem"></i> ${esc(j.type||j.title_en&&'Full-time'||'Full-time')}</div>
+        <div class="job-title">${esc(j.title_en||j.titleEn||j.title||'')}</div>
+        ${(j.title_zh||j.titleZh)?`<div style="font-size:.88rem;color:var(--soft);margin-bottom:.35rem">${esc(j.title_zh||j.titleZh)}</div>`:''}
         <div class="job-meta">
           <span><i class="fa fa-location-dot"></i> ${esc(j.location||'Taman Gembira, KL')}</span>
           ${j.posted?`<span><i class="fa fa-calendar"></i> ${new Date(j.posted).toLocaleDateString('en-MY',{day:'numeric',month:'long',year:'numeric'})}</span>`:''}
           ${j.salary?`<span><i class="fa fa-money-bill-wave"></i> ${esc(j.salary)}</span>`:''}
         </div>
-        <p class="job-desc">${esc(j.descEn||j.desc||'')}</p>
+        <p class="job-desc">${esc(j.desc_en||j.descEn||j.desc||'')}</p>
       </div>
       <button class="job-apply" onclick="openApply(${i})">
         <i class="fa fa-file-alt"></i> Apply Now
@@ -478,11 +510,11 @@ function renderJobs(){
     </div>`).join('');
 }
 renderJobs();
-window.addEventListener('storage', e => { if(e.key==='af_jobs') renderJobs(); });
 
 function openApply(idx){
   const j = _jobs[idx];
-  const title = j.titleEn || j.title || 'Position';
+  const title = j.title_en || j.titleEn || j.title || 'Position';
+  _applyJobId = j.id || null;
   _applyWa = j.wa || '60127762911';
   document.getElementById('modal-job-title').textContent = title;
   document.getElementById('ap-job').value = title;
@@ -494,8 +526,15 @@ function openApply(idx){
   document.getElementById('cv-file-label').textContent = '';
   document.getElementById('btn-submit-app').disabled = false;
   document.getElementById('btn-submit-app').innerHTML = '<i class="fa fa-paper-plane"></i> Submit Application';
+  const zone = document.getElementById('cv-drop-zone');
+  if(zone){ zone.classList.remove('uploaded','drag-over'); }
+  const icon = document.getElementById('cv-up-icon');
+  if(icon){ icon.className = 'fa fa-file-arrow-up cv-up-icon'; }
+  const txt = document.getElementById('cv-up-text');
+  if(txt){ txt.innerHTML = 'Click to upload or <strong>drag &amp; drop</strong><br><strong>Any format accepted</strong> (PDF, DOC, DOCX, JPG, PNG…) &nbsp;·&nbsp; Max 10 MB'; }
   document.getElementById('apply-modal').style.display = 'flex';
   document.body.style.overflow = 'hidden';
+  setupDragDrop();
 }
 
 function closeApplyModal(){
@@ -506,13 +545,39 @@ function closeApplyModal(){
 function onCvChange(input){
   const f = input.files[0];
   if(!f) return;
-  if(f.size > 5*1024*1024){ showToast('File too large — max 5 MB.'); input.value=''; return; }
+  if(f.size > 10*1024*1024){ showToast('File too large — max 10 MB.'); input.value=''; return; }
+  const zone  = document.getElementById('cv-drop-zone');
+  const icon  = document.getElementById('cv-up-icon');
   const label = document.getElementById('cv-file-label');
+  const txt   = document.getElementById('cv-up-text');
+  zone.classList.add('uploaded');
+  icon.className = 'fa fa-circle-check cv-up-icon';
+  txt.innerHTML = '<strong style="color:#16a34a">File ready to upload</strong>';
   label.textContent = '✓ ' + f.name;
   label.style.display = 'block';
 }
 
-function submitApplication(e){
+function setupDragDrop(){
+  const zone = document.getElementById('cv-drop-zone');
+  if(!zone) return;
+  zone.addEventListener('dragover', e=>{ e.preventDefault(); zone.classList.add('drag-over'); });
+  zone.addEventListener('dragleave', ()=>zone.classList.remove('drag-over'));
+  zone.addEventListener('drop', e=>{
+    e.preventDefault();
+    zone.classList.remove('drag-over');
+    const files = e.dataTransfer?.files;
+    if(files && files[0]){
+      const inp = document.getElementById('ap-cv');
+      const dt = new DataTransfer();
+      dt.items.add(files[0]);
+      inp.files = dt.files;
+      onCvChange(inp);
+    }
+  });
+}
+
+/* ── SUBMIT APPLICATION TO SUPABASE ── */
+async function submitApplication(e){
   e.preventDefault();
   const name     = document.getElementById('ap-name').value.trim();
   const email    = document.getElementById('ap-email').value.trim();
@@ -527,30 +592,43 @@ function submitApplication(e){
   btn.disabled = true;
   btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Uploading…';
 
-  const reader = new FileReader();
-  reader.onload = function(ev){
-    try{
+  try {
+    /* 1. Upload CV to Supabase Storage */
+    const cvPath = await sbUploadFile('resumes', cvFile, 'applications');
+
+    /* 2. Insert application row (triggers email via database webhook → edge function) */
+    const { error } = await sb.from('applications').insert({
+      job_id:    _applyJobId,
+      job_title: jobTitle,
+      name, email, phone,
+      message:   msg,
+      cv_name:   cvFile.name,
+      cv_path:   cvPath,
+      status:    'new'
+    });
+    if(error) throw error;
+
+    closeApplyModal();
+    showToast('✓ Application submitted! We will be in touch soon.');
+  } catch(err) {
+    console.error(err);
+    /* Graceful fallback to localStorage if Supabase not configured */
+    try {
       const apps = JSON.parse(localStorage.getItem('af_applications') || '[]');
       apps.unshift({
         id: Date.now(), name, email, phone, jobTitle, message: msg,
-        cvName: cvFile.name, cvType: cvFile.type, cvData: ev.target.result,
+        cvName: cvFile.name, cvType: cvFile.type,
         submitted: new Date().toISOString(), read: false
       });
       localStorage.setItem('af_applications', JSON.stringify(apps));
       closeApplyModal();
-      showToast('✓ Application submitted! We will be in touch soon.');
-    } catch(err){
-      showToast('Storage error — your CV may be too large. Try a smaller file.');
+      showToast('✓ Application submitted!');
+    } catch(e2) {
+      showToast('Submission failed. Please try WhatsApp instead.');
       btn.disabled = false;
       btn.innerHTML = '<i class="fa fa-paper-plane"></i> Submit Application';
     }
-  };
-  reader.onerror = function(){
-    showToast('Error reading file. Please try again.');
-    btn.disabled = false;
-    btn.innerHTML = '<i class="fa fa-paper-plane"></i> Submit Application';
-  };
-  reader.readAsDataURL(cvFile);
+  }
 }
 
 function showToast(msg, dur=3800){
