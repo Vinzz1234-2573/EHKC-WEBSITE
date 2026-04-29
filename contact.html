@@ -52,12 +52,13 @@ header.scrolled{background:rgba(255,255,255,.96);box-shadow:0 2px 18px rgba(10,4
 .brand img{height:54px;width:auto;display:block;object-fit:contain}
 .nav{display:flex;gap:.1rem;align-items:center}
 .nav a{font-size:.86rem;font-weight:500;color:var(--ink-700);padding:.5rem .85rem;border-radius:8px;transition:color .3s,background .3s}
-.nav a.on{color:#ab1a1f}
+.nav a:hover{background:rgba(196,122,74,.13);color:var(--teal-700)}
+.nav a.on{color:#ab1a1f;background:transparent}
 .nav a.on::after{content:"";display:block;width:18px;height:2px;border-radius:2px;background:#ab1a1f;margin:2px auto -6px}
 .hdr-r{display:flex;align-items:center;gap:.55rem}
 .btn{display:inline-flex;align-items:center;gap:.45rem;font-family:inherit;font-weight:600;font-size:.86rem;padding:.62rem 1.15rem;border-radius:999px;transition:all var(--t);white-space:nowrap}
 .btn-ghost{color:var(--teal-800);border:1px solid var(--line)}
-.btn-ghost:hover{background:var(--teal-50)}
+.btn-ghost:hover{background:rgba(196,122,74,.13);border-color:var(--teal-700);color:var(--teal-700)}
 .btn-coral{color:#fff;background:#ab1a1f;box-shadow:0 6px 18px rgba(171,26,31,.32)}
 .btn-coral:hover{background:#8f1619}
 .burger{display:none;flex-direction:column;gap:5px;padding:.5rem;cursor:pointer}
@@ -155,7 +156,7 @@ header.scrolled{background:rgba(255,255,255,.96);box-shadow:0 2px 18px rgba(10,4
 /* Footer */
 footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
 .foot-top{max-width:var(--max);margin:auto;padding:4rem 1.5rem 2.6rem;display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:3rem}
-.foot-brand img{height:44px;width:auto;margin-bottom:1.2rem;display:block;object-fit:contain}
+.foot-brand img{height:54px;width:auto;margin-bottom:1.2rem;display:block;object-fit:contain}
 .foot-brand p{font-size:.86rem;line-height:1.65;color:rgba(255,255,255,.5);max-width:320px;margin-bottom:1.2rem}
 .foot-soc{display:flex;gap:.4rem}
 .foot-soc a{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);font-size:.8rem;transition:all var(--t)}
@@ -221,7 +222,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="about.html">About</a>
-      <a href="index.html#stories">Stories</a>
+      <a href="stories.html">Stories</a>
       <a href="contact.html" class="on">Contact</a>
       <a href="blog.html">News</a>
     </nav>
@@ -235,7 +236,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
     <a href="index.html">Home</a>
     <a href="services.html">Services</a>
     <a href="about.html">About</a>
-    <a href="index.html#stories">Stories</a>
+    <a href="stories.html">Stories</a>
     <a href="contact.html">Contact</a>
     <a href="blog.html">News</a>
     <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1a1f;font-weight:700"><i class="fa fa-heart"></i> Donate</a>
@@ -368,7 +369,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="about.html">About</a>
-      <a href="index.html#stories">Stories</a>
+      <a href="stories.html">Stories</a>
       <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener">Donate</a>
     </div>
     <div class="foot-col">

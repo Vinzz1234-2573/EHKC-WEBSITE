@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Our Services – Amitabha Foundation Elder Care</title>
-<meta name="description" content="Comprehensive elder care services from Amitabha Foundation: financial assistance, home placement, and collaborative partner network in Kuala Lumpur.">
+<title>Stories — Amitabha Foundation Elder Home</title>
+<meta name="description" content="Real stories from seniors, families, and volunteers whose lives have been touched by Amitabha Foundation Elder Home.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
@@ -71,8 +71,6 @@ header.scrolled{background:rgba(255,255,255,.98);box-shadow:0 2px 18px rgba(10,4
 .btn{display:inline-flex;align-items:center;gap:.4rem;font-family:inherit;font-weight:600;font-size:.84rem;padding:.58rem 1.1rem;border-radius:999px;transition:all var(--t);white-space:nowrap}
 .btn-ghost{color:var(--teal-800);border:1px solid var(--line)}
 .btn-ghost:hover{background:var(--teal-t);border-color:var(--teal-700);color:var(--teal-700)}
-.btn-primary{background:var(--teal-700);color:#fff;box-shadow:0 4px 14px rgba(196,122,74,.28)}
-.btn-primary:hover{background:var(--teal-600)}
 .btn-donate{background:#ab1a1f;color:#fff;box-shadow:0 4px 14px rgba(171,26,31,.28)}
 .btn-donate:hover{background:#8f1419;transform:translateY(-1px)}
 .burger{display:none;flex-direction:column;gap:5px;padding:.5rem;cursor:pointer;flex-shrink:0}
@@ -88,12 +86,12 @@ header.scrolled{background:rgba(255,255,255,.98);box-shadow:0 2px 18px rgba(10,4
 
 /* PAGE HERO */
 .page-hero{background:linear-gradient(125deg,var(--teal-900) 0%,var(--teal-800) 42%,var(--teal-700) 100%);padding:5rem 1.5rem 4.5rem;text-align:center;position:relative;overflow:hidden}
-.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 18% 50%,rgba(218,165,32,.1),transparent 50%),radial-gradient(circle at 82% 50%,rgba(255,255,255,.04),transparent 50%)}
+.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 50%,rgba(218,165,32,.1),transparent 50%),radial-gradient(circle at 80% 50%,rgba(255,255,255,.04),transparent 50%)}
 .page-hero-in{position:relative;z-index:1;max-width:760px;margin:auto}
 .page-pill{display:inline-flex;align-items:center;gap:.45rem;background:rgba(218,165,32,.18);border:1px solid rgba(218,165,32,.35);color:var(--gold-l);padding:.32rem .95rem;border-radius:999px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.2rem}
 .page-hero h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.5rem);font-weight:500;color:#fff;line-height:1.14;margin-bottom:.8rem}
 .page-hero h1 em{color:var(--gold-l);font-style:italic}
-.page-hero p{font-size:1rem;color:rgba(255,255,255,.76);max-width:580px;margin:0 auto 2rem;line-height:1.8}
+.page-hero p{font-size:1rem;color:rgba(255,255,255,.76);max-width:600px;margin:0 auto 2rem;line-height:1.8}
 .breadcrumb{display:inline-flex;align-items:center;gap:.5rem;font-size:.79rem;color:rgba(255,255,255,.52)}
 .breadcrumb a{color:rgba(255,255,255,.68);transition:color var(--t)}
 .breadcrumb a:hover{color:var(--gold-l)}
@@ -112,39 +110,47 @@ header.scrolled{background:rgba(255,255,255,.98);box-shadow:0 2px 18px rgba(10,4
 .sh{margin-bottom:3rem}
 .sh.c{text-align:center}.sh.c .tag{justify-content:center}.sh.c .sec-p{margin:0 auto}
 
-/* SERVICE CARDS */
-.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.svc-card{background:#fff;border-radius:var(--r-lg);padding:2.4rem 2rem;border:1px solid var(--line);transition:all var(--t);display:flex;flex-direction:column;position:relative;overflow:hidden}
-.svc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal-700),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform var(--t)}
-.svc-card:hover{transform:translateY(-7px);box-shadow:0 20px 48px rgba(196,122,74,.12);border-color:rgba(196,122,74,.15)}
-.svc-card:hover::after{transform:scaleX(1)}
-.svc-icon{width:56px;height:56px;border-radius:14px;background:var(--teal-t);border:1.5px solid rgba(196,122,74,.15);display:flex;align-items:center;justify-content:center;color:var(--teal-700);font-size:1.35rem;margin-bottom:1.3rem;transition:all var(--t)}
-.svc-card:hover .svc-icon{background:var(--teal-700);color:#fff;border-color:transparent;box-shadow:0 6px 18px rgba(196,122,74,.3)}
-.svc-card h3{font-family:var(--serif);font-size:1.2rem;font-weight:500;color:var(--ink-900);margin-bottom:.65rem}
-.svc-card p{font-size:.93rem;color:var(--ink-500);line-height:1.82;flex:1}
-.svc-more{display:inline-flex;align-items:center;gap:.4rem;color:var(--teal-700);font-weight:700;font-size:.84rem;margin-top:1.3rem;transition:gap var(--t)}
-.svc-more:hover{gap:.7rem}
+/* STORY CARDS — FEATURED */
+.stories-main{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem}
+.story-card{background:#fff;border-radius:var(--r-lg);padding:2.4rem 2rem;border:1px solid var(--line);display:flex;flex-direction:column;gap:1.4rem;transition:all var(--t);position:relative;overflow:hidden}
+.story-card::before{content:'"';font-family:var(--serif);font-size:6rem;line-height:.7;color:var(--teal-100);position:absolute;top:1.2rem;right:1.4rem;pointer-events:none;transition:color var(--t)}
+.story-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(196,122,74,.12);border-color:rgba(196,122,74,.2)}
+.story-card:hover::before{color:rgba(196,122,74,.18)}
+.story-cat{display:inline-flex;align-items:center;gap:.4rem;font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .7rem;border-radius:999px;background:var(--teal-t);color:var(--teal-700)}
+.story-q{font-family:var(--serif);font-size:1.05rem;font-style:italic;color:var(--ink-700);line-height:1.75;flex:1}
+.story-attr{display:flex;align-items:center;gap:.85rem;padding-top:1.1rem;border-top:1px solid var(--line)}
+.story-av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--teal-700),var(--teal-500));display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;flex-shrink:0}
+.story-name{font-weight:700;font-size:.9rem;color:var(--ink-900)}
+.story-meta{font-size:.78rem;color:var(--ink-300);display:flex;align-items:center;gap:.3rem;margin-top:.15rem}
 
-/* HOW IT WORKS */
-.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;position:relative}
-.steps-grid::before{content:'';position:absolute;top:31px;left:12%;right:12%;height:2px;background:linear-gradient(90deg,var(--teal-100),var(--teal-700),var(--teal-100));z-index:0}
-.step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 .8rem 1rem;position:relative;z-index:1}
-.step-n{width:62px;height:62px;border-radius:50%;background:#fff;border:2.5px solid var(--teal-100);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.3rem;font-weight:500;color:var(--teal-700);margin-bottom:1.2rem;box-shadow:var(--shadow);transition:all var(--t)}
-.step:hover .step-n{background:var(--teal-700);color:#fff;border-color:var(--teal-700);box-shadow:0 6px 20px rgba(196,122,74,.3);transform:scale(1.08)}
-.step h4{font-size:.95rem;font-weight:700;color:var(--ink-900);margin-bottom:.4rem}
-.step p{font-size:.86rem;color:var(--ink-300);line-height:1.7}
+/* LONG STORY — FEATURED ROW */
+.story-featured{background:#fff;border-radius:var(--r-lg);border:1px solid var(--line);display:grid;grid-template-columns:1fr 1.6fr;overflow:hidden;transition:all var(--t)}
+.story-featured:hover{box-shadow:0 20px 48px rgba(196,122,74,.12);border-color:rgba(196,122,74,.2)}
+.story-feat-side{background:linear-gradient(155deg,var(--teal-900),var(--teal-700));padding:3rem 2.4rem;display:flex;flex-direction:column;justify-content:space-between}
+.story-feat-quote{font-family:var(--serif);font-size:3.5rem;line-height:1;color:rgba(255,255,255,.2);margin-bottom:1rem}
+.story-feat-name{font-weight:700;font-size:1.1rem;color:#fff;margin-bottom:.2rem}
+.story-feat-meta{font-size:.82rem;color:rgba(255,255,255,.55)}
+.story-feat-av{width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;margin-bottom:1.4rem}
+.story-feat-body{padding:2.8rem 2.4rem;display:flex;flex-direction:column;justify-content:center}
+.story-feat-body .story-cat{margin-bottom:1rem}
+.story-feat-body h3{font-family:var(--serif);font-size:1.3rem;font-weight:500;color:var(--ink-900);margin-bottom:1rem;line-height:1.4}
+.story-feat-body p{font-size:.95rem;color:var(--ink-500);line-height:1.85}
 
-/* TRANSPARENCY */
-.trans-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start}
-.trans-l h2{font-family:var(--serif);font-size:2rem;font-weight:500;color:var(--ink-900);margin-bottom:.75rem}
-.trans-l p{font-size:.95rem;color:var(--ink-500);line-height:1.85;margin-bottom:1.5rem}
-.trans-wa{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.5rem;background:var(--teal-700);color:#fff;border-radius:999px;font-size:.88rem;font-weight:700;box-shadow:0 4px 16px rgba(196,122,74,.3);transition:all var(--t)}
-.trans-wa:hover{background:var(--teal-600);transform:translateY(-2px);box-shadow:0 8px 22px rgba(196,122,74,.4)}
-.fund-list{display:flex;flex-direction:column;gap:.6rem}
-.f-item{display:flex;align-items:center;gap:1rem;padding:.95rem 1.25rem;background:#fff;border-radius:var(--r);border:1px solid var(--line);transition:all var(--t)}
-.f-item:hover{border-color:rgba(196,122,74,.2);box-shadow:var(--shadow);transform:translateX(5px)}
-.f-icon{width:36px;height:36px;border-radius:9px;flex-shrink:0;background:linear-gradient(135deg,var(--teal-700),var(--teal-600));display:flex;align-items:center;justify-content:center;color:#fff;font-size:.88rem}
-.f-item span{font-size:.91rem;color:var(--ink-500);font-weight:500;line-height:1.5}
+/* VOLUNTEER / FAMILY STORIES */
+.vol-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.8rem}
+.vol-card{background:#fff;border-radius:var(--r-lg);padding:2rem 1.8rem;border:1px solid var(--line);display:flex;gap:1.4rem;transition:all var(--t)}
+.vol-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(196,122,74,.1);border-color:rgba(196,122,74,.2)}
+.vol-icon{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--teal-700),var(--teal-500));display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;flex-shrink:0}
+.vol-body h4{font-family:var(--serif);font-size:1.05rem;font-weight:500;color:var(--ink-900);margin-bottom:.5rem}
+.vol-body p{font-size:.9rem;color:var(--ink-500);line-height:1.8}
+.vol-body .vol-by{font-size:.78rem;color:var(--ink-300);margin-top:.75rem;display:flex;align-items:center;gap:.35rem}
+
+/* NUMBERS BAND */
+.nums-band{background:linear-gradient(125deg,var(--teal-900),var(--teal-800));padding:4rem 0}
+.nums-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.num-item .n{font-family:var(--serif);font-size:3rem;font-weight:500;color:#fff;line-height:1;margin-bottom:.4rem}
+.num-item .n sup{font-size:1.4rem;color:var(--teal-400)}
+.num-item .l{font-size:.85rem;color:rgba(255,255,255,.5);font-weight:500}
 
 /* CTA BAND */
 .cta-band{background:linear-gradient(130deg,var(--teal-900) 0%,var(--teal-800) 45%,var(--teal-700) 100%);padding:5rem 0;text-align:center;position:relative;overflow:hidden}
@@ -171,7 +177,6 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 .foot-col a,.foot-col .fci{display:flex;align-items:flex-start;gap:.5rem;font-size:.83rem;color:rgba(255,255,255,.45);margin-bottom:.55rem;transition:color var(--t);line-height:1.5}
 .foot-col a:hover{color:rgba(255,255,255,.85)}
 .foot-col .fci i{color:var(--teal-400);font-size:.75rem;margin-top:.2rem;flex-shrink:0}
-.foot-col a i{color:var(--teal-400);font-size:.75rem;flex-shrink:0}
 .foot-bot{max-width:var(--max);margin:auto;padding:1.1rem 1.5rem;border-top:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.6rem}
 .foot-bot p{font-size:.74rem;color:rgba(255,255,255,.28)}
 .f-legal{display:flex;gap:1.2rem}
@@ -191,27 +196,28 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 
 /* RESPONSIVE */
 @media(max-width:1080px){
-  .svc-grid{grid-template-columns:repeat(2,1fr)}
-  .trans-grid{grid-template-columns:1fr;gap:2.5rem}
+  .stories-main{grid-template-columns:repeat(2,1fr)}
+  .story-featured{grid-template-columns:1fr}
+  .story-feat-side{padding:2rem 2rem}
   .foot-top{grid-template-columns:1fr 1fr}
 }
 @media(max-width:768px){
   .sec{padding:3.5rem 0}
   .sh{margin-bottom:2rem}
-  .svc-grid{grid-template-columns:1fr}
-  .steps-grid{grid-template-columns:1fr 1fr}
-  .steps-grid::before{display:none}
+  .stories-main{grid-template-columns:1fr}
+  .vol-grid{grid-template-columns:1fr}
+  .nums-grid{grid-template-columns:repeat(2,1fr)}
   .cta-band{padding:3rem 0}
   .cta-btns{flex-direction:column;align-items:center}
   .nav{display:none}
   .burger{display:flex}
-  .hdr-r .btn-ghost,.hdr-r .btn-primary{display:none}
+  .hdr-r .btn-ghost{display:none}
   .foot-top{grid-template-columns:1fr}
   .foot-bot{flex-direction:column;text-align:center}
 }
 @media(max-width:480px){
   .sec{padding:2.5rem 0}
-  .steps-grid{grid-template-columns:1fr}
+  .nums-grid{grid-template-columns:1fr 1fr}
   .cta-btns>*{width:100%;justify-content:center}
 }
 </style>
@@ -241,11 +247,11 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
     </a>
     <nav class="nav">
       <a href="index.html">Home</a>
-      <a href="services.html" class="on">Services</a>
+      <a href="services.html">Services</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
       <a href="blog.html">News</a>
-      <a href="jobs.html">Jobs</a>
+      <a href="stories.html" class="on">Stories</a>
     </nav>
     <div class="hdr-r">
       <a href="contact.html" class="btn btn-ghost"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
@@ -255,11 +261,11 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
   </div>
   <nav class="mob-menu" id="mob-menu">
     <a href="index.html">Home</a>
-    <a href="services.html" class="on">Services</a>
+    <a href="services.html">Services</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
     <a href="blog.html">News</a>
-    <a href="jobs.html">Jobs</a>
+    <a href="stories.html" class="on">Stories</a>
     <a href="contact.html" style="color:var(--teal-700);font-weight:700"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
     <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1a1f;font-weight:700"><i class="fa fa-heart"></i> Donate Now</a>
   </nav>
@@ -268,100 +274,186 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 <!-- PAGE HERO -->
 <div class="page-hero">
   <div class="page-hero-in">
-    <div class="page-pill"><i class="fa fa-hands-holding-heart"></i> Elder Care Services</div>
-    <h1>Our Elder Support<br><em>Service Pillars</em></h1>
-    <p>A comprehensive range of care services, each thoughtfully designed to meet the unique needs of every senior citizen we are privileged to serve.</p>
+    <div class="page-pill"><i class="fa fa-heart"></i> Real Lives, Real Change</div>
+    <h1>Stories from<br><em>The Home</em></h1>
+    <p>Every senior who walks through our doors carries a lifetime of stories. These are the ones they have shared with us — of resilience, dignity, and the quiet power of being cared for.</p>
     <div class="breadcrumb">
       <a href="index.html">Home</a>
       <i class="fa fa-chevron-right"></i>
-      <span>Services</span>
+      <span>Stories</span>
     </div>
   </div>
 </div>
 
-<!-- SERVICES GRID -->
-<section class="sec" id="services">
+<!-- FEATURED STORY -->
+<section class="sec">
   <div class="wrap">
     <div class="sh">
-      <div class="tag">What We Offer</div>
-      <h2 class="sec-h">How We<br><em>Care For Seniors</em></h2>
-      <p class="sec-p">Every service is rooted in compassion — delivering real, lasting support to elderly individuals and families who need us most.</p>
+      <div class="tag">Featured Story</div>
+      <h2 class="sec-h">A life <em>reclaimed</em></h2>
     </div>
-    <div class="svc-grid">
-      <div class="svc-card aos">
-        <div class="svc-icon"><i class="fa fa-hand-holding-dollar"></i></div>
-        <h3>Financial Assistance</h3>
-        <p>We provide meaningful financial support to elderly individuals facing hardship, covering essential medical expenses and daily living costs so they can live with security, stability, and peace of mind throughout their golden years.</p>
-        <a href="contact.html" class="svc-more">Get Assistance <i class="fa fa-arrow-right fa-xs"></i></a>
+    <div class="story-featured aos">
+      <div class="story-feat-side">
+        <div>
+          <div class="story-feat-av"><i class="fa fa-user"></i></div>
+          <div class="story-feat-name">Mr. Kumar, 84</div>
+          <div class="story-feat-meta"><i class="fa fa-location-dot"></i> Petaling Jaya · Resident since 2022</div>
+        </div>
+        <div class="story-feat-quote">"</div>
       </div>
-      <div class="svc-card aos d1">
-        <div class="svc-icon"><i class="fa fa-house-heart"></i></div>
-        <h3>Elderly Home Placement</h3>
-        <p>We offer a compassionate and loving space in our elderly home for seniors in need — a safe and supportive environment complete with full-time care, dedicated staff, and comprehensive medical assistance to ensure their complete wellbeing.</p>
-        <a href="contact.html" class="svc-more">Enquire Now <i class="fa fa-arrow-right fa-xs"></i></a>
-      </div>
-      <div class="svc-card aos d2">
-        <div class="svc-icon"><i class="fa fa-handshake-angle"></i></div>
-        <h3>Collaborative Support</h3>
-        <p>We actively collaborate with partner elderly homes to expand our care network, providing mutual support to seniors across communities throughout Malaysia — because no elder should ever be without help or companionship.</p>
-        <a href="contact.html" class="svc-more">Learn More <i class="fa fa-arrow-right fa-xs"></i></a>
+      <div class="story-feat-body">
+        <div class="story-cat"><i class="fa fa-house-heart"></i> Resident Story</div>
+        <h3>Diabetes left me unable to walk. Three months of physiotherapy and proper meals gave me back my independence.</h3>
+        <p>When Mr. Kumar first arrived at Amitabha Foundation Elder Home, he could barely stand on his own. Complications from long-term diabetes had weakened his legs and dimmed his confidence. Within three months of daily physiotherapy, four nutritious meals, and round-the-clock nursing support, he was walking the garden path on his own every morning. "They did not just treat my legs," he told our team. "They gave me back my belief that I could still live fully." Today, Mr. Kumar leads a morning stretching group for other residents — and makes sure no one misses breakfast.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section class="sec sec-alt" id="how">
+<!-- RESIDENT STORIES -->
+<section class="sec sec-alt">
   <div class="wrap">
     <div class="sh c">
-      <div class="tag">How It Works</div>
-      <h2 class="sec-h">Getting Help Is <em>Simple</em></h2>
-      <p class="sec-p">We have made it as easy as possible for families and seniors to access the care and support they deserve.</p>
+      <div class="tag">Resident Stories</div>
+      <h2 class="sec-h">Lives changed, <em>one at a time</em></h2>
+      <p class="sec-p">Every resident arrives with a unique story. Here are the voices of the people at the heart of everything we do.</p>
     </div>
-    <div class="steps-grid">
-      <div class="step aos">
-        <div class="step-n">01</div>
-        <h4>Reach Out</h4>
-        <p>Call our hotline, WhatsApp us, or fill in the contact form. We are always ready to listen with compassion.</p>
+    <div class="stories-main">
+
+      <div class="story-card aos">
+        <div class="story-cat"><i class="fa fa-house-heart"></i> Resident</div>
+        <p class="story-q">After my children moved abroad I lived alone for three years. The team at Amitabha didn't just feed me — they remembered my name on day one.</p>
+        <div class="story-attr">
+          <div class="story-av"><i class="fa fa-user"></i></div>
+          <div>
+            <div class="story-name">Puan Siti, 79</div>
+            <div class="story-meta"><i class="fa fa-location-dot"></i> Cheras, KL</div>
+          </div>
+        </div>
       </div>
-      <div class="step aos d1">
-        <div class="step-n">02</div>
-        <h4>Needs Assessment</h4>
-        <p>Our team meets with you to understand the specific needs and situation of your loved one in detail.</p>
+
+      <div class="story-card aos d1">
+        <div class="story-cat"><i class="fa fa-utensils"></i> Daily Life</div>
+        <p class="story-q">A neighbour referred me when I had no income left. Amitabha placed me in the home and I now share my recipes with the kitchen staff every morning.</p>
+        <div class="story-attr">
+          <div class="story-av"><i class="fa fa-user"></i></div>
+          <div>
+            <div class="story-name">Ah Ma Tan, 82</div>
+            <div class="story-meta"><i class="fa fa-location-dot"></i> Taman Gembira</div>
+          </div>
+        </div>
       </div>
-      <div class="step aos d2">
-        <div class="step-n">03</div>
-        <h4>Care Plan</h4>
-        <p>We develop a personalised support plan — financial aid, home placement, or collaborative network care.</p>
+
+      <div class="story-card aos d2">
+        <div class="story-cat"><i class="fa fa-hand-holding-dollar"></i> Financial Aid</div>
+        <p class="story-q">I couldn't afford my dialysis anymore. Amitabha stepped in within a week. I still cannot believe how quickly they moved to help a stranger like me.</p>
+        <div class="story-attr">
+          <div class="story-av"><i class="fa fa-user"></i></div>
+          <div>
+            <div class="story-name">Encik Ramli, 71</div>
+            <div class="story-meta"><i class="fa fa-location-dot"></i> Klang, Selangor</div>
+          </div>
+        </div>
       </div>
-      <div class="step aos d3">
-        <div class="step-n">04</div>
-        <h4>Ongoing Support</h4>
-        <p>We remain by your side with continuous check-ins, adjustments, and unwavering compassionate care.</p>
+
+      <div class="story-card aos">
+        <div class="story-cat"><i class="fa fa-stethoscope"></i> Medical Care</div>
+        <p class="story-q">My mother has dementia. The staff here know her favourite songs and sing with her at dinner. That kind of love cannot be measured in any report.</p>
+        <div class="story-attr">
+          <div class="story-av"><i class="fa fa-user"></i></div>
+          <div>
+            <div class="story-name">Mei Ling's daughter</div>
+            <div class="story-meta"><i class="fa fa-location-dot"></i> Subang Jaya</div>
+          </div>
+        </div>
       </div>
+
+      <div class="story-card aos d1">
+        <div class="story-cat"><i class="fa fa-people-roof"></i> Community</div>
+        <p class="story-q">I was a teacher for forty years. Here I still teach — I run a reading hour every Tuesday. Growing old does not mean stopping. It means slowing down beautifully.</p>
+        <div class="story-attr">
+          <div class="story-av"><i class="fa fa-user"></i></div>
+          <div>
+            <div class="story-name">Cikgu Rohani, 76</div>
+            <div class="story-meta"><i class="fa fa-location-dot"></i> Kuala Lumpur</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-card aos d2">
+        <div class="story-cat"><i class="fa fa-shield-heart"></i> Safety</div>
+        <p class="story-q">After my stroke I was afraid to be alone at night. Now I sleep peacefully knowing someone checks on me every two hours. Fear has no place here.</p>
+        <div class="story-attr">
+          <div class="story-av"><i class="fa fa-user"></i></div>
+          <div>
+            <div class="story-name">Uncle Lim, 80</div>
+            <div class="story-meta"><i class="fa fa-location-dot"></i> Ampang, KL</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- TRANSPARENCY -->
+<!-- NUMBERS -->
+<div class="nums-band">
+  <div class="wrap">
+    <div class="nums-grid">
+      <div class="num-item aos"><div class="n">25<sup>yrs</sup></div><div class="l">Of compassionate service</div></div>
+      <div class="num-item aos d1"><div class="n">500<sup>+</sup></div><div class="l">Seniors cared for</div></div>
+      <div class="num-item aos d2"><div class="n">24<sup>/7</sup></div><div class="l">Nursing & support</div></div>
+      <div class="num-item aos d3"><div class="n">100<sup>%</sup></div><div class="l">Donations to care</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- VOLUNTEER & FAMILY STORIES -->
 <section class="sec sec-cream">
   <div class="wrap">
-    <div class="trans-grid">
-      <div class="trans-l aos-l">
-        <div class="tag">Transparency &amp; Trust</div>
-        <h2>How Your<br>Support Helps</h2>
-        <p>Every ringgit donated to our Elder Support programme goes directly to improving the lives of vulnerable seniors. Here is how your generous contributions are put to work.</p>
-        <a href="https://m.amitabhafoundation.my/en/donation" class="trans-wa" target="_blank" rel="noopener"><i class="fa fa-heart"></i> Donate Now</a>
+    <div class="sh">
+      <div class="tag">Families &amp; Volunteers</div>
+      <h2 class="sec-h">The people <em>beside us</em></h2>
+      <p class="sec-p">Our story is also told by the families who trust us, and the volunteers who give their time.</p>
+    </div>
+    <div class="vol-grid">
+
+      <div class="vol-card aos-l">
+        <div class="vol-icon"><i class="fa fa-people-arrows"></i></div>
+        <div class="vol-body">
+          <h4>A daughter's peace of mind</h4>
+          <p>My father is stubborn and refused all help. But within two weeks at Amitabha he was asking the staff to join his evening walks. I haven't worried about him once since he moved in.</p>
+          <div class="vol-by"><i class="fa fa-user"></i> Sarah Ooi · Daughter of resident, PJ</div>
+        </div>
       </div>
-      <div class="aos-r d1">
-        <ul class="fund-list">
-          <li class="f-item"><div class="f-icon"><i class="fa fa-stethoscope"></i></div><span>Medical expenses — consultations, medications, and specialist treatments for elderly in need</span></li>
-          <li class="f-item"><div class="f-icon"><i class="fa fa-bowl-food"></i></div><span>Nutritious daily meals and dietary supplements to maintain the health of seniors in our care</span></li>
-          <li class="f-item"><div class="f-icon"><i class="fa fa-house-heart"></i></div><span>Safe shelter, utilities, and maintenance costs for our elder homes and partner facilities</span></li>
-          <li class="f-item"><div class="f-icon"><i class="fa fa-hand-holding-dollar"></i></div><span>Direct financial assistance to elderly individuals facing hardship in the community</span></li>
-          <li class="f-item"><div class="f-icon"><i class="fa fa-people-arrows"></i></div><span>Staff training, outreach programmes, and collaborative network expansion across Malaysia</span></li>
-        </ul>
+
+      <div class="vol-card aos-r">
+        <div class="vol-icon"><i class="fa fa-hands-helping"></i></div>
+        <div class="vol-body">
+          <h4>Why I keep coming back</h4>
+          <p>I started volunteering here as a university student. That was four years ago. Every Saturday I lead a music session and the joy on the residents' faces is better than any exam result I ever got.</p>
+          <div class="vol-by"><i class="fa fa-user"></i> Amirul Hadi · Volunteer, UM student</div>
+        </div>
       </div>
+
+      <div class="vol-card aos-l d1">
+        <div class="vol-icon"><i class="fa fa-heart-pulse"></i></div>
+        <div class="vol-body">
+          <h4>Medical care that goes beyond</h4>
+          <p>As a retired nurse, I was sceptical. But the standard of care here — the detailed handover notes, the compassion in every small act — matches the best I saw in 30 years of hospital work.</p>
+          <div class="vol-by"><i class="fa fa-user"></i> Nurse Fatimah (retd.) · Medical volunteer</div>
+        </div>
+      </div>
+
+      <div class="vol-card aos-r d1">
+        <div class="vol-icon"><i class="fa fa-receipt"></i></div>
+        <div class="vol-body">
+          <h4>Giving with confidence</h4>
+          <p>I donate monthly and always asked where my money goes. Amitabha gives me a breakdown every quarter. Knowing my ringgit buys meals, medicine, and smiles — that keeps me giving.</p>
+          <div class="vol-by"><i class="fa fa-user"></i> Tan Chee Weng · Monthly donor, Klang</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -369,12 +461,12 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 <!-- CTA BAND -->
 <div class="cta-band">
   <div class="wrap">
-    <h2>Ready to Help or Need Help?</h2>
-    <p>Reach out today. Our compassionate team is here to listen, guide, and support you every step of the way.</p>
+    <h2>Be part of the next story.</h2>
+    <p>Your donation, your time, or simply referring a senior in need — every action writes a new chapter of compassion.</p>
     <div class="cta-btns">
       <a href="https://m.amitabhafoundation.my/en/donation" class="btn-cta-gold" target="_blank" rel="noopener"><i class="fa fa-heart"></i> Donate Now</a>
-      <a href="https://wa.me/60127762911?text=Hello%2C%20I%20need%20help%20with%20Elder%20Support." class="btn-cta-wa" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
-      <a href="contact.html" class="btn-cta-out"><i class="fa fa-hand-holding-heart"></i> Seek Help</a>
+      <a href="https://wa.me/60127762911" class="btn-cta-wa" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Volunteer</a>
+      <a href="contact.html" class="btn-cta-out"><i class="fa fa-hand-holding-heart"></i> Refer a Senior</a>
     </div>
   </div>
 </div>
@@ -397,9 +489,9 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="about.html">About</a>
+      <a href="stories.html">Stories</a>
       <a href="contact.html">Contact</a>
       <a href="blog.html">News</a>
-      <a href="jobs.html">Jobs</a>
       <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener">Donate</a>
     </div>
     <div class="foot-col">
