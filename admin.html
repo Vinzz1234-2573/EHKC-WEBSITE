@@ -6,286 +6,162 @@
 <title>Admin Dashboard — Amitabha Foundation</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="supabase-config.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --red:#9aaa6d;--red-d:#6b7a4a;--red-t:rgba(154,170,109,.15);
-  --gold:#c9a84c;--bg:#f7f4f0;--card:#fff;
+  --teal-900:#1a242f;--teal-800:#2c3e50;--teal-700:#c47a4a;
+  --teal-600:#d68d5b;--teal-500:#e3a681;--teal-100:#f9e6d4;
+  --teal-50:#fdf2e8;--teal-t:rgba(196,122,74,.15);
+  --gold:#daa520;--bg:#fdf5ee;--card:#fff;
   --text:#1a1a1a;--muted:#666;--border:#e0d6cc;
   --radius:10px;--shadow:0 2px 12px rgba(0,0,0,.09);
+  --sans:"Plus Jakarta Sans",system-ui,sans-serif;
 }
-body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh}
 
-/* ── LOGIN SCREEN ── */
-#login-screen{
-  display:flex;align-items:center;justify-content:center;
-  min-height:100vh;background:linear-gradient(135deg,var(--red-d) 0%,var(--red) 60%,#4a5a30 100%);
-  padding:1.5rem;
-}
-.login-box{
-  background:#fff;border-radius:18px;padding:2.8rem 2.4rem;width:100%;max-width:400px;
-  box-shadow:0 20px 60px rgba(0,0,0,.3);text-align:center;
-}
-.login-logo{height:54px;width:auto;margin-bottom:1.4rem}
-.login-box h1{font-size:1.4rem;color:var(--red);margin-bottom:.3rem}
+/* Login */
+#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(135deg,var(--teal-900) 0%,var(--teal-800) 40%,var(--teal-700) 100%);padding:1.5rem}
+.login-box{background:#fff;border-radius:18px;padding:2.8rem 2.4rem;width:100%;max-width:400px;box-shadow:0 20px 60px rgba(0,0,0,.3);text-align:center}
+.login-logo{height:64px;width:auto;margin:0 auto 1.4rem;display:block;filter:hue-rotate(28deg) saturate(60%) brightness(135%)}
+.login-box h1{font-size:1.4rem;color:var(--teal-800);margin-bottom:.3rem}
 .login-box p{font-size:.88rem;color:var(--muted);margin-bottom:1.8rem}
 .form-group{margin-bottom:1.2rem;text-align:left}
 .form-group label{display:block;font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.38rem}
-.form-group input{
-  width:100%;padding:.72rem 1rem;border:1.5px solid var(--border);border-radius:8px;
-  font-size:.95rem;outline:none;transition:border-color .2s;
-}
-.form-group input:focus{border-color:var(--red)}
-.login-btn{
-  width:100%;padding:.8rem;background:var(--red);color:#fff;border:none;
-  border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer;
-  transition:background .2s;margin-top:.4rem;
-}
-.login-btn:hover{background:var(--red-d)}
+.form-group input{width:100%;padding:.72rem 1rem;border:1.5px solid var(--border);border-radius:8px;font-size:.95rem;font-family:var(--sans);outline:none;transition:border-color .2s}
+.form-group input:focus{border-color:var(--teal-700)}
+.login-btn{width:100%;padding:.8rem;background:var(--teal-700);color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:700;font-family:var(--sans);cursor:pointer;transition:background .2s;margin-top:.4rem}
+.login-btn:hover{background:var(--teal-800)}
 .login-err{color:#c00;font-size:.84rem;margin-top:.8rem;display:none}
 
-/* ── ADMIN LAYOUT ── */
+/* Admin Layout */
 #admin-app{display:none;min-height:100vh;flex-direction:column}
-
-.admin-header{
-  background:linear-gradient(90deg,var(--red-d),var(--red));
-  color:#fff;padding:0 2rem;height:60px;
-  display:flex;align-items:center;justify-content:space-between;
-  position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.2);
-}
+.admin-header{background:linear-gradient(90deg,var(--teal-900),var(--teal-700));color:#fff;padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.2)}
 .admin-header .brand{display:flex;align-items:center;gap:.8rem}
-.admin-header img{height:32px;background:#fff;border-radius:5px;padding:2px 6px}
+.admin-header img{height:38px;background:#fff;border-radius:5px;padding:2px 6px;filter:hue-rotate(28deg) saturate(60%) brightness(135%)}
 .admin-header span{font-size:1rem;font-weight:700;opacity:.92}
-.logout-btn{
-  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);
-  color:#fff;padding:.38rem .9rem;border-radius:6px;cursor:pointer;
-  font-size:.85rem;transition:background .2s;
-}
+.logout-btn{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;padding:.38rem .9rem;border-radius:6px;cursor:pointer;font-size:.85rem;font-family:var(--sans);transition:background .2s}
 .logout-btn:hover{background:rgba(255,255,255,.3)}
-
 .admin-body{display:flex;flex:1}
 
 /* Sidebar */
-.sidebar{
-  width:220px;background:#fff;border-right:1px solid var(--border);
-  padding:1.5rem 1rem;flex-shrink:0;
-}
+.sidebar{width:220px;background:#fff;border-right:1px solid var(--border);padding:1.5rem 1rem;flex-shrink:0}
 .sidebar h3{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.8rem;padding:0 .5rem}
-.sidebar nav a{
-  display:flex;align-items:center;gap:.65rem;padding:.62rem .8rem;
-  border-radius:8px;text-decoration:none;color:var(--text);
-  font-size:.92rem;font-weight:500;margin-bottom:.2rem;transition:all .15s;
-}
-.sidebar nav a:hover{background:var(--red-t);color:var(--red)}
-.sidebar nav a.active{background:var(--red);color:#fff}
+.sidebar nav a{display:flex;align-items:center;gap:.65rem;padding:.62rem .8rem;border-radius:8px;text-decoration:none;color:var(--text);font-size:.92rem;font-weight:500;margin-bottom:.2rem;transition:all .15s}
+.sidebar nav a:hover{background:var(--teal-t);color:var(--teal-700)}
+.sidebar nav a.active{background:var(--teal-700);color:#fff}
 .sidebar nav a .ic{font-size:1.1rem;width:20px;text-align:center}
-
-/* Badge on sidebar link */
-.nav-badge{
-  margin-left:auto;background:#dc2626;color:#fff;
-  font-size:.68rem;font-weight:700;padding:.1rem .45rem;
-  border-radius:20px;min-width:18px;text-align:center;line-height:1.6;
-}
+.nav-badge{margin-left:auto;background:#dc2626;color:#fff;font-size:.68rem;font-weight:700;padding:.1rem .45rem;border-radius:20px;min-width:18px;text-align:center;line-height:1.6}
 .sidebar nav a.active .nav-badge{background:rgba(255,255,255,.3)}
 
-/* Main content */
+/* Main */
 .admin-main{flex:1;padding:2rem;overflow-y:auto}
-
-.section-header{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:1.5rem;flex-wrap:wrap;gap:.8rem;
-}
-.section-header h2{font-size:1.4rem;color:var(--red);font-weight:700}
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:.8rem}
+.section-header h2{font-size:1.4rem;color:var(--teal-700);font-weight:700}
 
 /* Tabs */
 .tab-pane{display:none}
 .tab-pane.active{display:block}
 
-/* Stats bar */
+/* Stats */
 .stats-row{display:flex;gap:1rem;margin-bottom:1.8rem;flex-wrap:wrap}
-.stat-card{
-  background:#fff;border-radius:var(--radius);padding:1.1rem 1.4rem;
-  flex:1;min-width:120px;box-shadow:var(--shadow);border-left:4px solid var(--red);
-}
-.stat-card .num{font-size:1.8rem;font-weight:800;color:var(--red)}
+.stat-card{background:#fff;border-radius:var(--radius);padding:1.1rem 1.4rem;flex:1;min-width:120px;box-shadow:var(--shadow);border-left:4px solid var(--teal-700)}
+.stat-card .num{font-size:1.8rem;font-weight:800;color:var(--teal-700)}
 .stat-card .lbl{font-size:.8rem;color:var(--muted);margin-top:.15rem}
 
 /* Form card */
-.form-card{
-  background:#fff;border-radius:var(--radius);padding:1.8rem;
-  box-shadow:var(--shadow);margin-bottom:1.5rem;
-}
-.form-card h3{font-size:1.05rem;font-weight:700;color:var(--red);margin-bottom:1.2rem;
-  padding-bottom:.7rem;border-bottom:1px solid var(--border)}
+.form-card{background:#fff;border-radius:var(--radius);padding:1.8rem;box-shadow:var(--shadow);margin-bottom:1.5rem}
+.form-card h3{font-size:1.05rem;font-weight:700;color:var(--teal-700);margin-bottom:1.2rem;padding-bottom:.7rem;border-bottom:1px solid var(--border)}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
 .f-group{margin-bottom:1rem}
 .f-group label{display:block;font-size:.82rem;font-weight:600;margin-bottom:.35rem;color:var(--muted)}
-.f-group input,.f-group select,.f-group textarea{
-  width:100%;padding:.65rem .9rem;border:1.5px solid var(--border);border-radius:8px;
-  font-size:.92rem;font-family:inherit;outline:none;transition:border-color .2s;
-}
-.f-group input:focus,.f-group select:focus,.f-group textarea:focus{border-color:var(--red)}
+.f-group input,.f-group select,.f-group textarea{width:100%;padding:.65rem .9rem;border:1.5px solid var(--border);border-radius:8px;font-size:.92rem;font-family:var(--sans);outline:none;transition:border-color .2s}
+.f-group input:focus,.f-group select:focus,.f-group textarea:focus{border-color:var(--teal-700)}
 .f-group textarea{resize:vertical;min-height:100px}
 .f-group.full{grid-column:1/-1}
-
 .btn-row{display:flex;gap:.8rem;justify-content:flex-end;margin-top:.5rem}
-.btn{
-  padding:.62rem 1.4rem;border-radius:8px;font-size:.92rem;font-weight:600;
-  cursor:pointer;border:none;transition:all .15s;
-}
-.btn-primary{background:var(--red);color:#fff}
-.btn-primary:hover{background:var(--red-d)}
-.btn-ghost{background:transparent;color:var(--red);border:1.5px solid var(--red)}
-.btn-ghost:hover{background:var(--red-t)}
+.btn{padding:.62rem 1.4rem;border-radius:8px;font-size:.92rem;font-weight:600;cursor:pointer;border:none;font-family:var(--sans);transition:all .15s}
+.btn-primary{background:var(--teal-700);color:#fff}
+.btn-primary:hover{background:var(--teal-800)}
+.btn-ghost{background:transparent;color:var(--teal-700);border:1.5px solid var(--teal-700)}
+.btn-ghost:hover{background:var(--teal-t)}
 .btn-sm{padding:.38rem .8rem;font-size:.8rem}
 .btn-danger{background:#dc2626;color:#fff}
 .btn-danger:hover{background:#b91c1c}
 .btn-edit{background:#1d4ed8;color:#fff}
 .btn-edit:hover{background:#1e40af}
-.btn-teal{background:var(--red);color:#fff}
-.btn-teal:hover{background:var(--red-d)}
+.btn-teal{background:var(--teal-700);color:#fff}
+.btn-teal:hover{background:var(--teal-800)}
 
 /* Posts list */
 .posts-list{display:flex;flex-direction:column;gap:.9rem}
-.post-item{
-  background:#fff;border-radius:var(--radius);padding:1.1rem 1.3rem;
-  box-shadow:var(--shadow);display:flex;align-items:flex-start;gap:1rem;
-}
-.post-item .post-badge{
-  font-size:.72rem;font-weight:700;padding:.25rem .65rem;border-radius:20px;
-  background:var(--red-t);color:var(--red);white-space:nowrap;margin-top:.1rem;flex-shrink:0;
-}
+.post-item{background:#fff;border-radius:var(--radius);padding:1.1rem 1.3rem;box-shadow:var(--shadow);display:flex;align-items:flex-start;gap:1rem}
+.post-item .post-badge{font-size:.72rem;font-weight:700;padding:.25rem .65rem;border-radius:20px;background:var(--teal-t);color:var(--teal-700);white-space:nowrap;margin-top:.1rem;flex-shrink:0}
 .post-item .post-info{flex:1;min-width:0}
-.post-item .post-title{font-weight:700;font-size:.97rem;margin-bottom:.22rem;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.post-item .post-title{font-weight:700;font-size:.97rem;margin-bottom:.22rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .post-item .post-meta{font-size:.8rem;color:var(--muted)}
 .post-item .post-actions{display:flex;gap:.5rem;flex-shrink:0;align-items:center}
-.empty-state{
-  text-align:center;padding:3rem 2rem;color:var(--muted);
-  background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);
-}
+.empty-state{text-align:center;padding:3rem 2rem;color:var(--muted);background:#fff;border-radius:var(--radius);box-shadow:var(--shadow)}
 .empty-state .ei{font-size:2.5rem;margin-bottom:.7rem}
 .empty-state p{font-size:.93rem}
 
-/* ── GALLERY ADMIN ── */
-.upload-zone{
-  border:2px dashed var(--border);border-radius:var(--radius);
-  padding:2rem;text-align:center;cursor:pointer;transition:all .2s;
-  background:#fafafa;position:relative;overflow:hidden;
-}
-.upload-zone:hover,.upload-zone.drag{border-color:var(--red);background:var(--red-t)}
-.upload-zone input[type=file]{
-  position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;
-}
-.upload-zone .uz-icon{font-size:2.2rem;margin-bottom:.5rem;color:var(--red);opacity:.6}
+/* Gallery */
+.upload-zone{border:2px dashed var(--border);border-radius:var(--radius);padding:2rem;text-align:center;cursor:pointer;transition:all .2s;background:#fafafa;position:relative;overflow:hidden}
+.upload-zone:hover,.upload-zone.drag{border-color:var(--teal-700);background:var(--teal-t)}
+.upload-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.upload-zone .uz-icon{font-size:2.2rem;margin-bottom:.5rem;color:var(--teal-700);opacity:.6}
 .upload-zone p{font-size:.88rem;color:var(--muted)}
 .upload-zone small{font-size:.78rem;color:var(--muted);opacity:.7}
-
-.photo-preview-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));
-  gap:.8rem;margin-top:1rem;
-}
-.photo-thumb{
-  position:relative;aspect-ratio:1;border-radius:8px;overflow:hidden;
-  background:var(--bg);border:1px solid var(--border);
-}
+.photo-preview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:.8rem;margin-top:1rem}
+.photo-thumb{position:relative;aspect-ratio:1;border-radius:8px;overflow:hidden;background:var(--bg);border:1px solid var(--border)}
 .photo-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.photo-thumb .ph-del{
-  position:absolute;top:4px;right:4px;width:24px;height:24px;border-radius:50%;
-  background:rgba(0,0,0,.6);color:#fff;border:none;cursor:pointer;
-  font-size:.75rem;display:flex;align-items:center;justify-content:center;
-  transition:background .15s;
-}
+.photo-thumb .ph-del{position:absolute;top:4px;right:4px;width:24px;height:24px;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;border:none;cursor:pointer;font-size:.75rem;display:flex;align-items:center;justify-content:center;transition:background .15s}
 .photo-thumb .ph-del:hover{background:#dc2626}
-.photo-thumb .ph-cap{
-  position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);
-  color:#fff;font-size:.65rem;padding:.2rem .4rem;text-align:center;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-}
-
-.gal-list-item{
-  display:flex;align-items:center;gap:1rem;
-  background:#fff;border-radius:var(--radius);padding:.8rem 1rem;
-  box-shadow:var(--shadow);
-}
-.gal-list-item .gl-thumb{
-  width:56px;height:56px;border-radius:7px;object-fit:cover;flex-shrink:0;
-  background:var(--bg);border:1px solid var(--border);
-}
+.gal-list-item{display:flex;align-items:center;gap:1rem;background:#fff;border-radius:var(--radius);padding:.8rem 1rem;box-shadow:var(--shadow)}
+.gal-list-item .gl-thumb{width:56px;height:56px;border-radius:7px;object-fit:cover;flex-shrink:0;background:var(--bg);border:1px solid var(--border)}
 .gal-list-item .gl-info{flex:1;min-width:0}
 .gal-list-item .gl-cap{font-weight:600;font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .gal-list-item .gl-meta{font-size:.78rem;color:var(--muted);margin-top:.12rem}
 .url-hint{font-size:.77rem;color:var(--muted);margin-top:.3rem;line-height:1.5}
 
-/* ── APPLICATIONS ── */
-.apps-filter-row{
-  display:flex;align-items:center;gap:.7rem;margin-bottom:1.2rem;flex-wrap:wrap;
-}
+/* Applications */
+.apps-filter-row{display:flex;align-items:center;gap:.7rem;margin-bottom:1.2rem;flex-wrap:wrap}
 .apps-filter-row span{font-size:.85rem;color:var(--muted);font-weight:600}
-.filter-btn{
-  padding:.32rem .9rem;border-radius:20px;font-size:.82rem;font-weight:600;
-  cursor:pointer;border:1.5px solid var(--border);background:#fff;color:var(--muted);
-  transition:all .15s;
-}
-.filter-btn.active,.filter-btn:hover{
-  border-color:var(--red);background:var(--red-t);color:var(--red);
-}
-
-.app-card{
-  background:#fff;border-radius:var(--radius);padding:1.2rem 1.4rem;
-  box-shadow:var(--shadow);border-left:4px solid var(--red);
-  margin-bottom:.9rem;
-}
-.app-card-header{
-  display:flex;align-items:flex-start;justify-content:space-between;
-  gap:.8rem;flex-wrap:wrap;margin-bottom:.65rem;
-}
+.filter-btn{padding:.32rem .9rem;border-radius:20px;font-size:.82rem;font-weight:600;cursor:pointer;border:1.5px solid var(--border);background:#fff;color:var(--muted);font-family:var(--sans);transition:all .15s}
+.filter-btn.active,.filter-btn:hover{border-color:var(--teal-700);background:var(--teal-t);color:var(--teal-700)}
+.app-card{background:#fff;border-radius:var(--radius);padding:1.2rem 1.4rem;box-shadow:var(--shadow);border-left:4px solid var(--teal-700);margin-bottom:.9rem}
+.app-card-header{display:flex;align-items:flex-start;justify-content:space-between;gap:.8rem;flex-wrap:wrap;margin-bottom:.65rem}
 .app-card-name{font-weight:700;font-size:1rem;color:var(--text)}
 .app-card-meta{font-size:.82rem;color:var(--muted);margin-top:.18rem}
-.app-card-meta a{color:var(--red);text-decoration:none}
+.app-card-meta a{color:var(--teal-700);text-decoration:none}
 .app-card-meta a:hover{text-decoration:underline}
-.app-job-badge{
-  font-size:.72rem;font-weight:700;padding:.22rem .7rem;border-radius:20px;
-  background:var(--red-t);color:var(--red);white-space:nowrap;flex-shrink:0;
-}
-.app-card-msg{
-  font-size:.86rem;color:var(--text);background:var(--bg);
-  border-radius:7px;padding:.6rem .85rem;margin-bottom:.8rem;
-  line-height:1.55;border-left:3px solid var(--border);
-}
-.app-card-msg em{color:var(--muted);font-style:normal}
+.app-job-badge{font-size:.72rem;font-weight:700;padding:.22rem .7rem;border-radius:20px;background:var(--teal-t);color:var(--teal-700);white-space:nowrap;flex-shrink:0}
+.app-card-msg{font-size:.86rem;color:var(--text);background:var(--bg);border-radius:7px;padding:.6rem .85rem;margin-bottom:.8rem;line-height:1.55;border-left:3px solid var(--border)}
 .app-card-actions{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
 .app-date{font-size:.76rem;color:var(--muted);margin-left:auto}
 .apps-toolbar{display:flex;gap:.8rem;margin-bottom:1.2rem;flex-wrap:wrap;align-items:center}
 .apps-search-wrap{flex:1;min-width:200px;position:relative;display:flex;align-items:center}
 .apps-search-icon{position:absolute;left:.9rem;color:var(--muted);font-size:.82rem;pointer-events:none}
-.apps-search-input{width:100%;padding:.55rem 1rem .55rem 2.4rem;border:1.5px solid var(--border);border-radius:8px;font-size:.87rem;outline:none;transition:border-color .2s;font-family:inherit;background:#fff}
-.apps-search-input:focus{border-color:var(--red)}
+.apps-search-input{width:100%;padding:.55rem 1rem .55rem 2.4rem;border:1.5px solid var(--border);border-radius:8px;font-size:.87rem;font-family:var(--sans);outline:none;transition:border-color .2s;background:#fff}
+.apps-search-input:focus{border-color:var(--teal-700)}
 .status-new{background:#dbeafe;color:#1d4ed8;font-size:.7rem;font-weight:700;padding:.18rem .6rem;border-radius:20px;white-space:nowrap}
 .status-reviewed{background:#dcfce7;color:#15803d;font-size:.7rem;font-weight:700;padding:.18rem .6rem;border-radius:20px;white-space:nowrap}
-.app-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--red),var(--red-d));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.95rem;flex-shrink:0}
+.app-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--teal-700),var(--teal-800));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.95rem;flex-shrink:0}
 .apps-count{font-size:.82rem;color:var(--muted);font-weight:500}
 
 /* Toast */
-#toast{
-  position:fixed;bottom:1.5rem;right:1.5rem;
-  background:#1a1a1a;color:#fff;padding:.8rem 1.3rem;
-  border-radius:8px;font-size:.9rem;z-index:9999;
-  opacity:0;transform:translateY(12px);transition:all .3s;pointer-events:none;
-}
+#toast{position:fixed;bottom:1.5rem;right:1.5rem;background:#1a1a1a;color:#fff;padding:.8rem 1.3rem;border-radius:8px;font-size:.9rem;z-index:9999;opacity:0;transform:translateY(12px);transition:all .3s;pointer-events:none}
 #toast.show{opacity:1;transform:translateY(0)}
 
 /* Edit modal */
-.modal-bg{
-  position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;
-  display:none;align-items:center;justify-content:center;padding:1rem;
-}
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;display:none;align-items:center;justify-content:center;padding:1rem}
 .modal-bg.open{display:flex}
-.modal{background:#fff;border-radius:14px;padding:2rem;width:100%;max-width:580px;
-  max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.3)}
-.modal h3{font-size:1.1rem;font-weight:700;color:var(--red);margin-bottom:1.2rem;
-  padding-bottom:.7rem;border-bottom:1px solid var(--border)}
+.modal{background:#fff;border-radius:14px;padding:2rem;width:100%;max-width:580px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.modal h3{font-size:1.1rem;font-weight:700;color:var(--teal-700);margin-bottom:1.2rem;padding-bottom:.7rem;border-bottom:1px solid var(--border)}
 .modal-btns{display:flex;gap:.8rem;justify-content:flex-end;margin-top:1rem}
 
 @media(max-width:720px){
@@ -300,7 +176,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 <!-- LOGIN SCREEN -->
 <div id="login-screen">
   <div class="login-box">
-    <img src="00_logo_horizontal.png" alt="Amitabha Foundation" class="login-logo">
+    <img src="Photo/AF%20CH%20LOGOpng.png" alt="Amitabha Foundation" class="login-logo">
     <h1>Admin Dashboard</h1>
     <p>Sign in to manage jobs, events &amp; news</p>
     <div class="form-group">
@@ -323,7 +199,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
   <!-- Header -->
   <div class="admin-header">
     <div class="brand">
-      <img src="00_logo_horizontal.png" alt=""/>
+      <img src="Photo/AF%20CH%20LOGOpng.png" alt=""/>
       <span>Admin Panel</span>
     </div>
     <button class="logout-btn" onclick="doLogout()">Sign Out</button>
@@ -381,42 +257,16 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
         <div class="form-card">
           <h3>Post a New Job</h3>
           <div class="grid-2">
-            <div class="f-group">
-              <label>Job Title (English)</label>
-              <input type="text" id="j-title-en" placeholder="e.g. Caregiver / 看护员"/>
+            <div class="f-group"><label>Job Title (English)</label><input type="text" id="j-title-en" placeholder="e.g. Caregiver / 看护员"/></div>
+            <div class="f-group"><label>职位名称 (中文)</label><input type="text" id="j-title-zh" placeholder="例：看护员"/></div>
+            <div class="f-group"><label>Job Type</label>
+              <select id="j-type"><option value="Full-Time">Full-Time 全职</option><option value="Part-Time">Part-Time 兼职</option><option value="Contract">Contract 合约</option></select>
             </div>
-            <div class="f-group">
-              <label>职位名称 (中文)</label>
-              <input type="text" id="j-title-zh" placeholder="例：看护员"/>
-            </div>
-            <div class="f-group">
-              <label>Job Type</label>
-              <select id="j-type">
-                <option value="Full-Time">Full-Time 全职</option>
-                <option value="Part-Time">Part-Time 兼职</option>
-                <option value="Contract">Contract 合约</option>
-              </select>
-            </div>
-            <div class="f-group">
-              <label>Location</label>
-              <input type="text" id="j-loc" value="Old Klang Road, Kuala Lumpur"/>
-            </div>
-            <div class="f-group">
-              <label>Salary / Allowance (optional)</label>
-              <input type="text" id="j-salary" placeholder="e.g. RM 1,800 – RM 2,200"/>
-            </div>
-            <div class="f-group">
-              <label>Contact / WhatsApp</label>
-              <input type="text" id="j-wa" value="60127762911"/>
-            </div>
-            <div class="f-group full">
-              <label>Job Description (English)</label>
-              <textarea id="j-desc-en" rows="4" placeholder="Responsibilities, requirements, benefits..."></textarea>
-            </div>
-            <div class="f-group full">
-              <label>职位描述 (中文)</label>
-              <textarea id="j-desc-zh" rows="4" placeholder="职责、要求、福利..."></textarea>
-            </div>
+            <div class="f-group"><label>Location</label><input type="text" id="j-loc" value="Old Klang Road, Kuala Lumpur"/></div>
+            <div class="f-group"><label>Salary / Allowance (optional)</label><input type="text" id="j-salary" placeholder="e.g. RM 1,800 – RM 2,200"/></div>
+            <div class="f-group"><label>Contact / WhatsApp</label><input type="text" id="j-wa" value="60127762911"/></div>
+            <div class="f-group full"><label>Job Description (English)</label><textarea id="j-desc-en" rows="4" placeholder="Responsibilities, requirements, benefits..."></textarea></div>
+            <div class="f-group full"><label>职位描述 (中文)</label><textarea id="j-desc-zh" rows="4" placeholder="职责、要求、福利..."></textarea></div>
           </div>
           <div class="btn-row">
             <button class="btn btn-ghost" onclick="clearJobForm()">Clear</button>
@@ -435,41 +285,16 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
         <div class="form-card">
           <h3>Add News / Event</h3>
           <div class="grid-2">
-            <div class="f-group">
-              <label>Title (English)</label>
-              <input type="text" id="n-title-en" placeholder="e.g. Annual Charity Dinner 2025"/>
+            <div class="f-group"><label>Title (English)</label><input type="text" id="n-title-en" placeholder="e.g. Annual Charity Dinner 2025"/></div>
+            <div class="f-group"><label>标题 (中文，选填)</label><input type="text" id="n-title-zh" placeholder="例：2025年慈善晚宴"/></div>
+            <div class="f-group"><label>Category</label>
+              <select id="n-cat"><option value="Event">Event 活动</option><option value="News">News 新闻</option><option value="Announcement">Announcement 通告</option><option value="Fundraising">Fundraising 筹款</option></select>
             </div>
-            <div class="f-group">
-              <label>标题 (中文，选填)</label>
-              <input type="text" id="n-title-zh" placeholder="例：2025年慈善晚宴"/>
-            </div>
-            <div class="f-group">
-              <label>Category</label>
-              <select id="n-cat">
-                <option value="Event">Event 活动</option>
-                <option value="News">News 新闻</option>
-                <option value="Announcement">Announcement 通告</option>
-                <option value="Fundraising">Fundraising 筹款</option>
-              </select>
-            </div>
-            <div class="f-group">
-              <label>Event Date (if applicable)</label>
-              <input type="date" id="n-date"/>
-            </div>
-            <div class="f-group full">
-              <label>Content / Details</label>
-              <textarea id="n-content" rows="5" placeholder="Describe the news or event..."></textarea>
-            </div>
-            <div class="f-group full">
-              <label>内容 (中文，选填)</label>
-              <textarea id="n-content-zh" rows="4" placeholder="活动详情..."></textarea>
-            </div>
-            <div class="f-group">
-              <label>Link (optional)</label>
-              <input type="url" id="n-link" placeholder="https://..."/>
-            </div>
-            <div class="f-group">
-              <label>Cover Image (upload to Supabase)</label>
+            <div class="f-group"><label>Event Date (if applicable)</label><input type="date" id="n-date"/></div>
+            <div class="f-group full"><label>Content / Details</label><textarea id="n-content" rows="5" placeholder="Describe the news or event..."></textarea></div>
+            <div class="f-group full"><label>内容 (中文，选填)</label><textarea id="n-content-zh" rows="4" placeholder="活动详情..."></textarea></div>
+            <div class="f-group"><label>Link (optional)</label><input type="url" id="n-link" placeholder="https://..."/></div>
+            <div class="f-group"><label>Cover Image (upload to Supabase)</label>
               <input type="file" id="n-image" accept="image/*" style="padding:.4rem;font-size:.88rem"/>
               <p id="n-image-status" style="font-size:.78rem;color:var(--muted);margin-top:.3rem"></p>
             </div>
@@ -488,8 +313,6 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
       <!-- GALLERY -->
       <div class="tab-pane" id="tab-gallery">
         <div class="section-header"><h2>Gallery Photos</h2></div>
-
-        <!-- Upload / Add Photo -->
         <div class="form-card">
           <h3>Add a Photo</h3>
           <div class="grid-2">
@@ -502,15 +325,11 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
                 <small>JPG, PNG, WEBP · Max 2 MB per photo · Up to 6 shown in gallery</small>
               </div>
             </div>
-            <div class="f-group">
-              <label>Or paste an image URL</label>
+            <div class="f-group"><label>Or paste an image URL</label>
               <input type="url" id="gal-url" placeholder="https://example.com/photo.jpg"/>
               <p class="url-hint">You can use Google Drive shared links, Facebook photos, Imgur, etc.</p>
             </div>
-            <div class="f-group">
-              <label>Caption (shown on hover)</label>
-              <input type="text" id="gal-caption" placeholder="e.g. Elder Support Programme"/>
-            </div>
+            <div class="f-group"><label>Caption (shown on hover)</label><input type="text" id="gal-caption" placeholder="e.g. Elder Support Programme"/></div>
           </div>
           <div class="btn-row">
             <button class="btn btn-ghost" onclick="document.getElementById('gal-url').value='';document.getElementById('gal-caption').value=''">Clear</button>
@@ -518,8 +337,6 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
           </div>
           <p id="gal-upload-status" style="font-size:.82rem;color:var(--muted);margin-top:.6rem"></p>
         </div>
-
-        <!-- Gallery list -->
         <div class="form-card">
           <h3>All Gallery Photos <span style="font-weight:400;font-size:.85rem;color:var(--muted)">(max 6 shown on website)</span></h3>
           <div id="gallery-list" style="display:flex;flex-direction:column;gap:.8rem"></div>
@@ -561,9 +378,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
       <div class="f-group"><label>Title (EN)</label><input type="text" id="ej-title-en"/></div>
       <div class="f-group"><label>标题 (中文)</label><input type="text" id="ej-title-zh"/></div>
       <div class="f-group"><label>Type</label>
-        <select id="ej-type">
-          <option>Full-Time</option><option>Part-Time</option><option>Contract</option>
-        </select>
+        <select id="ej-type"><option>Full-Time</option><option>Part-Time</option><option>Contract</option></select>
       </div>
       <div class="f-group"><label>Location</label><input type="text" id="ej-loc"/></div>
       <div class="f-group"><label>Salary</label><input type="text" id="ej-salary"/></div>
@@ -587,9 +402,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
       <div class="f-group"><label>Title (EN)</label><input type="text" id="en-title-en"/></div>
       <div class="f-group"><label>标题 (中文)</label><input type="text" id="en-title-zh"/></div>
       <div class="f-group"><label>Category</label>
-        <select id="en-cat">
-          <option>Event</option><option>News</option><option>Announcement</option><option>Fundraising</option>
-        </select>
+        <select id="en-cat"><option>Event</option><option>News</option><option>Announcement</option><option>Fundraising</option></select>
       </div>
       <div class="f-group"><label>Date</label><input type="date" id="en-date"/></div>
       <div class="f-group full"><label>Content</label><textarea id="en-content" rows="4"></textarea></div>
@@ -606,583 +419,131 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 <div id="toast"></div>
 
 <script>
-/* ── AUTH ── */
-const CREDS = {user:'admin', pass:'amitabha2024'};
-/* Change password above or move to Supabase Auth for production */
-
+/* Auth */
+const CREDS={user:'admin',pass:'amitabha2024'};
 function doLogin(){
-  const u = document.getElementById('inp-user').value.trim();
-  const p = document.getElementById('inp-pass').value;
-  if(u === CREDS.user && p === CREDS.pass){
-    sessionStorage.setItem('af_admin','1');
-    showAdminApp();
-  } else {
-    document.getElementById('login-err').style.display='block';
-  }
+  const u=document.getElementById('inp-user').value.trim();
+  const p=document.getElementById('inp-pass').value;
+  if(u===CREDS.user&&p===CREDS.pass){sessionStorage.setItem('af_admin','1');showAdminApp();}
+  else{document.getElementById('login-err').style.display='block';}
 }
-function doLogout(){ sessionStorage.removeItem('af_admin'); location.reload(); }
+function doLogout(){sessionStorage.removeItem('af_admin');location.reload();}
 
-/* ── IN-MEMORY CACHE (populated from Supabase on load) ── */
-let _cache = { jobs:[], news:[], gallery:[], apps:[] };
+/* Cache */
+let _cache={jobs:[],news:[],gallery:[],apps:[]};
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
 
-function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,6) }
-
-/* ── SUPABASE FETCH ALL ── */
+/* Supabase fetch */
 async function fetchAll(){
-  try {
-    const [j,n,g,a] = await Promise.all([
+  try{
+    const[j,n,g,a]=await Promise.all([
       sb.from('jobs').select('*').order('created_at',{ascending:false}),
       sb.from('posts').select('*').order('created_at',{ascending:false}),
       sb.from('gallery').select('*').order('sort_order',{ascending:true}),
       sb.from('applications').select('*').order('created_at',{ascending:false})
     ]);
-    if(!j.error) _cache.jobs    = j.data||[];
-    if(!n.error) _cache.news    = n.data||[];
-    if(!g.error) _cache.gallery = g.data||[];
-    if(!a.error) _cache.apps    = a.data||[];
-  } catch(err) {
-    /* Fallback to localStorage */
-    _cache.jobs    = JSON.parse(localStorage.getItem('af_jobs')        ||'[]');
-    _cache.news    = JSON.parse(localStorage.getItem('af_news')        ||'[]');
-    _cache.gallery = JSON.parse(localStorage.getItem('af_gallery')     ||'[]');
-    _cache.apps    = JSON.parse(localStorage.getItem('af_applications')||'[]');
+    if(!j.error)_cache.jobs=j.data||[];
+    if(!n.error)_cache.news=n.data||[];
+    if(!g.error)_cache.gallery=g.data||[];
+    if(!a.error)_cache.apps=a.data||[];
+  }catch(err){
+    _cache.jobs=JSON.parse(localStorage.getItem('af_jobs')||'[]');
+    _cache.news=JSON.parse(localStorage.getItem('af_news')||'[]');
+    _cache.gallery=JSON.parse(localStorage.getItem('af_gallery')||'[]');
+    _cache.apps=JSON.parse(localStorage.getItem('af_applications')||'[]');
   }
 }
+function getJobs(){return _cache.jobs}
+function getNews(){return _cache.news}
+function getGallery(){return _cache.gallery}
+function getApps(){return _cache.apps}
 
-function getJobs()    { return _cache.jobs }
-function getNews()    { return _cache.news }
-function getGallery() { return _cache.gallery }
-function getApps()    { return _cache.apps }
-
-/* ── TABS ── */
+/* Tabs */
 function showTab(name){
   document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.sidebar nav a').forEach(a=>a.classList.remove('active'));
   document.getElementById('tab-'+name).classList.add('active');
   document.querySelectorAll('.sidebar nav a').forEach(a=>{
-    if(a.getAttribute('onclick')&&a.getAttribute('onclick').includes("'"+name+"'")) a.classList.add('active');
+    if(a.getAttribute('onclick')&&a.getAttribute('onclick').includes("'"+name+"'"))a.classList.add('active');
   });
-  // Mark applications as read when tab is opened
-  if(name==='apps') markAppsRead();
+  if(name==='apps')markAppsRead();
   renderAll();
 }
 
-/* ── TOAST ── */
-function toast(msg, dur=2400){
-  const t=document.getElementById('toast');
-  t.textContent=msg; t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'), dur);
-}
+/* Toast */
+function toast(msg,dur=2400){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),dur);}
 
-/* ── JOBS ── */
+/* Jobs */
 async function saveJob(){
   const te=document.getElementById('j-title-en').value.trim();
   if(!te){toast('Please enter a job title.');return}
-  const job={
-    title_en: te,
-    title_zh: document.getElementById('j-title-zh').value.trim()||null,
-    type:     document.getElementById('j-type').value,
-    location: document.getElementById('j-loc').value.trim(),
-    salary:   document.getElementById('j-salary').value.trim()||null,
-    wa:       document.getElementById('j-wa').value.trim()||'60127762911',
-    desc_en:  document.getElementById('j-desc-en').value.trim()||null,
-    desc_zh:  document.getElementById('j-desc-zh').value.trim()||null,
-  };
-  try {
-    const {data,error} = await sb.from('jobs').insert(job).select().single();
-    if(error) throw error;
-    _cache.jobs.unshift(data);
-  } catch(err) {
-    /* localStorage fallback */
-    const lj = {...job, id:uid(), titleEn:job.title_en, titleZh:job.title_zh,
-      descEn:job.desc_en, descZh:job.desc_zh, posted:new Date().toISOString().slice(0,10)};
-    const arr = JSON.parse(localStorage.getItem('af_jobs')||'[]');
-    arr.unshift(lj); localStorage.setItem('af_jobs',JSON.stringify(arr));
-    _cache.jobs.unshift(lj);
-  }
-  clearJobForm(); renderAll(); toast('✅ Job published successfully!');
+  const job={title_en:te,title_zh:document.getElementById('j-title-zh').value.trim()||null,type:document.getElementById('j-type').value,location:document.getElementById('j-loc').value.trim(),salary:document.getElementById('j-salary').value.trim()||null,wa:document.getElementById('j-wa').value.trim()||'60127762911',desc_en:document.getElementById('j-desc-en').value.trim()||null,desc_zh:document.getElementById('j-desc-zh').value.trim()||null};
+  try{const{data,error}=await sb.from('jobs').insert(job).select().single();if(error)throw error;_cache.jobs.unshift(data);}
+  catch(err){const lj={...job,id:uid(),titleEn:job.title_en,titleZh:job.title_zh,descEn:job.desc_en,descZh:job.desc_zh,posted:new Date().toISOString().slice(0,10)};const arr=JSON.parse(localStorage.getItem('af_jobs')||'[]');arr.unshift(lj);localStorage.setItem('af_jobs',JSON.stringify(arr));_cache.jobs.unshift(lj);}
+  clearJobForm();renderAll();toast('✅ Job published successfully!');
 }
-function clearJobForm(){
-  ['j-title-en','j-title-zh','j-salary','j-desc-en','j-desc-zh'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('j-type').value='Full-Time';
-  document.getElementById('j-loc').value='Old Klang Road, Kuala Lumpur';
-  document.getElementById('j-wa').value='60127762911';
-}
-async function deleteJob(id){
-  if(!confirm('Delete this job listing?'))return;
-  try { await sb.from('jobs').delete().eq('id',id); } catch(e){}
-  _cache.jobs = _cache.jobs.filter(j=>j.id!==id);
-  try { const arr=JSON.parse(localStorage.getItem('af_jobs')||'[]'); localStorage.setItem('af_jobs',JSON.stringify(arr.filter(j=>j.id!==id))); } catch(e){}
-  renderAll(); toast('Job deleted.');
-}
-function openEditJob(id){
-  const j=getJobs().find(x=>x.id===id); if(!j)return;
-  document.getElementById('ej-id').value=j.id;
-  document.getElementById('ej-title-en').value=j.title_en||j.titleEn||'';
-  document.getElementById('ej-title-zh').value=j.title_zh||j.titleZh||'';
-  document.getElementById('ej-type').value=j.type||'Full-Time';
-  document.getElementById('ej-loc').value=j.location||'';
-  document.getElementById('ej-salary').value=j.salary||'';
-  document.getElementById('ej-wa').value=j.wa||'';
-  document.getElementById('ej-desc-en').value=j.desc_en||j.descEn||'';
-  document.getElementById('ej-desc-zh').value=j.desc_zh||j.descZh||'';
-  document.getElementById('job-modal').classList.add('open');
-}
-async function updateJob(){
-  const id=document.getElementById('ej-id').value;
-  const upd={
-    title_en: document.getElementById('ej-title-en').value.trim(),
-    title_zh: document.getElementById('ej-title-zh').value.trim()||null,
-    type:     document.getElementById('ej-type').value,
-    location: document.getElementById('ej-loc').value.trim(),
-    salary:   document.getElementById('ej-salary').value.trim()||null,
-    wa:       document.getElementById('ej-wa').value.trim(),
-    desc_en:  document.getElementById('ej-desc-en').value.trim()||null,
-    desc_zh:  document.getElementById('ej-desc-zh').value.trim()||null,
-  };
-  try { await sb.from('jobs').update(upd).eq('id',id); } catch(e){}
-  const i=_cache.jobs.findIndex(j=>j.id===id);
-  if(i>=0) _cache.jobs[i]={..._cache.jobs[i],...upd,
-    titleEn:upd.title_en, titleZh:upd.title_zh, descEn:upd.desc_en, descZh:upd.desc_zh};
-  try {
-    const arr=JSON.parse(localStorage.getItem('af_jobs')||'[]');
-    const li=arr.findIndex(j=>j.id===id);
-    if(li>=0){arr[li]={...arr[li],...upd};localStorage.setItem('af_jobs',JSON.stringify(arr));}
-  } catch(e){}
-  closeModal('job-modal'); renderAll(); toast('✅ Job updated!');
-}
-function renderJobs(){
-  const jobs=getJobs();
-  const el=document.getElementById('jobs-list');
-  if(!jobs.length){
-    el.innerHTML='<div class="empty-state"><div class="ei">💼</div><p>No job listings yet.</p></div>'; return;
-  }
-  el.innerHTML=jobs.map(j=>{
-    const en=j.title_en||j.titleEn||''; const zh=j.title_zh||j.titleZh||'';
-    return `
-    <div class="post-item">
-      <span class="post-badge">${j.type||'Full-Time'}</span>
-      <div class="post-info">
-        <div class="post-title">${en}${zh?' / '+zh:''}</div>
-        <div class="post-meta">📍 ${j.location||''} ${j.salary?'· 💰 '+j.salary:''} · ${j.posted||''}</div>
-      </div>
-      <div class="post-actions">
-        <button class="btn btn-sm btn-edit" onclick="openEditJob('${j.id}')">Edit</button>
-        <button class="btn btn-sm btn-danger" onclick="deleteJob('${j.id}')">Delete</button>
-      </div>
-    </div>`}).join('');
-}
+function clearJobForm(){['j-title-en','j-title-zh','j-salary','j-desc-en','j-desc-zh'].forEach(id=>document.getElementById(id).value='');document.getElementById('j-type').value='Full-Time';document.getElementById('j-loc').value='Old Klang Road, Kuala Lumpur';document.getElementById('j-wa').value='60127762911';}
+async function deleteJob(id){if(!confirm('Delete this job listing?'))return;try{await sb.from('jobs').delete().eq('id',id);}catch(e){}_cache.jobs=_cache.jobs.filter(j=>j.id!==id);try{const arr=JSON.parse(localStorage.getItem('af_jobs')||'[]');localStorage.setItem('af_jobs',JSON.stringify(arr.filter(j=>j.id!==id)));}catch(e){}renderAll();toast('Job deleted.');}
+function openEditJob(id){const j=getJobs().find(x=>x.id===id);if(!j)return;document.getElementById('ej-id').value=j.id;document.getElementById('ej-title-en').value=j.title_en||j.titleEn||'';document.getElementById('ej-title-zh').value=j.title_zh||j.titleZh||'';document.getElementById('ej-type').value=j.type||'Full-Time';document.getElementById('ej-loc').value=j.location||'';document.getElementById('ej-salary').value=j.salary||'';document.getElementById('ej-wa').value=j.wa||'';document.getElementById('ej-desc-en').value=j.desc_en||j.descEn||'';document.getElementById('ej-desc-zh').value=j.desc_zh||j.descZh||'';document.getElementById('job-modal').classList.add('open');}
+async function updateJob(){const id=document.getElementById('ej-id').value;const upd={title_en:document.getElementById('ej-title-en').value.trim(),title_zh:document.getElementById('ej-title-zh').value.trim()||null,type:document.getElementById('ej-type').value,location:document.getElementById('ej-loc').value.trim(),salary:document.getElementById('ej-salary').value.trim()||null,wa:document.getElementById('ej-wa').value.trim(),desc_en:document.getElementById('ej-desc-en').value.trim()||null,desc_zh:document.getElementById('ej-desc-zh').value.trim()||null};try{await sb.from('jobs').update(upd).eq('id',id);}catch(e){}const i=_cache.jobs.findIndex(j=>j.id===id);if(i>=0)_cache.jobs[i]={..._cache.jobs[i],...upd,titleEn:upd.title_en,titleZh:upd.title_zh,descEn:upd.desc_en,descZh:upd.desc_zh};try{const arr=JSON.parse(localStorage.getItem('af_jobs')||'[]');const li=arr.findIndex(j=>j.id===id);if(li>=0){arr[li]={...arr[li],...upd};localStorage.setItem('af_jobs',JSON.stringify(arr));}}catch(e){}closeModal('job-modal');renderAll();toast('✅ Job updated!');}
+function renderJobs(){const jobs=getJobs();const el=document.getElementById('jobs-list');if(!jobs.length){el.innerHTML='<div class="empty-state"><div class="ei">💼</div><p>No job listings yet.</p></div>';return;}el.innerHTML=jobs.map(j=>{const en=j.title_en||j.titleEn||'';const zh=j.title_zh||j.titleZh||'';return`<div class="post-item"><span class="post-badge">${j.type||'Full-Time'}</span><div class="post-info"><div class="post-title">${en}${zh?' / '+zh:''}</div><div class="post-meta">📍 ${j.location||''} ${j.salary?'· 💰 '+j.salary:''} · ${j.posted||''}</div></div><div class="post-actions"><button class="btn btn-sm btn-edit" onclick="openEditJob('${j.id}')">Edit</button><button class="btn btn-sm btn-danger" onclick="deleteJob('${j.id}')">Delete</button></div></div>`}).join('');}
 
-/* ── NEWS ── */
+/* News */
 async function saveNews(){
-  const te=document.getElementById('n-title-en').value.trim();
-  if(!te){toast('Please enter a title.');return}
-  const statusEl=document.getElementById('n-image-status');
-  statusEl.textContent='Saving…';
+  const te=document.getElementById('n-title-en').value.trim();if(!te){toast('Please enter a title.');return}
+  const statusEl=document.getElementById('n-image-status');statusEl.textContent='Saving…';
+  let imagePath=null;const imgFile=document.getElementById('n-image').files[0];
+  if(imgFile){statusEl.textContent='Uploading image…';imagePath=await sbUploadFile('blog-images',imgFile,'posts');}
+  const item={title_en:te,title_zh:document.getElementById('n-title-zh').value.trim()||null,category:document.getElementById('n-cat').value,event_date:document.getElementById('n-date').value||null,content:document.getElementById('n-content').value.trim()||null,content_zh:document.getElementById('n-content-zh').value.trim()||null,link:document.getElementById('n-link').value.trim()||null,image_path:imagePath};
+  try{const{data,error}=await sb.from('posts').insert(item).select().single();if(error)throw error;_cache.news.unshift(data);}
+  catch(err){const litem={...item,id:uid(),titleEn:item.title_en,titleZh:item.title_zh,cat:item.category,content:item.content,contentZh:item.content_zh,posted:new Date().toISOString().slice(0,10)};const arr=JSON.parse(localStorage.getItem('af_news')||'[]');arr.unshift(litem);localStorage.setItem('af_news',JSON.stringify(arr));_cache.news.unshift(litem);}
+  clearNewsForm();statusEl.textContent='';renderAll();toast('✅ News / Event published!');
+}
+function clearNewsForm(){['n-title-en','n-title-zh','n-date','n-content','n-content-zh','n-link'].forEach(id=>document.getElementById(id).value='');document.getElementById('n-cat').value='Event';}
+async function deleteNews(id){if(!confirm('Delete this item?'))return;try{await sb.from('posts').delete().eq('id',id);}catch(e){}_cache.news=_cache.news.filter(n=>n.id!==id);try{const arr=JSON.parse(localStorage.getItem('af_news')||'[]');localStorage.setItem('af_news',JSON.stringify(arr.filter(n=>n.id!==id)));}catch(e){}renderAll();toast('Deleted.');}
+function openEditNews(id){const n=getNews().find(x=>x.id===id);if(!n)return;document.getElementById('en-id').value=n.id;document.getElementById('en-title-en').value=n.title_en||n.titleEn||'';document.getElementById('en-title-zh').value=n.title_zh||n.titleZh||'';document.getElementById('en-cat').value=n.category||n.cat||'Event';document.getElementById('en-date').value=n.event_date||n.date||'';document.getElementById('en-content').value=n.content||'';document.getElementById('en-content-zh').value=n.content_zh||n.contentZh||'';document.getElementById('en-link').value=n.link||'';document.getElementById('news-modal').classList.add('open');}
+async function updateNews(){const id=document.getElementById('en-id').value;const upd={title_en:document.getElementById('en-title-en').value.trim(),title_zh:document.getElementById('en-title-zh').value.trim()||null,category:document.getElementById('en-cat').value,event_date:document.getElementById('en-date').value||null,content:document.getElementById('en-content').value.trim()||null,content_zh:document.getElementById('en-content-zh').value.trim()||null,link:document.getElementById('en-link').value.trim()||null};try{await sb.from('posts').update(upd).eq('id',id);}catch(e){}const i=_cache.news.findIndex(n=>n.id===id);if(i>=0)_cache.news[i]={..._cache.news[i],...upd,titleEn:upd.title_en,titleZh:upd.title_zh,cat:upd.category,contentZh:upd.content_zh};try{const arr=JSON.parse(localStorage.getItem('af_news')||'[]');const li=arr.findIndex(n=>n.id===id);if(li>=0){arr[li]={...arr[li],...upd};localStorage.setItem('af_news',JSON.stringify(arr));}}catch(e){}closeModal('news-modal');renderAll();toast('✅ Updated!');}
+function renderNews(){const news=getNews();const el=document.getElementById('news-list');if(!news.length){el.innerHTML='<div class="empty-state"><div class="ei">📰</div><p>No news or events yet.</p></div>';return;}el.innerHTML=news.map(n=>{const en=n.title_en||n.titleEn||'';const zh=n.title_zh||n.titleZh||'';const cat=n.category||n.cat||'News';const dt=n.event_date||n.date||'';return`<div class="post-item"><span class="post-badge">${cat}</span><div class="post-info"><div class="post-title">${en}${zh?' · '+zh:''}</div><div class="post-meta">${dt?'📅 '+dt+' · ':''}Posted: ${n.posted||''}</div></div><div class="post-actions"><button class="btn btn-sm btn-edit" onclick="openEditNews('${n.id}')">Edit</button><button class="btn btn-sm btn-danger" onclick="deleteNews('${n.id}')">Delete</button></div></div>`}).join('');}
 
-  let imagePath=null;
-  const imgFile=document.getElementById('n-image').files[0];
-  if(imgFile){
-    statusEl.textContent='Uploading image…';
-    imagePath = await sbUploadFile('blog-images', imgFile, 'posts');
-  }
+/* Gallery */
+async function handleFileUpload(input){const files=Array.from(input.files);const status=document.getElementById('gal-upload-status');if(!files.length)return;status.textContent=`Uploading ${files.length} photo(s)…`;let done=0;for(const file of files){if(file.size>8*1024*1024){toast(`"${file.name}" over 8 MB — skipped.`);done++;continue;}const caption=document.getElementById('gal-caption').value.trim()||file.name.replace(/\.[^.]+$/,'');let src=null;const path=await sbUploadFile('gallery-images',file,'gallery');if(path)src=sbPublicUrl('gallery-images',path);if(!src){src=await new Promise(res=>{const r=new FileReader();r.onload=e=>res(e.target.result);r.readAsDataURL(file);});}const maxOrder=_cache.gallery.reduce((m,p)=>Math.max(m,p.sort_order||0),0);const photo={sort_order:maxOrder+1,src,caption};try{const{data,error}=await sb.from('gallery').insert(photo).select().single();if(error)throw error;_cache.gallery.push(data);}catch(e){const lp={...photo,id:uid(),posted:new Date().toISOString().slice(0,10)};const arr=JSON.parse(localStorage.getItem('af_gallery')||'[]');arr.push(lp);localStorage.setItem('af_gallery',JSON.stringify(arr));_cache.gallery.push(lp);}done++;}renderAll();toast(`✅ ${done} photo(s) uploaded!`);status.textContent='';input.value='';document.getElementById('gal-caption').value='';}
+async function savePhotoUrl(){const url=document.getElementById('gal-url').value.trim();const caption=document.getElementById('gal-caption').value.trim();if(!url){toast('Please enter a photo URL.');return;}const maxOrder=_cache.gallery.reduce((m,p)=>Math.max(m,p.sort_order||0),0);const photo={sort_order:maxOrder+1,src:url,caption};try{const{data,error}=await sb.from('gallery').insert(photo).select().single();if(error)throw error;_cache.gallery.push(data);}catch(e){const lp={...photo,id:uid(),posted:new Date().toISOString().slice(0,10)};const arr=JSON.parse(localStorage.getItem('af_gallery')||'[]');arr.push(lp);localStorage.setItem('af_gallery',JSON.stringify(arr));_cache.gallery.push(lp);}document.getElementById('gal-url').value='';document.getElementById('gal-caption').value='';renderAll();toast('✅ Photo added to gallery!');}
+async function deletePhoto(id){if(!confirm('Remove this photo?'))return;try{await sb.from('gallery').delete().eq('id',id);}catch(e){}_cache.gallery=_cache.gallery.filter(p=>p.id!==id);try{const arr=JSON.parse(localStorage.getItem('af_gallery')||'[]');localStorage.setItem('af_gallery',JSON.stringify(arr.filter(p=>p.id!==id)));}catch(e){}renderAll();toast('Photo removed.');}
+async function movePhoto(id,dir){const g=[..._cache.gallery];const i=g.findIndex(p=>p.id===id);if(i<0)return;const j=i+dir;if(j<0||j>=g.length)return;[g[i].sort_order,g[j].sort_order]=[g[j].sort_order,g[i].sort_order];[g[i],g[j]]=[g[j],g[i]];_cache.gallery=g;try{await Promise.all([sb.from('gallery').update({sort_order:g[i].sort_order}).eq('id',g[i].id),sb.from('gallery').update({sort_order:g[j].sort_order}).eq('id',g[j].id)]);}catch(e){}renderAll();}
+function renderGalleryAdmin(){const photos=getGallery();const el=document.getElementById('gallery-list');if(!photos.length){el.innerHTML='<div class="empty-state"><div class="ei">🖼️</div><p>No photos yet. Upload or add a URL above.<br><small>The first 6 photos appear in the website gallery.</small></p></div>';return;}el.innerHTML=photos.map((p,i)=>`<div class="gal-list-item"><img class="gl-thumb" src="${p.src||''}" alt="${p.caption||''}" onerror="this.style.background='#eee';this.alt='?'"/><div class="gl-info"><div class="gl-cap">${p.caption||'(no caption)'}</div><div class="gl-meta">Position: ${i+1} of ${photos.length} · ${p.posted||''} ${i<6?'· <span style="color:#16a34a;font-weight:600">Visible on website</span>':'· <span style="color:#888">Hidden (past 6th)</span>'}</div></div><div class="post-actions">${i>0?`<button class="btn btn-sm btn-ghost" onclick="movePhoto('${p.id}',-1)" title="Move up">↑</button>`:''}${i<photos.length-1?`<button class="btn btn-sm btn-ghost" onclick="movePhoto('${p.id}',1)" title="Move down">↓</button>`:''}<button class="btn btn-sm btn-danger" onclick="deletePhoto('${p.id}')">Remove</button></div></div>`).join('');}
 
-  const item={
-    title_en:   te,
-    title_zh:   document.getElementById('n-title-zh').value.trim()||null,
-    category:   document.getElementById('n-cat').value,
-    event_date: document.getElementById('n-date').value||null,
-    content:    document.getElementById('n-content').value.trim()||null,
-    content_zh: document.getElementById('n-content-zh').value.trim()||null,
-    link:       document.getElementById('n-link').value.trim()||null,
-    image_path: imagePath,
-  };
-  try {
-    const {data,error}=await sb.from('posts').insert(item).select().single();
-    if(error) throw error;
-    _cache.news.unshift(data);
-  } catch(err) {
-    const litem={...item,id:uid(),titleEn:item.title_en,titleZh:item.title_zh,
-      cat:item.category,content:item.content,contentZh:item.content_zh,
-      posted:new Date().toISOString().slice(0,10)};
-    const arr=JSON.parse(localStorage.getItem('af_news')||'[]');
-    arr.unshift(litem); localStorage.setItem('af_news',JSON.stringify(arr));
-    _cache.news.unshift(litem);
-  }
-  clearNewsForm(); statusEl.textContent=''; renderAll(); toast('✅ News / Event published!');
-}
-function clearNewsForm(){
-  ['n-title-en','n-title-zh','n-date','n-content','n-content-zh','n-link'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('n-cat').value='Event';
-}
-async function deleteNews(id){
-  if(!confirm('Delete this item?'))return;
-  try { await sb.from('posts').delete().eq('id',id); } catch(e){}
-  _cache.news=_cache.news.filter(n=>n.id!==id);
-  try { const arr=JSON.parse(localStorage.getItem('af_news')||'[]'); localStorage.setItem('af_news',JSON.stringify(arr.filter(n=>n.id!==id))); } catch(e){}
-  renderAll(); toast('Deleted.');
-}
-function openEditNews(id){
-  const n=getNews().find(x=>x.id===id); if(!n)return;
-  document.getElementById('en-id').value=n.id;
-  document.getElementById('en-title-en').value=n.title_en||n.titleEn||'';
-  document.getElementById('en-title-zh').value=n.title_zh||n.titleZh||'';
-  document.getElementById('en-cat').value=n.category||n.cat||'Event';
-  document.getElementById('en-date').value=n.event_date||n.date||'';
-  document.getElementById('en-content').value=n.content||'';
-  document.getElementById('en-content-zh').value=n.content_zh||n.contentZh||'';
-  document.getElementById('en-link').value=n.link||'';
-  document.getElementById('news-modal').classList.add('open');
-}
-async function updateNews(){
-  const id=document.getElementById('en-id').value;
-  const upd={
-    title_en:   document.getElementById('en-title-en').value.trim(),
-    title_zh:   document.getElementById('en-title-zh').value.trim()||null,
-    category:   document.getElementById('en-cat').value,
-    event_date: document.getElementById('en-date').value||null,
-    content:    document.getElementById('en-content').value.trim()||null,
-    content_zh: document.getElementById('en-content-zh').value.trim()||null,
-    link:       document.getElementById('en-link').value.trim()||null,
-  };
-  try { await sb.from('posts').update(upd).eq('id',id); } catch(e){}
-  const i=_cache.news.findIndex(n=>n.id===id);
-  if(i>=0) _cache.news[i]={..._cache.news[i],...upd,
-    titleEn:upd.title_en,titleZh:upd.title_zh,cat:upd.category,contentZh:upd.content_zh};
-  try {
-    const arr=JSON.parse(localStorage.getItem('af_news')||'[]');
-    const li=arr.findIndex(n=>n.id===id);
-    if(li>=0){arr[li]={...arr[li],...upd};localStorage.setItem('af_news',JSON.stringify(arr));}
-  } catch(e){}
-  closeModal('news-modal'); renderAll(); toast('✅ Updated!');
-}
-function renderNews(){
-  const news=getNews();
-  const el=document.getElementById('news-list');
-  if(!news.length){
-    el.innerHTML='<div class="empty-state"><div class="ei">📰</div><p>No news or events yet.</p></div>'; return;
-  }
-  el.innerHTML=news.map(n=>{
-    const en=n.title_en||n.titleEn||''; const zh=n.title_zh||n.titleZh||'';
-    const cat=n.category||n.cat||'News'; const dt=n.event_date||n.date||'';
-    return `
-    <div class="post-item">
-      <span class="post-badge">${cat}</span>
-      <div class="post-info">
-        <div class="post-title">${en}${zh?' · '+zh:''}</div>
-        <div class="post-meta">${dt?'📅 '+dt+' · ':''}Posted: ${n.posted||''}</div>
-      </div>
-      <div class="post-actions">
-        <button class="btn btn-sm btn-edit" onclick="openEditNews('${n.id}')">Edit</button>
-        <button class="btn btn-sm btn-danger" onclick="deleteNews('${n.id}')">Delete</button>
-      </div>
-    </div>`}).join('');
-}
-
-/* ── GALLERY ── */
-async function handleFileUpload(input){
-  const files = Array.from(input.files);
-  const status = document.getElementById('gal-upload-status');
-  if(!files.length) return;
-  status.textContent = `Uploading ${files.length} photo(s)…`;
-  let done=0;
-  for(const file of files){
-    if(file.size > 8*1024*1024){ toast(`"${file.name}" over 8 MB — skipped.`); done++; continue; }
-    const caption = document.getElementById('gal-caption').value.trim() || file.name.replace(/\.[^.]+$/,'');
-    let src = null;
-    const path = await sbUploadFile('gallery-images', file, 'gallery');
-    if(path) src = sbPublicUrl('gallery-images', path);
-    if(!src){
-      /* Fallback: base64 for localStorage */
-      src = await new Promise(res=>{ const r=new FileReader(); r.onload=e=>res(e.target.result); r.readAsDataURL(file); });
-    }
-    const maxOrder = _cache.gallery.reduce((m,p)=>Math.max(m,p.sort_order||0),0);
-    const photo={sort_order:maxOrder+1,src,caption};
-    try {
-      const {data,error}=await sb.from('gallery').insert(photo).select().single();
-      if(error) throw error;
-      _cache.gallery.push(data);
-    } catch(e){
-      const lp={...photo,id:uid(),posted:new Date().toISOString().slice(0,10)};
-      const arr=JSON.parse(localStorage.getItem('af_gallery')||'[]');
-      arr.push(lp); localStorage.setItem('af_gallery',JSON.stringify(arr));
-      _cache.gallery.push(lp);
-    }
-    done++;
-  }
-  renderAll(); toast(`✅ ${done} photo(s) uploaded!`);
-  status.textContent=''; input.value='';
-  document.getElementById('gal-caption').value='';
-}
-
-async function savePhotoUrl(){
-  const url = document.getElementById('gal-url').value.trim();
-  const caption = document.getElementById('gal-caption').value.trim();
-  if(!url){ toast('Please enter a photo URL.'); return; }
-  const maxOrder = _cache.gallery.reduce((m,p)=>Math.max(m,p.sort_order||0),0);
-  const photo={sort_order:maxOrder+1,src:url,caption};
-  try {
-    const {data,error}=await sb.from('gallery').insert(photo).select().single();
-    if(error) throw error;
-    _cache.gallery.push(data);
-  } catch(e){
-    const lp={...photo,id:uid(),posted:new Date().toISOString().slice(0,10)};
-    const arr=JSON.parse(localStorage.getItem('af_gallery')||'[]');
-    arr.push(lp); localStorage.setItem('af_gallery',JSON.stringify(arr));
-    _cache.gallery.push(lp);
-  }
-  document.getElementById('gal-url').value='';
-  document.getElementById('gal-caption').value='';
-  renderAll(); toast('✅ Photo added to gallery!');
-}
-
-async function deletePhoto(id){
-  if(!confirm('Remove this photo?'))return;
-  try { await sb.from('gallery').delete().eq('id',id); } catch(e){}
-  _cache.gallery=_cache.gallery.filter(p=>p.id!==id);
-  try { const arr=JSON.parse(localStorage.getItem('af_gallery')||'[]'); localStorage.setItem('af_gallery',JSON.stringify(arr.filter(p=>p.id!==id))); } catch(e){}
-  renderAll(); toast('Photo removed.');
-}
-
-async function movePhoto(id, dir){
-  const g=[..._cache.gallery];
-  const i=g.findIndex(p=>p.id===id); if(i<0)return;
-  const j=i+dir; if(j<0||j>=g.length)return;
-  [g[i].sort_order,g[j].sort_order]=[g[j].sort_order,g[i].sort_order];
-  [g[i],g[j]]=[g[j],g[i]];
-  _cache.gallery=g;
-  try {
-    await Promise.all([
-      sb.from('gallery').update({sort_order:g[i].sort_order}).eq('id',g[i].id),
-      sb.from('gallery').update({sort_order:g[j].sort_order}).eq('id',g[j].id)
-    ]);
-  } catch(e){}
-  renderAll();
-}
-
-function renderGalleryAdmin(){
-  const photos = getGallery();
-  const el = document.getElementById('gallery-list');
-  if(!photos.length){
-    el.innerHTML='<div class="empty-state"><div class="ei">🖼️</div><p>No photos yet. Upload or add a URL above.<br><small>The first 6 photos appear in the website gallery.</small></p></div>';
-    return;
-  }
-  el.innerHTML = photos.map((p,i)=>`
-    <div class="gal-list-item">
-      <img class="gl-thumb" src="${p.src||''}" alt="${p.caption||''}" onerror="this.style.background='#eee';this.alt='?'"/>
-      <div class="gl-info">
-        <div class="gl-cap">${p.caption||'(no caption)'}</div>
-        <div class="gl-meta">Position: ${i+1} of ${photos.length} · ${p.posted||''} ${i<6?'· <span style="color:#16a34a;font-weight:600">Visible on website</span>':'· <span style="color:#888">Hidden (past 6th)</span>'}</div>
-      </div>
-      <div class="post-actions">
-        ${i>0?`<button class="btn btn-sm btn-ghost" onclick="movePhoto('${p.id}',-1)" title="Move up">↑</button>`:''}
-        ${i<photos.length-1?`<button class="btn btn-sm btn-ghost" onclick="movePhoto('${p.id}',1)" title="Move down">↓</button>`:''}
-        <button class="btn btn-sm btn-danger" onclick="deletePhoto('${p.id}')">Remove</button>
-      </div>
-    </div>`).join('');
-}
-
-/* ── APPLICATIONS ── */
+/* Applications */
 let _appFilter='all';
+function setAppFilter(f){_appFilter=f;document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));document.querySelector(`.filter-btn[data-filter="${f}"]`)?.classList.add('active');renderApps();}
+async function markAppsRead(){const unread=_cache.apps.filter(a=>!a.read&&(!a.status||a.status==='new'));if(!unread.length)return;_cache.apps.forEach(a=>{a.read=true;});try{await sb.from('applications').update({status:'new'}).is('status',null);}catch(e){}updateAppsBadge();}
+function updateAppsBadge(){const unread=getApps().filter(a=>!a.status||a.status==='new').length;const badge=document.getElementById('apps-nav-badge');if(unread>0){badge.textContent=unread;badge.style.display='inline-block';}else{badge.style.display='none';}}
+async function downloadCV(id){const app=getApps().find(a=>a.id==id||a.id===id);if(!app)return;if(app.cv_path){try{const{data,error}=await sb.storage.from('resumes').download(app.cv_path);if(error)throw error;const url=URL.createObjectURL(data);const link=document.createElement('a');link.href=url;link.download=app.cv_name||'CV';link.click();URL.revokeObjectURL(url);return;}catch(e){toast('Could not download — check Supabase Storage permissions.');return;}}if(app.cvData){const link=document.createElement('a');link.href=app.cvData;link.download=app.cvName||'CV';link.click();}}
+async function deleteApp(id){if(!confirm('Delete this application? This cannot be undone.'))return;try{await sb.from('applications').delete().eq('id',id);}catch(e){}_cache.apps=_cache.apps.filter(a=>a.id!=id&&a.id!==id);try{const arr=JSON.parse(localStorage.getItem('af_applications')||'[]');localStorage.setItem('af_applications',JSON.stringify(arr.filter(a=>a.id!=id)));}catch(e){}renderAll();toast('Application deleted.');}
+async function markReviewed(id){try{await sb.from('applications').update({status:'reviewed'}).eq('id',id);}catch(e){}const app=_cache.apps.find(a=>a.id==id||a.id===id);if(app){app.status='reviewed';app.read=true;renderAll();}}
+async function markNew(id){try{await sb.from('applications').update({status:'new'}).eq('id',id);}catch(e){}const app=_cache.apps.find(a=>a.id==id||a.id===id);if(app){app.status='new';renderAll();}}
+function fmtDate(iso){if(!iso)return'';try{return new Date(iso).toLocaleDateString('en-MY',{day:'numeric',month:'short',year:'numeric'});}catch(e){return iso.slice(0,10);}}
+function escHtml(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function renderApps(){const all=getApps();const search=(document.getElementById('apps-search')?.value||'').toLowerCase().trim();let list=all;if(_appFilter==='new')list=all.filter(a=>!a.status||a.status==='new');else if(_appFilter==='reviewed')list=all.filter(a=>a.status==='reviewed');if(search)list=list.filter(a=>(a.name||'').toLowerCase().includes(search)||(a.email||'').toLowerCase().includes(search)||(a.jobTitle||'').toLowerCase().includes(search));const countEl=document.getElementById('apps-count-label');if(countEl)countEl.textContent=list.length+' application'+(list.length===1?'':'s');const el=document.getElementById('apps-list');if(!list.length){el.innerHTML=`<div class="empty-state"><div class="ei">📋</div><p>${search?'No results for "'+escHtml(search)+'"':'No applications yet.'}</p></div>`;return;}el.innerHTML=list.map(a=>{const status=a.status||'new';const isNew=status==='new';const msg=a.message||'';const msgText=msg?escHtml(msg).slice(0,180)+(msg.length>180?'…':''):'';const hasCv=!!(a.cv_path||a.cvData);const initial=(a.name||'?')[0].toUpperCase();const jobTitle=a.job_title||a.jobTitle||'General';const sid=JSON.stringify(a.id);return`<div class="app-card" id="appcard-${a.id}"><div class="app-card-header"><div style="display:flex;align-items:center;gap:.75rem"><div class="app-avatar">${initial}</div><div><div class="app-card-name">${escHtml(a.name||'Unknown Applicant')}</div><div class="app-card-meta">${a.email?`<a href="mailto:${escHtml(a.email)}">${escHtml(a.email)}</a>`:''}${a.email&&a.phone?' · ':''}${a.phone?escHtml(a.phone):''}</div></div></div><div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;flex-shrink:0"><span class="${isNew?'status-new':'status-reviewed'}">${isNew?'🔵 New':'✅ Reviewed'}</span><span class="app-job-badge">${escHtml(jobTitle)}</span></div></div>${msgText?`<div class="app-card-msg">${msgText}</div>`:''}<div class="app-card-actions">${hasCv?`<button class="btn btn-sm btn-teal" onclick="downloadCV(${sid})">⬇ Download CV</button>`:`<span style="font-size:.8rem;color:var(--muted)">No CV attached</span>`}${isNew?`<button class="btn btn-sm" style="background:#dcfce7;color:#15803d;border:1px solid #bbf7d0" onclick="markReviewed(${sid})">✅ Mark Reviewed</button>`:`<button class="btn btn-sm" style="background:#f1f5f9;color:var(--muted);border:1px solid var(--border)" onclick="markNew(${sid})">↩ Mark as New</button>`}<button class="btn btn-sm btn-danger" onclick="deleteApp(${sid})">🗑 Delete</button><span class="app-date">${fmtDate(a.created_at||a.submitted)}</span></div></div>`}).join('');}
 
-function setAppFilter(f){
-  _appFilter = f;
-  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-  document.querySelector(`.filter-btn[data-filter="${f}"]`)?.classList.add('active');
-  renderApps();
-}
+/* Stats + Recent */
+function renderStats(){document.getElementById('stat-jobs').textContent=getJobs().length;document.getElementById('stat-news').textContent=getNews().length;document.getElementById('stat-gallery').textContent=getGallery().length;document.getElementById('stat-apps').textContent=getApps().length;updateAppsBadge();}
+function renderRecent(){const all=[...getJobs().map(j=>({type:'Job',title:(j.title_en||j.titleEn||'')+(j.title_zh||j.titleZh?' / '+(j.title_zh||j.titleZh):''),date:j.posted||''})),...getNews().map(n=>({type:n.category||n.cat||'News',title:n.title_en||n.titleEn||'',date:n.posted||''})),...getGallery().map(p=>({type:'Photo',title:p.caption||'Gallery Photo',date:p.posted||''})),...getApps().map(a=>({type:'Application',title:(a.name||'Applicant')+' — '+(a.job_title||a.jobTitle||'General'),date:(a.created_at||a.submitted||'').slice(0,10)}))].sort((a,b)=>(b.date||'').localeCompare(a.date||'')).slice(0,8);const el=document.getElementById('recent-list');if(!all.length){el.innerHTML='<p style="color:var(--muted);font-size:.9rem">No posts yet.</p>';return;}el.innerHTML='<div class="posts-list">'+all.map(a=>`<div class="post-item"><span class="post-badge">${a.type}</span><div class="post-info"><div class="post-title">${escHtml(a.title)}</div><div class="post-meta">${a.date}</div></div></div>`).join('')+'</div>';}
+function renderAll(){renderStats();renderJobs();renderNews();renderGalleryAdmin();renderApps();renderRecent();}
 
-async function markAppsRead(){
-  const unread = _cache.apps.filter(a=>!a.read&&(!a.status||a.status==='new'));
-  if(!unread.length) return;
-  _cache.apps.forEach(a=>{ a.read=true; });
-  try { await sb.from('applications').update({status:'new'}).is('status',null); } catch(e){}
-  updateAppsBadge();
-}
+/* Modal */
+function closeModal(id){document.getElementById(id).classList.remove('open');}
+document.querySelectorAll('.modal-bg').forEach(m=>{m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open');});});
 
-function updateAppsBadge(){
-  const unread = getApps().filter(a=>!a.status||a.status==='new').length;
-  const badge = document.getElementById('apps-nav-badge');
-  if(unread > 0){
-    badge.textContent = unread;
-    badge.style.display = 'inline-block';
-  } else {
-    badge.style.display = 'none';
-  }
-}
-
-async function downloadCV(id){
-  const app = getApps().find(a=>a.id==id||a.id===id);
-  if(!app) return;
-  if(app.cv_path){
-    /* Download private file from Supabase Storage */
-    try {
-      const {data,error} = await sb.storage.from('resumes').download(app.cv_path);
-      if(error) throw error;
-      const url = URL.createObjectURL(data);
-      const link = document.createElement('a');
-      link.href = url; link.download = app.cv_name||'CV';
-      link.click(); URL.revokeObjectURL(url);
-      return;
-    } catch(e){ toast('Could not download — check Supabase Storage permissions.'); return; }
-  }
-  if(app.cvData){
-    const link=document.createElement('a');
-    link.href=app.cvData; link.download=app.cvName||'CV'; link.click();
-  }
-}
-
-async function deleteApp(id){
-  if(!confirm('Delete this application? This cannot be undone.')) return;
-  try { await sb.from('applications').delete().eq('id',id); } catch(e){}
-  _cache.apps=_cache.apps.filter(a=>a.id!=id&&a.id!==id);
-  try { const arr=JSON.parse(localStorage.getItem('af_applications')||'[]'); localStorage.setItem('af_applications',JSON.stringify(arr.filter(a=>a.id!=id))); } catch(e){}
-  renderAll(); toast('Application deleted.');
-}
-
-async function markReviewed(id){
-  try { await sb.from('applications').update({status:'reviewed'}).eq('id',id); } catch(e){}
-  const app=_cache.apps.find(a=>a.id==id||a.id===id);
-  if(app){ app.status='reviewed'; app.read=true; renderAll(); }
-}
-
-async function markNew(id){
-  try { await sb.from('applications').update({status:'new'}).eq('id',id); } catch(e){}
-  const app=_cache.apps.find(a=>a.id==id||a.id===id);
-  if(app){ app.status='new'; renderAll(); }
-}
-
-function fmtDate(iso){
-  if(!iso) return '';
-  try{
-    return new Date(iso).toLocaleDateString('en-MY',{day:'numeric',month:'short',year:'numeric'});
-  } catch(e){ return iso.slice(0,10); }
-}
-
-function escHtml(s){
-  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
-function renderApps(){
-  const all = getApps();
-  const search = (document.getElementById('apps-search')?.value||'').toLowerCase().trim();
-  let list = all;
-  if(_appFilter==='new') list = all.filter(a=>!a.status||a.status==='new');
-  else if(_appFilter==='reviewed') list = all.filter(a=>a.status==='reviewed');
-  if(search) list = list.filter(a=>
-    (a.name||'').toLowerCase().includes(search)||
-    (a.email||'').toLowerCase().includes(search)||
-    (a.jobTitle||'').toLowerCase().includes(search)
-  );
-  const countEl = document.getElementById('apps-count-label');
-  if(countEl) countEl.textContent = list.length + ' application' + (list.length===1?'':'s');
-  const el = document.getElementById('apps-list');
-  if(!list.length){
-    el.innerHTML=`<div class="empty-state"><div class="ei">📋</div><p>${search?'No results for "'+escHtml(search)+'"':'No applications yet.'}</p></div>`;
-    return;
-  }
-  el.innerHTML = list.map(a=>{
-    const status = a.status||'new';
-    const isNew = status==='new';
-    const msg = a.message||'';
-    const msgText = msg?escHtml(msg).slice(0,180)+(msg.length>180?'…':''):'';
-    const hasCv = !!(a.cv_path||a.cvData);
-    const initial = (a.name||'?')[0].toUpperCase();
-    const jobTitle = a.job_title||a.jobTitle||'General';
-    const sid = JSON.stringify(a.id);
-    return `
-    <div class="app-card" id="appcard-${a.id}">
-      <div class="app-card-header">
-        <div style="display:flex;align-items:center;gap:.75rem">
-          <div class="app-avatar">${initial}</div>
-          <div>
-            <div class="app-card-name">${escHtml(a.name||'Unknown Applicant')}</div>
-            <div class="app-card-meta">
-              ${a.email?`<a href="mailto:${escHtml(a.email)}">${escHtml(a.email)}</a>`:''}
-              ${a.email&&a.phone?' · ':''}
-              ${a.phone?escHtml(a.phone):''}
-            </div>
-          </div>
-        </div>
-        <div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;flex-shrink:0">
-          <span class="${isNew?'status-new':'status-reviewed'}">${isNew?'🔵 New':'✅ Reviewed'}</span>
-          <span class="app-job-badge">${escHtml(jobTitle)}</span>
-        </div>
-      </div>
-      ${msgText?`<div class="app-card-msg">${msgText}</div>`:''}
-      <div class="app-card-actions">
-        ${hasCv
-          ? `<button class="btn btn-sm btn-teal" onclick="downloadCV(${sid})">⬇ Download CV</button>`
-          : `<span style="font-size:.8rem;color:var(--muted)">No CV attached</span>`}
-        ${isNew
-          ? `<button class="btn btn-sm" style="background:#dcfce7;color:#15803d;border:1px solid #bbf7d0" onclick="markReviewed(${sid})">✅ Mark Reviewed</button>`
-          : `<button class="btn btn-sm" style="background:#f1f5f9;color:var(--muted);border:1px solid var(--border)" onclick="markNew(${sid})">↩ Mark as New</button>`}
-        <button class="btn btn-sm btn-danger" onclick="deleteApp(${sid})">🗑 Delete</button>
-        <span class="app-date">${fmtDate(a.created_at||a.submitted)}</span>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-/* ── STATS + RECENT ── */
-function renderStats(){
-  document.getElementById('stat-jobs').textContent    = getJobs().length;
-  document.getElementById('stat-news').textContent    = getNews().length;
-  document.getElementById('stat-gallery').textContent = getGallery().length;
-  document.getElementById('stat-apps').textContent    = getApps().length;
-  updateAppsBadge();
-}
-
-function renderRecent(){
-  const all=[
-    ...getJobs().map(j=>({type:'Job',title:(j.title_en||j.titleEn||'')+(j.title_zh||j.titleZh?' / '+(j.title_zh||j.titleZh):''),date:j.posted||''})),
-    ...getNews().map(n=>({type:n.category||n.cat||'News',title:n.title_en||n.titleEn||'',date:n.posted||''})),
-    ...getGallery().map(p=>({type:'Photo',title:p.caption||'Gallery Photo',date:p.posted||''})),
-    ...getApps().map(a=>({type:'Application',title:(a.name||'Applicant')+' — '+(a.job_title||a.jobTitle||'General'),date:(a.created_at||a.submitted||'').slice(0,10)}))
-  ].sort((a,b)=>(b.date||'').localeCompare(a.date||'')).slice(0,8);
-  const el=document.getElementById('recent-list');
-  if(!all.length){el.innerHTML='<p style="color:var(--muted);font-size:.9rem">No posts yet.</p>';return}
-  el.innerHTML='<div class="posts-list">'+all.map(a=>`
-    <div class="post-item">
-      <span class="post-badge">${a.type}</span>
-      <div class="post-info"><div class="post-title">${escHtml(a.title)}</div><div class="post-meta">${a.date}</div></div>
-    </div>`).join('')+'</div>';
-}
-
-function renderAll(){ renderStats(); renderJobs(); renderNews(); renderGalleryAdmin(); renderApps(); renderRecent(); }
-
-/* ── MODAL ── */
-function closeModal(id){ document.getElementById(id).classList.remove('open') }
-document.querySelectorAll('.modal-bg').forEach(m=>{
-  m.addEventListener('click',e=>{ if(e.target===m) m.classList.remove('open') });
-});
-
-/* ── DRAG ON UPLOAD ZONE ── */
-const uz = document.getElementById('upload-zone');
-uz.addEventListener('dragover',e=>{e.preventDefault();uz.classList.add('drag')});
+/* Drag on upload zone */
+const uz=document.getElementById('upload-zone');
+uz.addEventListener('dragover',e=>{e.preventDefault();uz.classList.add('drag');});
 uz.addEventListener('dragleave',()=>uz.classList.remove('drag'));
-uz.addEventListener('drop',e=>{
-  e.preventDefault(); uz.classList.remove('drag');
-  const fi = document.getElementById('gal-file');
-  fi.files = e.dataTransfer.files;
-  handleFileUpload(fi);
-});
+uz.addEventListener('drop',e=>{e.preventDefault();uz.classList.remove('drag');const fi=document.getElementById('gal-file');fi.files=e.dataTransfer.files;handleFileUpload(fi);});
 
-/* ── INIT ── */
-async function initApp(){
-  toast('Loading data…');
-  await fetchAll();
-  renderAll();
-}
-
-function showAdminApp(){
-  document.getElementById('login-screen').style.display='none';
-  const app=document.getElementById('admin-app');
-  app.style.display='flex'; app.style.flexDirection='column';
-  initApp();
-}
-
-if(sessionStorage.getItem('af_admin')==='1') showAdminApp();
+/* Init */
+async function initApp(){toast('Loading data…');await fetchAll();renderAll();}
+function showAdminApp(){document.getElementById('login-screen').style.display='none';const app=document.getElementById('admin-app');app.style.display='flex';app.style.flexDirection='column';initApp();}
+if(sessionStorage.getItem('af_admin')==='1')showAdminApp();
 </script>
 </body>
 </html>
