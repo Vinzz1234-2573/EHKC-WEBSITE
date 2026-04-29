@@ -657,7 +657,7 @@ async function submitApplication(e){
     closeApplyModal();
     showToast('✓ Application submitted! We will be in touch soon.');
   } catch(err) {
-    console.error(err);
+    console.error('[DB] submitApplication:', err);
     try {
       const apps = JSON.parse(localStorage.getItem('af_applications') || '[]');
       apps.unshift({
@@ -667,7 +667,7 @@ async function submitApplication(e){
       });
       localStorage.setItem('af_applications', JSON.stringify(apps));
       closeApplyModal();
-      showToast('✓ Application submitted!');
+      showToast('Application received — we will be in touch shortly.');
     } catch(e2) {
       showToast('Submission failed. Please try WhatsApp instead.');
       btn.disabled = false;
