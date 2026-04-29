@@ -23,22 +23,8 @@
 }
 body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh}
 
-/* Login */
-#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(135deg,var(--teal-900) 0%,var(--teal-800) 40%,var(--teal-700) 100%);padding:1.5rem}
-.login-box{background:#fff;border-radius:18px;padding:2.8rem 2.4rem;width:100%;max-width:400px;box-shadow:0 20px 60px rgba(0,0,0,.3);text-align:center}
-.login-logo{height:64px;width:auto;margin:0 auto 1.4rem;display:block}
-.login-box h1{font-size:1.4rem;color:var(--teal-800);margin-bottom:.3rem}
-.login-box p{font-size:.88rem;color:var(--muted);margin-bottom:1.8rem}
-.form-group{margin-bottom:1.2rem;text-align:left}
-.form-group label{display:block;font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.38rem}
-.form-group input{width:100%;padding:.72rem 1rem;border:1.5px solid var(--border);border-radius:8px;font-size:.95rem;font-family:var(--sans);outline:none;transition:border-color .2s}
-.form-group input:focus{border-color:var(--teal-700)}
-.login-btn{width:100%;padding:.8rem;background:var(--teal-700);color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:700;font-family:var(--sans);cursor:pointer;transition:background .2s;margin-top:.4rem}
-.login-btn:hover{background:var(--teal-800)}
-.login-err{color:#c00;font-size:.84rem;margin-top:.8rem;display:none}
-
 /* Admin Layout */
-#admin-app{display:none;min-height:100vh;flex-direction:column}
+#admin-app{display:flex;min-height:100vh;flex-direction:column}
 .admin-header{background:linear-gradient(90deg,var(--teal-900),var(--teal-700));color:#fff;padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.2)}
 .admin-header .brand{display:flex;align-items:center;gap:.8rem}
 .admin-header img{height:48px;width:auto;display:block;object-fit:contain}
@@ -171,27 +157,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:1
 }
 </style>
 </head>
-<body>
-
-<!-- LOGIN SCREEN -->
-<div id="login-screen">
-  <div class="login-box">
-    <img src="Photo/AF_EH%20ARGB%20LOGO%20.png" alt="Amitabha Foundation" class="login-logo">
-    <h1>Admin Dashboard</h1>
-    <p>Sign in to manage jobs, events &amp; news</p>
-    <div class="form-group">
-      <label>Username</label>
-      <input type="text" id="inp-user" placeholder="admin" autocomplete="username"/>
-    </div>
-    <div class="form-group">
-      <label>Password</label>
-      <input type="password" id="inp-pass" placeholder="••••••••" autocomplete="current-password"
-             onkeydown="if(event.key==='Enter')doLogin()"/>
-    </div>
-    <button class="login-btn" onclick="doLogin()">Sign In</button>
-    <p class="login-err" id="login-err">Incorrect username or password.</p>
-  </div>
-</div>
+<body style="visibility:hidden">
 
 <!-- ADMIN APP -->
 <div id="admin-app">
@@ -419,15 +385,16 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:1
 <div id="toast"></div>
 
 <script>
-/* Auth */
-const CREDS={user:'admin',pass:'amitabha2024'};
-function doLogin(){
-  const u=document.getElementById('inp-user').value.trim();
-  const p=document.getElementById('inp-pass').value;
-  if(u===CREDS.user&&p===CREDS.pass){sessionStorage.setItem('af_admin','1');showAdminApp();}
-  else{document.getElementById('login-err').style.display='block';}
-}
-function doLogout(){sessionStorage.removeItem('af_admin');location.reload();}
+/* Auth guard */
+(async function authGuard() {
+  const { data: { session } } = await sb.auth.getSession();
+  if (!session) { location.replace('login.html'); return; }
+  const { data: profile } = await sb.from('profiles').select('role').eq('id', session.user.id).single();
+  if (!profile || profile.role !== 'admin') { location.replace('dashboard.html'); return; }
+  document.body.style.visibility = 'visible';
+  initApp();
+})();
+async function doLogout() { await sb.auth.signOut(); location.replace('login.html'); }
 
 /* Cache */
 let _cache={jobs:[],news:[],gallery:[],apps:[]};
@@ -542,8 +509,6 @@ uz.addEventListener('drop',e=>{e.preventDefault();uz.classList.remove('drag');co
 
 /* Init */
 async function initApp(){toast('Loading data…');await fetchAll();renderAll();}
-function showAdminApp(){document.getElementById('login-screen').style.display='none';const app=document.getElementById('admin-app');app.style.display='flex';app.style.flexDirection='column';initApp();}
-if(sessionStorage.getItem('af_admin')==='1')showAdminApp();
 </script>
 </body>
 </html>

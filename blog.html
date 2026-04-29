@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>News &amp; Updates — Amitabha Foundation Elder Care</title>
 <meta name="description" content="Latest news, events, announcements and fundraising updates from Amitabha Foundation Elder Care."/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="supabase-config.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
@@ -195,6 +197,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
     </nav>
     <div class="hdr-r">
       <a href="contact.html" class="btn btn-ghost"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
+      <div id="nav-auth"><a href="login.html" class="btn btn-ghost"><i class="fa fa-user"></i> Sign In</a></div>
       <a href="https://m.amitabhafoundation.my/en/donation" class="btn" style="background:#ab1a1f;color:#fff;box-shadow:0 4px 16px rgba(171,26,31,.32);border-radius:999px;padding:.62rem 1.15rem" target="_blank" rel="noopener"><i class="fa fa-heart"></i> Donate</a>
       <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
@@ -206,6 +209,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
     <a href="stories.html">Stories</a>
     <a href="contact.html">Contact</a>
     <a href="blog.html">News</a>
+    <a href="login.html" id="mob-signin"><i class="fa fa-user"></i> Sign In</a>
     <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1a1f;font-weight:700"><i class="fa fa-heart"></i> Donate</a>
   </nav>
 </header>
@@ -442,6 +446,17 @@ function escAttr(s){return String(s).replace(/"/g,'&quot;').replace(/'/g,'&#39;'
 /* Init */
 document.getElementById('footer-year').textContent=new Date().getFullYear();
 renderGrid();
+(async () => {
+  const { data: { session } } = await sb.auth.getSession();
+  if (!session) return;
+  const { data: profile } = await sb.from('profiles').select('name,role').eq('id', session.user.id).single();
+  const first = (profile?.name || session.user.email?.split('@')[0] || 'Account').split(' ')[0];
+  const dest = profile?.role === 'admin' ? 'admin.html' : 'dashboard.html';
+  const authEl = document.getElementById('nav-auth');
+  const mobEl  = document.getElementById('mob-signin');
+  if (authEl) authEl.innerHTML = `<a href="${dest}" class="btn btn-ghost"><i class="fa fa-user"></i> ${first}</a>`;
+  if (mobEl)  { mobEl.href = dest; mobEl.innerHTML = `<i class="fa fa-user"></i> ${first}`; }
+})();
 </script>
 </body>
 </html>
