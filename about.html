@@ -34,16 +34,6 @@ ul{list-style:none}
 button{font-family:inherit;cursor:pointer;border:none;background:none}
 
 /* Topbar */
-.topbar{background:#fff;color:#000}
-.topbar-in{max-width:var(--max);margin:auto;padding:.5rem 1.5rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;color:red}
-.topbar-l{display:flex;gap:1.4rem;align-items:center;font-size:.74rem;font-weight:500}
-.topbar-l span{display:inline-flex;align-items:center;gap:.4rem}
-.topbar-l i{color:var(--teal-700);font-size:.7rem}
-.topbar-l a{color:red}
-.topbar-r{display:flex;align-items:center;gap:.6rem}
-.topbar-r a{width:24px;height:24px;border-radius:6px;border:1px solid rgba(196,122,74,.3);display:inline-flex;align-items:center;justify-content:center;color:var(--teal-700);font-size:.78rem;transition:all var(--t)}
-.topbar-r a:hover{background:var(--teal-700);color:#fff;border-color:var(--teal-700)}
-
 /* Header */
 header{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.86);backdrop-filter:saturate(160%) blur(18px);-webkit-backdrop-filter:saturate(160%) blur(18px);border-bottom:1px solid var(--line);transition:box-shadow var(--t),background var(--t)}
 header.scrolled{background:rgba(255,255,255,.96);box-shadow:0 2px 18px rgba(10,40,45,.06)}
@@ -159,9 +149,9 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
 .float-bar{position:fixed;bottom:1.6rem;left:50%;transform:translateX(-50%);z-index:999;display:flex;gap:.65rem;align-items:center}
 .float-wa{display:inline-flex;align-items:center;gap:.5rem;padding:.78rem 1.55rem;border-radius:999px;font-weight:700;font-size:.92rem;font-family:var(--sans);white-space:nowrap;transition:all var(--t);background:#25d366;color:#fff;box-shadow:0 6px 24px rgba(37,211,102,.42);text-decoration:none}
 .float-wa:hover{background:#1ebe5a;transform:translateY(-3px);box-shadow:0 10px 30px rgba(37,211,102,.58)}
-.float-donate{display:inline-flex;align-items:center;gap:.5rem;padding:.78rem 1.55rem;border-radius:999px;font-weight:700;font-size:.92rem;font-family:var(--sans);white-space:nowrap;transition:all var(--t);background:#ab1a1f;color:#fff;box-shadow:0 6px 24px rgba(171,26,31,.4);animation:donatePulse 2.8s ease-in-out infinite;text-decoration:none}
+.float-donate{display:inline-flex;align-items:center;gap:.5rem;padding:.78rem 1.55rem;border-radius:999px;font-weight:700;font-size:.92rem;font-family:var(--sans);white-space:nowrap;transition:all var(--t);background:linear-gradient(135deg,#c52525,#ab1a1f);color:#fff;box-shadow:0 6px 28px rgba(171,26,31,.6),0 0 18px rgba(171,26,31,.35);animation:donatePulse 2.8s ease-in-out infinite;text-decoration:none}
 .float-donate:hover{background:#8f1419;transform:translateY(-3px);box-shadow:0 10px 30px rgba(171,26,31,.55);animation-play-state:paused}
-@keyframes donatePulse{0%,100%{box-shadow:0 6px 24px rgba(171,26,31,.4)}50%{box-shadow:0 6px 24px rgba(171,26,31,.4),0 0 0 9px rgba(171,26,31,.12)}}
+@keyframes donatePulse{0%,100%{box-shadow:0 6px 28px rgba(171,26,31,.6),0 0 16px rgba(171,26,31,.4),0 0 0 0 rgba(171,26,31,.0)}50%{box-shadow:0 8px 36px rgba(171,26,31,.8),0 0 40px rgba(171,26,31,.55),0 0 0 10px rgba(171,26,31,.12)}}
 @media(max-width:640px){.float-bar{left:auto;right:1.2rem;transform:none;bottom:1.4rem;flex-direction:column;gap:.5rem}.float-wa,.float-donate{width:52px;height:52px;padding:0;border-radius:50%;justify-content:center;font-size:1.35rem}.float-wa .fl-label,.float-donate .fl-label{display:none}}
 
 /* AOS */
@@ -186,24 +176,15 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
   .foot-top{grid-template-columns:1fr}
   .mission-strip{padding:2rem 1.2rem}
 }
-</style>
+@media(max-width:480px){
+  .sec{padding:2.5rem 0}
+  .wrap{padding:0 1.1rem}
+  .cta-btns>*{width:100%;justify-content:center}
+  h2.section-h{font-size:clamp(1.5rem,6vw,2rem)}
+  .btn-lg{padding:.75rem 1.3rem;font-size:.88rem}
+}</style>
 </head>
 <body>
-
-<!-- TOP STRIP -->
-<div class="topbar" style="background-color:#fff;color:#000">
-  <div class="topbar-in" style="color:red">
-    <div class="topbar-l">
-      <span><i class="fa fa-phone"></i><a href="tel:+60378903700">+603-7890 3700</a></span>
-      <span><i class="fa fa-location-dot"></i>A14, Jalan Rukun 7, Taman Gembira, KL</span>
-    </div>
-    <div class="topbar-r">
-      <a href="https://www.facebook.com/profile.php?id=61578688747686" title="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://www.instagram.com/amitabhafoundation" title="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.youtube.com/@amitabhafoundation" title="YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
-    </div>
-  </div>
-</div>
 
 <!-- HEADER -->
 <header id="hdr">
@@ -378,7 +359,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
 
 <div class="float-bar">
   <a class="float-wa" href="https://wa.me/60127762911" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> <span class="fl-label">WhatsApp</span></a>
-  <a class="float-donate" href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener"><img src="Photo/Donation%20Logo%20.png" alt="" style="height:1.2em;width:auto;display:block;filter:brightness(0) invert(1)"> <span class="fl-label">Donate Now</span></a>
+  <a class="float-donate" href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener"><img src="Photo/Donation%20Logo%20.png" alt="" style="height:1.2em;width:auto;display:block;filter:brightness(0) invert(1) drop-shadow(0 0 5px rgba(255,255,255,.65))"> <span class="fl-label">Donate Now</span></a>
 </div>
 
 <script>
