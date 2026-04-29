@@ -22,7 +22,7 @@
   --shadow-sm:0 1px 2px rgba(10,40,45,.04),0 2px 8px rgba(10,40,45,.04);
   --shadow:0 4px 16px rgba(10,40,45,.06),0 18px 48px rgba(10,40,45,.06);
   --t:.32s cubic-bezier(.4,0,.2,1);
-  --max:1240px;--header-h:96px;
+  --max:1240px;--header-h:72px;
   --sans:"Plus Jakarta Sans",system-ui,sans-serif;
   --serif:"Newsreader",Georgia,serif;
 }
@@ -49,7 +49,7 @@ header{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.86);backdro
 header.scrolled{background:rgba(255,255,255,.96);box-shadow:0 2px 18px rgba(10,40,45,.06)}
 .hdr{max-width:var(--max);margin:auto;padding:0 1.5rem;height:var(--header-h);display:flex;align-items:center;justify-content:space-between;gap:1.2rem}
 .brand{display:flex;align-items:center;gap:.7rem}
-.brand img{height:85px;display:block;object-fit:contain;filter:hue-rotate(28deg) saturate(60%) brightness(135%)}
+.brand img{height:54px;width:auto;display:block;object-fit:contain}
 .nav{display:flex;gap:.1rem;align-items:center}
 .nav a{font-size:.86rem;font-weight:500;color:var(--ink-700);padding:.5rem .85rem;border-radius:8px;transition:color .3s,background .3s}
 .nav a.on{color:#ab1a1f}
@@ -140,7 +140,7 @@ header.scrolled{background:rgba(255,255,255,.96);box-shadow:0 2px 18px rgba(10,4
 /* Footer */
 footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
 .foot-top{max-width:var(--max);margin:auto;padding:4rem 1.5rem 2.6rem;display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:3rem}
-.foot-brand img{height:78px;margin-bottom:1.2rem;display:block;background:#fff;padding:.7rem .9rem;border-radius:10px;object-fit:contain;filter:hue-rotate(28deg) saturate(60%) brightness(135%)}
+.foot-brand img{height:44px;width:auto;margin-bottom:1.2rem;display:block;object-fit:contain}
 .foot-brand p{font-size:.86rem;line-height:1.65;color:rgba(255,255,255,.5);max-width:320px;margin-bottom:1.2rem}
 .foot-soc{display:flex;gap:.4rem}
 .foot-soc a{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);font-size:.8rem;transition:all var(--t)}
@@ -203,7 +203,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
 <header id="hdr">
   <div class="hdr">
     <a href="index.html" class="brand">
-      <img src="Photo/AF%20CH%20LOGOpng.png" alt="Amitabha Foundation Elder Home">
+      <img src="Photo/AF_EH%20ARGB%20LOGO%20.png" alt="Amitabha Foundation Elder Home">
     </a>
     <nav class="nav">
       <a href="index.html">Home</a>
@@ -332,7 +332,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
 <footer>
   <div class="foot-top">
     <div class="foot-brand">
-      <img src="Photo/AF%20CH%20LOGOpng.png" alt="Amitabha Foundation">
+      <img src="Photo/AF_EH%20ARGB%20LOGO%20.png" alt="Amitabha Foundation">
       <p>Amitabha Foundation Elder Home — 24/7 compassionate care, financial assistance, and home placement for seniors in Kuala Lumpur. Est. 2000.</p>
       <div class="foot-soc">
         <a href="https://www.facebook.com/profile.php?id=61578688747686" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>

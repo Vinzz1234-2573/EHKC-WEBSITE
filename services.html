@@ -1,246 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Our Services – Amitabha Foundation Elder Care</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Our Services – Amitabha Foundation Elder Care</title>
+<meta name="description" content="Comprehensive elder care services from Amitabha Foundation: financial assistance, home placement, and collaborative partner network in Kuala Lumpur.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --red:#9aaa6d;--red-d:#6b7a4a;--red-l:#b8c98a;
-  --red-t:#f5f7ee;--red-t2:#eaeed8;
-  --gold:#c9a84c;--gold-l:#f0d98c;
-  --text:#111;--mid:#444;--soft:#888;--border:#ebebeb;
-  --off:#fafafa;--cream:#fdf9f5;
-  --r:16px;--r2:24px;
-  --sh:0 4px 24px rgba(0,0,0,.07);
-  --sh2:0 12px 48px rgba(154,170,109,.12);
-  --t:.28s cubic-bezier(.4,0,.2,1);
+  --teal-900:#1a242f;
+  --teal-800:#2c3e50;
+  --teal-700:#c47a4a;
+  --teal-600:#d68d5b;
+  --teal-500:#e3a681;
+  --teal-400:#eec4a3;
+  --teal-100:#f9e6d4;
+  --teal-50:#fdf2e8;
+  --teal-t:rgba(196,122,74,.13);
+  --gold:#daa520;
+  --gold-l:#f0c75e;
+  --ink-900:#0c1a1c;
+  --ink-700:#1f3034;
+  --ink-500:#4d6065;
+  --ink-300:#9aa9ae;
+  --line:#e3ecee;
+  --bg:#fffbf2;
+  --cream:#fdf2e8;
+  --r:14px;--r-lg:22px;
+  --shadow:0 4px 16px rgba(10,40,45,.06),0 18px 48px rgba(10,40,45,.06);
+  --t:.32s cubic-bezier(.4,.0,.2,1);
+  --max:1240px;
+  --header-h:72px;
+  --sans:"Plus Jakarta Sans",system-ui,sans-serif;
+  --serif:"Newsreader",Georgia,serif;
 }
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;color:var(--text);background:#fff;line-height:1.75;overflow-x:hidden}
-a{text-decoration:none;color:inherit}
-ul{list-style:none}
+body{font-family:var(--sans);color:var(--ink-700);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
 
-@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
-@keyframes bounce-wa{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@keyframes pulse-red{0%,100%{box-shadow:0 3px 12px rgba(154,170,109,.3)}50%{box-shadow:0 3px 20px rgba(154,170,109,.55),0 0 0 6px rgba(154,170,109,.08)}}
-
-/* ANNOUNCE */
-.announce{background:var(--red-d);color:rgba(255,255,255,.85);font-size:.78rem;font-weight:500;padding:.42rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-.ann-l{display:flex;gap:1.5rem;align-items:center}
-.ann-l span{display:flex;align-items:center;gap:.38rem}
-.ann-l i{color:var(--gold-l);font-size:.8rem}
-.ann-l a{color:rgba(255,255,255,.85);transition:color var(--t)}
-.ann-l a:hover{color:var(--gold-l)}
-.ann-r{display:flex;align-items:center;gap:.9rem}
-.a-social{display:flex;gap:.45rem}
-.a-social a{color:rgba(255,255,255,.6);width:24px;height:24px;border-radius:5px;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:.78rem;transition:all var(--t)}
-.a-social a:hover{color:var(--red-d);background:var(--gold-l);border-color:var(--gold-l)}
+/* TOPBAR */
+.topbar{background:#fff;color:#000;font-size:.74rem;font-weight:500;border-bottom:1px solid var(--line)}
+.topbar-in{max-width:var(--max);margin:auto;padding:.45rem 1.5rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;color:red}
+.topbar-l{display:flex;gap:1.4rem;align-items:center}
+.topbar-l span{display:inline-flex;align-items:center;gap:.4rem}
+.topbar-l i{font-size:.7rem}
+.topbar-l a:hover{opacity:.8}
+.topbar-r{display:flex;align-items:center;gap:.5rem}
+.topbar-r a{width:24px;height:24px;border-radius:6px;border:1px solid rgba(0,0,0,.12);display:inline-flex;align-items:center;justify-content:center;color:red;font-size:.73rem;transition:all var(--t)}
+.topbar-r a:hover{background:var(--teal-700);color:#fff;border-color:var(--teal-700)}
 
 /* HEADER */
-header{position:sticky;top:0;z-index:300;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(154,170,109,.08);box-shadow:0 2px 20px rgba(154,170,109,.08)}
-.hdr{max-width:1260px;margin:auto;padding:0 1.5rem;height:64px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.logo-link{display:flex;align-items:center;flex-shrink:0}
-.logo-link img{height:40px;width:auto}
-.nav{display:flex;gap:.04rem;align-items:center}
-.nav a{font-size:.82rem;font-weight:500;color:var(--mid);padding:.4rem .65rem;border-radius:8px;transition:all var(--t);white-space:nowrap}
-.nav a:hover,.nav a.on{color:var(--red);background:var(--red-t)}
-.hdr-r{display:flex;align-items:center;gap:.55rem}
-.btn-seek{padding:.42rem .95rem;border:1.5px solid rgba(154,170,109,.28);border-radius:50px;font-size:.79rem;font-weight:600;color:var(--red);transition:all var(--t);white-space:nowrap}
-.btn-seek:hover{background:var(--red-t)}
-.btn-wa-hdr{padding:.44rem 1rem;background:#25d366;color:#fff;border-radius:50px;font-size:.79rem;font-weight:700;display:flex;align-items:center;gap:.32rem;box-shadow:0 3px 12px rgba(37,211,102,.35);white-space:nowrap;transition:all var(--t)}
-.btn-wa-hdr:hover{background:#1ebe5a;transform:translateY(-1px)}
-.btn-donate{padding:.44rem 1.1rem;background:linear-gradient(135deg,var(--red),var(--red-d));color:#fff;border-radius:50px;font-size:.79rem;font-weight:700;display:flex;align-items:center;gap:.32rem;animation:pulse-red 2.8s ease-in-out infinite;white-space:nowrap;transition:all var(--t)}
-.btn-donate:hover{transform:translateY(-2px);box-shadow:0 7px 20px rgba(154,170,109,.42);animation:none}
-.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.5rem;flex-shrink:0}
-.burger span{display:block;width:22px;height:2px;background:var(--red);border-radius:2px;transition:all var(--t)}
+header{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.92);backdrop-filter:saturate(160%) blur(18px);-webkit-backdrop-filter:saturate(160%) blur(18px);border-bottom:1px solid var(--line);transition:box-shadow var(--t),background var(--t)}
+header.scrolled{background:rgba(255,255,255,.98);box-shadow:0 2px 18px rgba(10,40,45,.06)}
+.hdr{max-width:var(--max);margin:auto;padding:0 1.5rem;height:var(--header-h);display:flex;align-items:center;justify-content:space-between;gap:1.2rem}
+.brand{display:flex;align-items:center;flex-shrink:0}
+.brand img{height:54px;width:auto;display:block;object-fit:contain}
+.nav{display:flex;gap:.05rem;align-items:center}
+.nav a{font-size:.86rem;font-weight:500;color:var(--ink-700);padding:.46rem .82rem;border-radius:8px;transition:color var(--t),background var(--t);white-space:nowrap}
+.nav a:hover{background:var(--teal-t);color:var(--teal-700)}
+.nav a.on{color:#ab1a1f;background:transparent}
+.nav a.on::after{content:"";display:block;width:18px;height:2px;border-radius:2px;background:#ab1a1f;margin:2px auto -4px}
+.hdr-r{display:flex;align-items:center;gap:.5rem}
+.btn{display:inline-flex;align-items:center;gap:.4rem;font-family:inherit;font-weight:600;font-size:.84rem;padding:.58rem 1.1rem;border-radius:999px;transition:all var(--t);white-space:nowrap}
+.btn-ghost{color:var(--teal-800);border:1px solid var(--line)}
+.btn-ghost:hover{background:var(--teal-t);border-color:var(--teal-700);color:var(--teal-700)}
+.btn-primary{background:var(--teal-700);color:#fff;box-shadow:0 4px 14px rgba(196,122,74,.28)}
+.btn-primary:hover{background:var(--teal-600)}
+.btn-donate{background:#ab1a1f;color:#fff;box-shadow:0 4px 14px rgba(171,26,31,.28)}
+.btn-donate:hover{background:#8f1419;transform:translateY(-1px)}
+.burger{display:none;flex-direction:column;gap:5px;padding:.5rem;cursor:pointer;flex-shrink:0}
+.burger span{width:22px;height:2px;background:var(--teal-800);border-radius:2px;transition:all var(--t)}
 .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .burger.open span:nth-child(2){opacity:0}
 .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.mob-menu{display:none;flex-direction:column;background:#fff;border-top:2px solid var(--red-t2);padding:.8rem 2rem 1.2rem}
+.mob-menu{display:none;flex-direction:column;background:#fff;border-top:1px solid var(--line);padding:.6rem 1.5rem 1.2rem}
 .mob-menu.open{display:flex}
-.mob-menu a{color:var(--mid);font-size:.93rem;font-weight:500;padding:.58rem .4rem;border-bottom:1px solid var(--border);transition:color var(--t)}
+.mob-menu a{padding:.7rem .3rem;font-size:.95rem;color:var(--ink-700);border-bottom:1px solid var(--line)}
 .mob-menu a:last-child{border-bottom:none}
-.mob-menu a:hover,.mob-menu a.on{color:var(--red)}
+.mob-menu a.on{color:#ab1a1f}
 
 /* PAGE HERO */
-.page-hero{
-  background:linear-gradient(120deg,var(--red-d) 0%,var(--red) 55%,var(--red-l) 100%);
-  padding:4.5rem 2rem 4rem;text-align:center;position:relative;overflow:hidden;
-}
-.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 50%,rgba(201,168,76,.12),transparent 50%),radial-gradient(circle at 80% 50%,rgba(255,255,255,.05),transparent 50%)}
-.page-hero-inner{position:relative;z-index:1;max-width:800px;margin:auto}
-.page-pill{display:inline-flex;align-items:center;gap:.45rem;background:rgba(201,168,76,.18);border:1px solid rgba(201,168,76,.38);color:var(--gold-l);padding:.32rem .95rem;border-radius:50px;font-size:.73rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.2rem;animation:fadeUp .6s ease both}
-.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.6rem);font-weight:700;color:#fff;line-height:1.15;margin-bottom:.8rem;animation:fadeUp .6s .1s ease both}
+.page-hero{background:linear-gradient(125deg,var(--teal-900) 0%,var(--teal-800) 42%,var(--teal-700) 100%);padding:5rem 1.5rem 4.5rem;text-align:center;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 18% 50%,rgba(218,165,32,.1),transparent 50%),radial-gradient(circle at 82% 50%,rgba(255,255,255,.04),transparent 50%)}
+.page-hero-in{position:relative;z-index:1;max-width:760px;margin:auto}
+.page-pill{display:inline-flex;align-items:center;gap:.45rem;background:rgba(218,165,32,.18);border:1px solid rgba(218,165,32,.35);color:var(--gold-l);padding:.32rem .95rem;border-radius:999px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.2rem}
+.page-hero h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.5rem);font-weight:500;color:#fff;line-height:1.14;margin-bottom:.8rem}
 .page-hero h1 em{color:var(--gold-l);font-style:italic}
-.page-hero p{font-size:1rem;color:rgba(255,255,255,.78);max-width:600px;margin:0 auto 2rem;line-height:1.8;animation:fadeUp .6s .2s ease both}
-.breadcrumb{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;color:rgba(255,255,255,.55);animation:fadeUp .6s .3s ease both}
-.breadcrumb a{color:rgba(255,255,255,.7);transition:color var(--t)}
+.page-hero p{font-size:1rem;color:rgba(255,255,255,.76);max-width:580px;margin:0 auto 2rem;line-height:1.8}
+.breadcrumb{display:inline-flex;align-items:center;gap:.5rem;font-size:.79rem;color:rgba(255,255,255,.52)}
+.breadcrumb a{color:rgba(255,255,255,.68);transition:color var(--t)}
 .breadcrumb a:hover{color:var(--gold-l)}
-.breadcrumb i{font-size:.6rem}
+.breadcrumb i{font-size:.58rem}
 
-/* SECTION HELPERS */
-.sec{padding:6rem 0}
-.sec-alt{background:var(--off)}
+/* SECTIONS */
+.sec{padding:5.5rem 0}
+.sec-alt{background:#f7f3ed}
 .sec-cream{background:var(--cream)}
-.wrap{max-width:1260px;margin:auto;padding:0 2rem}
-.tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.71rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:.7rem}
-.tag::before{content:'';display:block;width:18px;height:2px;background:var(--gold);border-radius:2px}
-.sec-h{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--text);line-height:1.2;margin-bottom:.9rem}
-.sec-h em{color:var(--red);font-style:normal}
-.sec-p{font-size:1rem;color:var(--mid);max-width:580px;line-height:1.85}
-.sh{margin-bottom:3.5rem}
+.wrap{max-width:var(--max);margin:auto;padding:0 1.5rem}
+.tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.71rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-700);margin-bottom:.65rem}
+.tag::before{content:'';display:block;width:16px;height:2px;background:var(--gold);border-radius:2px}
+.sec-h{font-family:var(--serif);font-size:clamp(2rem,4vw,2.9rem);font-weight:500;color:var(--ink-900);line-height:1.18;margin-bottom:.8rem}
+.sec-h em{color:var(--teal-700);font-style:italic}
+.sec-p{font-size:.97rem;color:var(--ink-500);max-width:560px;line-height:1.85}
+.sh{margin-bottom:3rem}
 .sh.c{text-align:center}.sh.c .tag{justify-content:center}.sh.c .sec-p{margin:0 auto}
 
-/* SERVICES */
-.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
-.svc-card{background:#fff;border-radius:var(--r2);padding:2.5rem 2rem;border:1px solid var(--border);transition:all var(--t);display:flex;flex-direction:column;position:relative;overflow:hidden}
-.svc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform var(--t)}
-.svc-card:hover{transform:translateY(-8px);box-shadow:0 20px 48px rgba(154,170,109,.13);border-color:rgba(154,170,109,.12)}
+/* SERVICE CARDS */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.svc-card{background:#fff;border-radius:var(--r-lg);padding:2.4rem 2rem;border:1px solid var(--line);transition:all var(--t);display:flex;flex-direction:column;position:relative;overflow:hidden}
+.svc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal-700),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform var(--t)}
+.svc-card:hover{transform:translateY(-7px);box-shadow:0 20px 48px rgba(196,122,74,.12);border-color:rgba(196,122,74,.15)}
 .svc-card:hover::after{transform:scaleX(1)}
-.svc-icon{width:58px;height:58px;border-radius:15px;background:linear-gradient(135deg,var(--red-t),var(--red-t2));border:1.5px solid rgba(154,170,109,.1);display:flex;align-items:center;justify-content:center;color:var(--red);font-size:1.4rem;margin-bottom:1.4rem;transition:all var(--t)}
-.svc-card:hover .svc-icon{background:linear-gradient(135deg,var(--red),var(--red-d));color:#fff;border-color:transparent;box-shadow:0 6px 18px rgba(154,170,109,.28)}
-.svc-card h3{font-family:'Playfair Display',serif;font-size:1.22rem;font-weight:700;color:var(--text);margin-bottom:.7rem}
-.svc-card p{font-size:.94rem;color:var(--mid);line-height:1.82;flex:1}
-.svc-more{display:inline-flex;align-items:center;gap:.4rem;color:var(--red);font-weight:700;font-size:.85rem;margin-top:1.4rem;transition:gap var(--t)}
+.svc-icon{width:56px;height:56px;border-radius:14px;background:var(--teal-t);border:1.5px solid rgba(196,122,74,.15);display:flex;align-items:center;justify-content:center;color:var(--teal-700);font-size:1.35rem;margin-bottom:1.3rem;transition:all var(--t)}
+.svc-card:hover .svc-icon{background:var(--teal-700);color:#fff;border-color:transparent;box-shadow:0 6px 18px rgba(196,122,74,.3)}
+.svc-card h3{font-family:var(--serif);font-size:1.2rem;font-weight:500;color:var(--ink-900);margin-bottom:.65rem}
+.svc-card p{font-size:.93rem;color:var(--ink-500);line-height:1.82;flex:1}
+.svc-more{display:inline-flex;align-items:center;gap:.4rem;color:var(--teal-700);font-weight:700;font-size:.84rem;margin-top:1.3rem;transition:gap var(--t)}
 .svc-more:hover{gap:.7rem}
 
 /* HOW IT WORKS */
 .steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;position:relative}
-.steps-grid::before{content:'';position:absolute;top:32px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--red-t2),var(--red),var(--red-t2));z-index:0}
-.step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 1rem 1rem;position:relative;z-index:1}
-.step-n{width:64px;height:64px;border-radius:50%;background:#fff;border:2.5px solid var(--red-t2);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--red);margin-bottom:1.3rem;box-shadow:var(--sh);transition:all var(--t)}
-.step:hover .step-n{background:var(--red);color:#fff;border-color:var(--red);box-shadow:0 6px 20px rgba(154,170,109,.3);transform:scale(1.08)}
-.step h4{font-size:.97rem;font-weight:700;color:var(--text);margin-bottom:.45rem}
-.step p{font-size:.87rem;color:var(--soft);line-height:1.7}
+.steps-grid::before{content:'';position:absolute;top:31px;left:12%;right:12%;height:2px;background:linear-gradient(90deg,var(--teal-100),var(--teal-700),var(--teal-100));z-index:0}
+.step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 .8rem 1rem;position:relative;z-index:1}
+.step-n{width:62px;height:62px;border-radius:50%;background:#fff;border:2.5px solid var(--teal-100);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.3rem;font-weight:500;color:var(--teal-700);margin-bottom:1.2rem;box-shadow:var(--shadow);transition:all var(--t)}
+.step:hover .step-n{background:var(--teal-700);color:#fff;border-color:var(--teal-700);box-shadow:0 6px 20px rgba(196,122,74,.3);transform:scale(1.08)}
+.step h4{font-size:.95rem;font-weight:700;color:var(--ink-900);margin-bottom:.4rem}
+.step p{font-size:.86rem;color:var(--ink-300);line-height:1.7}
 
 /* TRANSPARENCY */
 .trans-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start}
-.trans-l h2{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--text);margin-bottom:.8rem}
-.trans-l p{font-size:.97rem;color:var(--mid);line-height:1.85;margin-bottom:1.5rem}
-.trans-wa{display:inline-flex;align-items:center;gap:.55rem;padding:.7rem 1.5rem;background:#25d366;color:#fff;border-radius:50px;font-size:.88rem;font-weight:700;box-shadow:0 4px 16px rgba(37,211,102,.35);transition:all var(--t)}
-.trans-wa:hover{background:#1ebe5a;transform:translateY(-2px);box-shadow:0 8px 22px rgba(37,211,102,.45)}
-.fund-list{display:flex;flex-direction:column;gap:.65rem}
-.f-item{display:flex;align-items:center;gap:1rem;padding:1rem 1.3rem;background:#fff;border-radius:var(--r);border:1px solid var(--border);transition:all var(--t)}
-.f-item:hover{border-color:rgba(154,170,109,.18);box-shadow:var(--sh);transform:translateX(5px)}
-.f-icon{width:38px;height:38px;border-radius:10px;flex-shrink:0;background:linear-gradient(135deg,var(--red),var(--red-l));display:flex;align-items:center;justify-content:center;color:#fff;font-size:.9rem}
-.f-item span{font-size:.93rem;color:var(--mid);font-weight:500;line-height:1.5}
+.trans-l h2{font-family:var(--serif);font-size:2rem;font-weight:500;color:var(--ink-900);margin-bottom:.75rem}
+.trans-l p{font-size:.95rem;color:var(--ink-500);line-height:1.85;margin-bottom:1.5rem}
+.trans-wa{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.5rem;background:var(--teal-700);color:#fff;border-radius:999px;font-size:.88rem;font-weight:700;box-shadow:0 4px 16px rgba(196,122,74,.3);transition:all var(--t)}
+.trans-wa:hover{background:var(--teal-600);transform:translateY(-2px);box-shadow:0 8px 22px rgba(196,122,74,.4)}
+.fund-list{display:flex;flex-direction:column;gap:.6rem}
+.f-item{display:flex;align-items:center;gap:1rem;padding:.95rem 1.25rem;background:#fff;border-radius:var(--r);border:1px solid var(--line);transition:all var(--t)}
+.f-item:hover{border-color:rgba(196,122,74,.2);box-shadow:var(--shadow);transform:translateX(5px)}
+.f-icon{width:36px;height:36px;border-radius:9px;flex-shrink:0;background:linear-gradient(135deg,var(--teal-700),var(--teal-600));display:flex;align-items:center;justify-content:center;color:#fff;font-size:.88rem}
+.f-item span{font-size:.91rem;color:var(--ink-500);font-weight:500;line-height:1.5}
 
 /* CTA BAND */
-.cta-band{background:linear-gradient(135deg,var(--red-d) 0%,var(--red) 55%,var(--red-l) 100%);padding:5rem 0;text-align:center;position:relative;overflow:hidden}
-.cta-band::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 25% 50%,rgba(201,168,76,.1),transparent 50%),radial-gradient(circle at 75% 50%,rgba(255,255,255,.04),transparent 50%)}
-.cta-band h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.1rem);font-weight:700;color:#fff;margin-bottom:.7rem;position:relative}
-.cta-band p{color:rgba(255,255,255,.78);font-size:1.05rem;max-width:540px;margin:0 auto 2.5rem;position:relative}
-.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative}
-.btn-donate-main{padding:.9rem 2.2rem;background:linear-gradient(135deg,var(--gold),#b8923e);color:var(--red-d);border-radius:50px;font-weight:800;font-size:.96rem;display:inline-flex;align-items:center;gap:.5rem;box-shadow:0 6px 22px rgba(201,168,76,.4);transition:all var(--t)}
-.btn-donate-main:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(201,168,76,.55)}
-.btn-cta-wa{padding:.9rem 2.2rem;background:#25d366;color:#fff;border-radius:50px;font-weight:700;font-size:.96rem;display:inline-flex;align-items:center;gap:.5rem;box-shadow:0 6px 22px rgba(37,211,102,.4);transition:all var(--t)}
-.btn-cta-wa:hover{background:#1ebe5a;transform:translateY(-3px);box-shadow:0 12px 32px rgba(37,211,102,.5)}
-.btn-contact{padding:.9rem 2.2rem;border:2px solid rgba(255,255,255,.45);color:#fff;border-radius:50px;font-weight:600;font-size:.96rem;display:inline-flex;align-items:center;gap:.5rem;transition:all var(--t)}
-.btn-contact:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.cta-band{background:linear-gradient(130deg,var(--teal-900) 0%,var(--teal-800) 45%,var(--teal-700) 100%);padding:5rem 0;text-align:center;position:relative;overflow:hidden}
+.cta-band::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 25% 50%,rgba(218,165,32,.08),transparent 50%)}
+.cta-band h2{font-family:var(--serif);font-size:clamp(1.9rem,4vw,3rem);font-weight:500;color:#fff;margin-bottom:.7rem;position:relative}
+.cta-band p{color:rgba(255,255,255,.74);font-size:1rem;max-width:520px;margin:0 auto 2.4rem;position:relative}
+.cta-btns{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;position:relative}
+.btn-cta-gold{padding:.9rem 2.1rem;background:linear-gradient(135deg,var(--gold),#b8881a);color:#fff;border-radius:999px;font-family:var(--sans);font-weight:800;font-size:.94rem;display:inline-flex;align-items:center;gap:.5rem;box-shadow:0 6px 22px rgba(218,165,32,.38);transition:all var(--t);border:none}
+.btn-cta-gold:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(218,165,32,.52)}
+.btn-cta-wa{padding:.9rem 2.1rem;background:#25d366;color:#fff;border-radius:999px;font-family:var(--sans);font-weight:700;font-size:.94rem;display:inline-flex;align-items:center;gap:.5rem;box-shadow:0 6px 22px rgba(37,211,102,.38);transition:all var(--t)}
+.btn-cta-wa:hover{background:#1ebe5a;transform:translateY(-3px)}
+.btn-cta-out{padding:.9rem 2.1rem;border:1.5px solid rgba(255,255,255,.4);color:#fff;border-radius:999px;font-family:var(--sans);font-weight:600;font-size:.94rem;display:inline-flex;align-items:center;gap:.5rem;transition:all var(--t)}
+.btn-cta-out:hover{background:rgba(255,255,255,.1);border-color:#fff}
 
 /* FOOTER */
-footer{background:#1e2413;color:rgba(255,255,255,.45);padding:0}
-.foot-main{max-width:1260px;margin:0 auto;padding:1.8rem 2rem;display:flex;align-items:center;gap:1.6rem;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.06)}
-.foot-logo-box{background:#fff;border-radius:6px;padding:.28rem .65rem;display:inline-flex;align-items:center;flex-shrink:0}
-.foot-logo-box img{height:38px;width:auto;display:block}
-.foot-nav{display:flex;flex-wrap:wrap;gap:.15rem;align-items:center;flex:1}
-.foot-nav a{font-size:.76rem;color:rgba(255,255,255,.42);padding:.25rem .5rem;border-radius:5px;white-space:nowrap;transition:color var(--t),background var(--t)}
-.foot-nav a:hover{color:var(--gold-l);background:rgba(255,255,255,.05)}
-.foot-nav .sep{color:rgba(255,255,255,.15);font-size:.65rem;padding:0 .05rem}
-.foot-contact{display:flex;align-items:center;gap:.8rem;flex-shrink:0}
-.foot-phone{display:flex;align-items:center;gap:.4rem;font-size:.76rem;color:rgba(255,255,255,.55)}
-.foot-phone i{color:var(--gold-l);font-size:.75rem}
-.foot-phone a{color:rgba(255,255,255,.55);transition:color var(--t)}
-.foot-phone a:hover{color:var(--gold-l)}
-.foot-wa-btn{display:flex;align-items:center;gap:.35rem;padding:.32rem .75rem;background:#25d366;color:#fff;border-radius:50px;font-size:.74rem;font-weight:700;white-space:nowrap;transition:all var(--t)}
-.foot-wa-btn:hover{background:#1ebe5a;transform:translateY(-1px)}
-.foot-donate-btn{display:flex;align-items:center;gap:.35rem;padding:.32rem .75rem;background:linear-gradient(135deg,var(--red),var(--red-d));color:#fff;border-radius:50px;font-size:.74rem;font-weight:700;white-space:nowrap;transition:all var(--t)}
-.foot-donate-btn:hover{transform:translateY(-1px)}
-.f-social{display:flex;gap:.35rem;flex-shrink:0}
-.f-social a{width:26px;height:26px;border-radius:5px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.45);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all var(--t)}
-.f-social a:hover{background:var(--gold);color:var(--red-d);border-color:var(--gold);transform:translateY(-1px)}
-.foot-bot{max-width:1260px;margin:0 auto;padding:.7rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
-.foot-bot p{font-size:.72rem;color:rgba(255,255,255,.22)}
-.f-legal{display:flex;gap:1rem}
-.f-legal a{font-size:.72rem;color:rgba(255,255,255,.22);transition:color var(--t)}
-.f-legal a:hover{color:var(--gold-l)}
+footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
+.foot-top{max-width:var(--max);margin:auto;padding:3.5rem 1.5rem 2.5rem;display:grid;grid-template-columns:1.6fr 1fr 1fr 1.3fr;gap:2.5rem}
+.foot-brand img{height:44px;width:auto;display:block;object-fit:contain;margin-bottom:1rem}
+.foot-brand p{font-size:.83rem;line-height:1.8;color:rgba(255,255,255,.45);max-width:240px;margin-bottom:1.1rem}
+.foot-soc{display:flex;gap:.4rem}
+.foot-soc a{width:30px;height:30px;border-radius:7px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);display:inline-flex;align-items:center;justify-content:center;font-size:.8rem;transition:all var(--t)}
+.foot-soc a:hover{background:var(--teal-700);color:#fff;border-color:var(--teal-700);transform:translateY(-2px)}
+.foot-col h4{font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.8);margin-bottom:1rem}
+.foot-col a,.foot-col .fci{display:flex;align-items:flex-start;gap:.5rem;font-size:.83rem;color:rgba(255,255,255,.45);margin-bottom:.55rem;transition:color var(--t);line-height:1.5}
+.foot-col a:hover{color:rgba(255,255,255,.85)}
+.foot-col .fci i{color:var(--teal-400);font-size:.75rem;margin-top:.2rem;flex-shrink:0}
+.foot-col a i{color:var(--teal-400);font-size:.75rem;flex-shrink:0}
+.foot-bot{max-width:var(--max);margin:auto;padding:1.1rem 1.5rem;border-top:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.6rem}
+.foot-bot p{font-size:.74rem;color:rgba(255,255,255,.28)}
+.f-legal{display:flex;gap:1.2rem}
+.f-legal a{font-size:.74rem;color:rgba(255,255,255,.28);transition:color var(--t)}
+.f-legal a:hover{color:rgba(255,255,255,.7)}
 
-/* FLOATING WA */
-.float-wa{position:fixed;bottom:1.6rem;right:1.6rem;z-index:999}
-.float-wa-btn{width:52px;height:52px;border-radius:50%;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 6px 24px rgba(37,211,102,.45);transition:all var(--t);animation:bounce-wa 2.2s ease-in-out infinite}
-.float-wa-btn:hover{background:#1ebe5a;transform:scale(1.12);box-shadow:0 10px 30px rgba(37,211,102,.55);animation:none}
-
-/* BACK TO TOP */
-.back-top{position:fixed;bottom:1.6rem;right:5rem;z-index:998;width:42px;height:42px;border-radius:50%;background:var(--red);color:#fff;border:none;display:flex;align-items:center;justify-content:center;font-size:.88rem;cursor:pointer;box-shadow:0 4px 16px rgba(154,170,109,.35);opacity:0;transform:translateY(10px);transition:all var(--t)}
-.back-top.show{opacity:1;transform:translateY(0)}
-.back-top:hover{background:var(--red-d);transform:translateY(-2px)}
+/* FLOAT */
+.float-wa{position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;width:52px;height:52px;border-radius:50%;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.45rem;box-shadow:0 6px 24px rgba(37,211,102,.45);transition:all var(--t)}
+.float-wa:hover{background:#1ebe5a;transform:scale(1.1)}
 
 /* AOS */
-.aos{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
-.aos-l{opacity:0;transform:translateX(-26px);transition:opacity .65s ease,transform .65s ease}
-.aos-r{opacity:0;transform:translateX(26px);transition:opacity .65s ease,transform .65s ease}
+.aos{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.aos-l{opacity:0;transform:translateX(-24px);transition:opacity .6s ease,transform .6s ease}
+.aos-r{opacity:0;transform:translateX(24px);transition:opacity .6s ease,transform .6s ease}
 .aos.in,.aos-l.in,.aos-r.in{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
 
 /* RESPONSIVE */
 @media(max-width:1080px){
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
   .trans-grid{grid-template-columns:1fr;gap:2.5rem}
+  .foot-top{grid-template-columns:1fr 1fr}
 }
 @media(max-width:768px){
   .sec{padding:3.5rem 0}
-  .wrap{padding:0 1.2rem}
   .sh{margin-bottom:2rem}
   .svc-grid{grid-template-columns:1fr}
   .steps-grid{grid-template-columns:1fr 1fr}
   .steps-grid::before{display:none}
-  .trans-grid{gap:2rem}
   .cta-band{padding:3rem 0}
   .cta-btns{flex-direction:column;align-items:center}
   .nav{display:none}
   .burger{display:flex}
-  .hdr-r .btn-seek,.hdr-r .btn-wa-hdr{display:none}
-  .foot-main{flex-direction:column;align-items:flex-start;gap:1rem}
+  .hdr-r .btn-ghost,.hdr-r .btn-primary{display:none}
+  .foot-top{grid-template-columns:1fr}
   .foot-bot{flex-direction:column;text-align:center}
-  .back-top{right:4.8rem}
 }
 @media(max-width:480px){
   .sec{padding:2.5rem 0}
-  .wrap{padding:0 1rem}
-  .announce{padding:.38rem .9rem;font-size:.72rem}
-  .hdr{padding:0 1rem;height:56px}
   .steps-grid{grid-template-columns:1fr}
-  .cta-btns{width:100%}
-  .btn-donate-main,.btn-cta-wa,.btn-contact{width:100%;justify-content:center}
+  .cta-btns>*{width:100%;justify-content:center}
 }
-  </style>
+</style>
 </head>
 <body>
 
-<!-- ANNOUNCE -->
-<div class="announce">
-  <div class="ann-l">
-    <span><i class="fa fa-phone"></i><a href="tel:+60378903700">+603-7890 3700</a></span>
-    <span><i class="fa fa-location-dot"></i>A14, Jalan Rukun 7, Taman Gembira, 58200 KL</span>
-  </div>
-  <div class="ann-r">
-    <div class="a-social">
-      <a href="https://www.facebook.com/profile.php?id=61578688747686" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://www.instagram.com/amitabhafoundation" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.youtube.com/@amitabhafoundation" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-in">
+    <div class="topbar-l">
+      <span><i class="fa fa-phone"></i><a href="tel:+60378903700">+603-7890 3700</a></span>
+      <span><i class="fa fa-location-dot"></i>A14, Jalan Rukun 7, Taman Gembira, 58200 KL</span>
+    </div>
+    <div class="topbar-r">
+      <a href="https://www.facebook.com/amitabhafoundation" title="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/amitabhafoundation" title="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com/@amitabhafoundation" title="YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
     </div>
   </div>
 </div>
 
 <!-- HEADER -->
-<header id="site-hdr">
+<header id="hdr">
   <div class="hdr">
-    <a href="index.html" class="logo-link">
-      <img src="00_logo_horizontal.png" alt="Amitabha Foundation"/>
+    <a href="index.html" class="brand">
+      <img src="Photo/AF_EH%20ARGB%20LOGO%20.png" alt="Amitabha Foundation Elder Home">
     </a>
     <nav class="nav">
       <a href="index.html">Home</a>
@@ -248,15 +245,12 @@ footer{background:#1e2413;color:rgba(255,255,255,.45);padding:0}
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
       <a href="blog.html">News</a>
-      <a href="jobs.html" style="color:var(--red);font-weight:700;">Jobs</a>
+      <a href="jobs.html">Jobs</a>
     </nav>
     <div class="hdr-r">
-      <a href="contact.html" class="btn-seek">Seek Help</a>
-      <a href="https://wa.me/60127762911?text=Hello%20Amitabha%20Foundation%2C%20I%20would%20like%20to%20enquire%20about%20Elder%20Support." class="btn-wa-hdr" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-      <a href="https://m.amitabhafoundation.my/en/donation" class="btn-donate" target="_blank" rel="noopener"><i class="fa fa-heart"></i> Donate Now</a>
-    </div>
-    <div class="burger" id="burger" onclick="this.classList.toggle('open');document.getElementById('mob-menu').classList.toggle('open')">
-      <span></span><span></span><span></span>
+      <a href="contact.html" class="btn btn-ghost"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" class="btn btn-donate" target="_blank" rel="noopener"><i class="fa fa-heart"></i> Donate</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
   <nav class="mob-menu" id="mob-menu">
@@ -264,17 +258,16 @@ footer{background:#1e2413;color:rgba(255,255,255,.45);padding:0}
     <a href="services.html" class="on">Services</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
-    <a href="blog.html">News / 新闻</a>
-    <a href="jobs.html" style="color:var(--red);font-weight:700;">Jobs / 招聘</a>
-    <a href="contact.html" style="color:var(--red);font-weight:700;">Seek Help</a>
-    <a href="https://wa.me/60127762911" target="_blank" rel="noopener" style="color:#25d366;font-weight:700;"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
-    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:var(--red);font-weight:700;"><i class="fa fa-heart"></i> Donate Now</a>
+    <a href="blog.html">News</a>
+    <a href="jobs.html">Jobs</a>
+    <a href="contact.html" style="color:var(--teal-700);font-weight:700"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
+    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1a1f;font-weight:700"><i class="fa fa-heart"></i> Donate Now</a>
   </nav>
 </header>
 
 <!-- PAGE HERO -->
 <div class="page-hero">
-  <div class="page-hero-inner">
+  <div class="page-hero-in">
     <div class="page-pill"><i class="fa fa-hands-holding-heart"></i> Elder Care Services</div>
     <h1>Our Elder Support<br><em>Service Pillars</em></h1>
     <p>A comprehensive range of care services, each thoughtfully designed to meet the unique needs of every senior citizen we are privileged to serve.</p>
@@ -286,7 +279,7 @@ footer{background:#1e2413;color:rgba(255,255,255,.45);padding:0}
   </div>
 </div>
 
-<!-- ══ SERVICES ══ -->
+<!-- SERVICES GRID -->
 <section class="sec" id="services">
   <div class="wrap">
     <div class="sh">
@@ -317,7 +310,7 @@ footer{background:#1e2413;color:rgba(255,255,255,.45);padding:0}
   </div>
 </section>
 
-<!-- ══ HOW IT WORKS ══ -->
+<!-- HOW IT WORKS -->
 <section class="sec sec-alt" id="how">
   <div class="wrap">
     <div class="sh c">
@@ -326,15 +319,31 @@ footer{background:#1e2413;color:rgba(255,255,255,.45);padding:0}
       <p class="sec-p">We have made it as easy as possible for families and seniors to access the care and support they deserve.</p>
     </div>
     <div class="steps-grid">
-      <div class="step aos"><div class="step-n">01</div><h4>Reach Out</h4><p>Call our hotline, WhatsApp us, or fill in the contact form. We are always ready to listen with compassion.</p></div>
-      <div class="step aos d1"><div class="step-n">02</div><h4>Needs Assessment</h4><p>Our team meets with you to understand the specific needs and situation of your loved one in detail.</p></div>
-      <div class="step aos d2"><div class="step-n">03</div><h4>Care Plan</h4><p>We develop a personalised support plan — financial aid, home placement, or collaborative network care.</p></div>
-      <div class="step aos d3"><div class="step-n">04</div><h4>Ongoing Support</h4><p>We remain by your side with continuous check-ins, adjustments, and unwavering compassionate care.</p></div>
+      <div class="step aos">
+        <div class="step-n">01</div>
+        <h4>Reach Out</h4>
+        <p>Call our hotline, WhatsApp us, or fill in the contact form. We are always ready to listen with compassion.</p>
+      </div>
+      <div class="step aos d1">
+        <div class="step-n">02</div>
+        <h4>Needs Assessment</h4>
+        <p>Our team meets with you to understand the specific needs and situation of your loved one in detail.</p>
+      </div>
+      <div class="step aos d2">
+        <div class="step-n">03</div>
+        <h4>Care Plan</h4>
+        <p>We develop a personalised support plan — financial aid, home placement, or collaborative network care.</p>
+      </div>
+      <div class="step aos d3">
+        <div class="step-n">04</div>
+        <h4>Ongoing Support</h4>
+        <p>We remain by your side with continuous check-ins, adjustments, and unwavering compassionate care.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ══ TRANSPARENCY ══ -->
+<!-- TRANSPARENCY -->
 <section class="sec sec-cream">
   <div class="wrap">
     <div class="trans-grid">
@@ -357,69 +366,83 @@ footer{background:#1e2413;color:rgba(255,255,255,.45);padding:0}
   </div>
 </section>
 
-<!-- ══ CTA BAND ══ -->
+<!-- CTA BAND -->
 <div class="cta-band">
   <div class="wrap">
     <h2>Ready to Help or Need Help?</h2>
     <p>Reach out today. Our compassionate team is here to listen, guide, and support you every step of the way.</p>
     <div class="cta-btns">
-      <a href="https://m.amitabhafoundation.my/en/donation" class="btn-donate-main" target="_blank" rel="noopener"><i class="fa fa-heart"></i> Donate Now</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" class="btn-cta-gold" target="_blank" rel="noopener"><i class="fa fa-heart"></i> Donate Now</a>
       <a href="https://wa.me/60127762911?text=Hello%2C%20I%20need%20help%20with%20Elder%20Support." class="btn-cta-wa" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
-      <a href="contact.html" class="btn-contact"><i class="fa fa-hand-holding-heart"></i> Seek Help</a>
+      <a href="contact.html" class="btn-cta-out"><i class="fa fa-hand-holding-heart"></i> Seek Help</a>
     </div>
   </div>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="foot-main">
-    <div class="foot-logo-box"><img src="00_logo_horizontal.png" alt="Amitabha Foundation"/></div>
-    <nav class="foot-nav">
-      <a href="index.html">Home</a><span class="sep">·</span>
-      <a href="services.html">Services</a><span class="sep">·</span>
-      <a href="about.html">About</a><span class="sep">·</span>
-      <a href="contact.html">Contact</a><span class="sep">·</span>
-      <a href="blog.html">News</a><span class="sep">·</span>
-      <a href="jobs.html">Jobs</a><span class="sep">·</span>
-      <a href="https://amitabhafoundation.my" target="_blank" rel="noopener">Children Home</a><span class="sep">·</span>
-      <a href="https://amitabhafoundation.my" target="_blank" rel="noopener">Dialysis Centre</a>
-    </nav>
-    <div class="foot-contact">
-      <div class="foot-phone"><i class="fa fa-phone"></i><a href="tel:+60378903700">+603-7890 3700</a></div>
-      <a class="foot-wa-btn" href="https://wa.me/60127762911" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-      <a class="foot-donate-btn" href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener"><i class="fa fa-heart"></i> Donate</a>
+  <div class="foot-top">
+    <div class="foot-brand">
+      <img src="Photo/AF_EH%20ARGB%20LOGO%20.png" alt="Amitabha Foundation">
+      <p>Amitabha Foundation Elder Home — 24/7 compassionate care, financial assistance, and home placement for seniors in Kuala Lumpur. Est. 2000.</p>
+      <div class="foot-soc">
+        <a href="https://www.facebook.com/amitabhafoundation" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/amitabhafoundation" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@amitabhafoundation" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+      </div>
     </div>
-    <div class="f-social">
-      <a href="https://www.facebook.com/profile.php?id=61578688747686" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://www.instagram.com/amitabhafoundation" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.youtube.com/@amitabhafoundation" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+    <div class="foot-col">
+      <h4>Sitemap</h4>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="blog.html">News</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener">Donate</a>
+    </div>
+    <div class="foot-col">
+      <h4>Network</h4>
+      <a href="#">Children's Home</a>
+      <a href="#">Dialysis Centre</a>
+      <a href="https://wa.me/60127762911" target="_blank" rel="noopener">Volunteer</a>
+      <a href="jobs.html">Careers</a>
+    </div>
+    <div class="foot-col">
+      <h4>Contact</h4>
+      <div class="fci"><i class="fa fa-location-dot"></i><span>A14, Jalan Rukun 7, Taman Gembira, 58200 Kuala Lumpur</span></div>
+      <div class="fci"><i class="fa fa-phone"></i><a href="tel:+60378903700">+603-7890 3700</a></div>
+      <div class="fci"><i class="fa fa-headset"></i><a href="tel:+60127762911">012-776 2911 (hotline)</a></div>
+      <div class="fci"><i class="fa fa-clock"></i><span>Mon–Fri 9am–5pm · Sat 9am–1pm</span></div>
     </div>
   </div>
   <div class="foot-bot">
-    <p>&copy; 2024 Amitabha Foundation · Elder Care Programme · A14, Jalan Rukun 7, Taman Gembira, 58200 KL</p>
+    <p>© 2026 Amitabha Foundation · Elder Care Programme · All rights reserved.</p>
     <div class="f-legal"><a href="#">Privacy Policy</a><a href="#">Terms &amp; Conditions</a></div>
   </div>
 </footer>
 
-<!-- FLOATING WA -->
-<a class="float-wa" href="https://wa.me/60127762911?text=Hello%20Amitabha%20Foundation%2C%20I%20would%20like%20to%20enquire%20about%20Elder%20Support." target="_blank" rel="noopener" title="Chat on WhatsApp">
-  <div class="float-wa-btn"><i class="fab fa-whatsapp"></i></div>
-</a>
-
-<!-- BACK TO TOP -->
-<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top"><i class="fa fa-arrow-up"></i></button>
+<!-- FLOATING WHATSAPP -->
+<a class="float-wa" href="https://wa.me/60127762911?text=Hello%20Amitabha%20Foundation%2C%20I%20would%20like%20to%20enquire%20about%20Elder%20Support." target="_blank" rel="noopener" title="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
 <script>
-const hdr = document.getElementById('site-hdr');
-const bt  = document.getElementById('backTop');
-window.addEventListener('scroll', () => {
-  const s = window.scrollY;
-  hdr.classList.toggle('scrolled', s > 50);
-  bt.classList.toggle('show', s > 400);
+const hdr = document.getElementById('hdr');
+const burger = document.getElementById('burger');
+const mob = document.getElementById('mob-menu');
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  mob.classList.toggle('open');
 });
+mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  burger.classList.remove('open'); mob.classList.remove('open');
+}));
+window.addEventListener('scroll', () => {
+  hdr.classList.toggle('scrolled', window.scrollY > 30);
+}, { passive: true });
 const aosObs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
-}, { threshold: 0.1 });
+  entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); aosObs.unobserve(e.target); }});
+}, { threshold: .12 });
 document.querySelectorAll('.aos,.aos-l,.aos-r').forEach(el => aosObs.observe(el));
 </script>
 </body>
