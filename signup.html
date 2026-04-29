@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Create Account — Amitabha Foundation</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="supabase-config.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal-900:#1a242f;--teal-800:#2c3e50;--teal-700:#c47a4a;
+  --teal-600:#d68d5b;--teal-500:#e3a681;--teal-100:#f9e6d4;
+  --teal-50:#fdf2e8;--gold:#daa520;--bg:#fdf5ee;
+  --text:#1a1a1a;--muted:#666;--border:#e0d6cc;
+  --sans:"Plus Jakarta Sans",system-ui,sans-serif;
+}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+.page-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:2rem 1.2rem;background:linear-gradient(135deg,var(--teal-900) 0%,var(--teal-800) 40%,var(--teal-700) 100%)}
+
+.auth-card{background:#fff;border-radius:18px;padding:2.8rem 2.4rem;width:100%;max-width:420px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.auth-logo{height:60px;width:auto;display:block;margin:0 auto 1.4rem;object-fit:contain}
+.auth-card h1{font-size:1.45rem;font-weight:800;color:var(--teal-800);text-align:center;margin-bottom:.3rem}
+.auth-card .sub{font-size:.88rem;color:var(--muted);text-align:center;margin-bottom:1.9rem}
+
+.f-group{margin-bottom:1.15rem}
+.f-group label{display:block;font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.4rem}
+.f-group input{width:100%;padding:.75rem 1rem;border:1.5px solid var(--border);border-radius:8px;font-size:.95rem;font-family:var(--sans);outline:none;transition:border-color .2s,box-shadow .2s;background:#fff;color:var(--text)}
+.f-group input:focus{border-color:var(--teal-700);box-shadow:0 0 0 3px rgba(196,122,74,.12)}
+.hint{font-size:.76rem;color:var(--muted);margin-top:.3rem}
+
+.submit-btn{width:100%;padding:.82rem;background:var(--teal-700);color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:700;font-family:var(--sans);cursor:pointer;transition:background .2s;margin-top:.3rem;display:flex;align-items:center;justify-content:center;gap:.5rem}
+.submit-btn:hover{background:var(--teal-800)}
+.submit-btn:disabled{opacity:.65;cursor:not-allowed}
+.submit-btn .spin{width:16px;height:16px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none}
+.submit-btn.loading .spin{display:block}
+.submit-btn.loading .btn-label{display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.alert{border-radius:8px;padding:.75rem 1rem;font-size:.86rem;font-weight:500;margin-bottom:1rem;display:none;align-items:flex-start;gap:.55rem}
+.alert.show{display:flex}
+.alert-error{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca}
+.alert-success{background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0}
+
+.auth-footer{margin-top:1.5rem;text-align:center;font-size:.86rem;color:var(--muted)}
+.auth-footer a{color:var(--teal-700);font-weight:600;text-decoration:none}
+.auth-footer a:hover{text-decoration:underline}
+.divider{display:flex;align-items:center;gap:.8rem;margin:1.4rem 0}
+.divider span{font-size:.78rem;color:var(--muted);white-space:nowrap}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border)}
+
+.page-foot{text-align:center;padding:1.2rem;font-size:.78rem;color:rgba(255,255,255,.5)}
+.page-foot a{color:rgba(255,255,255,.7);text-decoration:none}
+.page-foot a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+  <div>
+    <div class="auth-card">
+      <img src="Photo/AF_EH%20ARGB%20LOGO%20.png" alt="Amitabha Foundation" class="auth-logo">
+      <h1>Create an account</h1>
+      <p class="sub">Join the Amitabha Foundation community</p>
+
+      <div class="alert alert-error" id="err-alert">
+        <i class="fa fa-circle-exclamation"></i>
+        <span id="err-msg">Something went wrong.</span>
+      </div>
+      <div class="alert alert-success" id="ok-alert">
+        <i class="fa fa-circle-check"></i>
+        <span id="ok-msg">Account created! Redirecting…</span>
+      </div>
+
+      <div class="f-group">
+        <label for="inp-name">Full name</label>
+        <input type="text" id="inp-name" placeholder="Your name" autocomplete="name"/>
+      </div>
+      <div class="f-group">
+        <label for="inp-email">Email address</label>
+        <input type="email" id="inp-email" placeholder="you@example.com" autocomplete="email"/>
+      </div>
+      <div class="f-group">
+        <label for="inp-pass">Password</label>
+        <input type="password" id="inp-pass" placeholder="Min. 6 characters" autocomplete="new-password"/>
+        <p class="hint">At least 6 characters.</p>
+      </div>
+
+      <button class="submit-btn" id="signup-btn" onclick="doSignUp()">
+        <div class="spin"></div>
+        <span class="btn-label"><i class="fa fa-user-plus"></i> Create Account</span>
+      </button>
+
+      <div class="divider"><span>Already have an account?</span></div>
+
+      <div class="auth-footer">
+        <a href="login.html">Sign in instead</a>
+      </div>
+      <div class="auth-footer" style="margin-top:.6rem">
+        <a href="main_page.html"><i class="fa fa-arrow-left" style="font-size:.75rem"></i> Back to website</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-foot">
+  &copy; Amitabha Foundation Elder Home &nbsp;·&nbsp; <a href="main_page.html">Visit Website</a>
+</div>
+
+<script>
+/* Redirect if already signed in */
+(async () => {
+  const { data: { session } } = await sb.auth.getSession();
+  if (session) location.replace('dashboard.html');
+})();
+
+function showErr(msg) {
+  document.getElementById('err-msg').textContent = msg;
+  document.getElementById('err-alert').classList.add('show');
+  document.getElementById('ok-alert').classList.remove('show');
+}
+function showOk(msg) {
+  document.getElementById('ok-msg').textContent = msg;
+  document.getElementById('ok-alert').classList.add('show');
+  document.getElementById('err-alert').classList.remove('show');
+}
+function setLoading(on) {
+  const btn = document.getElementById('signup-btn');
+  btn.classList.toggle('loading', on);
+  btn.disabled = on;
+}
+
+async function doSignUp() {
+  document.getElementById('err-alert').classList.remove('show');
+  const name  = document.getElementById('inp-name').value.trim();
+  const email = document.getElementById('inp-email').value.trim();
+  const pass  = document.getElementById('inp-pass').value;
+  if (!name)  { showErr('Please enter your full name.'); return; }
+  if (!email) { showErr('Please enter your email address.'); return; }
+  if (pass.length < 6) { showErr('Password must be at least 6 characters.'); return; }
+
+  setLoading(true);
+
+  const { data, error } = await sb.auth.signUp({
+    email,
+    password: pass,
+    options: { data: { name } }
+  });
+
+  if (error) { setLoading(false); showErr(error.message || 'Could not create account.'); return; }
+
+  /* If auto-confirm is enabled, session will exist immediately */
+  if (data?.session) {
+    /* Upsert profile as a safety net in case the trigger hasn't run yet */
+    await sb.from('profiles').upsert({ id: data.user.id, email, name, role: 'user' }, { onConflict: 'id', ignoreDuplicates: true });
+    showOk('Account created! Redirecting to your dashboard…');
+    setTimeout(() => location.replace('dashboard.html'), 1200);
+  } else {
+    /* Email confirmation required */
+    setLoading(false);
+    showOk('Check your email to confirm your account, then sign in.');
+    document.getElementById('signup-btn').style.display = 'none';
+  }
+}
+
+document.getElementById('inp-pass').addEventListener('keydown', e => { if (e.key === 'Enter') doSignUp(); });
+</script>
+</body>
+</html>
