@@ -156,7 +156,8 @@ async function doSignUp() {
   /* If auto-confirm is enabled, session will exist immediately */
   if (data?.session) {
     /* Upsert profile as a safety net in case the trigger hasn't run yet */
-    await sb.from('profiles').upsert({ id: data.user.id, email, name, role: 'user' }, { onConflict: 'id', ignoreDuplicates: true });
+    const { error: upsertErr } = await sb.from('profiles').upsert({ id: data.user.id, email, name, role: 'user' }, { onConflict: 'id', ignoreDuplicates: true });
+    if (upsertErr) console.error('[DB] profile upsert failed:', upsertErr);
     showOk('Account created! Redirecting to your dashboard…');
     setTimeout(() => location.replace('dashboard.html'), 1200);
   } else {
