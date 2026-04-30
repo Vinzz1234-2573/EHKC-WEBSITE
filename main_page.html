@@ -177,10 +177,8 @@ h2.section-h em{font-style:italic;color:var(--teal-700);font-weight:500}
 /* About */
 .about-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:5rem;align-items:center}
 .about-media{position:relative}
-.about-img{position:relative;border-radius:var(--r-xl);overflow:hidden;aspect-ratio:5/6;background:linear-gradient(140deg,var(--teal-700),var(--teal-500));box-shadow:var(--shadow-lg);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6)}
-.about-img::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.05) 0 10px,transparent 10px 22px)}
-.about-img .ph{position:relative;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase}
-.about-img .ph i{display:block;font-size:2.4rem;margin-bottom:.6rem;opacity:.5}
+.about-img{position:relative;border-radius:var(--r-xl);overflow:hidden;aspect-ratio:5/6;background:url('Photo/Ehkc%20photo/580483994_1255117513318318_8739772323857189486_n.jpg') center/cover no-repeat;box-shadow:var(--shadow-lg)}
+.about-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 0%,rgba(0,0,0,.22) 100%)}
 .about-card{position:absolute;left:-26px;bottom:34px;background:#fff;border-radius:18px;padding:1.1rem 1.3rem;box-shadow:var(--shadow);min-width:230px;display:flex;align-items:center;gap:.9rem}
 .about-card .ic{width:46px;height:46px;border-radius:12px;background:var(--teal-700);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
 .about-card .n{font-family:var(--serif);font-size:1.55rem;font-weight:600;color:var(--ink-900);line-height:1}
@@ -191,6 +189,7 @@ h2.section-h em{font-style:italic;color:var(--teal-700);font-weight:500}
 .v-ic{width:40px;height:40px;border-radius:10px;flex-shrink:0;background:var(--teal-50);color:var(--teal-700);display:flex;align-items:center;justify-content:center;font-size:.95rem}
 .v-row strong{display:block;color:var(--ink-900);font-weight:600;margin-bottom:.15rem}
 .v-row p{font-size:.9rem;color:var(--ink-500);line-height:1.55}
+.sec-about{background:#f5ede0}
 
 /* Parallax break */
 .parallax-break{position:relative;min-height:540px;display:flex;align-items:center;overflow:hidden;isolation:isolate;color:#fff}
@@ -438,6 +437,8 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
   .foot-top{grid-template-columns:1fr}
   .hcf.f1,.hcf.f2{display:none}
   .about-card{left:50%;transform:translateX(-50%);bottom:-22px}
+  .about-media{padding-bottom:2.5rem}
+  .about-img{aspect-ratio:4/3;max-height:320px}
   .evt-grid{grid-template-columns:1fr}
   .evt-card.featured{grid-column:auto}
   .gal-thumbs{grid-template-columns:repeat(3,1fr)}
@@ -445,6 +446,8 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
   .gal-cap h3{font-size:1.3rem}
   .news-grid{grid-template-columns:1fr}
   .news-head{flex-direction:column;align-items:flex-start}
+  .float-bar{bottom:1rem}
+  .float-wa,.float-donate{width:48px;height:48px}
 }
 @media(max-width:480px){
   .sec{padding:2.5rem 0}
@@ -453,10 +456,18 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
   .hero-cta{flex-direction:column}
   .hero-cta .btn{width:100%;justify-content:center}
   .cta-btns>*{width:100%;justify-content:center}
-  h2.section-h{font-size:clamp(1.5rem,6vw,2rem)}
+  h2.section-h{font-size:clamp(1.4rem,5.5vw,2rem)}
   .btn-lg{padding:.75rem 1.3rem;font-size:.88rem}
   .gal-thumbs{grid-template-columns:repeat(2,1fr)}
   .stats-in{grid-template-columns:1fr 1fr}
+  .about-img{max-height:220px}
+  .about-card{min-width:0;width:calc(100% - 2rem)}
+  .v-row{gap:.75rem}
+  .pb-in{padding:3rem 1.1rem}
+  .why-grid{gap:1rem}
+  .svc-grid{gap:1rem}
+  .foot-top{gap:1.5rem}
+  .section-p{font-size:.92rem}
 }@media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
   .aos,.aos-l,.aos-r{opacity:1;transform:none}
@@ -493,6 +504,12 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
 .pb-row{transition:transform var(--t),background var(--t),border-color var(--t)}
 .pb-row:hover{transform:translateX(6px);background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.22)}
 </style>
+<style>
+@keyframes donateGlow{0%,100%{box-shadow:0 4px 18px rgba(171,26,31,.5),0 0 0 0 rgba(171,26,31,0)}50%{box-shadow:0 6px 28px rgba(171,26,31,.85),0 0 24px rgba(171,26,31,.5),0 0 0 8px rgba(171,26,31,.13)}}
+.btn-coral{animation:donateGlow 2.5s ease-in-out infinite}
+.donate-img{height:1.1em;width:auto;vertical-align:middle;display:inline-block;filter:brightness(0) invert(1) drop-shadow(0 0 4px rgba(255,255,255,.6))}
+.donate-img-plain{height:1.1em;width:auto;vertical-align:middle;display:inline-block}
+</style>
 </head>
 <body>
 
@@ -513,7 +530,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
     <div class="hdr-r">
       <a href="contact.html" class="btn btn-ghost"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
       <div id="nav-auth"><a href="login.html" class="btn btn-ghost"><i class="fa fa-user"></i> Sign In</a></div>
-      <a href="https://m.amitabhafoundation.my/en/donation" class="btn" style="background:#ab1a1f;color:#fff;box-shadow:0 4px 16px rgba(171,26,31,.32);border-radius:999px;padding:.62rem 1.15rem" target="_blank" rel="noopener"><i class="fa fa-heart"></i> Donate</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" class="btn" style="background:#ab1a1f;color:#fff;border-radius:999px;padding:.62rem 1.15rem;animation:donateGlow 2.5s ease-in-out infinite" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/EHKC%20repair%20file/Donation%201.png" class="donate-img" alt=""> Donate</a>
       <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -525,7 +542,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
     <a href="contact.html">Contact</a>
     <a href="blog.html">News</a>
     <a href="login.html" id="mob-signin"><i class="fa fa-user"></i> Sign In</a>
-    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:var(--coral);font-weight:700"><i class="fa fa-heart"></i> Donate</a>
+    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:var(--coral);font-weight:700"><img src="Photo/Repair%20scenshot%20website/EHKC%20repair%20file/Donation%201.png" class="donate-img-plain" alt=""> Donate</a>
   </nav>
 </header>
 
@@ -629,13 +646,11 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
 </section>
 
 <!-- ABOUT -->
-<section class="sec sec-cream" id="about">
+<section class="sec sec-about" id="about">
   <div class="wrap">
     <div class="about-grid">
       <div class="about-media aos-l">
-        <div class="about-img">
-          <div class="ph"><i class="fa fa-image"></i>Daily life · Old Klang Rd home</div>
-        </div>
+        <div class="about-img"></div>
         <div class="about-card">
           <div class="ic"><i class="fa fa-award"></i></div>
           <div>
@@ -680,43 +695,43 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
     <div class="gal-track-wrap" id="gal">
       <div class="gal-track" id="galTrack">
         <div class="gal-slide">
-          <div class="ph"><i class="fa fa-image"></i>Morning routine · 06:30</div>
+          <img src="Photo/Ehkc%20photo/578266000_1255117486651654_746305696392418520_n.jpg" alt="Residents enjoying time together at Amitabha Foundation Elder Home">
           <div class="gal-cap">
-            <div class="gal-cap-eyebrow"><i class="fa fa-sun"></i> Daily life</div>
-            <h3>Mornings start with chai &amp; sunshine</h3>
-            <p>Verandah doors open at six. By half past, the house smells of cardamom and toast — and the residents who like to be early are already settled in their corner chairs.</p>
+            <div class="gal-cap-eyebrow"><i class="fa fa-people-roof"></i> Community life</div>
+            <h3>Togetherness every day</h3>
+            <p>Residents gather in the shaded courtyard for morning tea, afternoon chats, and the slow pace that makes this home feel like family.</p>
           </div>
         </div>
         <div class="gal-slide">
-          <div class="ph"><i class="fa fa-image"></i>Day room · 11:00</div>
+          <img src="Photo/Ehkc%20photo/580483994_1255117513318318_8739772323857189486_n.jpg" alt="Smiling senior resident at Amitabha Foundation Elder Home">
           <div class="gal-cap">
-            <div class="gal-cap-eyebrow"><i class="fa fa-puzzle-piece"></i> Activities</div>
-            <h3>Carrom, crosswords &amp; conversation</h3>
-            <p>Volunteers from nearby schools join the residents three mornings a week. The carrom board has been on the same table since 2003 — and still gets used most days.</p>
+            <div class="gal-cap-eyebrow"><i class="fa fa-heart"></i> Resident portrait</div>
+            <h3>Every face tells a story</h3>
+            <p>Behind every smile is a life fully lived. Our residents bring decades of wisdom, warmth, and resilience to our home every single day.</p>
           </div>
         </div>
         <div class="gal-slide">
-          <div class="ph"><i class="fa fa-image"></i>Garden · 16:30</div>
+          <img src="Photo/Ehkc%20photo/518314613_1155337173296353_3119445954625747259_n.jpg" alt="Amitabha staff conducting health screening for elderly resident">
           <div class="gal-cap">
-            <div class="gal-cap-eyebrow"><i class="fa fa-leaf"></i> Garden &amp; calm</div>
-            <h3>The afternoon walk, every afternoon</h3>
-            <p>Even on slow days, the garden loop is the loop everyone takes. Six laps is the unspoken target. Most days, most residents make it.</p>
+            <div class="gal-cap-eyebrow"><i class="fa fa-stethoscope"></i> Health care</div>
+            <h3>Wellness checked, every day</h3>
+            <p>Our staff conduct regular health screenings — blood pressure, oxygen, blood glucose — so every resident stays monitored and cared for.</p>
           </div>
         </div>
         <div class="gal-slide">
-          <div class="ph"><i class="fa fa-image"></i>Dining · 18:00</div>
+          <img src="Photo/Ehkc%20photo/2.png" alt="Children visiting Amitabha Foundation Elder Home for community outreach">
           <div class="gal-cap">
-            <div class="gal-cap-eyebrow"><i class="fa fa-utensils"></i> Meals together</div>
-            <h3>Dinner at six, no exceptions</h3>
-            <p>Three home-cooked meals a day, vegetarian by default, with halal and Indian-South-Indian options on rotation. Birthdays get a payasam.</p>
+            <div class="gal-cap-eyebrow"><i class="fa fa-children"></i> Community visits</div>
+            <h3>Bridging generations</h3>
+            <p>School groups and youth volunteers visit regularly — bringing energy, laughter, and a reminder that the wider community cares for its elders.</p>
           </div>
         </div>
         <div class="gal-slide">
-          <div class="ph"><i class="fa fa-image"></i>Festivities · Wesak</div>
+          <img src="Photo/Ehkc%20photo/_DSC3587.jpg" alt="Prayer and altar room at Amitabha Foundation Elder Home">
           <div class="gal-cap">
-            <div class="gal-cap-eyebrow"><i class="fa fa-bell"></i> Festivities</div>
-            <h3>Wesak, Deepavali, Chinese New Year</h3>
-            <p>Every major festival is marked here, with families invited and food shared. The home is multifaith — and we try to make sure no one feels far from their own.</p>
+            <div class="gal-cap-eyebrow"><i class="fa fa-om"></i> Spiritual wellbeing</div>
+            <h3>A space for peace &amp; reflection</h3>
+            <p>Our prayer room offers residents a quiet sanctuary for daily devotion. Spiritual care is part of whole-person wellbeing at Amitabha.</p>
           </div>
         </div>
       </div>
@@ -729,11 +744,11 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
     </div>
 
     <div class="gal-thumbs" id="galThumbs">
-      <div class="gal-thumb on" data-i="0"><i class="fa fa-image"></i></div>
-      <div class="gal-thumb" data-i="1"><i class="fa fa-image"></i></div>
-      <div class="gal-thumb" data-i="2"><i class="fa fa-image"></i></div>
-      <div class="gal-thumb" data-i="3"><i class="fa fa-image"></i></div>
-      <div class="gal-thumb" data-i="4"><i class="fa fa-image"></i></div>
+      <div class="gal-thumb on" data-i="0"><img src="Photo/Ehkc%20photo/578266000_1255117486651654_746305696392418520_n.jpg" alt=""></div>
+      <div class="gal-thumb" data-i="1"><img src="Photo/Ehkc%20photo/580483994_1255117513318318_8739772323857189486_n.jpg" alt=""></div>
+      <div class="gal-thumb" data-i="2"><img src="Photo/Ehkc%20photo/518314613_1155337173296353_3119445954625747259_n.jpg" alt=""></div>
+      <div class="gal-thumb" data-i="3"><img src="Photo/Ehkc%20photo/2.png" alt=""></div>
+      <div class="gal-thumb" data-i="4"><img src="Photo/Ehkc%20photo/_DSC3587.jpg" alt=""></div>
     </div>
   </div>
 </section>
@@ -927,7 +942,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
     <h2>In compassion, <em>we change a life</em>.</h2>
     <p>Your gift funds meals, medicine, and the unhurried care that makes a house a home for someone's grandparent.</p>
     <div class="cta-btns">
-      <a href="https://m.amitabhafoundation.my/en/donation" class="btn btn-coral btn-lg" target="_blank" rel="noopener"><i class="fa fa-heart"></i> Donate now</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" class="btn btn-coral btn-lg" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/EHKC%20repair%20file/Donation%201.png" class="donate-img" alt=""> Donate now</a>
       <a href="https://wa.me/60127762911" class="btn btn-outline-white btn-lg" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Volunteer</a>
       <a href="contact.html" class="btn btn-outline-white btn-lg"><i class="fa fa-hand-holding-medical"></i> Seek help</a>
     </div>

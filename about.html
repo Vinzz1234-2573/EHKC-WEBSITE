@@ -64,12 +64,12 @@ header.scrolled{background:rgba(255,255,255,.96);box-shadow:0 2px 18px rgba(10,4
 .mob-menu a:last-child{border-bottom:none}
 
 /* Page Hero */
-.page-hero{background:linear-gradient(135deg,var(--teal-800) 0%,var(--teal-700) 60%,var(--teal-600) 100%);padding:5rem 1.5rem 4.5rem;text-align:center;position:relative;overflow:hidden}
+.page-hero{background:linear-gradient(125deg,var(--teal-900) 0%,var(--teal-800) 42%,var(--teal-700) 100%);padding:5rem 1.5rem 4.5rem;text-align:center;position:relative;overflow:hidden}
 .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 50%,rgba(218,165,32,.15),transparent 50%),radial-gradient(circle at 80% 50%,rgba(255,255,255,.05),transparent 50%)}
 .page-hero-in{position:relative;z-index:1;max-width:760px;margin:auto}
-.page-pill{display:inline-flex;align-items:center;gap:.45rem;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:var(--gold-l);padding:.32rem .95rem;border-radius:50px;font-size:.73rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.2rem}
+.page-pill{display:inline-flex;align-items:center;gap:.45rem;background:rgba(218,165,32,.18);border:1px solid rgba(218,165,32,.35);color:var(--gold-l);padding:.32rem .95rem;border-radius:50px;font-size:.73rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.2rem}
 .page-hero h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.6rem);font-weight:500;color:#fff;line-height:1.1;margin-bottom:.8rem}
-.page-hero h1 em{font-style:italic;color:var(--gold-l)}
+.page-hero h1 em{font-style:italic;color:#e4b040}
 .page-hero p{font-size:1rem;color:rgba(255,255,255,.82);max-width:580px;margin:0 auto 1.6rem;line-height:1.8}
 .breadcrumb{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;color:rgba(255,255,255,.55)}
 .breadcrumb a{color:rgba(255,255,255,.72);transition:color var(--t)}
@@ -118,13 +118,13 @@ header.scrolled{background:rgba(255,255,255,.96);box-shadow:0 2px 18px rgba(10,4
 .mp-icon{width:34px;height:34px;border-radius:9px;flex-shrink:0;background:var(--teal-700);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.85rem}
 
 /* CTA Band */
-.cta-band{background:linear-gradient(135deg,var(--teal-800) 0%,var(--teal-700) 55%,var(--teal-600) 100%);padding:5rem 0;text-align:center;position:relative;overflow:hidden}
+.cta-band{background:linear-gradient(130deg,var(--teal-900) 0%,var(--teal-800) 45%,var(--teal-700) 100%);padding:5rem 0;text-align:center;position:relative;overflow:hidden}
 .cta-band::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 25% 50%,rgba(218,165,32,.12),transparent 50%)}
 .cta-band h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3.1rem);font-weight:500;color:#fff;margin-bottom:.7rem;position:relative}
 .cta-band p{color:rgba(255,255,255,.78);font-size:1.05rem;max-width:540px;margin:0 auto 2.5rem;position:relative}
 .cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative}
-.btn-donate-main{padding:.9rem 2.2rem;background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#fff;border-radius:50px;font-weight:700;font-size:.96rem;display:inline-flex;align-items:center;gap:.5rem;box-shadow:0 6px 22px rgba(218,165,32,.4);transition:all var(--t)}
-.btn-donate-main:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(218,165,32,.55)}
+.btn-donate-main{padding:.9rem 2.2rem;background:linear-gradient(135deg,#c52525,#ab1a1f);color:#fff;border-radius:50px;font-weight:700;font-size:.96rem;display:inline-flex;align-items:center;gap:.5rem;box-shadow:0 6px 22px rgba(171,26,31,.4);transition:all var(--t)}
+.btn-donate-main:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(171,26,31,.55)}
 .btn-cta-wa{padding:.9rem 2.2rem;background:#25d366;color:#fff;border-radius:50px;font-weight:700;font-size:.96rem;display:inline-flex;align-items:center;gap:.5rem;box-shadow:0 6px 22px rgba(37,211,102,.4);transition:all var(--t)}
 .btn-cta-wa:hover{background:#1ebe5a;transform:translateY(-3px)}
 .btn-outline-w{padding:.9rem 2.2rem;border:2px solid rgba(255,255,255,.45);color:#fff;border-radius:50px;font-weight:600;font-size:.96rem;display:inline-flex;align-items:center;gap:.5rem;transition:all var(--t)}
@@ -185,6 +185,12 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
   h2.section-h{font-size:clamp(1.5rem,6vw,2rem)}
   .btn-lg{padding:.75rem 1.3rem;font-size:.88rem}
 }</style>
+<style>
+@keyframes donateGlow{0%,100%{box-shadow:0 4px 18px rgba(171,26,31,.5),0 0 0 0 rgba(171,26,31,0)}50%{box-shadow:0 6px 28px rgba(171,26,31,.85),0 0 24px rgba(171,26,31,.5),0 0 0 8px rgba(171,26,31,.13)}}
+.btn-donate-main,.btn-donate-nav-a{animation:donateGlow 2.5s ease-in-out infinite}
+.donate-img{height:1.1em;width:auto;vertical-align:middle;display:inline-block;filter:brightness(0) invert(1) drop-shadow(0 0 4px rgba(255,255,255,.6))}
+.donate-img-plain{height:1.1em;width:auto;vertical-align:middle;display:inline-block}
+</style>
 </head>
 <body>
 
@@ -205,7 +211,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
     <div class="hdr-r">
       <a href="contact.html" class="btn btn-ghost"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
       <div id="nav-auth"><a href="login.html" class="btn btn-ghost"><i class="fa fa-user"></i> Sign In</a></div>
-      <a href="https://m.amitabhafoundation.my/en/donation" class="btn" style="background:#ab1a1f;color:#fff;box-shadow:0 4px 16px rgba(171,26,31,.32);border-radius:999px;padding:.62rem 1.15rem" target="_blank" rel="noopener"><i class="fa fa-heart"></i> Donate</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" class="btn btn-donate-nav-a" style="background:#ab1a1f;color:#fff;border-radius:999px;padding:.62rem 1.15rem" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/EHKC%20repair%20file/Donation%201.png" class="donate-img" alt=""> Donate</a>
       <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -217,7 +223,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
     <a href="contact.html">Contact</a>
     <a href="blog.html">News</a>
     <a href="login.html" id="mob-signin"><i class="fa fa-user"></i> Sign In</a>
-    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1a1f;font-weight:700"><i class="fa fa-heart"></i> Donate</a>
+    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1a1f;font-weight:700"><img src="Photo/Repair%20scenshot%20website/EHKC%20repair%20file/Donation%201.png" class="donate-img-plain" alt=""> Donate</a>
   </nav>
 </header>
 
@@ -265,7 +271,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
   <div class="wrap">
     <div style="text-align:center;margin-bottom:3rem">
       <div class="eyebrow" style="justify-content:center">Our Impact</div>
-      <h2 class="section-h">Over Two Decades of <em>Compassionate Care</em></h2>
+      <h2 class="section-h">Over Two Decades of <em>Compassionate Care</em> 💕</h2>
     </div>
     <div class="milestones-grid">
       <div class="milestone-card aos">
@@ -311,7 +317,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
     <h2>Be Part of Our Story</h2>
     <p>Whether you donate, volunteer, or refer a senior in need — every act of compassion changes a life.</p>
     <div class="cta-btns">
-      <a href="https://m.amitabhafoundation.my/en/donation" class="btn-donate-main" target="_blank" rel="noopener"><i class="fa fa-heart"></i> Donate Now</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" class="btn-donate-main" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/EHKC%20repair%20file/Donation%201.png" class="donate-img" alt=""> Donate Now</a>
       <a href="https://wa.me/60127762911?text=Hello%2C%20I%20would%20like%20to%20volunteer%20with%20Amitabha%20Foundation." class="btn-cta-wa" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Volunteer</a>
       <a href="contact.html" class="btn-outline-w"><i class="fa fa-hand-holding-heart"></i> Refer a Senior</a>
     </div>

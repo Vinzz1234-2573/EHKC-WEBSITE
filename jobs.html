@@ -259,6 +259,12 @@ textarea.form-control{resize:vertical;min-height:90px}
   .cta-btns>*{width:100%;justify-content:center}
 }
 </style>
+<style>
+@keyframes donateGlow{0%,100%{box-shadow:0 4px 18px rgba(171,26,31,.5),0 0 0 0 rgba(171,26,31,0)}50%{box-shadow:0 6px 28px rgba(171,26,31,.85),0 0 24px rgba(171,26,31,.5),0 0 0 8px rgba(171,26,31,.13)}}
+.btn-donate{animation:donateGlow 2.5s ease-in-out infinite}
+.donate-img{height:1.1em;width:auto;vertical-align:middle;display:inline-block;filter:brightness(0) invert(1) drop-shadow(0 0 4px rgba(255,255,255,.6))}
+.donate-img-plain{height:1.1em;width:auto;vertical-align:middle;display:inline-block}
+</style>
 </head>
 <body>
 
@@ -280,7 +286,7 @@ textarea.form-control{resize:vertical;min-height:90px}
     <div class="hdr-r">
       <a href="contact.html" class="btn btn-ghost"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
       <div id="nav-auth"><a href="login.html" class="btn btn-ghost"><i class="fa fa-user"></i> Sign In</a></div>
-      <a href="https://m.amitabhafoundation.my/en/donation" class="btn btn-donate" target="_blank" rel="noopener"><i class="fa fa-heart"></i> Donate</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" class="btn btn-donate" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/EHKC%20repair%20file/Donation%201.png" class="donate-img" alt=""> Donate</a>
       <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -294,7 +300,7 @@ textarea.form-control{resize:vertical;min-height:90px}
     <a href="jobs.html" class="on">Jobs</a>
     <a href="login.html" id="mob-signin"><i class="fa fa-user"></i> Sign In</a>
     <a href="contact.html" style="color:var(--teal-700);font-weight:700"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
-    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1a1f;font-weight:700"><i class="fa fa-heart"></i> Donate Now</a>
+    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1a1f;font-weight:700"><img src="Photo/Repair%20scenshot%20website/EHKC%20repair%20file/Donation%201.png" class="donate-img-plain" alt=""> Donate Now</a>
   </nav>
 </header>
 

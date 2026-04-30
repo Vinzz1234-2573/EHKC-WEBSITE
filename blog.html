@@ -65,18 +65,18 @@ header.scrolled{background:rgba(255,255,255,.96);box-shadow:0 2px 18px rgba(10,4
 .mob-menu a:last-child{border-bottom:none}
 
 /* Page title */
-.page-title-section{background:linear-gradient(135deg,var(--teal-800) 0%,var(--teal-700) 60%,var(--teal-600) 100%);padding:4rem 1.5rem 3.5rem;text-align:center;position:relative;overflow:hidden}
+.page-title-section{background:linear-gradient(125deg,var(--teal-900) 0%,var(--teal-800) 42%,var(--teal-700) 100%);padding:4rem 1.5rem 3.5rem;text-align:center;position:relative;overflow:hidden}
 .page-title-section::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 50%,rgba(218,165,32,.15),transparent 50%)}
 .page-title-inner{position:relative;z-index:1;max-width:680px;margin:auto}
 .page-title-section h1{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:500;color:#fff;margin-bottom:.6rem}
-.title-accent{display:inline-block;width:56px;height:4px;background:var(--gold);border-radius:2px;margin:0 auto .9rem}
+.title-accent{display:inline-block;width:56px;height:4px;background:#eec4a3;border-radius:2px;margin:0 auto .9rem}
 .page-title-section p{font-size:1rem;color:rgba(255,255,255,.82);max-width:520px;margin:0 auto}
 
 /* Filter bar */
 .filter-bar{max-width:1200px;margin:0 auto;padding:1.75rem 1.5rem 0;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
 .filter-btn{padding:.48rem 1.1rem;border-radius:30px;border:1.5px solid var(--border);background:#fff;font-size:.84rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .18s;white-space:nowrap}
 .filter-btn:hover{border-color:var(--teal-700);color:var(--teal-700)}
-.filter-btn.active{background:#c47a4a;color:#fff;border-color:#c47a4a}
+.filter-btn.active{background:#c47a4a;color:#fff;border-color:transparent}
 
 /* Grid */
 .posts-wrap{max-width:1200px;margin:0 auto;padding:1.5rem 1.5rem 4rem}
@@ -178,6 +178,11 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
   h2.section-h{font-size:clamp(1.5rem,6vw,2rem)}
   .btn-lg{padding:.75rem 1.3rem;font-size:.88rem}
 }</style>
+<style>
+@keyframes donateGlow{0%,100%{box-shadow:0 4px 18px rgba(171,26,31,.5),0 0 0 0 rgba(171,26,31,0)}50%{box-shadow:0 6px 28px rgba(171,26,31,.85),0 0 24px rgba(171,26,31,.5),0 0 0 8px rgba(171,26,31,.13)}}
+.donate-img{height:1.1em;width:auto;vertical-align:middle;display:inline-block;filter:brightness(0) invert(1) drop-shadow(0 0 4px rgba(255,255,255,.6))}
+.donate-img-plain{height:1.1em;width:auto;vertical-align:middle;display:inline-block}
+</style>
 </head>
 <body>
 
@@ -198,7 +203,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
     <div class="hdr-r">
       <a href="contact.html" class="btn btn-ghost"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
       <div id="nav-auth"><a href="login.html" class="btn btn-ghost"><i class="fa fa-user"></i> Sign In</a></div>
-      <a href="https://m.amitabhafoundation.my/en/donation" class="btn" style="background:#ab1a1f;color:#fff;box-shadow:0 4px 16px rgba(171,26,31,.32);border-radius:999px;padding:.62rem 1.15rem" target="_blank" rel="noopener"><i class="fa fa-heart"></i> Donate</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" class="btn btn-donate-nav-a" style="background:#ab1a1f;color:#fff;border-radius:999px;padding:.62rem 1.15rem;animation:donateGlow 2.5s ease-in-out infinite" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/EHKC%20repair%20file/Donation%201.png" class="donate-img" alt=""> Donate</a>
       <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -210,7 +215,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
     <a href="contact.html">Contact</a>
     <a href="blog.html">News</a>
     <a href="login.html" id="mob-signin"><i class="fa fa-user"></i> Sign In</a>
-    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1a1f;font-weight:700"><i class="fa fa-heart"></i> Donate</a>
+    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1a1f;font-weight:700"><img src="Photo/Repair%20scenshot%20website/EHKC%20repair%20file/Donation%201.png" class="donate-img-plain" alt=""> Donate</a>
   </nav>
 </header>
 
