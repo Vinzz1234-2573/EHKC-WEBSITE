@@ -45,13 +45,13 @@ header.scrolled{background:rgba(255,255,255,.96);box-shadow:0 2px 18px rgba(10,4
 .nav{display:flex;gap:.1rem;align-items:center}
 .nav a{font-size:.86rem;font-weight:500;color:var(--ink-700);padding:.5rem .85rem;border-radius:8px;transition:color .3s,background .3s}
 .nav a:hover{background:rgba(247,230,233,.5);color:#ab1b25}
-.nav a.on{color:#ab1a1f;background:transparent}
-.nav a.on::after{content:"";display:block;width:18px;height:2px;border-radius:2px;background:#ab1a1f;margin:2px auto -6px}
+.nav a.on{color:#ab1b25;background:transparent}
+.nav a.on::after{content:"";display:block;width:18px;height:2px;border-radius:2px;background:#ab1b25;margin:2px auto -6px}
 .hdr-r{display:flex;align-items:center;gap:.55rem}
 .btn{display:inline-flex;align-items:center;gap:.45rem;font-family:inherit;font-weight:600;font-size:.86rem;padding:.62rem 1.15rem;border-radius:999px;transition:all var(--t);white-space:nowrap}
 .btn-ghost{color:var(--teal-800);border:1px solid var(--line)}
 .btn-ghost:hover{background:rgba(196,122,74,.13);border-color:var(--teal-700);color:var(--teal-700)}
-.btn-coral{color:#fff;background:#ab1a1f;box-shadow:0 6px 18px rgba(171,26,31,.32)}
+.btn-coral{color:#fff;background:#ab1b25;box-shadow:0 6px 18px rgba(171,26,31,.32)}
 .btn-coral:hover{background:#8f1619}
 .burger{display:none;flex-direction:column;gap:5px;padding:.5rem;cursor:pointer}
 .burger span{width:22px;height:2px;background:var(--teal-800);border-radius:2px;transition:all var(--t)}
@@ -140,7 +140,7 @@ header.scrolled{background:rgba(255,255,255,.96);box-shadow:0 2px 18px rgba(10,4
 .cta-band h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3.1rem);font-weight:500;color:#fff;margin-bottom:.7rem;position:relative}
 .cta-band p{color:rgba(255,255,255,.78);font-size:1.05rem;max-width:540px;margin:0 auto 2.5rem;position:relative}
 .cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative}
-.btn-donate-main{padding:.9rem 2.2rem;background:linear-gradient(135deg,#c52525,#ab1a1f);color:#fff;border-radius:50px;font-weight:700;font-size:.96rem;display:inline-flex;align-items:center;gap:.5rem;box-shadow:0 6px 22px rgba(171,26,31,.4);transition:all var(--t)}
+.btn-donate-main{padding:.9rem 2.2rem;background:linear-gradient(135deg,#c52525,#ab1b25);color:#fff;border-radius:50px;font-weight:700;font-size:.96rem;display:inline-flex;align-items:center;gap:.5rem;box-shadow:0 6px 22px rgba(171,26,31,.4);transition:all var(--t)}
 .btn-donate-main:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(171,26,31,.55)}
 .btn-cta-wa{padding:.9rem 2.2rem;background:#25d366;color:#fff;border-radius:50px;font-weight:700;font-size:.96rem;display:inline-flex;align-items:center;gap:.5rem;box-shadow:0 6px 22px rgba(37,211,102,.4);transition:all var(--t)}
 .btn-cta-wa:hover{background:#1ebe5a;transform:translateY(-3px)}
@@ -166,7 +166,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
 .float-bar{position:fixed;bottom:1.6rem;left:50%;transform:translateX(-50%);z-index:999;display:flex;gap:.65rem;align-items:center}
 .float-wa{display:inline-flex;align-items:center;gap:.5rem;padding:.78rem 1.55rem;border-radius:999px;font-weight:700;font-size:.92rem;font-family:var(--sans);white-space:nowrap;transition:all var(--t);background:#25d366;color:#fff;box-shadow:0 6px 24px rgba(37,211,102,.42);text-decoration:none}
 .float-wa:hover{background:#1ebe5a;transform:translateY(-3px);box-shadow:0 10px 30px rgba(37,211,102,.58)}
-.float-donate{display:inline-flex;align-items:center;gap:.5rem;padding:.78rem 1.55rem;border-radius:999px;font-weight:700;font-size:.92rem;font-family:var(--sans);white-space:nowrap;transition:all var(--t);background:linear-gradient(135deg,#c52525,#ab1a1f);color:#fff;box-shadow:0 6px 28px rgba(171,26,31,.6),0 0 18px rgba(171,26,31,.35);animation:donatePulse 2.8s ease-in-out infinite;text-decoration:none}
+.float-donate{display:inline-flex;align-items:center;gap:.5rem;padding:.78rem 1.55rem;border-radius:999px;font-weight:700;font-size:.92rem;font-family:var(--sans);white-space:nowrap;transition:all var(--t);background:linear-gradient(135deg,#c52525,#ab1b25);color:#fff;box-shadow:0 6px 28px rgba(171,26,31,.6),0 0 18px rgba(171,26,31,.35);animation:donatePulse 2.8s ease-in-out infinite;text-decoration:none}
 .float-donate:hover{background:#8f1419;transform:translateY(-3px);box-shadow:0 10px 30px rgba(171,26,31,.55);animation-play-state:paused}
 @keyframes donatePulse{0%,100%{box-shadow:0 6px 28px rgba(171,26,31,.6),0 0 16px rgba(171,26,31,.4),0 0 0 0 rgba(171,26,31,.0)}50%{box-shadow:0 8px 36px rgba(171,26,31,.8),0 0 40px rgba(171,26,31,.55),0 0 0 10px rgba(171,26,31,.12)}}
 @media(max-width:640px){.float-bar{left:auto;right:1.2rem;transform:none;bottom:1.4rem;flex-direction:column;gap:.5rem}.float-wa,.float-donate{width:52px;height:52px;padding:0;border-radius:50%;justify-content:center;font-size:1.35rem}.float-wa .fl-label,.float-donate .fl-label{display:none}}
@@ -224,7 +224,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
     <div class="hdr-r">
       <a href="contact.html" class="btn btn-ghost"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
       <div id="nav-auth"><a href="login.html" class="btn btn-ghost"><i class="fa fa-user"></i> Sign In</a></div>
-      <a href="https://m.amitabhafoundation.my/en/donation" class="btn btn-donate-nav-a" style="background:#ab1a1f;color:#fff;border-radius:999px;padding:.62rem 1.15rem" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> Donate</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" class="btn btn-donate-nav-a" style="background:#ab1b25;color:#fff;border-radius:999px;padding:.62rem 1.15rem" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> Donate</a>
       <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -238,7 +238,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
     <a href="jobs.html">Careers</a>
     <a href="login.html" id="mob-signin"><i class="fa fa-user"></i> Sign In</a>
     <a href="contact.html" style="color:var(--teal-700);font-weight:700"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
-    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1a1f;font-weight:700"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img-plain" alt=""> Donate Now</a>
+    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1b25;font-weight:700"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img-plain" alt=""> Donate Now</a>
   </nav>
 </header>
 

@@ -58,13 +58,13 @@ header.scrolled{background:rgba(255,255,255,.98);box-shadow:0 2px 18px rgba(10,4
 .nav{display:flex;gap:.05rem;align-items:center}
 .nav a{font-size:.86rem;font-weight:500;color:var(--ink-700);padding:.46rem .82rem;border-radius:8px;transition:color var(--t),background var(--t);white-space:nowrap}
 .nav a:hover{background:rgba(247,230,233,.5);color:#ab1b25}
-.nav a.on{color:#ab1a1f;background:transparent}
-.nav a.on::after{content:"";display:block;width:18px;height:2px;border-radius:2px;background:#ab1a1f;margin:2px auto -4px}
+.nav a.on{color:#ab1b25;background:transparent}
+.nav a.on::after{content:"";display:block;width:18px;height:2px;border-radius:2px;background:#ab1b25;margin:2px auto -4px}
 .hdr-r{display:flex;align-items:center;gap:.5rem}
 .btn{display:inline-flex;align-items:center;gap:.4rem;font-family:inherit;font-weight:600;font-size:.84rem;padding:.58rem 1.1rem;border-radius:999px;transition:all var(--t);white-space:nowrap}
 .btn-ghost{color:var(--teal-800);border:1px solid var(--line)}
 .btn-ghost:hover{background:var(--teal-t);border-color:var(--teal-700);color:var(--teal-700)}
-.btn-donate{background:#ab1a1f;color:#fff;box-shadow:0 4px 14px rgba(171,26,31,.28)}
+.btn-donate{background:#ab1b25;color:#fff;box-shadow:0 4px 14px rgba(171,26,31,.28)}
 .btn-donate:hover{background:#8f1419;transform:translateY(-1px)}
 .burger{display:none;flex-direction:column;gap:5px;padding:.5rem;cursor:pointer;flex-shrink:0}
 .burger span{width:22px;height:2px;background:var(--teal-800);border-radius:2px;transition:all var(--t)}
@@ -75,7 +75,7 @@ header.scrolled{background:rgba(255,255,255,.98);box-shadow:0 2px 18px rgba(10,4
 .mob-menu.open{display:flex}
 .mob-menu a{padding:.7rem .3rem;font-size:.95rem;color:var(--ink-700);border-bottom:1px solid var(--line)}
 .mob-menu a:last-child{border-bottom:none}
-.mob-menu a.on{color:#ab1a1f}
+.mob-menu a.on{color:#ab1b25}
 
 /* PAGE HERO */
 .page-hero{background:linear-gradient(125deg,var(--teal-900) 0%,var(--teal-800) 42%,var(--teal-700) 100%);padding:5rem 1.5rem 4.5rem;text-align:center;position:relative;overflow:hidden}
@@ -177,7 +177,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 .float-bar{position:fixed;bottom:1.6rem;left:50%;transform:translateX(-50%);z-index:999;display:flex;gap:.65rem;align-items:center}
 .float-wa{display:inline-flex;align-items:center;gap:.5rem;padding:.78rem 1.55rem;border-radius:999px;font-weight:700;font-size:.92rem;font-family:var(--sans);white-space:nowrap;transition:all var(--t);background:#25d366;color:#fff;box-shadow:0 6px 24px rgba(37,211,102,.42);text-decoration:none}
 .float-wa:hover{background:#1ebe5a;transform:translateY(-3px);box-shadow:0 10px 30px rgba(37,211,102,.58)}
-.float-donate{display:inline-flex;align-items:center;gap:.5rem;padding:.78rem 1.55rem;border-radius:999px;font-weight:700;font-size:.92rem;font-family:var(--sans);white-space:nowrap;transition:all var(--t);background:linear-gradient(135deg,#c52525,#ab1a1f);color:#fff;box-shadow:0 6px 28px rgba(171,26,31,.6),0 0 18px rgba(171,26,31,.35);animation:donatePulse 2.8s ease-in-out infinite;text-decoration:none}
+.float-donate{display:inline-flex;align-items:center;gap:.5rem;padding:.78rem 1.55rem;border-radius:999px;font-weight:700;font-size:.92rem;font-family:var(--sans);white-space:nowrap;transition:all var(--t);background:linear-gradient(135deg,#c52525,#ab1b25);color:#fff;box-shadow:0 6px 28px rgba(171,26,31,.6),0 0 18px rgba(171,26,31,.35);animation:donatePulse 2.8s ease-in-out infinite;text-decoration:none}
 .float-donate:hover{background:#8f1419;transform:translateY(-3px);box-shadow:0 10px 30px rgba(171,26,31,.55);animation-play-state:paused}
 @keyframes donatePulse{0%,100%{box-shadow:0 6px 28px rgba(171,26,31,.6),0 0 16px rgba(171,26,31,.4),0 0 0 0 rgba(171,26,31,.0)}50%{box-shadow:0 8px 36px rgba(171,26,31,.8),0 0 40px rgba(171,26,31,.55),0 0 0 10px rgba(171,26,31,.12)}}
 @media(max-width:640px){.float-bar{left:auto;right:1.2rem;transform:none;bottom:1.4rem;flex-direction:column;gap:.5rem}.float-wa,.float-donate{width:52px;height:52px;padding:0;border-radius:50%;justify-content:center;font-size:1.35rem}.float-wa .fl-label,.float-donate .fl-label{display:none}}
@@ -300,7 +300,7 @@ textarea.form-control{resize:vertical;min-height:90px}
     <a href="jobs.html" class="on">Careers</a>
     <a href="login.html" id="mob-signin"><i class="fa fa-user"></i> Sign In</a>
     <a href="contact.html" style="color:var(--teal-700);font-weight:700"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
-    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1a1f;font-weight:700"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img-plain" alt=""> Donate Now</a>
+    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1b25;font-weight:700"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img-plain" alt=""> Donate Now</a>
   </nav>
 </header>
 
