@@ -515,6 +515,12 @@ let _applyWa = '60127762911';
 
 function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
+// Returns true only if val is a proper UUID (Supabase-generated).
+// localStorage fallback IDs (base-36 strings) return false → we send null instead.
+function isValidUUID(val){
+  return typeof val==='string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(val);
+}
+
 /* ── LOAD JOBS FROM SUPABASE ── */
 async function renderJobs(){
   const list = document.getElementById('job-listings');
@@ -655,7 +661,7 @@ async function submitApplication(e){
       return;
     }
     const { error } = await sb.from('applications').insert({
-      job_id:    _applyJobId,
+      job_id:    isValidUUID(_applyJobId) ? _applyJobId : null,
       job_title: jobTitle,
       name, email, phone,
       message:   msg,
