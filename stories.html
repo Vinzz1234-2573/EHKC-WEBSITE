@@ -660,50 +660,14 @@ window.addEventListener('scroll', () => {
   hdr.classList.toggle('scrolled', window.scrollY > 30);
 }, { passive: true });
 
-// AOS observer — called after gallery is rendered
+let aosObs;
 function initAos() {
-  const aosObs = new IntersectionObserver(entries => {
+  aosObs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); aosObs.unobserve(e.target); }});
   }, { threshold: .12 });
   document.querySelectorAll('.aos,.aos-l,.aos-r').forEach(el => aosObs.observe(el));
 }
-
-// Icon map for gallery captions
-const galIcons = [
-  'fa-people-roof','fa-heart','fa-stethoscope','fa-heart-pulse',
-  'fa-hands-holding-heart','fa-pills','fa-om','fa-children','fa-handshake-angle','fa-house-medical'
-];
-
-// Dynamically load gallery from Supabase; fall back to static HTML if empty/unavailable
-(async () => {
-  try {
-    const { data: photos, error } = await sb
-      .from('gallery')
-      .select('src,caption,sort_order')
-      .order('sort_order', { ascending: true });
-
-    if (!error && photos && photos.length > 0) {
-      const grid = document.getElementById('photo-grid');
-      // Build items — last one gets the full-width banner treatment
-      const items = photos.map((p, i) => {
-        const isLast = i === photos.length - 1;
-        const icon = galIcons[i % galIcons.length];
-        const caption = p.caption || 'Gallery photo';
-        const cls = isLast ? 'photo-item photo-wide aos' : `photo-item aos${i%3===1?' d1':i%3===2?' d2':''}`;
-        return `<div class="${cls}">
-          <img src="${p.src}" alt="${caption}" loading="lazy">
-          <div class="photo-overlay"><span class="photo-cap-label"><i class="fa ${icon}"></i> ${caption}</span></div>
-        </div>`;
-      });
-      grid.innerHTML = items.join('');
-    }
-    // If photos is empty or errored, the hardcoded static HTML stays as-is
-  } catch(e) {
-    console.warn('[Gallery] Could not load from Supabase, showing static photos.', e);
-  }
-  // Always init AOS after gallery is finalised
-  initAos();
-})();
+initAos();
 
 function escHtml(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 function escAttr(s){return String(s||'').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
