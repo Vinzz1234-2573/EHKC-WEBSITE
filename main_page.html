@@ -66,7 +66,7 @@ header.scrolled{background:rgba(255,255,255,.96);box-shadow:0 2px 18px rgba(10,4
 .brand img{height:54px;width:auto;display:block;object-fit:contain}
 .nav{display:flex;gap:.1rem;align-items:center}
 .nav a{font-size:.86rem;font-weight:500;color:var(--ink-700);padding:.5rem .85rem;border-radius:8px;transition:color .3s ease,background .3s ease}
-.nav a:hover{background:rgba(196,122,74,.13);color:#e4b125}
+.nav a:hover{background:rgba(126,110,144,.13);color:#ab1b25}
 .nav a:active,.nav a.on,.nav a.active{color:#f4b040 !important;background:transparent}
 .nav a.on::after,.nav a.active::after{content:"";display:block;width:18px;height:2px;border-radius:2px;background:#f4b040;margin:2px auto -6px}
 .hdr-r{display:flex;align-items:center;gap:.55rem}
@@ -189,7 +189,7 @@ h2.section-h em{font-style:italic;color:var(--teal-700);font-weight:500}
 .v-ic{width:40px;height:40px;border-radius:10px;flex-shrink:0;background:var(--teal-50);color:var(--teal-700);display:flex;align-items:center;justify-content:center;font-size:.95rem}
 .v-row strong{display:block;color:var(--ink-900);font-weight:600;margin-bottom:.15rem}
 .v-row p{font-size:.9rem;color:var(--ink-500);line-height:1.55}
-.sec-about{background:#e8e5a0}
+.sec-about{background:#ebebeb}
 
 /* Parallax break */
 .parallax-break{position:relative;min-height:540px;display:flex;align-items:center;overflow:hidden;isolation:isolate;color:#fff}
@@ -239,7 +239,7 @@ h2.section-h em{font-style:italic;color:var(--teal-700);font-weight:500}
 .cta-btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;position:relative}
 
 /* Gallery slider */
-.gallery-band{background:linear-gradient(180deg,#fffbf2 0%,var(--cream) 100%);padding:6rem 0;position:relative;overflow:hidden}
+.gallery-band{background:#fdf2e8;padding:6rem 0;position:relative;overflow:hidden}
 .gallery-band::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 400px at 90% 10%,rgba(218,165,32,.12),transparent 60%),radial-gradient(500px 400px at 5% 90%,rgba(227,166,129,.18),transparent 60%);pointer-events:none}
 .gallery-band .wrap{position:relative}
 .gal-track-wrap{position:relative;margin-top:3rem;border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--shadow-lg);background:#000}
@@ -249,7 +249,7 @@ h2.section-h em{font-style:italic;color:var(--teal-700);font-weight:500}
 .gal-slide .ph i{font-size:2.4rem;color:rgba(255,255,255,.4)}
 .gal-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .gal-cap{position:relative;z-index:2;width:100%;padding:2.4rem 2.4rem 2rem;background:linear-gradient(0deg,rgba(26,36,47,.85) 0%,rgba(26,36,47,.55) 60%,transparent 100%);color:#fff}
-.gal-cap-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-l);margin-bottom:.6rem}
+.gal-cap-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#eec4a3;margin-bottom:.6rem}
 .gal-cap h3{font-family:var(--serif);font-weight:600;font-size:1.7rem;line-height:1.2;color:#fff;margin-bottom:.3rem;letter-spacing:-.01em}
 .gal-cap p{font-size:.95rem;color:rgba(255,255,255,.78);max-width:580px;line-height:1.6}
 .gal-controls{display:flex;align-items:center;justify-content:space-between;margin-top:1.4rem;gap:1rem}
@@ -347,7 +347,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
 .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
 
 /* News / Blog */
-.news-band{background:linear-gradient(180deg,var(--cream) 0%,#fff 100%);padding:6rem 0;position:relative}
+.news-band{background:#ebebeb;padding:6rem 0;position:relative}
 .news-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:3rem;flex-wrap:wrap}
 .news-head .sh{margin:0;text-align:left;max-width:640px}
 .news-actions{display:flex;gap:.6rem;align-items:center}
@@ -506,6 +506,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
 </style>
 <style>
 @keyframes donateGlow{0%,100%{box-shadow:0 4px 18px rgba(171,26,31,.5),0 0 0 0 rgba(171,26,31,0)}50%{box-shadow:0 6px 28px rgba(171,26,31,.85),0 0 24px rgba(171,26,31,.5),0 0 0 8px rgba(171,26,31,.13)}}
+@keyframes waGlow{0%,100%{box-shadow:0 4px 18px rgba(37,211,102,.45),0 0 0 0 rgba(37,211,102,0)}50%{box-shadow:0 6px 28px rgba(37,211,102,.8),0 0 24px rgba(37,211,102,.45),0 0 0 8px rgba(37,211,102,.13)}}
 .btn-coral{animation:donateGlow 2.5s ease-in-out infinite}
 .donate-img{height:1.1em;width:auto;vertical-align:middle;display:inline-block;filter:brightness(0) invert(1) drop-shadow(0 0 4px rgba(255,255,255,.6))}
 .donate-img-plain{height:1.1em;width:auto;vertical-align:middle;display:inline-block}
@@ -858,7 +859,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
     <p>Your gift funds meals, medicine, and the unhurried care that makes a house a home for someone's grandparent.</p>
     <div class="cta-btns">
       <a href="https://m.amitabhafoundation.my/en/donation" class="btn btn-lg" style="background:#ab1a1f;color:#fff;animation:donateGlow 2.5s ease-in-out infinite;box-shadow:0 6px 22px rgba(171,26,31,.38)" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> Donate now</a>
-      <a href="https://wa.me/60127762911" class="btn btn-outline-white btn-lg" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Volunteer</a>
+      <a href="https://wa.me/60127762911" class="btn btn-lg" style="background:#25d366;color:#fff;animation:waGlow 2.5s ease-in-out infinite;box-shadow:0 6px 22px rgba(37,211,102,.38)" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Volunteer</a>
       <a href="contact.html" class="btn btn-outline-white btn-lg"><i class="fa fa-hand-holding-medical"></i> Seek help</a>
     </div>
   </div>
