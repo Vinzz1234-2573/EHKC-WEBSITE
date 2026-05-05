@@ -635,62 +635,48 @@ async function submitApplication(e){
 
   const btn = document.getElementById('btn-submit-app');
   btn.disabled = true;
-  btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Uploading…';
 
-  try {
-    const cvPath = await sbUploadFile('resumes', cvFile, 'applications');
-    if (cvPath === null) {
-      // CV upload failed (storage bucket likely not yet configured).
-      // Save the application to localStorage so it isn't silently lost.
-      try {
-        const apps = JSON.parse(localStorage.getItem('af_applications') || '[]');
-        apps.unshift({
-          id: Date.now(), name, email, phone,
-          job_title: jobTitle, message: msg,
-          cv_name: cvFile.name, cv_upload_failed: true,
-          created_at: new Date().toISOString(), status: 'new'
-        });
-        localStorage.setItem('af_applications', JSON.stringify(apps));
-        closeApplyModal();
-        showToast('✓ Application submitted! We will contact you shortly.');
-      } catch(e2) {
-        btn.disabled = false;
-        btn.innerHTML = '<i class="fa fa-paper-plane"></i> Submit Application';
-        showToast('Submission failed. Please apply via WhatsApp instead.');
-      }
-      return;
-    }
-    const { error } = await sb.from('applications').insert({
-      job_id:    isValidUUID(_applyJobId) ? _applyJobId : null,
-      job_title: jobTitle,
-      name, email, phone,
-      message:   msg,
-      cv_name:   cvFile.name,
-      cv_path:   cvPath,
-      status:    'new'
-    });
-    if(error) throw error;
-    closeApplyModal();
-    showToast('✓ Application submitted! We will be in touch soon.');
-  } catch(err) {
-    console.error('[DB] submitApplication:', err);
-    try {
-      const apps = JSON.parse(localStorage.getItem('af_applications') || '[]');
-      apps.unshift({
-        id: Date.now(), name, email, phone,
-        job_title: jobTitle, message: msg,
-        cv_name: cvFile.name,
-        created_at: new Date().toISOString(), status: 'new'
-      });
-      localStorage.setItem('af_applications', JSON.stringify(apps));
-      closeApplyModal();
-      showToast('Application received; we will be in touch shortly.');
-    } catch(e2) {
-      showToast('Submission failed. Please try WhatsApp instead.');
-      btn.disabled = false;
-      btn.innerHTML = '<i class="fa fa-paper-plane"></i> Submit Application';
-    }
+  /* ── STEP 1: Upload CV ── */
+  btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Step 1/2: Uploading CV…';
+  console.log('[SUBMIT] Step 1 — uploading CV:', cvFile.name, cvFile.size, 'bytes');
+
+  const cvPath = await sbUploadFile('resumes', cvFile, 'applications');
+  console.log('[SUBMIT] Step 1 result — cvPath:', cvPath);
+
+  if(cvPath === null){
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fa fa-paper-plane"></i> Submit Application';
+    showToast('❌ CV upload failed. Check the browser Console (F12) for details.', 6000);
+    return;
   }
+
+  /* ── STEP 2: Insert application row ── */
+  btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Step 2/2: Saving application…';
+  const payload = {
+    job_id:    isValidUUID(_applyJobId) ? _applyJobId : null,
+    job_title: jobTitle,
+    name, email, phone,
+    message:   msg,
+    cv_name:   cvFile.name,
+    cv_path:   cvPath,
+    status:    'new'
+  };
+  console.log('[SUBMIT] Step 2 — inserting payload:', payload);
+
+  const { data, error } = await sb.from('applications').insert(payload).select();
+  console.log('[SUBMIT] Step 2 result — data:', data, '| error:', error);
+
+  if(error){
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fa fa-paper-plane"></i> Submit Application';
+    const msg2 = error.message || error.code || JSON.stringify(error);
+    showToast('❌ Save failed: ' + msg2, 8000);
+    console.error('[SUBMIT] Insert error detail:', JSON.stringify(error, null, 2));
+    return;
+  }
+
+  closeApplyModal();
+  showToast('✓ Application submitted! We will be in touch soon.');
 }
 
 function showToast(msg, dur=3800){
