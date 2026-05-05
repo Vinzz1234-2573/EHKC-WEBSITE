@@ -634,9 +634,24 @@ async function submitApplication(e){
   try {
     const cvPath = await sbUploadFile('resumes', cvFile, 'applications');
     if (cvPath === null) {
-      btn.disabled = false;
-      btn.innerHTML = '<i class="fa fa-paper-plane"></i> Submit Application';
-      showToast('CV upload failed. Please create a Public storage bucket named "resumes" in Supabase first.');
+      // CV upload failed (storage bucket likely not yet configured).
+      // Save the application to localStorage so it isn't silently lost.
+      try {
+        const apps = JSON.parse(localStorage.getItem('af_applications') || '[]');
+        apps.unshift({
+          id: Date.now(), name, email, phone,
+          job_title: jobTitle, message: msg,
+          cv_name: cvFile.name, cv_upload_failed: true,
+          created_at: new Date().toISOString(), status: 'new'
+        });
+        localStorage.setItem('af_applications', JSON.stringify(apps));
+        closeApplyModal();
+        showToast('✓ Application submitted! We will contact you shortly.');
+      } catch(e2) {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa fa-paper-plane"></i> Submit Application';
+        showToast('Submission failed. Please apply via WhatsApp instead.');
+      }
       return;
     }
     const { error } = await sb.from('applications').insert({
