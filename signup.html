@@ -19,8 +19,8 @@
   --text:#1a1a1a;--muted:#666;--border:#e0d6cc;
   --sans:"Plus Jakarta Sans",system-ui,sans-serif;
 }
-body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
-.page-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:2rem 1.2rem;background:linear-gradient(125deg,var(--teal-900) 0%,var(--teal-800) 42%,var(--teal-700) 100%)}
+body{font-family:var(--sans);background:var(--teal-900);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+.page-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:2rem 1.2rem;background:linear-gradient(125deg,var(--teal-700) 0%,var(--teal-800) 58%,var(--teal-900) 100%)}
 
 .auth-card{background:#fff;border-radius:18px;padding:2.8rem 2.4rem;width:100%;max-width:420px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
 .auth-logo{height:60px;width:auto;display:block;margin:0 auto 1.4rem;object-fit:contain}
@@ -86,8 +86,8 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:1
       </div>
       <div class="f-group">
         <label for="inp-pass">Password</label>
-        <input type="password" id="inp-pass" placeholder="Min. 6 characters" autocomplete="new-password"/>
-        <p class="hint">At least 6 characters.</p>
+        <input type="password" id="inp-pass" placeholder="e.g. MyPass1" autocomplete="new-password"/>
+        <p class="hint">Min. 6 characters · uppercase &amp; lowercase letters · at least one digit (0–9)</p>
       </div>
 
       <button class="submit-btn" id="signup-btn" onclick="doSignUp()">
@@ -142,6 +142,9 @@ async function doSignUp() {
   if (!name)  { showErr('Please enter your full name.'); return; }
   if (!email) { showErr('Please enter your email address.'); return; }
   if (pass.length < 6) { showErr('Password must be at least 6 characters.'); return; }
+  if (!/[a-z]/.test(pass)) { showErr('Password must include at least one lowercase letter (a–z).'); return; }
+  if (!/[A-Z]/.test(pass)) { showErr('Password must include at least one uppercase letter (A–Z).'); return; }
+  if (!/[0-9]/.test(pass)) { showErr('Password must include at least one digit (0–9).'); return; }
 
   setLoading(true);
 
