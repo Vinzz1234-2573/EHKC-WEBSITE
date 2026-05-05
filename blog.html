@@ -336,10 +336,8 @@ burger.addEventListener('click',()=>{burger.classList.toggle('open');mob.classLi
 mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');mob.classList.remove('open');}));
 window.addEventListener('scroll',()=>{hdr.classList.toggle('scrolled',window.scrollY>30);},{passive:true});
 
-/* Data */
-function getPosts(){try{return JSON.parse(localStorage.getItem('af_news')||'[]')}catch(e){return[]}}
-
 /* State */
+let _allPosts=[];
 let activeFilter='All';
 
 /* Filter */
@@ -377,24 +375,32 @@ function placeholderSvg(cat){
 /* Render grid */
 function renderGrid(){
   const grid=document.getElementById('posts-grid');
-  const all=getPosts();
-  const posts=activeFilter==='All'?all:all.filter(p=>p.cat===activeFilter);
+  const posts=activeFilter==='All'?_allPosts:_allPosts.filter(p=>p.category===activeFilter);
   if(!posts.length){grid.innerHTML=buildEmpty();return;}
   grid.innerHTML=posts.map((p,i)=>buildCard(p,i)).join('');
 }
 
 function buildCard(p,i){
-  const dateStr=fmtDate(p.date||p.posted);const exc=excerpt(p.content,120);
+  const cat=p.category||'News';
+  const dateStr=fmtDate(p.posted);
+  const exc=excerpt(p.content,120);
+  const imgHtml=p.image_path
+    ?`<img src="${escAttr(sbPublicUrl('blog-images',p.image_path))}" alt="${escAttr(p.title_en||'')}" loading="lazy"/>`
+    :`<div class="card-img-placeholder">${placeholderSvg(cat)}</div>`;
+  const evtDate=cat==='Event'&&p.event_date
+    ?`<span class="card-date"><i class="fa fa-calendar" style="font-size:.7rem;margin-right:.25rem"></i>${escHtml(fmtDate(p.event_date))}</span>`
+    :'';
   return`<article class="post-card" onclick="openModal(${JSON.stringify(JSON.stringify(p))})" role="button" tabindex="0"
     onkeydown="if(event.key==='Enter'||event.key===' ')openModal(${JSON.stringify(JSON.stringify(p))})"
-    aria-label="${escAttr(p.titleEn||'')}">
-    <div class="card-img"><div class="card-img-placeholder">${placeholderSvg(p.cat)}</div></div>
+    aria-label="${escAttr(p.title_en||'')}">
+    <div class="card-img">${imgHtml}</div>
     <div class="card-body">
       <div class="card-meta">
-        <span class="cat-badge cat-${escAttr(p.cat||'News')}">${escHtml(p.cat||'News')}</span>
+        <span class="cat-badge cat-${escAttr(cat)}">${escHtml(cat)}</span>
         ${dateStr?`<span class="card-date">${escHtml(dateStr)}</span>`:''}
+        ${evtDate}
       </div>
-      <h3 class="card-title">${escHtml(p.titleEn||'Untitled')}</h3>
+      <h3 class="card-title">${escHtml(p.title_en||'Untitled')}</h3>
       ${exc?`<p class="card-excerpt">${escHtml(exc)}</p>`:''}
       <span class="card-read-more" aria-hidden="true">Read more
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -421,16 +427,17 @@ function buildEmpty(){
 /* Modal */
 function openModal(jsonStr){
   const p=JSON.parse(jsonStr);
+  const cat=p.category||'News';
   const badge=document.getElementById('modal-badge');
-  badge.textContent=p.cat||'News';badge.className='cat-badge cat-'+(p.cat||'News');
-  document.getElementById('modal-date').textContent=fmtDate(p.date||p.posted)||'';
-  document.getElementById('modal-title').textContent=p.titleEn||'Untitled';
+  badge.textContent=cat;badge.className='cat-badge cat-'+cat;
+  document.getElementById('modal-date').textContent=fmtDate(p.posted)||'';
+  document.getElementById('modal-title').textContent=p.title_en||'Untitled';
   const titleZhEl=document.getElementById('modal-title-zh');
-  if(p.titleZh&&p.titleZh.trim()){titleZhEl.textContent=p.titleZh;titleZhEl.style.display='';}
+  if(p.title_zh&&p.title_zh.trim()){titleZhEl.textContent=p.title_zh;titleZhEl.style.display='';}
   else{titleZhEl.style.display='none';}
   document.getElementById('modal-content-en').textContent=p.content||'';
   const zhBlock=document.getElementById('modal-zh-block');
-  if(p.contentZh&&p.contentZh.trim()){document.getElementById('modal-content-zh').textContent=p.contentZh;zhBlock.style.display='';}
+  if(p.content_zh&&p.content_zh.trim()){document.getElementById('modal-content-zh').textContent=p.content_zh;zhBlock.style.display='';}
   else{zhBlock.style.display='none';}
   const linkWrap=document.getElementById('modal-link-wrap');
   const linkEl=document.getElementById('modal-link');
@@ -450,9 +457,23 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()
 function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 function escAttr(s){return String(s).replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 
+/* Load posts from Supabase */
+async function loadPosts(){
+  const grid=document.getElementById('posts-grid');
+  grid.innerHTML='<div class="empty-state"><div class="empty-icon"><i class="fa fa-spinner fa-spin" style="font-size:2rem;color:var(--teal-700)"></i></div><p style="color:var(--muted);margin-top:.5rem">Loading…</p></div>';
+  try{
+    const{data:posts,error}=await sb.from('posts').select('*').order('posted',{ascending:false});
+    if(error)throw error;
+    _allPosts=posts||[];
+  }catch(err){
+    console.error('[blog] loadPosts:',err);
+    _allPosts=[];
+  }
+  renderGrid();
+}
+
 /* Init */
-document.getElementById('footer-year').textContent=new Date().getFullYear();
-renderGrid();
+loadPosts();
 (async () => {
   const { data: { session } } = await sb.auth.getSession();
   if (!session) return;
