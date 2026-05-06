@@ -76,24 +76,26 @@ body{font-family:var(--sans);background:var(--teal-900);color:var(--text);min-he
         <span id="ok-msg">Account created! Redirecting…</span>
       </div>
 
+      <form id="signup-form" autocomplete="on" onsubmit="doSignUp(); return false;" novalidate>
       <div class="f-group">
         <label for="inp-name">Full name</label>
-        <input type="text" id="inp-name" placeholder="Your name" autocomplete="name"/>
+        <input type="text" id="inp-name" name="name" placeholder="Your name" autocomplete="name"/>
       </div>
       <div class="f-group">
         <label for="inp-email">Email address</label>
-        <input type="email" id="inp-email" placeholder="you@example.com" autocomplete="email"/>
+        <input type="email" id="inp-email" name="email" placeholder="you@example.com" autocomplete="email"/>
       </div>
       <div class="f-group">
-        <label for="inp-pass">Password</label>
-        <input type="password" id="inp-pass" placeholder="e.g. MyPass1" autocomplete="new-password"/>
+        <label for="inp-pass">Create a password</label>
+        <input type="password" id="inp-pass" name="new-password" placeholder="Create a strong password" autocomplete="new-password"/>
         <p class="hint">Min. 6 characters · uppercase &amp; lowercase letters · at least one digit (0–9)</p>
       </div>
 
-      <button class="submit-btn" id="signup-btn" onclick="doSignUp()">
+      <button type="submit" class="submit-btn" id="signup-btn">
         <div class="spin"></div>
         <span class="btn-label"><i class="fa fa-user-plus"></i> Create Account</span>
       </button>
+      </form>
 
       <div class="divider"><span>Already have an account?</span></div>
 
@@ -171,7 +173,7 @@ async function doSignUp() {
   }
 }
 
-document.getElementById('inp-pass').addEventListener('keydown', e => { if (e.key === 'Enter') doSignUp(); });
+/* Enter key is handled natively by the <form> submit event */
 </script>
 </body>
 </html>
