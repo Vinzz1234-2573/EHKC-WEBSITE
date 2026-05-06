@@ -6,6 +6,30 @@
 
   SQL SCHEMA (run once in Supabase SQL Editor):
   ─────────────────────────────────────────────
+  -- Profiles table (auto-populated via trigger on auth.users insert)
+  create table if not exists public.profiles (
+    id          uuid primary key references auth.users(id) on delete cascade,
+    email       text,
+    name        text,
+    role        text default 'user',
+    created_at  timestamptz default now()
+  );
+
+  -- Trigger: auto-create profile row when a new user signs up
+  create or replace function public.handle_new_user()
+  returns trigger as $$
+  begin
+    insert into public.profiles (id, email, name, role)
+    values (new.id, new.email, new.raw_user_meta_data->>'name', 'user')
+    on conflict (id) do nothing;
+    return new;
+  end;
+  $$ language plpgsql security definer;
+
+  create or replace trigger on_auth_user_created
+    after insert on auth.users
+    for each row execute procedure public.handle_new_user();
+
   -- Jobs table
   create table if not exists jobs (
     id          uuid primary key default gen_random_uuid(),
