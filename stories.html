@@ -88,19 +88,13 @@ header.scrolled{background:rgba(255,255,255,.98);box-shadow:0 2px 18px rgba(10,4
 .breadcrumb a{color:rgba(255,255,255,.68);transition:color var(--t)}
 .breadcrumb a:hover{color:var(--gold-l)}
 .breadcrumb i{font-size:.58rem}
-/* HERO STORY ROTATOR */
-.hero-stories{position:relative;margin:2.2rem auto 1.8rem;max-width:600px;height:122px}
-.hero-slide{position:absolute;inset:0;display:flex;align-items:center;gap:1.2rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);border-radius:1.1rem;padding:1.15rem 1.5rem;opacity:0;transition:opacity .75s ease;pointer-events:none;text-align:left}
-.hero-slide.active{opacity:1;pointer-events:auto}
-.hero-slide-photo{width:62px;height:62px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid rgba(255,255,255,.28)}
-.hero-slide-body{flex:1;min-width:0}
-.hero-slide-cat{font-size:.67rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#eec4a3;margin-bottom:.28rem}
-.hero-slide-q{font-size:.86rem;color:rgba(255,255,255,.88);line-height:1.62;font-style:italic;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.hero-slide-name{font-size:.78rem;font-weight:600;color:#fff;margin-top:.45rem}
-.hero-dots{display:flex;justify-content:center;gap:.48rem}
-.hero-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.28);border:none;cursor:pointer;padding:0;transition:background .35s,transform .35s}
-.hero-dot.active{background:#eec4a3;transform:scale(1.35)}
-@media(max-width:560px){.hero-stories{height:auto;min-height:110px}.hero-slide{flex-direction:column;align-items:flex-start;height:auto}.hero-slide-photo{width:48px;height:48px}}
+/* FEATURED STORY ROTATOR */
+.feat-rotator{position:relative}
+.feat-slide{position:absolute;inset:0;opacity:0;transition:opacity .75s ease;pointer-events:none}
+.feat-slide.active{opacity:1;pointer-events:auto;position:relative}
+.feat-dots{display:flex;justify-content:center;gap:.5rem;margin-top:1.8rem}
+.feat-dot{width:8px;height:8px;border-radius:50%;background:var(--teal-200);border:none;cursor:pointer;padding:0;transition:background .35s,transform .35s}
+.feat-dot.active{background:var(--teal-700);transform:scale(1.3)}
 
 /* SECTIONS */
 .sec{padding:5.5rem 0}
@@ -312,39 +306,6 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
     <div class="page-pill"><i class="fa fa-heart"></i> Real Lives, Real Change</div>
     <h1>Stories from<br><em>The Home</em></h1>
     <p>Every senior who walks through our doors carries a lifetime of stories. These are the ones they have shared with us: of resilience, dignity, and the quiet power of being cared for.</p>
-
-    <div class="hero-stories" id="heroStories">
-      <div class="hero-slide active">
-        <img class="hero-slide-photo" src="Photo/Elder%20Photo/_DSC3598.JPG" alt="Uncle Loh Keng Seng">
-        <div class="hero-slide-body">
-          <div class="hero-slide-cat"><i class="fa fa-hand-holding-heart"></i> Giving Back</div>
-          <p class="hero-slide-q">He quietly gave for years, fixing old electronics and donating every single ringgit back to the elder home, asking nothing in return. Now it is our turn to care for him.</p>
-          <div class="hero-slide-name">Uncle Loh Keng Seng</div>
-        </div>
-      </div>
-      <div class="hero-slide">
-        <img class="hero-slide-photo" src="Photo/Elder%20Photo/_DSC3626.JPG" alt="Aunty Wong Pek Lin">
-        <div class="hero-slide-body">
-          <div class="hero-slide-cat"><i class="fa fa-people-roof"></i> Community</div>
-          <p class="hero-slide-q">She arrived with no family to call her own. What we found was a woman full of life, laughter, and endless stories. She is the heartbeat of this home.</p>
-          <div class="hero-slide-name">Aunty Wong Pek Lin</div>
-        </div>
-      </div>
-      <div class="hero-slide">
-        <img class="hero-slide-photo" src="Photo/Elder%20Photo/Gemini_Generated_Image_a51dvra51dvra51d.png" alt="Uncle Hok Keng Sang">
-        <div class="hero-slide-body">
-          <div class="hero-slide-cat"><i class="fa fa-heart-pulse"></i> Resilience</div>
-          <p class="hero-slide-q">Half his body weakened but his spirit unbroken. Every day he gets up, walks, and exercises. In his quiet resilience, he reminds us that the human spirit, when treated with love, never truly falls.</p>
-          <div class="hero-slide-name">Uncle Hok Keng Sang</div>
-        </div>
-      </div>
-    </div>
-    <div class="hero-dots" id="heroDots">
-      <button class="hero-dot active" onclick="goSlide(0)"></button>
-      <button class="hero-dot" onclick="goSlide(1)"></button>
-      <button class="hero-dot" onclick="goSlide(2)"></button>
-    </div>
-
     <div class="breadcrumb">
       <a href="main_page.html">Home</a>
       <i class="fa fa-chevron-right"></i>
@@ -357,23 +318,70 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 <section class="sec">
   <div class="wrap">
     <div class="sh">
-      <div class="tag">Featured Story</div>
-      <h2 class="sec-h">A life <em>reclaimed</em></h2>
+      <div class="tag">Featured Stories</div>
+      <h2 class="sec-h">From the home, <em>in their words</em></h2>
     </div>
-    <div class="story-featured aos">
-      <div class="story-feat-side">
-        <div>
-          <div class="story-feat-av"><i class="fa fa-user"></i></div>
-          <div class="story-feat-name">Mr. Kumar, 84</div>
-          <div class="story-feat-meta"><i class="fa fa-location-dot"></i> Petaling Jaya · Resident since 2022</div>
+    <div class="feat-rotator" id="featRotator">
+
+      <div class="feat-slide active">
+        <div class="story-featured">
+          <div class="story-feat-side">
+            <div>
+              <div class="story-feat-av" style="background:none;padding:0;overflow:hidden"><img src="Photo/Elder%20Photo/_DSC3598.JPG" alt="Uncle Loh Keng Seng" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
+              <div class="story-feat-name">Uncle Loh Keng Seng</div>
+              <div class="story-feat-meta"><i class="fa fa-location-dot"></i> Amitabha Elder Home</div>
+            </div>
+            <div class="story-feat-quote">"</div>
+          </div>
+          <div class="story-feat-body">
+            <div class="story-cat"><i class="fa fa-hand-holding-heart"></i> Giving Back</div>
+            <h3>He gave for years without a word. Now it is our turn to give back to him.</h3>
+            <p>For years, Uncle Loh quietly showed up, fixing old electronics, collecting them for recycling, and donating every single ringgit earned back to the elder home. He never asked for recognition, never expected anything in return. He simply gave. Now, life has come full circle. The man who once took care of us has become part of our family here. It is now our turn to care for him, and we do so with all the love and gratitude he deserves.</p>
+          </div>
         </div>
-        <div class="story-feat-quote">"</div>
       </div>
-      <div class="story-feat-body">
-        <div class="story-cat"><i class="fa fa-house-heart"></i> Resident Story</div>
-        <h3>Diabetes left me unable to walk. Three months of physiotherapy and proper meals gave me back my independence.</h3>
-        <p>When Mr. Kumar first arrived at Amitabha Foundation Elder Home, he could barely stand on his own. Complications from long-term diabetes had weakened his legs and dimmed his confidence. Within three months of daily physiotherapy, four nutritious meals, and round-the-clock nursing support, he was walking the garden path on his own every morning. "They did not just treat my legs," he told our team. "They gave me back my belief that I could still live fully." Today, Mr. Kumar leads a morning stretching group for other residents and makes sure no one misses breakfast.</p>
+
+      <div class="feat-slide">
+        <div class="story-featured">
+          <div class="story-feat-side">
+            <div>
+              <div class="story-feat-av" style="background:none;padding:0;overflow:hidden"><img src="Photo/Elder%20Photo/_DSC3626.JPG" alt="Aunty Wong Pek Lin" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
+              <div class="story-feat-name">Aunty Wong Pek Lin</div>
+              <div class="story-feat-meta"><i class="fa fa-location-dot"></i> Amitabha Elder Home</div>
+            </div>
+            <div class="story-feat-quote">"</div>
+          </div>
+          <div class="story-feat-body">
+            <div class="story-cat"><i class="fa fa-people-roof"></i> Community</div>
+            <h3>She arrived with no family. She became the heartbeat of this home.</h3>
+            <p>Aunty Wong came to us with no family, no one to call her own. We made sure she would never feel abandoned, never face the world alone. And what we found was a woman full of life, laughter, and endless stories. She is the heartbeat of our elder home, sharing her experiences and lighting up every room she enters. She may have arrived with nothing, but she has given this home something priceless: her warmth, her joy, and her spirit.</p>
+          </div>
+        </div>
       </div>
+
+      <div class="feat-slide">
+        <div class="story-featured">
+          <div class="story-feat-side">
+            <div>
+              <div class="story-feat-av" style="background:none;padding:0;overflow:hidden"><img src="Photo/Elder%20Photo/Gemini_Generated_Image_a51dvra51dvra51d.png" alt="Uncle Hok Keng Sang" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
+              <div class="story-feat-name">Uncle Hok Keng Sang</div>
+              <div class="story-feat-meta"><i class="fa fa-location-dot"></i> Amitabha Elder Home</div>
+            </div>
+            <div class="story-feat-quote">"</div>
+          </div>
+          <div class="story-feat-body">
+            <div class="story-cat"><i class="fa fa-heart-pulse"></i> Resilience</div>
+            <h3>A stroke took half his strength. Nothing could take his spirit.</h3>
+            <p>At 55, a stroke changed Uncle Hok's life forever. Sadly, he was left to face it alone. It was Tzu Chi who found him and gave us the blessing of caring for him. He does not say much, but his actions speak loudly. Every day he gets up, walks, and exercises, half his body weakened but his spirit unbroken. He helps caregivers when he can. He smiles warmly when visitors come. In his quiet resilience, he reminds us that the human spirit, when treated with love, never truly falls.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="feat-dots" id="featDots">
+      <button class="feat-dot active" onclick="goFeatSlide(0)"></button>
+      <button class="feat-dot" onclick="goFeatSlide(1)"></button>
+      <button class="feat-dot" onclick="goFeatSlide(2)"></button>
     </div>
   </div>
 </section>
@@ -656,22 +664,22 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 </div>
 
 <script>
-/* Hero story rotator */
+/* Featured story rotator */
 (function(){
-  const slides = document.querySelectorAll('.hero-slide');
-  const dots = document.querySelectorAll('.hero-dot');
+  const slides = document.querySelectorAll('.feat-slide');
+  const dots = document.querySelectorAll('.feat-dot');
   let cur = 0, timer;
-  window.goSlide = function(n){
+  window.goFeatSlide = function(n){
     slides[cur].classList.remove('active');
     dots[cur].classList.remove('active');
     cur = n;
     slides[cur].classList.add('active');
     dots[cur].classList.add('active');
     clearInterval(timer);
-    timer = setInterval(next, 4500);
+    timer = setInterval(next, 5000);
   };
-  function next(){ goSlide((cur + 1) % slides.length); }
-  timer = setInterval(next, 4500);
+  function next(){ goFeatSlide((cur + 1) % slides.length); }
+  timer = setInterval(next, 5000);
 })();
 
 const hdr = document.getElementById('hdr');
