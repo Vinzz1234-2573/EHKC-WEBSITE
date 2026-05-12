@@ -88,6 +88,19 @@ header.scrolled{background:rgba(255,255,255,.98);box-shadow:0 2px 18px rgba(10,4
 .breadcrumb a{color:rgba(255,255,255,.68);transition:color var(--t)}
 .breadcrumb a:hover{color:var(--gold-l)}
 .breadcrumb i{font-size:.58rem}
+/* HERO STORY ROTATOR */
+.hero-stories{position:relative;margin:2.2rem auto 1.8rem;max-width:600px;height:122px}
+.hero-slide{position:absolute;inset:0;display:flex;align-items:center;gap:1.2rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);border-radius:1.1rem;padding:1.15rem 1.5rem;opacity:0;transition:opacity .75s ease;pointer-events:none;text-align:left}
+.hero-slide.active{opacity:1;pointer-events:auto}
+.hero-slide-photo{width:62px;height:62px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid rgba(255,255,255,.28)}
+.hero-slide-body{flex:1;min-width:0}
+.hero-slide-cat{font-size:.67rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#eec4a3;margin-bottom:.28rem}
+.hero-slide-q{font-size:.86rem;color:rgba(255,255,255,.88);line-height:1.62;font-style:italic;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.hero-slide-name{font-size:.78rem;font-weight:600;color:#fff;margin-top:.45rem}
+.hero-dots{display:flex;justify-content:center;gap:.48rem}
+.hero-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.28);border:none;cursor:pointer;padding:0;transition:background .35s,transform .35s}
+.hero-dot.active{background:#eec4a3;transform:scale(1.35)}
+@media(max-width:560px){.hero-stories{height:auto;min-height:110px}.hero-slide{flex-direction:column;align-items:flex-start;height:auto}.hero-slide-photo{width:48px;height:48px}}
 
 /* SECTIONS */
 .sec{padding:5.5rem 0}
@@ -299,6 +312,39 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
     <div class="page-pill"><i class="fa fa-heart"></i> Real Lives, Real Change</div>
     <h1>Stories from<br><em>The Home</em></h1>
     <p>Every senior who walks through our doors carries a lifetime of stories. These are the ones they have shared with us: of resilience, dignity, and the quiet power of being cared for.</p>
+
+    <div class="hero-stories" id="heroStories">
+      <div class="hero-slide active">
+        <img class="hero-slide-photo" src="Photo/Elder%20Photo/_DSC3598.JPG" alt="Uncle Loh Keng Seng">
+        <div class="hero-slide-body">
+          <div class="hero-slide-cat"><i class="fa fa-hand-holding-heart"></i> Giving Back</div>
+          <p class="hero-slide-q">He quietly gave for years, fixing old electronics and donating every single ringgit back to the elder home, asking nothing in return. Now it is our turn to care for him.</p>
+          <div class="hero-slide-name">Uncle Loh Keng Seng</div>
+        </div>
+      </div>
+      <div class="hero-slide">
+        <img class="hero-slide-photo" src="Photo/Elder%20Photo/_DSC3626.JPG" alt="Aunty Wong Pek Lin">
+        <div class="hero-slide-body">
+          <div class="hero-slide-cat"><i class="fa fa-people-roof"></i> Community</div>
+          <p class="hero-slide-q">She arrived with no family to call her own. What we found was a woman full of life, laughter, and endless stories. She is the heartbeat of this home.</p>
+          <div class="hero-slide-name">Aunty Wong Pek Lin</div>
+        </div>
+      </div>
+      <div class="hero-slide">
+        <img class="hero-slide-photo" src="Photo/Elder%20Photo/Gemini_Generated_Image_a51dvra51dvra51d.png" alt="Uncle Hok Keng Sang">
+        <div class="hero-slide-body">
+          <div class="hero-slide-cat"><i class="fa fa-heart-pulse"></i> Resilience</div>
+          <p class="hero-slide-q">Half his body weakened but his spirit unbroken. Every day he gets up, walks, and exercises. In his quiet resilience, he reminds us that the human spirit, when treated with love, never truly falls.</p>
+          <div class="hero-slide-name">Uncle Hok Keng Sang</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-dots" id="heroDots">
+      <button class="hero-dot active" onclick="goSlide(0)"></button>
+      <button class="hero-dot" onclick="goSlide(1)"></button>
+      <button class="hero-dot" onclick="goSlide(2)"></button>
+    </div>
+
     <div class="breadcrumb">
       <a href="main_page.html">Home</a>
       <i class="fa fa-chevron-right"></i>
@@ -341,78 +387,6 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
       <p class="sec-p">Every resident arrives with a unique story. Here are the voices of the people at the heart of everything we do.</p>
     </div>
     <div class="stories-main">
-
-      <div class="story-card aos">
-        <div class="story-cat"><i class="fa fa-house-heart"></i> Resident</div>
-        <p class="story-q">After my children moved abroad I lived alone for three years. The team at Amitabha didn't just feed me, they remembered my name on day one.</p>
-        <div class="story-attr">
-          <div class="story-av"><i class="fa fa-user"></i></div>
-          <div>
-            <div class="story-name">Puan Siti, 79</div>
-            <div class="story-meta"><i class="fa fa-location-dot"></i> Cheras, KL</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="story-card aos d1">
-        <div class="story-cat"><i class="fa fa-utensils"></i> Daily Life</div>
-        <p class="story-q">A neighbour referred me when I had no income left. Amitabha placed me in the home and I now share my recipes with the kitchen staff every morning.</p>
-        <div class="story-attr">
-          <div class="story-av"><i class="fa fa-user"></i></div>
-          <div>
-            <div class="story-name">Ah Ma Tan, 82</div>
-            <div class="story-meta"><i class="fa fa-location-dot"></i> Taman Gembira</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="story-card aos d2">
-        <div class="story-cat"><i class="fa fa-hand-holding-dollar"></i> Financial Aid</div>
-        <p class="story-q">I couldn't afford my dialysis anymore. Amitabha stepped in within a week. I still cannot believe how quickly they moved to help a stranger like me.</p>
-        <div class="story-attr">
-          <div class="story-av"><i class="fa fa-user"></i></div>
-          <div>
-            <div class="story-name">Encik Ramli, 71</div>
-            <div class="story-meta"><i class="fa fa-location-dot"></i> Klang, Selangor</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="story-card aos">
-        <div class="story-cat"><i class="fa fa-stethoscope"></i> Medical Care</div>
-        <p class="story-q">My mother has dementia. The staff here know her favourite songs and sing with her at dinner. That kind of love cannot be measured in any report.</p>
-        <div class="story-attr">
-          <div class="story-av"><i class="fa fa-user"></i></div>
-          <div>
-            <div class="story-name">Mei Ling's daughter</div>
-            <div class="story-meta"><i class="fa fa-location-dot"></i> Subang Jaya</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="story-card aos d1">
-        <div class="story-cat"><i class="fa fa-people-roof"></i> Community</div>
-        <p class="story-q">I was a teacher for forty years. Here I still teach; I run a reading hour every Tuesday. Growing old does not mean stopping. It means slowing down beautifully.</p>
-        <div class="story-attr">
-          <div class="story-av"><i class="fa fa-user"></i></div>
-          <div>
-            <div class="story-name">Cikgu Rohani, 76</div>
-            <div class="story-meta"><i class="fa fa-location-dot"></i> Kuala Lumpur</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="story-card aos d2">
-        <div class="story-cat"><i class="fa fa-shield-heart"></i> Safety</div>
-        <p class="story-q">After my stroke I was afraid to be alone at night. Now I sleep peacefully knowing someone checks on me every two hours. Fear has no place here.</p>
-        <div class="story-attr">
-          <div class="story-av"><i class="fa fa-user"></i></div>
-          <div>
-            <div class="story-name">Uncle Lim, 80</div>
-            <div class="story-meta"><i class="fa fa-location-dot"></i> Ampang, KL</div>
-          </div>
-        </div>
-      </div>
 
       <div class="story-card aos">
         <div class="story-cat"><i class="fa fa-hand-holding-heart"></i> Giving Back</div>
@@ -682,6 +656,24 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 </div>
 
 <script>
+/* Hero story rotator */
+(function(){
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dot');
+  let cur = 0, timer;
+  window.goSlide = function(n){
+    slides[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur = n;
+    slides[cur].classList.add('active');
+    dots[cur].classList.add('active');
+    clearInterval(timer);
+    timer = setInterval(next, 4500);
+  };
+  function next(){ goSlide((cur + 1) % slides.length); }
+  timer = setInterval(next, 4500);
+})();
+
 const hdr = document.getElementById('hdr');
 const burger = document.getElementById('burger');
 const mob = document.getElementById('mob-menu');
