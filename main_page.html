@@ -510,6 +510,27 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
 .btn-coral{animation:donateGlow 2.5s ease-in-out infinite}
 .donate-img{height:1.1em;width:auto;vertical-align:middle;display:inline-block;filter:brightness(0) invert(1) drop-shadow(0 0 4px rgba(255,255,255,.6))}
 .donate-img-plain{height:1.1em;width:auto;vertical-align:middle;display:inline-block}
+/* MAP SECTION */
+.map-section{padding:0}
+.map-header{background:linear-gradient(135deg,var(--teal-800),var(--teal-700));padding:3rem 1.5rem 2.5rem;text-align:center}
+.map-header h2{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:500;color:#fff;margin-bottom:.5rem}
+.map-header p{color:rgba(255,255,255,.78);font-size:.97rem;max-width:520px;margin:0 auto}
+.map-body{display:grid;grid-template-columns:1fr 360px;max-width:100%}
+.map-iframe-wrap{position:relative;height:400px;overflow:hidden}
+.map-iframe-wrap iframe{width:100%;height:100%;border:none;display:block}
+.map-info{background:#fff;padding:2.5rem 2rem;display:flex;flex-direction:column;justify-content:center;gap:1rem;border-left:1px solid var(--line)}
+.map-info h3{font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--ink-900);margin-bottom:.2rem}
+.mi-row{display:flex;align-items:flex-start;gap:.9rem}
+.mi-ico{width:38px;height:38px;border-radius:9px;flex-shrink:0;background:var(--teal-700);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.9rem}
+.mi-body .lb{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-700);margin-bottom:.15rem}
+.mi-body .vl{font-size:.9rem;color:var(--ink-500);font-weight:500;line-height:1.5}
+.mi-body a{color:var(--teal-800)}.mi-body a:hover{color:var(--teal-700)}
+.map-cta{display:flex;align-items:center;gap:.7rem;margin-top:.5rem;padding:.9rem 1.2rem;background:#25d366;border-radius:12px;color:#fff;box-shadow:0 4px 16px rgba(37,211,102,.3);transition:all var(--t)}
+.map-cta:hover{background:#1ebe5a;transform:translateY(-2px)}
+.map-cta i{font-size:1.4rem}
+.map-cta .mc-t{font-weight:700;font-size:.88rem}
+.map-cta .mc-s{font-size:.75rem;color:rgba(255,255,255,.78)}
+@media(max-width:768px){.map-body{grid-template-columns:1fr}.map-info{border-left:none;border-top:1px solid var(--line)}.map-iframe-wrap{height:280px}}
 </style>
 </head>
 <body>
@@ -525,12 +546,12 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
       <a href="services.html">Services</a>
       <a href="about.html">About</a>
       <a href="stories.html">Stories</a>
-      <a href="contact.html">Contact</a>
+
       <a href="blog.html">News</a>
       <a href="jobs.html">Careers</a>
     </nav>
     <div class="hdr-r">
-      <a href="contact.html" class="btn btn-ghost"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
+      <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="btn btn-ghost"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
       <div id="nav-auth"><a href="login.html" class="btn btn-ghost"><i class="fa fa-user"></i> Sign In</a></div>
       <a href="https://wa.me/60127762911?text=I%20want%20to%20donate%20to%20Amitabha%20Foundation%20Elder%20Home." class="btn" style="background:#ab1a1f;color:#fff;border-radius:999px;padding:.62rem 1.15rem;animation:donateGlow 2.5s ease-in-out infinite" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> Donate</a>
       <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -541,11 +562,11 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
     <a href="services.html">Services</a>
     <a href="about.html">About</a>
     <a href="stories.html">Stories</a>
-    <a href="contact.html">Contact</a>
+
     <a href="blog.html">News</a>
     <a href="jobs.html">Careers</a>
     <a href="login.html" id="mob-signin"><i class="fa fa-user"></i> Sign In</a>
-    <a href="contact.html" style="color:var(--teal-700);font-weight:700"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
+    <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." style="color:var(--teal-700);font-weight:700"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
     <a href="https://wa.me/60127762911?text=I%20want%20to%20donate%20to%20Amitabha%20Foundation%20Elder%20Home." target="_blank" rel="noopener" style="color:#ab1a1f;font-weight:700"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img-plain" alt=""> Donate Now</a>
   </nav>
 </header>
@@ -575,7 +596,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
       <p class="hero-sub" style="color:rgb(82,77,77)">Amitabha Foundation Elder Home provides 24/7 compassionate care, financial assistance, and home placement, so every senior in Malaysia can live their later years with dignity, comfort, and purpose.</p>
       <div class="hero-cta">
         <a href="services.html" class="btn btn-primary btn-lg"><i class="fa fa-hand-holding-heart"></i> Explore our care</a>
-        <a href="contact.html" class="btn btn-outline-white btn-lg" style="color:#000;background-color:#fff"><i class="fa fa-phone-volume"></i> Speak to us</a>
+        <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="btn btn-outline-white btn-lg" style="color:#000;background-color:#fff"><i class="fa fa-phone-volume"></i> Speak to us</a>
       </div>
       <div class="hero-trust">
         <div class="ht" style="color:#000"><i class="fa fa-clock"></i> 24/7 nursing</div>
@@ -860,7 +881,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
     <div class="cta-btns">
       <a href="https://wa.me/60127762911?text=I%20want%20to%20donate%20to%20Amitabha%20Foundation%20Elder%20Home." class="btn btn-lg" style="background:#ab1a1f;color:#fff;animation:donateGlow 2.5s ease-in-out infinite;box-shadow:0 6px 22px rgba(171,26,31,.38)" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> Donate now</a>
       <a href="https://wa.me/60127762911" class="btn btn-lg" style="background:#25d366;color:#fff;animation:waGlow 2.5s ease-in-out infinite;box-shadow:0 6px 22px rgba(37,211,102,.38)" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Volunteer</a>
-      <a href="contact.html" class="btn btn-outline-white btn-lg"><i class="fa fa-hand-holding-medical"></i> Seek help</a>
+      <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="btn btn-outline-white btn-lg"><i class="fa fa-hand-holding-medical"></i> Seek help</a>
     </div>
   </div>
 </div>
@@ -961,6 +982,31 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
 
 <button class="admin-toggle" id="adminQuickToggle" title="Toggle admin mode" style="display:none"><i class="fa fa-user-shield"></i></button>
 
+<!-- LOCATION MAP -->
+<div class="map-section" id="location">
+  <div class="map-header">
+    <div class="eyebrow" style="display:inline-flex;align-items:center;gap:.4rem;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#eec4a3;margin-bottom:.6rem">Our Location</div>
+    <h2>Find Our Centre</h2>
+    <p>Visit us at our centre in Kuala Lumpur. Our team is ready to welcome you and your loved ones.</p>
+  </div>
+  <div class="map-body">
+    <div class="map-iframe-wrap">
+      <iframe src="https://maps.google.com/maps?q=Taman+Gembira+Jalan+Rukun+7+58200+Kuala+Lumpur+Malaysia&output=embed&z=16" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Amitabha Foundation Location"></iframe>
+    </div>
+    <div class="map-info">
+      <h3>Amitabha Foundation<br>Elder Care Centre</h3>
+      <div class="mi-row"><div class="mi-ico"><i class="fa fa-location-dot"></i></div><div class="mi-body"><div class="lb">Address</div><div class="vl">A14, Jalan Rukun 7<br>Taman Gembira<br>58200 Kuala Lumpur, Malaysia</div></div></div>
+      <div class="mi-row"><div class="mi-ico"><i class="fa fa-phone"></i></div><div class="mi-body"><div class="lb">Phone</div><div class="vl"><a href="tel:+60378903700">+603-7890 3700</a></div></div></div>
+      <div class="mi-row"><div class="mi-ico"><i class="fa fa-headset"></i></div><div class="mi-body"><div class="lb">Hotline</div><div class="vl"><a href="tel:+60127762911">012-776 2911</a></div></div></div>
+      <div class="mi-row"><div class="mi-ico"><i class="fa fa-clock"></i></div><div class="mi-body"><div class="lb">Opening Hours</div><div class="vl">Mon – Sun: 9:00am – 5:00pm</div></div></div>
+      <a class="map-cta" href="https://wa.me/60127762911?text=Hello%2C%20I%20would%20like%20to%20visit%20the%20Amitabha%20Foundation%20centre." target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i>
+        <div><div class="mc-t">Ask for Directions</div><div class="mc-s">WhatsApp us for help</div></div>
+      </a>
+    </div>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer id="contact">
   <div class="foot-top">
@@ -980,7 +1026,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
       <a href="main_page.html">Home</a>
       <a href="about.html">About</a>
       <a href="https://wa.me/60127762911?text=I%20want%20to%20donate%20to%20Amitabha%20Foundation%20Elder%20Home." target="_blank" rel="noopener">Donate</a>
-      <a href="contact.html">Contact</a>
+
       <a href="services.html">Services</a>
     </div>
     <div class="foot-col">
