@@ -137,6 +137,10 @@ header.scrolled{background:rgba(255,255,255,.96);box-shadow:0 2px 18px rgba(10,4
 .scroll-cue .bar::after{content:"";display:block;width:1px;height:14px;background:var(--gold);animation:slide 1.8s ease-in-out infinite}
 @keyframes slide{0%{transform:translateY(-14px);opacity:0}40%{opacity:1}100%{transform:translateY(38px);opacity:0}}
 @keyframes float-bob{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-14px) rotate(1deg)}}
+.hero-dots{position:absolute;bottom:3.8rem;left:50%;transform:translateX(-50%);display:flex;gap:.5rem;align-items:center;z-index:10}
+.hero-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4);border:none;padding:0;cursor:pointer;transition:width .4s ease,background .4s ease;flex-shrink:0}
+.hero-dot.active{width:24px;border-radius:99px;background:rgba(255,255,255,.9)}
+.hero-dot:hover{background:rgba(255,255,255,.7)}
 
 /* Stats */
 .stats{background:#fff;border-bottom:1px solid var(--line);position:relative;z-index:1}
@@ -605,6 +609,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
     </div>
   </div>
 
+  <div class="hero-dots" id="heroDots"></div>
   <div class="scroll-cue"><div class="bar"></div></div>
 </section>
 
@@ -1057,16 +1062,34 @@ mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
 /* Hero slideshow */
 (function(){
   const slides = document.querySelectorAll('.hero-slide');
-  let cur = 0;
+  const dotsWrap = document.getElementById('heroDots');
+  let cur = 0, timer = null;
+
   function loadSlide(i){ const s = slides[i]; if (s.dataset.bg){ s.style.backgroundImage = s.dataset.bg; delete s.dataset.bg; } }
-  loadSlide(1);
-  setInterval(()=>{
+
+  const dots = Array.from({length: slides.length}, (_, i) => {
+    const b = document.createElement('button');
+    b.className = 'hero-dot' + (i === 0 ? ' active' : '');
+    b.setAttribute('aria-label', 'Slide ' + (i + 1));
+    b.addEventListener('click', () => { go(i); restart(); });
+    dotsWrap.appendChild(b);
+    return b;
+  });
+
+  function go(i){
     slides[cur].classList.remove('active');
-    cur = (cur + 1) % slides.length;
+    dots[cur].classList.remove('active');
+    cur = (i + slides.length) % slides.length;
     loadSlide(cur);
     loadSlide((cur + 1) % slides.length);
     slides[cur].classList.add('active');
-  }, 4000);
+    dots[cur].classList.add('active');
+  }
+
+  function restart(){ clearInterval(timer); timer = setInterval(() => go(cur + 1), 4000); }
+
+  loadSlide(1);
+  restart();
 })();
 
 /* Parallax (rAF-throttled, cached positions to avoid reflow on scroll) */
