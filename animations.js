@@ -445,28 +445,20 @@
   (function heroEntrance() {
     if (reducedMotion) return;
 
-    const targets = [
-      { sel: '.hero-eyebrow', delay: 0   },
-      { sel: '.hero h1',      delay: 120 },
-      { sel: '.hero-sub',     delay: 260 },
-      { sel: '.hero-cta',     delay: 400 },
-      { sel: '.hero-trust',   delay: 520 },
-    ];
-
-    targets.forEach(({ sel, delay }) => {
-      const el = document.querySelector(sel);
-      if (!el) return;
-      el.style.cssText += `
+    /* h1 only — eyebrow/sub/cta/trust are handled by the Anime.js v4 module script */
+    const h1 = document.querySelector('.hero h1');
+    if (h1) {
+      h1.style.cssText += `
         opacity:0;
         transform:translateY(20px);
-        transition:opacity .85s cubic-bezier(.2,.7,.3,1) ${delay}ms,
-                   transform .85s cubic-bezier(.2,.7,.3,1) ${delay}ms;
+        transition:opacity .85s cubic-bezier(.2,.7,.3,1) 120ms,
+                   transform .85s cubic-bezier(.2,.7,.3,1) 120ms;
       `;
       requestAnimationFrame(() => requestAnimationFrame(() => {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
+        h1.style.opacity = '1';
+        h1.style.transform = 'none';
       }));
-    });
+    }
 
     /* Hero card entrance */
     const card = document.querySelector('.hero-card');

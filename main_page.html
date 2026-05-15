@@ -1630,6 +1630,64 @@ document.querySelectorAll('.aos,.aos-l,.aos-r').forEach(el => aosObs.observe(el)
 </script>
 <script src="animations.js"></script>
 
+<!-- Anime.js v4 — hero cinematic entrance (eyebrow, sub, cta, trust) -->
+<style>
+/* Hide these until Anime.js animates them in (avoids flash before module loads) */
+.hero-eyebrow, .hero-sub, .hero-cta, .hero-trust { opacity: 0; }
+</style>
+
+<script type="module">
+import { createTimeline, stagger } from 'https://esm.sh/animejs';
+
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const eyebrow    = document.querySelector('.hero-eyebrow');
+  const sub        = document.querySelector('.hero-sub');
+  const ctaBtns    = [...document.querySelectorAll('.hero-cta .btn')];
+  const trustItems = [...document.querySelectorAll('.hero-trust .ht')];
+
+  const tl = createTimeline({ defaults: { ease: 'outExpo' } });
+
+  /* 1 — eyebrow pill: drop from above with blur */
+  if (eyebrow) tl.add(eyebrow, {
+    y:       [-48, 0],
+    x:       [-18, 0],
+    scale:   [0.68, 1],
+    opacity: [0, 1],
+    filter:  ['blur(10px)', 'blur(0px)'],
+    duration: 950,
+  }, 160);
+
+  /* 2 — sub paragraph: rise from below with blur */
+  if (sub) tl.add(sub, {
+    y:       [42, 0],
+    opacity: [0, 1],
+    filter:  ['blur(6px)', 'blur(0px)'],
+    duration: 1000,
+  }, 480);
+
+  /* 3 — CTA buttons: spring-pop with stagger */
+  if (ctaBtns.length) tl.add(ctaBtns, {
+    y:        [32, 0],
+    opacity:  [0, 1],
+    scale:    [0.82, 1],
+    delay:    stagger(150),
+    duration: 900,
+    ease:     'outElastic(1, .55)',
+  }, 760);
+
+  /* 4 — trust badges: slide from left with spring */
+  if (trustItems.length) tl.add(trustItems, {
+    x:        [-28, 0],
+    y:        [10, 0],
+    opacity:  [0, 1],
+    scale:    [0.82, 1],
+    delay:    stagger(110),
+    duration: 750,
+    ease:     'outElastic(1, .7)',
+  }, 1020);
+}
+</script>
+
 <!-- Anime.js v4 splitText — hero h1 cinematic word/char reveal -->
 <style>
 /* Clip wrappers created by splitText need inline-block so overflow:hidden works */
