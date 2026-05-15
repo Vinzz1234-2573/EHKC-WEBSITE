@@ -1,0 +1,173 @@
+/* animations.css — EHKC Website 3D & Parallax Enhancement */
+
+/* ── PAGE LOAD FADE-IN ── */
+html {
+  opacity: 0;
+  animation: pageLoadIn 0.8s cubic-bezier(.2,.7,.3,1) forwards;
+}
+@keyframes pageLoadIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── LOADING BAR ── */
+#loading-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #c47a4a 0%, #daa520 50%, #c47a4a 100%);
+  background-size: 200% 100%;
+  width: 0%;
+  z-index: 9999;
+  box-shadow: 0 0 12px rgba(196,122,74,.6), 0 0 24px rgba(218,165,32,.3);
+  animation: loadingGlow 1.2s ease-in-out infinite;
+}
+#loading-bar.complete {
+  animation: loadingComplete .6s cubic-bezier(.2,.7,.3,1) forwards;
+}
+@keyframes loadingGlow {
+  0%,100% { background-position: 0% 0%; opacity: 1; }
+  50%      { background-position: 100% 0%; opacity: .9; }
+}
+@keyframes loadingComplete {
+  0%   { width: 100%; opacity: 1; }
+  100% { width: 100%; opacity: 0; }
+}
+
+/* ── SCROLL PROGRESS BAR ── */
+#scroll-progress {
+  position: fixed;
+  top: 3px;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #c47a4a, #daa520, #c47a4a);
+  z-index: 9998;
+  pointer-events: none;
+  box-shadow: 0 0 8px rgba(196,122,74,.5);
+  transition: width .15s ease-out, opacity .3s ease;
+}
+
+/* ── PAGE SHINE EFFECT ── */
+#page-shine {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9997;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent);
+}
+
+/* ── Perspective containers for 3D card tilt ── */
+.svc-grid, .why-grid, .story-grid, .news-grid, .evt-grid {
+  perspective: 1400px;
+}
+
+/* ── Shimmer sweep on hovered cards ── */
+.svc-card, .why-card, .story-card {
+  overflow: hidden;
+}
+.svc-card .card-shine,
+.why-card .card-shine,
+.story-card .card-shine {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255,255,255,0.08) 50%,
+    transparent 70%
+  );
+  background-size: 200% 200%;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+.svc-card:hover .card-shine,
+.why-card:hover .card-shine,
+.story-card:hover .card-shine {
+  opacity: 1;
+  animation: cardShimmer 0.6s ease forwards;
+}
+
+/* ── Floating orb keyframe (injected particles use this) ── */
+@keyframes orbFloat {
+  0%,100% { transform: translateY(0) translateX(0) scale(1); }
+  20%      { transform: translateY(-32px) translateX(22px) scale(1.05); }
+  50%      { transform: translateY(-16px) translateX(-14px) scale(0.96); }
+  75%      { transform: translateY(-44px) translateX(10px) scale(1.03); }
+}
+
+/* ── Depth reveal — sections slide up when entering viewport ── */
+.depth-section {
+  will-change: transform, opacity;
+  opacity: 0.75;
+  transform: translateY(22px) scale(0.994);
+  transition: opacity 0.75s cubic-bezier(.2,.7,.3,1),
+              transform 0.75s cubic-bezier(.2,.7,.3,1);
+}
+.depth-section.depth-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Hero card mouse-track tilt support ── */
+.hero-card {
+  transform-style: preserve-3d;
+}
+
+/* ── Shimmer sweep on hovered cards ── */
+.svc-card, .why-card, .story-card {
+  overflow: hidden;
+}
+.svc-card .card-shine,
+.why-card .card-shine,
+.story-card .card-shine {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255,255,255,0.08) 50%,
+    transparent 70%
+  );
+  background-size: 200% 200%;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+.svc-card:hover .card-shine,
+.why-card:hover .card-shine,
+.story-card:hover .card-shine {
+  opacity: 1;
+  animation: cardShimmer 0.6s ease forwards;
+}
+@keyframes cardShimmer {
+  0%   { background-position: 200% 50%; }
+  100% { background-position: -100% 50%; }
+}
+
+/* ── Parallax hero shapes enhanced ── */
+.hero-shape {
+  transition: none;
+}
+
+/* ── Reduced-motion guard ── */
+@media (prefers-reduced-motion: reduce) {
+  .depth-section,
+  .depth-section.depth-in {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  @keyframes orbFloat   { 0%,100% { transform: none; } }
+  @keyframes cardShimmer{ 0%,100% { background-position: 0 50%; } }
+  #cursor-glow { display: none !important; }
+}
