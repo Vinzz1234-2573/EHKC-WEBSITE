@@ -1647,44 +1647,40 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 
   const tl = createTimeline({ defaults: { ease: 'outExpo' } });
 
-  /* 1 — eyebrow pill: drop from above with blur */
+  /* 1 — eyebrow pill */
   if (eyebrow) tl.add(eyebrow, {
-    y:       [-48, 0],
-    x:       [-18, 0],
-    scale:   [0.68, 1],
+    y:       [-36, 0],
     opacity: [0, 1],
-    filter:  ['blur(10px)', 'blur(0px)'],
-    duration: 950,
-  }, 160);
+    scale:   [0.78, 1],
+    duration: 700,
+  }, 150);
 
-  /* 2 — sub paragraph: rise from below with blur */
+  /* 2 — sub paragraph */
   if (sub) tl.add(sub, {
-    y:       [42, 0],
+    y:       [30, 0],
     opacity: [0, 1],
-    filter:  ['blur(6px)', 'blur(0px)'],
-    duration: 1000,
-  }, 480);
+    duration: 700,
+  }, 380);
 
-  /* 3 — CTA buttons: spring-pop with stagger */
+  /* 3 — CTA buttons */
   if (ctaBtns.length) tl.add(ctaBtns, {
-    y:        [32, 0],
+    y:        [24, 0],
     opacity:  [0, 1],
-    scale:    [0.82, 1],
-    delay:    stagger(150),
-    duration: 900,
-    ease:     'outElastic(1, .55)',
-  }, 760);
+    scale:    [0.88, 1],
+    delay:    stagger(120),
+    duration: 650,
+    ease:     'outElastic(1, .6)',
+  }, 600);
 
-  /* 4 — trust badges: slide from left with spring */
+  /* 4 — trust badges */
   if (trustItems.length) tl.add(trustItems, {
-    x:        [-28, 0],
-    y:        [10, 0],
+    x:        [-22, 0],
     opacity:  [0, 1],
-    scale:    [0.82, 1],
-    delay:    stagger(110),
-    duration: 750,
+    scale:    [0.88, 1],
+    delay:    stagger(90),
+    duration: 600,
     ease:     'outElastic(1, .7)',
-  }, 1020);
+  }, 820);
 }
 </script>
 
@@ -1708,29 +1704,16 @@ const h1 = document.querySelector('.hero h1');
 if (!h1 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   /* nothing — fall back to CSS entrance from animations.js */
 } else {
-  /* Give heroEntrance (animations.js) time to fade the h1 in first */
+  /* Wait for heroEntrance to set h1 visible first, then words slide in once */
   setTimeout(() => {
-    const { words, chars } = splitText(h1, {
-      words: { wrap: 'clip' },
-      chars: true,
-    });
+    const { words } = splitText(h1, { words: { wrap: 'clip' } });
 
-    createTimeline({
-      loop: true,
-      defaults: { ease: 'inOut(3)', duration: 1100 }
-    })
-    /* ① Words slide in — slower stagger so each word eases in clearly */
+    createTimeline({ defaults: { ease: 'outExpo', duration: 900 } })
     .add(words, {
       y: [$el => +$el.dataset.line % 2 ? '110%' : '-110%', '0%'],
-    }, stagger(220))
-    /* ② Hold the full title visible for 2 seconds (opacity 1→1 = no-op pause) */
-    .add(h1, { opacity: [1, 1], duration: 2000 })
-    /* ③ Chars scatter out randomly — slower drift */
-    .add(chars, {
-      y: $el => +$el.dataset.line % 2 ? '110%' : '-110%',
-    }, stagger(14, { from: 'random' }))
+    }, stagger(180))
     .init();
-  }, 900); /* wait for heroEntrance fade-in (520 ms + buffer) */
+  }, 200);
 }
 </script>
 
