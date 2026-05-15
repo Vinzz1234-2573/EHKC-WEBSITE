@@ -2024,6 +2024,37 @@ import { animate, utils } from 'https://esm.sh/animejs';
 })();
 </script>
 
+<!-- Anime.js v4 — Stories: slideX + rotate entrance for heading and cards -->
+<script type="module">
+import { animate, stagger } from 'https://esm.sh/animejs';
+
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const storiesSection = document.getElementById('stories');
+  if (!storiesSection) return;
+
+  const targets = [
+    storiesSection.querySelector('.eyebrow'),
+    storiesSection.querySelector('.section-h'),
+    ...storiesSection.querySelectorAll('.story-card'),
+  ].filter(Boolean);
+
+  new IntersectionObserver((entries, obs) => {
+    if (!entries[0].isIntersecting) return;
+    obs.disconnect();
+
+    animate(targets, {
+      opacity:    { from: 0.5 },
+      translateX: { from: '16rem' },
+      rotate:     { from: '-.75turn', ease: 'inOutQuad' },
+      duration:   900,
+      ease:       'outExpo',
+      delay:      stagger(120),
+    });
+  }, { threshold: 0.2 }).observe(storiesSection);
+})();
+</script>
+
 <!-- Anime.js v4 — Person-in-charge section: function-based staggered entrance -->
 <script type="module">
 import { animate, utils } from 'https://esm.sh/animejs';
