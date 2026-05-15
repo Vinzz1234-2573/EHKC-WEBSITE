@@ -207,8 +207,8 @@
   (function cardTilt() {
     if (reducedMotion || mobile()) return;
 
-    const TILT = 14; // max degrees (doubled for stronger 3D feel)
-    const LIFT = 22; // translateZ px (doubled for more depth pop)
+    const TILT = 18; // max degrees — stronger 3D feel
+    const LIFT = 28; // translateZ px — more depth pop
 
     const selectors = [
       '.svc-card', '.why-card', '.story-card', '.news-card',
@@ -633,11 +633,11 @@
     if (!hero) return;
 
     const layers = [
-      { el: hero.querySelector('.hero-shape.s1'), depth: 28 },
-      { el: hero.querySelector('.hero-shape.s2'), depth: 20 },
-      { el: hero.querySelector('.hero-shape.s3'), depth: 12 },
-      { el: hero.querySelector('.hero-bg'),       depth: 6  },
-      { el: hero.querySelector('.hero-grain'),    depth: 3  },
+      { el: hero.querySelector('.hero-shape.s1'), depth: 42 },
+      { el: hero.querySelector('.hero-shape.s2'), depth: 30 },
+      { el: hero.querySelector('.hero-shape.s3'), depth: 18 },
+      { el: hero.querySelector('.hero-bg'),       depth: 9  },
+      { el: hero.querySelector('.hero-grain'),    depth: 4  },
     ].filter(l => l.el);
 
     let mx = 0, my = 0, cx = 0, cy = 0;
@@ -689,7 +689,7 @@
         /* 0 = section top at viewport bottom (fully incoming)
            1 = section top at 30% from top (fully settled) */
         const progress = Math.max(0, Math.min(1, (vh - top) / (vh * 0.7)));
-        const tilt = progress < 1 ? (1 - progress) * 9 : 0;
+        const tilt = progress < 1 ? (1 - progress) * 14 : 0;
         grid.style.transform = tilt > 0.3
           ? `rotateX(${tilt.toFixed(2)}deg)`
           : '';

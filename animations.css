@@ -1,5 +1,190 @@
 /* animations.css — EHKC Website 3D & Parallax Enhancement */
 
+/* ── HANDLEE FONT — applied to every orange/teal coloured text ── */
+@font-face {
+  font-family: "Handlee";
+  src: url("Handlee-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Convenience variable (use --handlee anywhere you need it) */
+:root {
+  --handlee: "Handlee", cursive;
+}
+
+/* ── Apply Handlee to ALL orange / teal coloured text elements ── */
+
+/* Section eyebrows (small orange uppercase labels above headings) */
+.eyebrow,
+.sec-eyebrow,
+.eyebrow-label,
+.sect-eyebrow,
+.page-eyebrow,
+.hero-eyebrow,
+.gal-cap-eyebrow,
+.cat-label,
+.cat-pill,
+.story-cat,
+.page-tag,
+.tag-pill {
+  font-family: var(--handlee) !important;
+  letter-spacing: .06em;
+}
+
+/* Italic <em> inside headings — the shimmer-gradient orange phrases */
+h1 em, h2 em, h3 em, h4 em,
+h2.section-h em,
+.sec-h em,
+.section-h em,
+.hero h1 em,
+.pb-quote em,
+.cta-band h2 em {
+  font-family: var(--handlee) !important;
+  font-style: italic;
+}
+
+/* Hero h1 highlight span (.sw = "shimmering word") */
+.hero h1 .sw {
+  font-family: var(--handlee) !important;
+}
+
+/* Service section: numbered labels & "Learn more →" links */
+.svc-num,
+.svc-link,
+.svc-link * {
+  font-family: var(--handlee) !important;
+}
+
+/* Event / news metadata bars */
+.evt-meta,
+.evt-meta *,
+.news-meta,
+.news-cat,
+.news-tag {
+  font-family: var(--handlee) !important;
+}
+
+/* Parallax-break quote orange span */
+.pb-quote span {
+  font-family: var(--handlee) !important;
+}
+
+/* About/values row bold labels */
+.v-row strong {
+  font-family: var(--handlee) !important;
+}
+
+/* Gallery caption eyebrow */
+.gal-cap-eyebrow {
+  font-family: var(--handlee) !important;
+}
+
+/* Stat numbers (teal colour large numbers) */
+.stat-n {
+  font-family: var(--handlee) !important;
+}
+
+/* Hero floating card labels */
+.hcf .l {
+  font-family: var(--handlee) !important;
+}
+
+/* Any explicit teal-700 / orange inline colour text */
+[style*="color:#c47a4a"],
+[style*="color: #c47a4a"],
+[style*="color:#daa520"],
+[style*="color: #daa520"] {
+  font-family: var(--handlee) !important;
+}
+
+/* ── MODERN GLASSMORPHISM ENHANCEMENTS ── */
+
+/* Frosted-glass card base upgrade */
+.svc-card,
+.why-card,
+.story-card,
+.evt-card {
+  backdrop-filter: blur(2px) saturate(140%);
+  -webkit-backdrop-filter: blur(2px) saturate(140%);
+}
+
+/* Modern border-glow on hover via box-shadow ring */
+.svc-card:hover,
+.why-card:hover,
+.story-card:hover,
+.evt-card:hover {
+  box-shadow:
+    0 0 0 1px rgba(196,122,74,.25),
+    0 20px 60px rgba(10,40,45,.14),
+    0 8px 24px rgba(196,122,74,.12),
+    inset 0 1px 0 rgba(255,255,255,.8);
+}
+
+/* ── CURSOR GLOW (desktop only) ── */
+#cursor-glow {
+  position: fixed;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9996;
+  background: radial-gradient(
+    circle at center,
+    rgba(196,122,74,.07) 0%,
+    rgba(218,165,32,.04) 35%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  transition: opacity .4s ease;
+  opacity: 0;
+}
+body:hover #cursor-glow {
+  opacity: 1;
+}
+
+/* ── MODERN BUTTON PULSE ── */
+@keyframes btnPulseOrange {
+  0%,100% { box-shadow: 0 6px 18px rgba(196,122,74,.32), 0 0 0 0 rgba(196,122,74,.0); }
+  50%      { box-shadow: 0 6px 18px rgba(196,122,74,.32), 0 0 0 8px rgba(196,122,74,.0); }
+}
+
+/* ── MODERN SECTION REVEAL (upgraded depth-section) ── */
+.depth-section {
+  will-change: transform, opacity;
+  opacity: 0;
+  transform: perspective(2000px) rotateX(6deg) translateY(32px) scale(0.982);
+  transform-origin: center 100%;
+  transition: opacity 1s cubic-bezier(.16,1,.3,1),
+              transform 1s cubic-bezier(.16,1,.3,1);
+}
+.depth-section.depth-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── STAGGER CHILDREN in depth-section (first 6 direct children) ── */
+.depth-section > *:nth-child(1) { transition-delay: .05s; }
+.depth-section > *:nth-child(2) { transition-delay: .12s; }
+.depth-section > *:nth-child(3) { transition-delay: .19s; }
+.depth-section > *:nth-child(4) { transition-delay: .26s; }
+.depth-section > *:nth-child(5) { transition-delay: .33s; }
+.depth-section > *:nth-child(6) { transition-delay: .40s; }
+
+/* ── MODERN SMOOTH SCROLL INDICATOR ── */
+@keyframes scrollPulse {
+  0%,100% { transform: translateY(0); opacity: .7; }
+  50%      { transform: translateY(6px); opacity: 1; }
+}
+
+/* ── FLOATING PARTICLE MODERN ── */
+@keyframes particleDrift {
+  0%,100% { transform: translateY(0) translateX(0) rotate(0deg); opacity: .6; }
+  33%      { transform: translateY(-22px) translateX(14px) rotate(6deg); opacity: .9; }
+  66%      { transform: translateY(-10px) translateX(-10px) rotate(-4deg); opacity: .7; }
+}
+
 /* ── PAGE LOAD FADE-IN ── */
 html {
   opacity: 0;
