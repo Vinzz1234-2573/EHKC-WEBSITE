@@ -1676,6 +1676,61 @@ if (!h1 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 }
 </script>
 
+<!-- Anime.js v4 — Parallax-break accent block: left + borderRadius + color + blur -->
+<script type="module">
+import { animate } from 'https://esm.sh/animejs';
+
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const pb = document.querySelector('.parallax-break');
+  if (!pb) return;
+
+  /* ── Build two layered accent blocks for depth ── */
+  const blocks = [
+    { w:'72px',  h:'72px',  bottom:'14%', left:'2rem',   bg:'rgba(196,122,74,.45)', r:'12px', dur:1800, delay:0    },
+    { w:'44px',  h:'44px',  bottom:'38%', left:'5rem',   bg:'rgba(218,165,32,.35)', r:'8px',  dur:2200, delay:300  },
+  ];
+
+  blocks.forEach(({ w, h, bottom, left, bg, r, dur, delay }) => {
+    const el = document.createElement('div');
+    el.setAttribute('aria-hidden', 'true');
+    Object.assign(el.style, {
+      position:      'absolute',
+      width:          w,
+      height:         h,
+      bottom:         bottom,
+      left:           left,
+      background:     bg,
+      borderRadius:   r,
+      zIndex:         '1',
+      pointerEvents:  'none',
+      willChange:     'left, border-radius, background-color, filter',
+    });
+    pb.appendChild(el);
+
+    /* Animate using the exact pattern from the docs */
+    new IntersectionObserver((entries, obs) => {
+      if (!entries[0].isIntersecting) return;
+      obs.disconnect();
+
+      animate(el, {
+        left:              'calc(7.75rem * 2)',
+        borderRadius:      64,
+        'background-color': '#F9F640',
+        filter:            'blur(5px)',
+        duration:          dur,
+        delay:             delay,
+        ease:              'outExpo',
+        loop:              true,
+        alternate:         true,
+        loopDelay:         500,
+      });
+    }, { threshold: 0.25 }).observe(pb);
+  });
+})();
+</script>
+
 <!-- Anime.js v4 — Person-in-charge section: function-based staggered entrance -->
 <script type="module">
 import { animate, utils } from 'https://esm.sh/animejs';
