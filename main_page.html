@@ -339,9 +339,13 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
 .float-bar{position:fixed;bottom:1.6rem;left:50%;transform:translateX(-50%);z-index:999;display:flex;gap:.65rem;align-items:center}
 .float-wa{display:inline-flex;align-items:center;gap:.5rem;padding:.78rem 1.55rem;border-radius:999px;font-weight:700;font-size:.92rem;font-family:var(--sans);white-space:nowrap;transition:all var(--t);background:#25d366;color:#fff;box-shadow:0 6px 24px rgba(37,211,102,.42);text-decoration:none}
 .float-wa:hover{background:#1ebe5a;transform:translateY(-3px);box-shadow:0 10px 30px rgba(37,211,102,.58)}
-.float-donate{display:inline-flex;align-items:center;gap:.5rem;padding:.78rem 1.55rem;border-radius:999px;font-weight:700;font-size:.92rem;font-family:var(--sans);white-space:nowrap;transition:all var(--t);background:linear-gradient(135deg,#c52525,#ab1a1f);color:#fff;box-shadow:0 6px 28px rgba(171,26,31,.6),0 0 18px rgba(171,26,31,.35);animation:donatePulse 2.8s ease-in-out infinite;text-decoration:none}
+.float-donate{position:relative;display:inline-flex;align-items:center;gap:.5rem;padding:.78rem 1.55rem;border-radius:999px;font-weight:700;font-size:.92rem;font-family:var(--sans);white-space:nowrap;transition:all var(--t);background:linear-gradient(135deg,#c52525,#ab1a1f);color:#fff;box-shadow:0 6px 28px rgba(171,26,31,.6),0 0 18px rgba(171,26,31,.35);animation:donatePulse 2.8s ease-in-out infinite;text-decoration:none;cursor:grab}
+.float-donate:active{cursor:grabbing}
 .float-donate:hover{background:#8f1419;transform:translateY(-3px);box-shadow:0 10px 30px rgba(171,26,31,.55);animation-play-state:paused}
 @keyframes donatePulse{0%,100%{box-shadow:0 6px 28px rgba(171,26,31,.6),0 0 16px rgba(171,26,31,.4),0 0 0 0 rgba(171,26,31,.0)}50%{box-shadow:0 8px 36px rgba(171,26,31,.8),0 0 40px rgba(171,26,31,.55),0 0 0 10px rgba(171,26,31,.12)}}
+.donate-tip{position:absolute;bottom:calc(100% + 12px);left:50%;transform:translateX(-50%) translateY(6px);background:rgba(8,8,12,.84);backdrop-filter:blur(14px) saturate(180%);-webkit-backdrop-filter:blur(14px) saturate(180%);color:rgba(255,255,255,.92);font-size:.695rem;font-weight:400;font-style:italic;letter-spacing:.02em;line-height:1.45;padding:.44rem .95rem;border-radius:10px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .24s ease,transform .24s ease;border:1px solid rgba(255,255,255,.11);box-shadow:0 8px 28px rgba(0,0,0,.32);z-index:10}
+.donate-tip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:rgba(8,8,12,.84)}
+.float-donate:hover .donate-tip,.float-donate:focus-visible .donate-tip{opacity:1;transform:translateX(-50%) translateY(0)}
 @media(max-width:640px){
   .float-bar{left:auto;right:1.2rem;transform:none;bottom:1.4rem;flex-direction:column;gap:.5rem}
   .float-wa,.float-donate{width:52px;height:52px;padding:0;border-radius:50%;justify-content:center;font-size:1.35rem}
@@ -1327,7 +1331,7 @@ footer .foot-top { padding-top: 5rem; }
 
 <div class="float-bar">
   <a class="float-wa" href="https://wa.me/60127762911" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> <span class="fl-label">WhatsApp</span></a>
-  <a class="float-donate" href="https://wa.me/60127762911?text=I%20want%20to%20donate%20to%20Amitabha%20Foundation%20Elder%20Home." target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" alt="" style="height:1.2em;width:auto;display:block;filter:brightness(0) invert(1) drop-shadow(0 0 5px rgba(255,255,255,.65))"> <span class="fl-label">Donate Now</span></a>
+  <a class="float-donate" href="https://wa.me/60127762911?text=I%20want%20to%20donate%20to%20Amitabha%20Foundation%20Elder%20Home." target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" alt="" style="height:1.2em;width:auto;display:block;filter:brightness(0) invert(1) drop-shadow(0 0 5px rgba(255,255,255,.65))"> <span class="fl-label">Donate Now</span><span class="donate-tip">Someone is waiting for a kindness only you can give.</span></a>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
@@ -1911,6 +1915,16 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       });
     }, { threshold: 0.2 }).observe(picBand);
   }
+}
+</script>
+
+<!-- Anime.js v4 — draggable donate button -->
+<script type="module">
+import { createDraggable } from 'https://esm.sh/animejs';
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  createDraggable('.float-donate', {
+    container: document.documentElement,
+  });
 }
 </script>
 
