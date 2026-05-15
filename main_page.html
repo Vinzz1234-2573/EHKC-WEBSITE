@@ -1603,5 +1603,47 @@ document.querySelectorAll('.aos,.aos-l,.aos-r').forEach(el => aosObs.observe(el)
 })();
 </script>
 <script src="animations.js"></script>
+
+<!-- Anime.js v4 splitText — hero h1 cinematic word/char reveal -->
+<style>
+/* Clip wrappers created by splitText need inline-block so overflow:hidden works */
+.hero h1 .word  { display: inline-block; overflow: hidden; vertical-align: bottom; }
+.hero h1 .char  { display: inline-block; }
+/* Preserve gold colour on the em chars after splitText wraps them in spans */
+.hero h1 em .char,
+.hero h1 em .word { color: var(--gold); }
+.hero h1 .sw  .char,
+.hero h1 .sw  .word { color: transparent;
+  background: linear-gradient(110deg,var(--teal-700) 0%,var(--gold) 100%);
+  -webkit-background-clip: text; background-clip: text; }
+</style>
+<script type="module">
+import { createTimeline, stagger, splitText } from 'https://esm.sh/animejs';
+
+const h1 = document.querySelector('.hero h1');
+if (!h1 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  /* nothing — fall back to CSS entrance from animations.js */
+} else {
+  /* Give heroEntrance (animations.js) time to fade the h1 in first */
+  setTimeout(() => {
+    const { words, chars } = splitText(h1, {
+      words: { wrap: 'clip' },
+      chars: true,
+    });
+
+    createTimeline({
+      loop: true,
+      defaults: { ease: 'inOut(3)', duration: 650 }
+    })
+    .add(words, {
+      y: [$el => +$el.dataset.line % 2 ? '110%' : '-110%', '0%'],
+    }, stagger(125))
+    .add(chars, {
+      y: $el => +$el.dataset.line % 2 ? '110%' : '-110%',
+    }, stagger(10, { from: 'random' }))
+    .init();
+  }, 900); /* wait for heroEntrance fade-in (520 ms + buffer) */
+}
+</script>
 </body>
 </html>
