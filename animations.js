@@ -704,4 +704,111 @@
     update();
   })();
 
+  /* ─────────────────────────────────────────────────────────────────
+     12. SCROLL-DRIVEN ANIMATIONS  (Anime.js v4  onScroll)
+     Every matching element on every page gets a continuous animation
+     whose progress is locked to scroll position — not just triggered.
+     Dynamic import so no extra <script> needed on any page.
+  ───────────────────────────────────────────────────────────────── */
+  (async function scrollDriven() {
+    if (reducedMotion) return;
+
+    let mod;
+    try { mod = await import('https://esm.sh/animejs'); }
+    catch (e) { return; } // ESM unavailable — skip gracefully
+
+    const { animate, onScroll } = mod;
+
+    /* ── Reusable helper ── */
+    function scrollAnim(selector, props, opts = {}) {
+      document.querySelectorAll(selector).forEach(el => {
+        animate(el, {
+          ease: 'linear',
+          ...props,
+          autoplay: onScroll({
+            enter: 'bottom-=80 top',
+            leave: 'top+=80 bottom',
+            sync:  0.55,
+            ...opts,
+          }),
+        });
+      });
+    }
+
+    /* 1 ── Eyebrow labels — slide in from left as section scrolls up */
+    scrollAnim('.eyebrow, .sec-eyebrow, .hero-eyebrow, .gal-cap-eyebrow, .pic-eyebrow', {
+      x: ['-1.8rem', '0rem'],
+    }, { sync: 0.65, enter: 'bottom-=60 top', leave: 'top+=110 bottom' });
+
+    /* 2 ── Section headings — y drift, feels like content rising */
+    scrollAnim('h2.section-h, h1', {
+      y: ['1.2rem', '0rem'],
+    }, { sync: 0.60, enter: 'bottom-=50 top', leave: 'top+=130 bottom' });
+
+    /* 3 ── Section paragraphs — subtle x + opacity sweep */
+    scrollAnim('.section-p, .hero-sub, .pb-quote', {
+      x:       ['-0.8rem', '0rem'],
+      opacity: [0.45, 1],
+    }, { sync: 0.70, enter: 'bottom-=30 top', leave: 'top+=110 bottom' });
+
+    /* 4 ── Service / stat / why icons — quarter-turn on enter */
+    scrollAnim('.svc-ic, .stat-ic, .why-ic, .v-ic, .mi-ico', {
+      rotate: ['0.25turn', '0turn'],
+      scale:  [0.78, 1],
+    }, { sync: 0.75, enter: 'bottom-=50 top', leave: 'top+=70 bottom' });
+
+    /* 5 ── Card grid containers — rise from below */
+    scrollAnim('.svc-grid, .why-grid, .story-grid, .news-grid, .evt-grid, .gal-thumbs, .stats-in', {
+      y: ['1.8rem', '0rem'],
+    }, { sync: 0.55, enter: 'bottom-=100 top', leave: 'top+=100 bottom' });
+
+    /* 6 ── Parallax-break decorative rings — rotation sync with scroll */
+    scrollAnim('.pb-c', {
+      rotate: ['25deg', '0deg'],
+    }, { sync: 0.28, enter: 'bottom top', leave: 'top bottom' });
+
+    /* 7 ── Parallax-break side rows — x drift */
+    scrollAnim('.pb-row', {
+      x: ['1.5rem', '0rem'],
+    }, { sync: 0.50, enter: 'bottom-=40 top', leave: 'top+=80 bottom' });
+
+    /* 8 ── About / pic-band photos — inner parallax float */
+    scrollAnim('.about-img, .pic-photo', {
+      y: ['-1.4rem', '1.4rem'],
+    }, { sync: 0.20, enter: 'bottom top', leave: 'top bottom' });
+
+    /* 9 ── Gallery track wrapper — y nudge + slight de-rotate */
+    scrollAnim('.gal-track-wrap', {
+      y:      ['1.2rem', '0rem'],
+      rotate: ['-0.6deg', '0deg'],
+    }, { sync: 0.60, enter: 'bottom-=80 top', leave: 'top+=80 bottom' });
+
+    /* 10 ── Event / news card images — scale in as you scroll */
+    scrollAnim('.evt-img, .news-img', {
+      scale: [0.92, 1],
+    }, { sync: 0.70, enter: 'bottom-=50 top', leave: 'top+=70 bottom' });
+
+    /* 11 ── CTA band heading — zoom-in from slight scale */
+    scrollAnim('.cta-band h2, .cta-band p', {
+      y:     ['1rem', '0rem'],
+      scale: [0.96, 1],
+    }, { sync: 0.65, enter: 'bottom-=40 top', leave: 'top+=100 bottom' });
+
+    /* 12 ── Footer — rise from below as you reach the end */
+    scrollAnim('footer', {
+      y: ['2.5rem', '0rem'],
+    }, { sync: 0.70, enter: 'bottom-=60 top', leave: 'top+=60 bottom' });
+
+    /* 13 ── Map / location section — x slide */
+    scrollAnim('.map-header, .map-info', {
+      x: ['1rem', '0rem'],
+    }, { sync: 0.60, enter: 'bottom-=60 top', leave: 'top+=80 bottom' });
+
+    /* 14 ── Job / value rows — x slide from right */
+    scrollAnim('.v-row, .pb-side .pb-row, .mi-row', {
+      x: ['1.2rem', '0rem'],
+    }, { sync: 0.65, enter: 'bottom-=40 top', leave: 'top+=90 bottom' });
+
+  })(); // scrollDriven
+
 })(); // close outer IIFE
