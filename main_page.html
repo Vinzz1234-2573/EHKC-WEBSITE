@@ -1633,14 +1633,18 @@ if (!h1 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 
     createTimeline({
       loop: true,
-      defaults: { ease: 'inOut(3)', duration: 650 }
+      defaults: { ease: 'inOut(3)', duration: 1100 }
     })
+    /* ① Words slide in — slower stagger so each word eases in clearly */
     .add(words, {
       y: [$el => +$el.dataset.line % 2 ? '110%' : '-110%', '0%'],
-    }, stagger(125))
+    }, stagger(220))
+    /* ② Hold the full title visible for 2 seconds (opacity 1→1 = no-op pause) */
+    .add(h1, { opacity: [1, 1], duration: 2000 })
+    /* ③ Chars scatter out randomly — slower drift */
     .add(chars, {
       y: $el => +$el.dataset.line % 2 ? '110%' : '-110%',
-    }, stagger(10, { from: 'random' }))
+    }, stagger(14, { from: 'random' }))
     .init();
   }, 900); /* wait for heroEntrance fade-in (520 ms + buffer) */
 }
