@@ -779,12 +779,38 @@ footer .foot-top { padding-top: 5rem; }
 /* ── Float bar: depth shadow ── */
 .float-bar { filter: drop-shadow(0 8px 20px rgba(0,0,0,.16)); }
 
+/* ── Why-ic CSS variable hooks for Anime.js ── */
+.why-ic {
+  --radius: 12px;
+  --glow-scale: 0;
+  --glow-opacity: 0;
+  position: relative;
+  /* border-radius driven by --radius via utils.set inline style */
+}
+.why-ic::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle,
+    rgba(196,122,74,.45)  0%,
+    rgba(218,165,32,.22) 50%,
+    transparent           72%
+  );
+  transform: scale(var(--glow-scale));
+  opacity: var(--glow-opacity);
+  z-index: -1;
+  pointer-events: none;
+}
+
 /* ── Reduced-motion overrides ── */
 @media (prefers-reduced-motion: reduce) {
   .hero::before,
   .pb-c { animation: none !important; }
   .about-img,
   .about-media:hover .about-img { transform: none !important; }
+  .why-ic::after { display: none; }
 }
 </style>
 </head>
@@ -1647,6 +1673,95 @@ if (!h1 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     }, stagger(14, { from: 'random' }))
     .init();
   }, 900); /* wait for heroEntrance fade-in (520 ms + buffer) */
+}
+</script>
+
+<!-- Anime.js v4 — Person-in-charge section: function-based staggered entrance -->
+<script type="module">
+import { animate, utils } from 'https://esm.sh/animejs';
+
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const picBand  = document.querySelector('.pic-band');
+  const picPhoto = document.querySelector('.pic-photo');
+  const metaEls  = [...document.querySelectorAll(
+    '.pic-eyebrow, .pic-name, .pic-role, .pic-bio, .pic-actions .btn'
+  )];
+
+  if (picBand && (picPhoto || metaEls.length)) {
+    /* hide elements until section enters view */
+    if (picPhoto) picPhoto.style.opacity = '0';
+    metaEls.forEach(el => { el.style.opacity = '0'; });
+
+    new IntersectionObserver((entries, obs) => {
+      if (!entries[0].isIntersecting) return;
+      obs.disconnect();
+
+      /* Portrait — elastic slide in from the left */
+      if (picPhoto) {
+        animate(picPhoto, {
+          x:       [-70, 0],
+          y:       [20, 0],
+          opacity: [0, 1],
+          rotate:  [utils.random(-5, -2), 0],
+          scale:   [0.88, 1],
+          duration: utils.random(1200, 1600),
+          ease:    'outElastic(1, .5)',
+          delay:   0,
+        });
+      }
+
+      /* Text / button elements — function-based values, staggered */
+      animate(metaEls, {
+        x:            (_, i) => [30 + i * 10, 0],
+        y:            (_, i) => [20 + i * 6, 0],
+        opacity:      [0, 1],
+        scale:        (_, i, t) => [(t.length - i) * 0.15 + 0.72, 1],
+        rotate:       () => [utils.random(-3, 3), 0],
+        borderRadius: () => `+=${utils.random(0, 6)}`,
+        duration:     () => utils.random(1200, 1800),
+        delay:        (_, i) => i * 130 + 220,
+        ease:         'outElastic(1, .5)',
+      });
+    }, { threshold: 0.2 }).observe(picBand);
+  }
+}
+</script>
+
+<!-- Anime.js v4 CSS variables — Why Us icon staggered morph on scroll -->
+<script type="module">
+import { animate, utils } from 'https://esm.sh/animejs';
+
+const icons = [...document.querySelectorAll('.why-ic')];
+if (icons.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+
+  // Bind borderRadius to --radius so Anime.js drives it via the CSS variable
+  utils.set(icons, {
+    '--radius':       '12px',
+    '--glow-scale':   '0',
+    '--glow-opacity': '0',
+    borderRadius: () => 'var(--radius)',
+  });
+
+  // Fire staggered morph when the Why Us grid scrolls into view
+  const grid = document.querySelector('.why-grid');
+  if (grid) {
+    new IntersectionObserver((entries, obs) => {
+      if (!entries[0].isIntersecting) return;
+      obs.disconnect();
+
+      icons.forEach((icon, i) => {
+        animate(icon, {
+          '--radius':       '24px',   // square  → rounder
+          '--glow-scale':   '1.55',   // ::after glow expands (same value as the docs example)
+          '--glow-opacity': '1',
+          borderRadius: () => 'var(--radius)',
+          duration: 750,
+          ease: 'spring(1, 80, 12, 0)',
+          delay: i * 130,             // 130 ms stagger across the 4 icons
+        });
+      });
+    }, { threshold: 0.25 }).observe(grid);
+  }
 }
 </script>
 </body>
