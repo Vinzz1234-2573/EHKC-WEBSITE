@@ -679,11 +679,26 @@ h2.section-h {
 
 /* ── Story cards: 3D quote mark depth ── */
 .story-grid { perspective: 1400px; perspective-origin: 50% -10%; }
-.story-card { transform-style: preserve-3d; }
+.story-card { transform-style: preserve-3d; overflow: visible; }
 .story-quote-mark {
   transform: perspective(400px) translateZ(6px);
   text-shadow: 2px 4px 12px rgba(196,122,74,.18);
 }
+/* ── Story square decorators (Anime.js animated) ── */
+.story-card .square {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+}
+.story-card:nth-child(1) .square { background: rgba(196,122,74,.55); }
+.story-card:nth-child(2) .square { background: rgba(218,165,32,.5); }
+.story-card:nth-child(3) .square { background: rgba(44,62,80,.45); }
 
 /* ── Gallery: glowing border frame ── */
 .gallery-band { position: relative; }
@@ -1119,6 +1134,7 @@ footer .foot-top { padding-top: 5rem; }
     </div>
     <div class="story-grid">
       <div class="story-card aos">
+        <div class="square" data-x="170"></div>
         <div class="story-cat"><i class="fa fa-hand-holding-heart"></i> Giving Back</div>
         <p class="story-q">For years, Uncle Loh quietly showed up, fixing old electronics and donating every single ringgit back to the elder home. He never asked for recognition, never expected anything in return. Now it is our turn to care for him, and we do so with all the love and gratitude he deserves.</p>
         <div class="story-attr">
@@ -1130,6 +1146,7 @@ footer .foot-top { padding-top: 5rem; }
         </div>
       </div>
       <div class="story-card aos d1">
+        <div class="square" data-x="80"></div>
         <div class="story-cat"><i class="fa fa-people-roof"></i> Community</div>
         <p class="story-q">Aunty Wong arrived with no family to call her own. What we found was a woman full of life, laughter, and endless stories. She has given this home something priceless: her warmth, her joy, and her spirit.</p>
         <div class="story-attr">
@@ -1141,6 +1158,7 @@ footer .foot-top { padding-top: 5rem; }
         </div>
       </div>
       <div class="story-card aos d2">
+        <div class="square" data-x="270"></div>
         <div class="story-cat"><i class="fa fa-heart-pulse"></i> Resilience</div>
         <p class="story-q">At 55, a stroke changed Uncle Hok's life and left him to face it alone. Every day he gets up, walks, and exercises, half his body weakened but his spirit unbroken. In his quiet resilience, he reminds us that the human spirit, when treated with love, never truly falls.</p>
         <div class="story-attr">
@@ -1976,6 +1994,33 @@ import { animate } from 'https://esm.sh/animejs';
       ease:              'outExpo',
     });
   });
+})();
+</script>
+
+<!-- Anime.js v4 — Stories: square decorators animate on scroll -->
+<script type="module">
+import { animate, utils } from 'https://esm.sh/animejs';
+
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const storiesSection = document.getElementById('stories');
+  if (!storiesSection) return;
+
+  new IntersectionObserver((entries, obs) => {
+    if (!entries[0].isIntersecting) return;
+    obs.disconnect();
+
+    animate('.square', {
+      x:            $el => /** @type {HTMLElement} */($el).getAttribute('data-x'),
+      y:            (_, i) => 50 + (-50 * i),
+      scale:        (_, i, t) => (t.length - i) * .75,
+      rotate:       () => utils.random(-360, 360),
+      borderRadius: () => `+=${utils.random(0, 8)}`,
+      duration:     () => utils.random(1200, 1800),
+      delay:        () => utils.random(0, 400),
+      ease:         'outElastic(1, .5)',
+    });
+  }, { threshold: 0.25 }).observe(storiesSection);
 })();
 </script>
 
