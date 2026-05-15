@@ -677,28 +677,6 @@ h2.section-h {
 }
 .why-card h4 { text-shadow: 0 1px 3px rgba(12,26,28,.05); }
 
-/* ── Story cards: 3D quote mark depth ── */
-.story-grid { perspective: 1400px; perspective-origin: 50% -10%; }
-.story-card { transform-style: preserve-3d; overflow: visible; }
-.story-quote-mark {
-  transform: perspective(400px) translateZ(6px);
-  text-shadow: 2px 4px 12px rgba(196,122,74,.18);
-}
-/* ── Story square decorators (Anime.js animated) ── */
-.story-card .square {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: 38px;
-  height: 38px;
-  border-radius: 8px;
-  pointer-events: none;
-  z-index: 0;
-  will-change: transform;
-}
-.story-card:nth-child(1) .square { background: rgba(196,122,74,.55); }
-.story-card:nth-child(2) .square { background: rgba(218,165,32,.5); }
-.story-card:nth-child(3) .square { background: rgba(44,62,80,.45); }
 
 /* ── Gallery: glowing border frame ── */
 .gallery-band { position: relative; }
@@ -1129,12 +1107,12 @@ footer .foot-top { padding-top: 5rem; }
 <section class="sec" id="stories" style="background:#fdf2e8">
   <div class="wrap">
     <div class="sh">
-      <div class="eyebrow">Stories from the home</div>
+      <div class="eyebrow">Resident Stories</div>
       <h2 class="section-h">Lives changed, <em>one at a time</em>.</h2>
+      <p class="section-p">Every resident arrives with a unique story. Here are the voices of the people at the heart of everything we do.</p>
     </div>
     <div class="story-grid">
       <div class="story-card aos">
-        <div class="square" data-x="170"></div>
         <div class="story-cat"><i class="fa fa-hand-holding-heart"></i> Giving Back</div>
         <p class="story-q">For years, Uncle Loh quietly showed up, fixing old electronics and donating every single ringgit back to the elder home. He never asked for recognition, never expected anything in return. Now it is our turn to care for him, and we do so with all the love and gratitude he deserves.</p>
         <div class="story-attr">
@@ -1146,7 +1124,6 @@ footer .foot-top { padding-top: 5rem; }
         </div>
       </div>
       <div class="story-card aos d1">
-        <div class="square" data-x="80"></div>
         <div class="story-cat"><i class="fa fa-people-roof"></i> Community</div>
         <p class="story-q">Aunty Wong arrived with no family to call her own. What we found was a woman full of life, laughter, and endless stories. She has given this home something priceless: her warmth, her joy, and her spirit.</p>
         <div class="story-attr">
@@ -1158,7 +1135,6 @@ footer .foot-top { padding-top: 5rem; }
         </div>
       </div>
       <div class="story-card aos d2">
-        <div class="square" data-x="270"></div>
         <div class="story-cat"><i class="fa fa-heart-pulse"></i> Resilience</div>
         <p class="story-q">At 55, a stroke changed Uncle Hok's life and left him to face it alone. Every day he gets up, walks, and exercises, half his body weakened but his spirit unbroken. In his quiet resilience, he reminds us that the human spirit, when treated with love, never truly falls.</p>
         <div class="story-attr">
@@ -1886,155 +1862,6 @@ if (!h1 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 </script>
 
 
-<!-- Anime.js v4 — Stories section: square morphs on cursor enter/leave -->
-<script type="module">
-import { animate } from 'https://esm.sh/animejs';
-
-(function () {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const stories = document.getElementById('stories');
-  if (!stories) return;
-
-  /* Inject the square into the stories section */
-  const sq = document.createElement('div');
-  sq.setAttribute('aria-hidden', 'true');
-  Object.assign(sq.style, {
-    position:      'absolute',
-    width:         '52px',
-    height:        '52px',
-    top:           '2.2rem',
-    left:          '1rem',
-    background:    'rgba(196,122,74,0.55)',
-    borderRadius:  '8px',
-    zIndex:        '0',
-    pointerEvents: 'none',
-    opacity:       '0',
-    willChange:    'left, border-radius, background-color, filter, opacity',
-  });
-  stories.appendChild(sq);
-
-  let anim = null;
-
-  stories.addEventListener('mouseenter', () => {
-    if (anim) anim.cancel();
-    anim = animate(sq, {
-      opacity:           [0, 1],
-      left:              'calc(7.75rem * 2)',
-      borderRadius:      64,
-      'background-color': '#F9F640',
-      filter:            'blur(5px)',
-      duration:          1200,
-      ease:              'outExpo',
-    });
-  });
-
-  stories.addEventListener('mouseleave', () => {
-    if (anim) anim.cancel();
-    anim = animate(sq, {
-      opacity:           [1, 0],
-      left:              '1rem',
-      borderRadius:      8,
-      'background-color': 'rgba(196,122,74,0.55)',
-      filter:            'blur(0px)',
-      duration:          700,
-      ease:              'outExpo',
-    });
-  });
-})();
-</script>
-
-<!-- Anime.js v4 — Stories: square decorators animate on scroll -->
-<script type="module">
-import { animate, utils } from 'https://esm.sh/animejs';
-
-(function () {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const storiesSection = document.getElementById('stories');
-  if (!storiesSection) return;
-
-  new IntersectionObserver((entries, obs) => {
-    if (!entries[0].isIntersecting) return;
-    obs.disconnect();
-
-    animate('.square', {
-      x:            $el => /** @type {HTMLElement} */($el).getAttribute('data-x'),
-      y:            (_, i) => 50 + (-50 * i),
-      scale:        (_, i, t) => (t.length - i) * .75,
-      rotate:       () => utils.random(-360, 360),
-      borderRadius: () => `+=${utils.random(0, 8)}`,
-      duration:     () => utils.random(1200, 1800),
-      delay:        () => utils.random(0, 400),
-      ease:         'outElastic(1, .5)',
-    });
-  }, { threshold: 0.25 }).observe(storiesSection);
-})();
-</script>
-
-<!-- Anime.js v4 — Stories photos: composition replace pulse + hover cancel -->
-<script type="module">
-import { animate } from 'https://esm.sh/animejs';
-
-(function () {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  const photos = [...document.querySelectorAll('#stories .story-av')];
-  if (!photos.length) return;
-
-  photos.forEach(photo => {
-    /* Continuous breathing pulse — composition:'replace' so hover cancels it instantly */
-    animate(photo, {
-      scale:       [.5, 1],
-      alternate:   true,
-      loop:        true,
-      duration:    750,
-      composition: 'replace',
-    });
-
-    photo.addEventListener('mouseenter', () => animate(photo, {
-      scale:       1.5,
-      duration:    350,
-      composition: 'replace',
-    }));
-
-    photo.addEventListener('mouseleave', () => animate(photo, {
-      scale:       1.0,
-      duration:    250,
-      composition: 'replace',
-    }));
-  });
-})();
-</script>
-
-<!-- Anime.js v4 — Stories: slideX + rotate entrance for heading and cards -->
-<script type="module">
-import { animate, stagger } from 'https://esm.sh/animejs';
-
-(function () {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const storiesSection = document.getElementById('stories');
-  if (!storiesSection) return;
-
-  const targets = [
-    storiesSection.querySelector('.eyebrow'),
-    storiesSection.querySelector('.section-h'),
-    ...storiesSection.querySelectorAll('.story-card'),
-  ].filter(Boolean);
-
-  new IntersectionObserver((entries, obs) => {
-    if (!entries[0].isIntersecting) return;
-    obs.disconnect();
-
-    animate(targets, {
-      opacity:    { from: 0.5 },
-      translateX: { from: '16rem' },
-      rotate:     { from: '-.75turn', ease: 'inOutQuad' },
-      duration:   900,
-      ease:       'outExpo',
-      delay:      stagger(120),
-    });
-  }, { threshold: 0.2 }).observe(storiesSection);
-})();
-</script>
 
 <!-- Anime.js v4 — Person-in-charge section: function-based staggered entrance -->
 <script type="module">
