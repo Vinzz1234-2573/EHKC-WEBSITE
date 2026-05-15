@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(node --check \"d:\\\\EHKC-WEBSITE\\\\animations.js\" 2>&1)",
+      "PowerShell(if \\($LASTEXITCODE -eq 0\\) { \"SYNTAX OK\" } else { \"SYNTAX ERROR\" })"
+    ]
+  }
+}

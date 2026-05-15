@@ -207,13 +207,12 @@
   (function cardTilt() {
     if (reducedMotion || mobile()) return;
 
-    const TILT = 7; // max degrees
-    const LIFT = 10; // translateZ px
+    const TILT = 14; // max degrees (doubled for stronger 3D feel)
+    const LIFT = 22; // translateZ px (doubled for more depth pop)
 
     const selectors = [
       '.svc-card', '.why-card', '.story-card', '.news-card',
-      '.evt-card:not(.featured)', '.pic-card', '.about-card',
-      '.hcf', '.pb-row'
+      '.evt-card:not(.featured)', '.pic-card', '.pb-row'
     ].join(',');
 
     document.querySelectorAll(selectors).forEach(card => {
@@ -230,35 +229,50 @@
         const y = (e.clientY - r.top)  / r.height - 0.5;
         const rx = -y * TILT;
         const ry =  x * TILT;
-        card.style.transition = 'transform .1s ease, box-shadow .3s ease';
+        card.style.transition = 'transform .08s ease, box-shadow .15s ease';
         card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(${LIFT}px)`;
+
+        /* Dynamic shadow that shifts in the direction of tilt */
+        const sx = ry * 1.6;
+        const sy = -rx * 1.6 + LIFT * 0.7;
+        card.style.boxShadow = [
+          `${sx}px ${sy + 14}px 40px rgba(10,40,45,.18)`,
+          `${sx * 0.4}px ${sy * 0.4 + 5}px 14px rgba(196,122,74,.13)`,
+          `0 2px 4px rgba(10,40,45,.06)`,
+        ].join(',');
 
         /* Move shine with pointer */
         const shine = card.querySelector('.card-shine');
         if (shine) {
-          shine.style.background = `radial-gradient(circle at ${(x+0.5)*100}% ${(y+0.5)*100}%, rgba(255,255,255,.14), transparent 60%)`;
+          shine.style.background = `radial-gradient(circle at ${(x+0.5)*100}% ${(y+0.5)*100}%, rgba(255,255,255,.18), transparent 55%)`;
+          shine.style.opacity = '1';
         }
       });
 
       card.addEventListener('mouseleave', () => {
-        card.style.transition = 'transform .55s cubic-bezier(.2,.7,.3,1), box-shadow .4s ease';
+        card.style.transition = 'transform .6s cubic-bezier(.2,.7,.3,1), box-shadow .5s ease';
         card.style.transform = '';
+        card.style.boxShadow = '';
         const shine = card.querySelector('.card-shine');
-        if (shine) shine.style.background = '';
+        if (shine) { shine.style.background = ''; shine.style.opacity = '0'; }
       });
     });
 
-    /* Hero card tilt — special case (has float-bob animation) */
+    /* Hero card tilt — boosted angles + Z depth */
     const heroCard = document.querySelector('.hero-card');
     if (heroCard) {
       heroCard.addEventListener('mousemove', e => {
         const r = heroCard.getBoundingClientRect();
         const x = (e.clientX - r.left) / r.width  - 0.5;
         const y = (e.clientY - r.top)  / r.height - 0.5;
-        heroCard.style.transform = `perspective(1200px) rotateX(${-y * 6}deg) rotateY(${x * 6}deg) translateZ(16px)`;
+        heroCard.style.transition = 'transform .08s ease';
+        heroCard.style.transform = `perspective(1200px) rotateX(${-y * 12}deg) rotateY(${x * 12}deg) translateZ(28px)`;
+        heroCard.style.boxShadow = `${x * 20}px ${-y * 16 + 32}px 64px rgba(6,47,49,.4)`;
       });
       heroCard.addEventListener('mouseleave', () => {
+        heroCard.style.transition = 'transform .6s cubic-bezier(.2,.7,.3,1), box-shadow .5s ease';
         heroCard.style.transform = '';
+        heroCard.style.boxShadow = '';
       });
     }
   })();
@@ -501,6 +515,64 @@
   })();
 
   /* ─────────────────────────────────────────────────────────────────
+     8.2 MAGNETIC BUTTON EFFECT
+     Primary / coral buttons subtly follow the cursor for a premium feel
+  ───────────────────────────────────────────────────────────────── */
+  (function magneticButtons() {
+    if (reducedMotion || mobile()) return;
+
+    const btns = document.querySelectorAll(
+      '.btn-primary, .btn-coral, .float-wa, .float-donate, .map-cta'
+    );
+
+    btns.forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect();
+        const x = (e.clientX - r.left - r.width  / 2) * 0.22;
+        const y = (e.clientY - r.top  - r.height / 2) * 0.22;
+        btn.style.transform = `translate(${x}px, ${y}px) scale(1.03)`;
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+      });
+    });
+  })();
+
+  /* ─────────────────────────────────────────────────────────────────
+     8.3 STAGGERED INNER-ELEMENT REVEAL FOR DARK BAND SECTIONS
+     When pic-band, cta-band, parallax-break enter view, animate children
+  ───────────────────────────────────────────────────────────────── */
+  (function darkBandReveal() {
+    if (reducedMotion) return;
+
+    const bands = document.querySelectorAll('.cta-band, .map-section .map-header');
+    bands.forEach(band => {
+      const children = [...band.children];
+      children.forEach((el, i) => {
+        el.style.cssText += `
+          opacity: 0;
+          transform: translateY(18px);
+          transition: opacity 0.75s cubic-bezier(.2,.7,.3,1) ${i * 130}ms,
+                      transform 0.75s cubic-bezier(.2,.7,.3,1) ${i * 130}ms;
+        `;
+      });
+
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          children.forEach(el => {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+          });
+          obs.unobserve(e.target);
+        });
+      }, { threshold: 0.15 });
+
+      obs.observe(band);
+    });
+  })();
+
+  /* ─────────────────────────────────────────────────────────────────
      8.5 PAGE SHINE EFFECT
      Subtle light sweep across page on load for premium feel
   ───────────────────────────────────────────────────────────────── */
@@ -534,3 +606,102 @@
       document.head.appendChild(style);
     }
   })();
+
+  /* ─────────────────────────────────────────────────────────────────
+     9. PERSPECTIVE GRID CONTAINERS
+     Sets CSS perspective on all card-grid containers so tilt effects
+     render with coherent 3D depth across the whole grid.
+  ───────────────────────────────────────────────────────────────── */
+  (function perspectiveGrids() {
+    const grids = document.querySelectorAll(
+      '.svc-grid, .why-grid, .story-grid, .news-grid, .stats-in, .evt-grid, .gal-thumbs'
+    );
+    grids.forEach(g => {
+      g.style.perspective = '1600px';
+      g.style.perspectiveOrigin = '50% -10%';
+    });
+  })();
+
+  /* ─────────────────────────────────────────────────────────────────
+     10. HERO MOUSE-DEPTH PARALLAX
+     Hero background shapes move at different Z-depth speeds as the
+     user moves the mouse, creating a convincing 3D layered illusion.
+  ───────────────────────────────────────────────────────────────── */
+  (function heroMouseDepth() {
+    if (reducedMotion || mobile()) return;
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+
+    const layers = [
+      { el: hero.querySelector('.hero-shape.s1'), depth: 28 },
+      { el: hero.querySelector('.hero-shape.s2'), depth: 20 },
+      { el: hero.querySelector('.hero-shape.s3'), depth: 12 },
+      { el: hero.querySelector('.hero-bg'),       depth: 6  },
+      { el: hero.querySelector('.hero-grain'),    depth: 3  },
+    ].filter(l => l.el);
+
+    let mx = 0, my = 0, cx = 0, cy = 0;
+
+    hero.addEventListener('mousemove', e => {
+      const r = hero.getBoundingClientRect();
+      mx = (e.clientX - r.left)  / r.width  - 0.5;
+      my = (e.clientY - r.top)   / r.height - 0.5;
+    }, { passive: true });
+
+    hero.addEventListener('mouseleave', () => { mx = 0; my = 0; });
+
+    (function loop() {
+      cx += (mx - cx) * 0.06;
+      cy += (my - cy) * 0.06;
+      layers.forEach(({ el, depth }) => {
+        el.style.transform = `translate3d(${cx * depth}px, ${cy * depth * 0.7}px, 0)`;
+      });
+      requestAnimationFrame(loop);
+    })();
+  })();
+
+  /* ─────────────────────────────────────────────────────────────────
+     11. SCROLL TILT 3D
+     Card grids subtly rotate on the X-axis as they approach from
+     below the fold, then flatten as they fully enter view — giving
+     every section a cinematic 3D "rising" entrance.
+  ───────────────────────────────────────────────────────────────── */
+  (function scrollTilt3D() {
+    if (reducedMotion || mobile()) return;
+
+    const grids = document.querySelectorAll(
+      '.svc-grid, .why-grid, .story-grid, .news-grid, .evt-grid'
+    );
+
+    grids.forEach(g => {
+      g.classList.add('grid-tilt-active');
+      g.style.transformOrigin = 'center bottom';
+    });
+
+    let ticking = false;
+
+    function update() {
+      const vh = window.innerHeight;
+      grids.forEach(grid => {
+        const r   = grid.getBoundingClientRect();
+        const top = r.top;
+        if (top > vh || top < -r.height) return; // off-screen
+        /* 0 = section top at viewport bottom (fully incoming)
+           1 = section top at 30% from top (fully settled) */
+        const progress = Math.max(0, Math.min(1, (vh - top) / (vh * 0.7)));
+        const tilt = progress < 1 ? (1 - progress) * 9 : 0;
+        grid.style.transform = tilt > 0.3
+          ? `rotateX(${tilt.toFixed(2)}deg)`
+          : '';
+      });
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+
+    update();
+  })();
+
+})(); // close outer IIFE
