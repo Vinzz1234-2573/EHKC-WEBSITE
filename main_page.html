@@ -1823,7 +1823,7 @@ import { createLayout } from 'https://esm.sh/animejs';
 <!-- Anime.js v4 splitText — hero h1 cinematic word/char reveal -->
 <style>
 /* Clip wrappers created by splitText need inline-block so overflow:hidden works */
-.hero h1 .word  { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.3em; margin-bottom: -0.3em; }
+.hero h1 .word  { display: inline-block; overflow: hidden; vertical-align: bottom; }
 .hero h1 .char  { display: inline-block; }
 /* Preserve gold colour on the em chars after splitText wraps them in spans */
 .hero h1 em .char,
@@ -1844,7 +1844,18 @@ if (!h1 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   setTimeout(() => {
     const { words } = splitText(h1, { words: { wrap: 'clip' } });
 
-    createTimeline({ defaults: { ease: 'outExpo', duration: 900 } })
+    createTimeline({
+      defaults: { ease: 'outExpo', duration: 900 },
+      onComplete: () => {
+        // Release the clip wrappers once the reveal animation is done
+        // so italic descenders / ascenders are no longer cropped
+        words.forEach(w => {
+          const clip = w.parentElement;
+          if (clip && clip !== h1) clip.style.overflow = 'visible';
+          w.style.overflow = 'visible';
+        });
+      }
+    })
     .add(words, {
       y: [$el => +$el.dataset.line % 2 ? '110%' : '-110%', '0%'],
     }, stagger(180))
