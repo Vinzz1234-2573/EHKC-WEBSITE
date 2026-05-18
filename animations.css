@@ -1,6 +1,6 @@
 /* animations.css — EHKC Website 3D & Parallax Enhancement */
 
-/* ── HANDLEE FONT — applied to every orange/teal coloured text ── */
+/* ── HANDLEE FONT — applied to italic heading phrases only ── */
 @font-face {
   font-family: "Handlee";
   src: url("Handlee-Regular.ttf") format("truetype");
@@ -14,24 +14,7 @@
   --handlee: "Handlee", cursive;
 }
 
-/* ── Apply Handlee to ALL orange / teal coloured text elements ── */
-
-/* Section eyebrows (small orange uppercase labels above headings) */
-.eyebrow,
-.sec-eyebrow,
-.eyebrow-label,
-.sect-eyebrow,
-.page-eyebrow,
-.hero-eyebrow,
-.gal-cap-eyebrow,
-.cat-label,
-.cat-pill,
-.story-cat,
-.page-tag,
-.tag-pill {
-  font-family: var(--handlee) !important;
-  letter-spacing: .06em;
-}
+/* ── Apply Handlee to selected orange / teal coloured text elements ── */
 
 /* Italic <em> inside headings — the shimmer-gradient orange phrases */
 h1 em, h2 em, h3 em, h4 em,
@@ -45,59 +28,11 @@ h2.section-h em,
   font-style: italic;
 }
 
-/* Hero h1 highlight span (.sw = "shimmering word") */
-.hero h1 .sw {
-  font-family: var(--handlee) !important;
-}
-
-/* Service section: numbered labels & "Learn more →" links */
-.svc-num,
-.svc-link,
-.svc-link * {
-  font-family: var(--handlee) !important;
-}
-
-/* Event / news metadata bars */
-.evt-meta,
-.evt-meta *,
-.news-meta,
-.news-cat,
-.news-tag {
-  font-family: var(--handlee) !important;
-}
-
 /* Parallax-break quote orange span */
 .pb-quote span {
   font-family: var(--handlee) !important;
 }
 
-/* About/values row bold labels */
-.v-row strong {
-  font-family: var(--handlee) !important;
-}
-
-/* Gallery caption eyebrow */
-.gal-cap-eyebrow {
-  font-family: var(--handlee) !important;
-}
-
-/* Stat numbers (teal colour large numbers) */
-.stat-n {
-  font-family: var(--handlee) !important;
-}
-
-/* Hero floating card labels */
-.hcf .l {
-  font-family: var(--handlee) !important;
-}
-
-/* Any explicit teal-700 / orange inline colour text */
-[style*="color:#c47a4a"],
-[style*="color: #c47a4a"],
-[style*="color:#daa520"],
-[style*="color: #daa520"] {
-  font-family: var(--handlee) !important;
-}
 
 /* ── MODERN GLASSMORPHISM ENHANCEMENTS ── */
 
