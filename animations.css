@@ -286,15 +286,16 @@ html {
   100% { background-position: -200% center; }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  h2.section-h em, .sec-h em {
-    background: linear-gradient(110deg, #c47a4a 0%, #daa520 35%, #eec4a3 55%, #daa520 70%, #c47a4a 100%);
-    background-size: 250% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent !important;
-    animation: textGradientShimmer 5s linear infinite;
-  }
+h2.section-h em, .sec-h em {
+  color: #c47a4a !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  animation: none !important;
+  display: inline-block;
+  overflow: visible;
+  padding-bottom: .12em;
+  line-height: 1.35;
 }
 
 /* ── Eyebrow decorative line: draw in when scrolled into view ── */
@@ -346,9 +347,9 @@ html {
 @media (prefers-reduced-motion: no-preference) {
   .svc-card:hover {
     box-shadow:
-      0 22px 56px rgba(10,40,45,.16),
-      0 8px 20px rgba(196,122,74,.14),
-      0 2px 6px rgba(10,40,45,.06),
+      0 22px 56px rgba(10,40,45,.12),
+      0 8px 20px rgba(0,0,0,.06),
+      0 2px 6px rgba(10,40,45,.04),
       inset 0 1px 0 rgba(255,255,255,.7);
   }
   .why-card:hover {

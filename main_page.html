@@ -108,7 +108,7 @@ header.scrolled{background:rgba(255,255,255,.96);box-shadow:0 2px 18px rgba(10,4
 .hero-eyebrow::before{content:"";width:22px;height:2px;background:var(--gold);border-radius:2px;flex-shrink:0}
 .hero-eyebrow .dot{display:none}
 .hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.6rem,5.4vw,4.6rem);line-height:1.18;letter-spacing:-.02em;color:#fff;margin-bottom:1.4rem;text-wrap:balance}
-.hero h1 em{display:inline-block;font-style:italic;font-weight:500;color:var(--gold);padding-bottom:.1em;padding-right:.08em}
+.hero h1 em{display:inline-block;font-style:italic;font-weight:500;color:#e9c0a1;padding-bottom:.18em;padding-right:.12em;overflow:visible}
 .hero h1 .sw{display:none}
 .hero-sub{font-size:1.05rem;color:rgba(255,255,255,.78);max-width:560px;line-height:1.7;margin-bottom:2.2rem}
 .hero-cta{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2.4rem}
@@ -162,7 +162,7 @@ header.scrolled{background:rgba(255,255,255,.96);box-shadow:0 2px 18px rgba(10,4
 .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-700);margin-bottom:.9rem}
 .eyebrow::before{content:"";width:24px;height:2px;background:var(--teal-500);border-radius:2px}
 h2.section-h{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.6vw,2.8rem);line-height:1.12;letter-spacing:-.015em;color:var(--ink-900);margin-bottom:.9rem;text-wrap:balance}
-h2.section-h em{font-style:italic;color:var(--teal-700);font-weight:500}
+h2.section-h em{font-style:italic;color:#c47a4a;font-weight:500;display:inline-block;overflow:visible;padding-bottom:.12em;padding-right:.06em;line-height:1.35}
 .section-p{font-size:1rem;color:var(--ink-500);line-height:1.7;max-width:620px}
 .sh{margin-bottom:3.5rem}
 .sh.c{text-align:center}.sh.c .eyebrow{justify-content:center}.sh.c .section-p{margin:auto}
@@ -170,12 +170,13 @@ h2.section-h em{font-style:italic;color:var(--teal-700);font-weight:500}
 /* Services */
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
 .svc-card{background:#fff;border-radius:var(--r-lg);border:1px solid var(--line);padding:2rem 1.8rem 1.7rem;position:relative;transition:transform var(--t),box-shadow var(--t),border-color var(--t);display:flex;flex-direction:column;overflow:hidden}
-.svc-card::before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,rgba(26,166,163,.08),transparent 35%);opacity:0;transition:opacity var(--t);pointer-events:none}
-.svc-card:hover{transform:translateY(-8px) scale(1.015);box-shadow:var(--shadow);border-color:var(--teal-100)}
+.svc-card::before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,rgba(0,0,0,.04),transparent 35%);opacity:0;transition:opacity var(--t);pointer-events:none}
+.svc-card:hover{transform:translateY(-8px) scale(1.015);box-shadow:var(--shadow);border-color:#e0e0e0}
 .svc-card:hover::before{opacity:1}
 .svc-num{font-family:var(--serif);font-size:.85rem;color:var(--teal-500);font-weight:500;letter-spacing:.08em;margin-bottom:1rem}
-.svc-ic{width:54px;height:54px;border-radius:14px;background:linear-gradient(140deg,var(--teal-50),var(--teal-100));color:var(--teal-700);font-size:1.35rem;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;border:1px solid var(--teal-100);transition:all var(--t)}
-.svc-card:hover .svc-ic{background:linear-gradient(140deg,var(--teal-700),var(--teal-600));color:#fff;border-color:transparent}
+.svc-ic{width:100%;height:190px;border-radius:10px;background:transparent;display:flex;align-items:center;justify-content:center;margin-bottom:1.4rem;border:none;overflow:hidden;transition:transform var(--t)}
+.svc-ic img{width:100%;height:100%;display:block;object-fit:contain}
+.svc-card:hover .svc-ic{background:transparent;border-color:transparent}
 .svc-card h3{font-family:var(--serif);font-weight:600;font-size:1.25rem;color:var(--ink-900);margin-bottom:.55rem;line-height:1.25}
 .svc-card p{font-size:.92rem;color:var(--ink-500);line-height:1.7;flex:1;margin-bottom:1.4rem}
 .svc-link{display:inline-flex;align-items:center;gap:.4rem;color:var(--teal-700);font-weight:600;font-size:.85rem;padding-top:1.1rem;border-top:1px solid var(--line);transition:gap var(--t)}
@@ -560,9 +561,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
     0 0  60px rgba(218,165,32,.14);
 }
 .hero h1 em {
-  text-shadow:
-    0 2px 6px  rgba(218,165,32,.5),
-    0 5px 20px rgba(218,165,32,.28);
+  text-shadow: none;
 }
 .hero-sub {
   text-shadow: 0 1px 4px rgba(0,0,0,.25);
@@ -599,17 +598,6 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
 }
 .stat-n { text-shadow: 0 2px 8px rgba(44,62,80,.10); }
 
-/* ── Angled divider: stats → services ── */
-.stats::after {
-  content: '';
-  position: absolute;
-  bottom: -28px;
-  left: 0; right: 0;
-  height: 56px;
-  background: inherit;
-  clip-path: polygon(0 0, 100% 0, 100% 0, 0 100%);
-  z-index: 1;
-}
 
 /* ── Services: icon 3D push on hover ── */
 .svc-grid { perspective: 1600px; perspective-origin: 50% -15%; }
@@ -619,7 +607,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
               background .3s ease, color .3s ease, border-color .3s ease;
 }
 .svc-card:hover .svc-ic {
-  transform: perspective(400px) translateZ(12px) rotateY(20deg) scale(1.08);
+  transform: scale(1.04);
 }
 .svc-num {
   text-shadow: 0 1px 3px rgba(196,122,74,.2);
@@ -749,18 +737,12 @@ h2.section-h {
   text-shadow: 0 2px 8px rgba(0,0,0,.2);
 }
 
-/* ── Map header: angled bottom ── */
+/* ── Map header ── */
 .map-header {
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 28px), 0 100%);
-  padding-bottom: calc(2.5rem + 28px);
+  padding-bottom: 2.5rem;
 }
 
-/* ── Footer: angled top ── */
-footer {
-  clip-path: polygon(0 28px, 100% 0, 100% 100%, 0 100%);
-  padding-top: 5rem;
-}
-footer .foot-top { padding-top: 5rem; }
+footer .foot-top { padding-top: 4rem; }
 
 /* ── News band: angled top ── */
 .news-band::before {
@@ -801,6 +783,11 @@ footer .foot-top { padding-top: 5rem; }
   z-index: -1;
   pointer-events: none;
 }
+
+/* ── Person-in-charge: fade-in only (no directional slide) ── */
+.pic-band .aos-l,
+.pic-band .aos-r,
+.pic-band .aos { transform: none; }
 
 /* ── Reduced-motion overrides ── */
 @media (prefers-reduced-motion: reduce) {
@@ -924,21 +911,21 @@ footer .foot-top { padding-top: 5rem; }
     <div class="svc-grid">
       <div class="svc-card aos">
         <div class="svc-num">01</div>
-        <div class="svc-ic"><i class="fa fa-hand-holding-dollar"></i></div>
+        <div class="svc-ic"><img src="Photo/Repair%20scenshot%20website/Financial-assistance.svg" alt="Financial assistance" loading="lazy"></div>
         <h3>Financial assistance</h3>
         <p>Direct relief for medical bills, daily essentials, and recurring costs, given confidentially and without bureaucracy, to seniors facing hardship.</p>
         <a href="services.html" class="svc-link">Apply for support <i class="fa fa-arrow-right"></i></a>
       </div>
       <div class="svc-card aos d1">
         <div class="svc-num">02</div>
-        <div class="svc-ic"><i class="fa fa-house-medical"></i></div>
+        <div class="svc-ic"><img src="Photo/Repair%20scenshot%20website/Elderly-home.svg" alt="Elderly home placement" loading="lazy"></div>
         <h3>Elderly home placement</h3>
         <p>A safe, loving residence with full-time staff, four meals a day, and medical assistance, for seniors with no family support to fall back on.</p>
         <a href="services.html" class="svc-link">View our home <i class="fa fa-arrow-right"></i></a>
       </div>
       <div class="svc-card aos d2">
         <div class="svc-num">03</div>
-        <div class="svc-ic"><i class="fa fa-handshake-angle"></i></div>
+        <div class="svc-ic"><img src="Photo/Repair%20scenshot%20website/partner-network.svg" alt="Partner network" loading="lazy"></div>
         <h3>Partner network</h3>
         <p>We collaborate with elderly homes across Malaysia, sharing resources and extending our reach so help is always within travel distance.</p>
         <a href="services.html" class="svc-link">See partners <i class="fa fa-arrow-right"></i></a>
@@ -1189,7 +1176,7 @@ footer .foot-top { padding-top: 5rem; }
 </section>
 
 <!-- NEWS / BLOG -->
-<section class="sec news-band" id="news">
+<section class="sec news-band" id="news" style="display:none">
   <div class="wrap">
     <div class="news-head">
       <div class="sh">
