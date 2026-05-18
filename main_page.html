@@ -104,11 +104,12 @@ header.scrolled{background:rgba(255,255,255,.96);box-shadow:0 2px 18px rgba(10,4
 .hero-shape.s2{width:340px;height:340px;background:radial-gradient(circle,rgba(218,165,32,.4),transparent 60%);bottom:-120px;left:-60px}
 .hero-shape.s3{width:200px;height:200px;background:radial-gradient(circle,rgba(44,62,80,.08),transparent 60%);top:30%;left:42%}
 .hero-in{max-width:var(--max);margin:auto;width:100%;padding:5.5rem 1.5rem 6rem;display:flex;flex-direction:column;position:relative;max-width:var(--max)}.hero-in>*{max-width:580px}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);padding:.36rem .9rem;border-radius:999px;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:1.4rem}
-.hero-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(218,165,32,.25)}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.78);margin-bottom:1.6rem;text-shadow:0 1px 6px rgba(0,0,0,.45)}
+.hero-eyebrow::before{content:"";width:22px;height:2px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.hero-eyebrow .dot{display:none}
 .hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.6rem,5.4vw,4.6rem);line-height:1.18;letter-spacing:-.02em;color:#fff;margin-bottom:1.4rem;text-wrap:balance}
-.hero h1 em{display:inline-block;font-style:italic;font-weight:500;color:var(--gold);padding-bottom:.1em}
-.hero h1 .sw{background:linear-gradient(110deg,var(--teal-700) 0%,var(--gold) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;font-style:italic}
+.hero h1 em{display:inline-block;font-style:italic;font-weight:500;color:var(--gold);padding-bottom:.1em;padding-right:.08em}
+.hero h1 .sw{display:none}
 .hero-sub{font-size:1.05rem;color:rgba(255,255,255,.78);max-width:560px;line-height:1.7;margin-bottom:2.2rem}
 .hero-cta{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2.4rem}
 .hero-trust{display:flex;gap:1.6rem;flex-wrap:wrap;padding-top:1.6rem;border-top:1px solid rgba(255,255,255,.14)}
