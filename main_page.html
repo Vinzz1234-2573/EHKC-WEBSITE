@@ -106,8 +106,8 @@ header.scrolled{background:rgba(255,255,255,.96);box-shadow:0 2px 18px rgba(10,4
 .hero-in{max-width:var(--max);margin:auto;width:100%;padding:5.5rem 1.5rem 6rem;display:flex;flex-direction:column;position:relative;max-width:var(--max)}.hero-in>*{max-width:580px}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);padding:.36rem .9rem;border-radius:999px;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:1.4rem}
 .hero-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(218,165,32,.25)}
-.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.6rem,5.4vw,4.6rem);line-height:1.04;letter-spacing:-.02em;color:#fff;margin-bottom:1.4rem;text-wrap:balance}
-.hero h1 em{font-style:italic;color:var(--gold);font-weight:500}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.6rem,5.4vw,4.6rem);line-height:1.18;letter-spacing:-.02em;color:#fff;margin-bottom:1.4rem;text-wrap:balance}
+.hero h1 em{display:inline-block;font-style:italic;font-weight:500;background:linear-gradient(110deg,#c47a4a 0%,#daa520 35%,#eec4a3 55%,#daa520 70%,#c47a4a 100%);background-size:250% auto;-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.1em;animation:textGradientShimmer 5s linear infinite}
 .hero h1 .sw{background:linear-gradient(110deg,var(--teal-700) 0%,var(--gold) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;font-style:italic}
 .hero-sub{font-size:1.05rem;color:rgba(255,255,255,.78);max-width:560px;line-height:1.7;margin-bottom:2.2rem}
 .hero-cta{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2.4rem}
@@ -559,9 +559,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
     0 0  60px rgba(218,165,32,.14);
 }
 .hero h1 em {
-  text-shadow:
-    0 2px 6px  rgba(218,165,32,.5),
-    0 5px 20px rgba(218,165,32,.28);
+  filter: drop-shadow(0 2px 8px rgba(218,165,32,.45));
 }
 .hero-sub {
   text-shadow: 0 1px 4px rgba(0,0,0,.25);
@@ -787,13 +785,13 @@ footer .foot-top { padding-top: 5rem; }
 .why-ic::after {
   content: '';
   position: absolute;
-  inset: -6px;
+  inset: -4px;
   border-radius: inherit;
   background: radial-gradient(
     circle,
-    rgba(196,122,74,.45)  0%,
-    rgba(218,165,32,.22) 50%,
-    transparent           72%
+    rgba(196,122,74,.18)  0%,
+    rgba(218,165,32,.09) 55%,
+    transparent           75%
   );
   transform: scale(var(--glow-scale));
   opacity: var(--glow-opacity);
@@ -1953,8 +1951,8 @@ if (icons.length && !window.matchMedia('(prefers-reduced-motion: reduce)').match
       icons.forEach((icon, i) => {
         animate(icon, {
           '--radius':       '24px',   // square  → rounder
-          '--glow-scale':   '1.55',   // ::after glow expands (same value as the docs example)
-          '--glow-opacity': '1',
+          '--glow-scale':   '0.9',
+          '--glow-opacity': '0.85',
           borderRadius: () => 'var(--radius)',
           duration: 750,
           ease: 'spring(1, 80, 12, 0)',
