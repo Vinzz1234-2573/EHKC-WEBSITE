@@ -1856,54 +1856,27 @@ if (!h1 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 
 
 <!-- Anime.js v4 — Person-in-charge section: function-based staggered entrance -->
-<script type="module">
-import { animate, utils } from 'https://esm.sh/animejs';
+<script>
+(function () {
+  const picBand = document.querySelector('.pic-band');
+  if (!picBand) return;
 
-if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const picBand  = document.querySelector('.pic-band');
-  const picPhoto = document.querySelector('.pic-photo');
-  const metaEls  = [...document.querySelectorAll(
-    '.pic-eyebrow, .pic-name, .pic-role, .pic-bio, .pic-actions .btn'
-  )];
+  const fadeEls = [
+    document.querySelector('.pic-photo'),
+    ...document.querySelectorAll('.pic-eyebrow, .pic-name, .pic-role, .pic-bio, .pic-actions .btn')
+  ].filter(Boolean);
 
-  if (picBand && (picPhoto || metaEls.length)) {
-    /* hide elements until section enters view */
-    if (picPhoto) picPhoto.style.opacity = '0';
-    metaEls.forEach(el => { el.style.opacity = '0'; });
+  fadeEls.forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transition = `opacity 0.7s ease ${i * 0.1}s`;
+  });
 
-    new IntersectionObserver((entries, obs) => {
-      if (!entries[0].isIntersecting) return;
-      obs.disconnect();
-
-      /* Portrait — elastic slide in from the left */
-      if (picPhoto) {
-        animate(picPhoto, {
-          x:       [-70, 0],
-          y:       [20, 0],
-          opacity: [0, 1],
-          rotate:  [utils.random(-5, -2), 0],
-          scale:   [0.88, 1],
-          duration: utils.random(1200, 1600),
-          ease:    'outElastic(1, .5)',
-          delay:   0,
-        });
-      }
-
-      /* Text / button elements — function-based values, staggered */
-      animate(metaEls, {
-        x:            (_, i) => [30 + i * 10, 0],
-        y:            (_, i) => [20 + i * 6, 0],
-        opacity:      [0, 1],
-        scale:        (_, i, t) => [(t.length - i) * 0.15 + 0.72, 1],
-        rotate:       () => [utils.random(-3, 3), 0],
-        borderRadius: () => `+=${utils.random(0, 6)}`,
-        duration:     () => utils.random(1200, 1800),
-        delay:        (_, i) => i * 130 + 220,
-        ease:         'outElastic(1, .5)',
-      });
-    }, { threshold: 0.2 }).observe(picBand);
-  }
-}
+  new IntersectionObserver((entries, obs) => {
+    if (!entries[0].isIntersecting) return;
+    obs.disconnect();
+    fadeEls.forEach(el => { el.style.opacity = '1'; });
+  }, { threshold: 0.2 }).observe(picBand);
+})();
 </script>
 
 <!-- Anime.js v4 — draggable donate button -->
