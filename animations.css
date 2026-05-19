@@ -292,6 +292,8 @@ h2.section-h em, .sec-h em {
   -webkit-background-clip: unset !important;
   background-clip: unset !important;
   animation: none !important;
+  text-shadow: none !important;
+  font-style: italic;
   display: inline-block;
   overflow: visible;
   padding-bottom: .12em;

@@ -101,7 +101,7 @@ header.scrolled{background:rgba(255,255,255,.98);box-shadow:0 2px 18px rgba(10,4
 .tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.71rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-700);margin-bottom:.65rem}
 .tag::before{content:'';display:block;width:16px;height:2px;background:var(--gold);border-radius:2px}
 .sec-h{font-family:var(--serif);font-size:clamp(1.9rem,3.8vw,2.8rem);font-weight:500;color:var(--ink-900);line-height:1.18;margin-bottom:.8rem}
-.sec-h em{color:var(--teal-700);font-style:italic}
+.sec-h em{color:#c47a4a;font-style:italic;background:none!important;-webkit-background-clip:unset!important;background-clip:unset!important;animation:none!important;text-shadow:none!important;overflow:visible;padding-bottom:.12em;display:inline-block;line-height:1.35}
 .sec-p{font-size:.97rem;color:var(--ink-500);max-width:560px;line-height:1.85}
 .sh{margin-bottom:3rem}
 .sh.c{text-align:center}.sh.c .tag{justify-content:center}.sh.c .sec-p{margin:0 auto}
@@ -309,15 +309,17 @@ textarea.form-control{resize:vertical;min-height:90px}
 <div class="page-hero">
   <div class="page-hero-in">
     <div class="page-pill"><i class="fa fa-briefcase"></i> Career Opportunities</div>
-    <h1>We're <em>Hiring</em>:<br>Join Our Team</h1>
+    <h1>We're <em>Hiring</em><br>Join Our Team</h1>
     <p>Come join our warm and meaningful team, where your work creates real impact and contributes to the well-being of Malaysia's elderly community. Grow with us while making a difference in the lives of others.</p>
-    <a class="wa-hero-btn" href="https://wa.me/60127762911?text=Hello%2C%20I%20am%20interested%20in%20a%20job%20at%20Amitabha%20Foundation." target="_blank" rel="noopener">
-      <i class="fab fa-whatsapp"></i> WhatsApp Us: 012-776 2911
-    </a>
-    <div class="breadcrumb">
-      <a href="main_page.html">Home</a>
-      <i class="fa fa-chevron-right"></i>
-      <span>Jobs</span>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:1.2rem">
+      <a class="wa-hero-btn" href="https://wa.me/60127762911?text=Hello%2C%20I%20am%20interested%20in%20a%20job%20at%20Amitabha%20Foundation." target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i> WhatsApp Us: 012-776 2911
+      </a>
+      <div class="breadcrumb">
+        <a href="main_page.html">Home</a>
+        <i class="fa fa-chevron-right"></i>
+        <span>Jobs</span>
+      </div>
     </div>
   </div>
 </div>
