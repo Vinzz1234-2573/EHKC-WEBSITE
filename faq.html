@@ -52,6 +52,9 @@ header.scrolled{background:rgba(255,255,255,.96);box-shadow:0 2px 18px rgba(10,4
 .btn-ghost:hover{background:rgba(196,122,74,.13);border-color:var(--teal-700);color:var(--teal-700)}
 .btn-primary{background:var(--teal-700);color:#fff;box-shadow:0 6px 18px rgba(196,122,74,.32)}
 .btn-primary:hover{background:var(--teal-600)}
+.btn-donate{background:#ab1b25;color:#fff;box-shadow:0 4px 14px rgba(171,26,31,.28);animation:donateGlow 2.5s ease-in-out infinite}
+.btn-donate:hover{background:#8f1419;transform:translateY(-1px);animation-play-state:paused}
+@keyframes donateGlow{0%,100%{box-shadow:0 4px 18px rgba(171,26,31,.5),0 0 0 0 rgba(171,26,31,0)}50%{box-shadow:0 6px 28px rgba(171,26,31,.85),0 0 24px rgba(171,26,31,.5),0 0 0 8px rgba(171,26,31,.13)}}
 .burger{display:none;flex-direction:column;gap:5px;padding:.5rem;cursor:pointer}
 .burger span{width:22px;height:2px;background:var(--teal-800);border-radius:2px;transition:all var(--t)}
 .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -132,10 +135,10 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
 
 /* ─── Float bar ─── */
 .float-bar{position:fixed;bottom:1.6rem;left:50%;transform:translateX(-50%);z-index:999;display:flex;gap:.65rem;align-items:center}
-.float-wa-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.78rem 1.55rem;border-radius:999px;font-weight:700;font-size:.92rem;font-family:var(--sans);white-space:nowrap;transition:all var(--t);background:#25d366;color:#fff;box-shadow:0 6px 24px rgba(37,211,102,.42);text-decoration:none}
-.float-wa-btn:hover{background:#1ebe5a;transform:translateY(-3px)}
-.float-donate-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.78rem 1.55rem;border-radius:999px;font-weight:700;font-size:.92rem;font-family:var(--sans);white-space:nowrap;transition:all var(--t);background:linear-gradient(135deg,#c52525,#ab1a1f);color:#fff;box-shadow:0 6px 28px rgba(171,26,31,.6);text-decoration:none;animation:donatePulse 2.8s ease-in-out infinite}
-.float-donate-btn:hover{background:#8f1419;transform:translateY(-3px);animation-play-state:paused}
+.float-wa{display:inline-flex;align-items:center;gap:.5rem;padding:.78rem 1.55rem;border-radius:999px;font-weight:700;font-size:.92rem;font-family:var(--sans);white-space:nowrap;transition:all var(--t);background:#25d366;color:#fff;box-shadow:0 6px 24px rgba(37,211,102,.42);text-decoration:none}
+.float-wa:hover{background:#1ebe5a;transform:translateY(-3px)}
+.float-donate{display:inline-flex;align-items:center;gap:.5rem;padding:.78rem 1.55rem;border-radius:999px;font-weight:700;font-size:.92rem;font-family:var(--sans);white-space:nowrap;transition:all var(--t);background:linear-gradient(135deg,#c52525,#ab1a1f);color:#fff;box-shadow:0 6px 28px rgba(171,26,31,.6);text-decoration:none;animation:donatePulse 2.8s ease-in-out infinite}
+.float-donate:hover{background:#8f1419;transform:translateY(-3px);animation-play-state:paused}
 @keyframes donatePulse{0%,100%{box-shadow:0 6px 28px rgba(171,26,31,.6),0 0 0 0 rgba(171,26,31,.0)}50%{box-shadow:0 8px 36px rgba(171,26,31,.8),0 0 0 10px rgba(171,26,31,.12)}}
 .fl-label{}
 
@@ -151,8 +154,8 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
   .faq-body{padding:3rem 1rem 5rem}
   .faq-cta{padding:3.5rem 1rem}
   .float-bar{left:auto;right:1.2rem;transform:none;bottom:1.4rem;flex-direction:column;gap:.5rem}
-  .float-wa-btn,.float-donate-btn{width:52px;height:52px;padding:0;border-radius:50%;justify-content:center;font-size:1.35rem}
-  .float-wa-btn .fl-label,.float-donate-btn .fl-label{display:none}
+  .float-wa,.float-donate{width:52px;height:52px;padding:0;border-radius:50%;justify-content:center;font-size:1.35rem}
+  .float-wa .fl-label,.float-donate .fl-label{display:none}
 }
 </style>
 </head>
@@ -175,7 +178,8 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
     </nav>
     <div class="hdr-r">
       <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="btn btn-ghost"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
-      <a href="https://m.amitabhafoundation.my/en/donation" class="btn" style="background:#ab1a1f;color:#fff;border-radius:999px;padding:.62rem 1.15rem" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> Donate</a>
+      <div id="nav-auth"><a href="login.html" class="btn btn-ghost"><i class="fa fa-user"></i> Sign In</a></div>
+      <a href="https://m.amitabhafoundation.my/en/donation" class="btn btn-donate" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> Donate</a>
       <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -187,6 +191,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
     <a href="blog.html">News</a>
     <a href="jobs.html">Careers</a>
     <a href="faq.html">FAQ</a>
+    <a href="login.html" id="mob-signin"><i class="fa fa-user"></i> Sign In</a>
     <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." style="color:var(--teal-700);font-weight:700"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
     <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1b25;font-weight:700"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img-plain" alt=""> Donate Now</a>
   </nav>
@@ -567,8 +572,8 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
 </footer>
 
 <div class="float-bar">
-  <a class="float-wa-btn" href="https://wa.me/60127762911" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> <span class="fl-label">WhatsApp</span></a>
-  <a class="float-donate-btn" href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener"><i class="fa fa-hand-holding-heart"></i> <span class="fl-label">Donate Now</span></a>
+  <a class="float-wa" href="https://wa.me/60127762911" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> <span class="fl-label">WhatsApp</span></a>
+  <a class="float-donate" href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener"><i class="fa fa-hand-holding-heart"></i> <span class="fl-label">Donate Now</span></a>
 </div>
 
 <script>
