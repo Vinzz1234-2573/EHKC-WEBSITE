@@ -150,10 +150,15 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:1
 .modal h3{font-size:1.1rem;font-weight:700;color:var(--teal-700);margin-bottom:1.2rem;padding-bottom:.7rem;border-bottom:1px solid var(--border)}
 .modal-btns{display:flex;gap:.8rem;justify-content:flex-end;margin-top:1rem}
 
+.mob-tabs{display:none}
 @media(max-width:720px){
   .sidebar{display:none}
   .admin-main{padding:1.2rem}
   .grid-2,.grid-3{grid-template-columns:1fr}
+  .mob-tabs{display:flex;overflow-x:auto;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;scrollbar-width:none}
+  .mob-tabs::-webkit-scrollbar{display:none}
+  .mob-tab{flex:0 0 auto;padding:.7rem 1rem;font-size:.84rem;font-weight:500;color:var(--muted);border-bottom:2px solid transparent;white-space:nowrap;cursor:pointer;text-decoration:none;transition:color .2s,border-color .2s}
+  .mob-tab.active{color:var(--teal-700);border-bottom-color:var(--teal-700)}
 }
 </style>
 </head>
@@ -189,6 +194,15 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:1
         <a href="main_page.html" target="_blank"><span class="ic">🌐</span> Main Website</a>
       </nav>
     </aside>
+
+    <!-- Mobile tab nav (visible at ≤720px when sidebar is hidden) -->
+    <nav class="mob-tabs" id="mob-tabs">
+      <a class="mob-tab active" href="#" onclick="showTab('dash');return false">🏠 Dashboard</a>
+      <a class="mob-tab" href="#" onclick="showTab('jobs');return false">💼 Jobs</a>
+      <a class="mob-tab" href="#" onclick="showTab('news');return false">📰 News</a>
+      <a class="mob-tab" href="#" onclick="showTab('gallery');return false">🖼 Gallery</a>
+      <a class="mob-tab" href="#" onclick="showTab('apps');return false">📋 Apps <span id="mob-apps-badge" style="display:none;background:#dc2626;color:#fff;border-radius:20px;padding:0 5px;font-size:.7rem;margin-left:3px;vertical-align:middle"></span></a>
+    </nav>
 
     <!-- Main -->
     <main class="admin-main">
@@ -430,8 +444,12 @@ function getApps(){return _cache.apps}
 function showTab(name){
   document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.sidebar nav a').forEach(a=>a.classList.remove('active'));
+  document.querySelectorAll('.mob-tab').forEach(a=>a.classList.remove('active'));
   document.getElementById('tab-'+name).classList.add('active');
   document.querySelectorAll('.sidebar nav a').forEach(a=>{
+    if(a.getAttribute('onclick')&&a.getAttribute('onclick').includes("'"+name+"'"))a.classList.add('active');
+  });
+  document.querySelectorAll('.mob-tab').forEach(a=>{
     if(a.getAttribute('onclick')&&a.getAttribute('onclick').includes("'"+name+"'"))a.classList.add('active');
   });
   if(name==='apps')markAppsRead();

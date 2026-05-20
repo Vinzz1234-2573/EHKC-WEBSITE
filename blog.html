@@ -31,6 +31,7 @@
   --serif:"Newsreader",Georgia,serif;
 }
 html{scroll-behavior:smooth}
+html{overflow-x:hidden;max-width:100%}
 body{font-family:var(--sans);background:var(--bg);color:var(--ink-700);line-height:1.7;font-size:1rem;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{display:block;max-width:100%}
 a{text-decoration:none;color:inherit}
@@ -181,7 +182,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
 }</style>
 <style>
 @keyframes donateGlow{0%,100%{box-shadow:0 4px 18px rgba(171,26,31,.5),0 0 0 0 rgba(171,26,31,0)}50%{box-shadow:0 6px 28px rgba(171,26,31,.85),0 0 24px rgba(171,26,31,.5),0 0 0 8px rgba(171,26,31,.13)}}
-.donate-img{height:1.1em;width:auto;vertical-align:middle;display:inline-block;filter:brightness(0) invert(1) drop-shadow(0 0 4px rgba(255,255,255,.6))}
+.donate-img{height:1.1em;width:auto;display:block;filter:brightness(0) invert(1) drop-shadow(0 0 4px rgba(255,255,255,.6))}
 .donate-img-plain{height:1.1em;width:auto;vertical-align:middle;display:inline-block}
 </style>
 </head>
@@ -325,7 +326,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
 
 <div class="float-bar">
   <a class="float-wa" href="https://wa.me/60127762911" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> <span class="fl-label">WhatsApp</span></a>
-  <a class="float-donate" href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" alt="" style="height:1.2em;width:auto;display:block;filter:brightness(0) invert(1) drop-shadow(0 0 5px rgba(255,255,255,.65))"> <span class="fl-label">Donate Now</span></a>
+  <a class="float-donate" href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener"><i class="fa fa-hand-holding-heart"></i> <span class="fl-label">Donate Now</span></a>
 </div>
 
 <script>

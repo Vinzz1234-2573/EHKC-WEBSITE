@@ -42,6 +42,7 @@
   --serif:"Newsreader",Georgia,serif;
 }
 html{scroll-behavior:smooth}
+html{overflow-x:hidden;max-width:100%}
 body{font-family:var(--sans);color:var(--ink-700);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
@@ -222,14 +223,16 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 }
 @media(max-width:480px){
   .sec{padding:2.5rem 0}
-  .nums-grid{grid-template-columns:1fr 1fr}
+  .nums-grid{grid-template-columns:1fr 1fr;gap:.75rem}
+  .num-item .n{font-size:2rem}
+  .num-item .n sup{font-size:1rem}
   .cta-btns>*{width:100%;justify-content:center}
 }
 </style>
 <style>
 @keyframes donateGlow{0%,100%{box-shadow:0 4px 18px rgba(171,26,31,.5),0 0 0 0 rgba(171,26,31,0)}50%{box-shadow:0 6px 28px rgba(171,26,31,.85),0 0 24px rgba(171,26,31,.5),0 0 0 8px rgba(171,26,31,.13)}}
 .btn-donate,.btn-cta-gold{animation:donateGlow 2.5s ease-in-out infinite}
-.donate-img{height:1.1em;width:auto;vertical-align:middle;display:inline-block;filter:brightness(0) invert(1) drop-shadow(0 0 4px rgba(255,255,255,.6))}
+.donate-img{height:1.1em;width:auto;display:block;filter:brightness(0) invert(1) drop-shadow(0 0 4px rgba(255,255,255,.6))}
 .donate-img-plain{height:1.1em;width:auto;vertical-align:middle;display:inline-block}
 
 /* PHOTO GALLERY SECTION */
@@ -679,7 +682,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 <!-- FLOATING WHATSAPP -->
 <div class="float-bar">
   <a class="float-wa" href="https://wa.me/60127762911?text=Hello%20Amitabha%20Foundation%2C%20I%20would%20like%20to%20enquire%20about%20Elder%20Support." target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> <span class="fl-label">WhatsApp</span></a>
-  <a class="float-donate" href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" alt="" style="height:1.2em;width:auto;display:block;filter:brightness(0) invert(1) drop-shadow(0 0 5px rgba(255,255,255,.65))"> <span class="fl-label">Donate Now</span></a>
+  <a class="float-donate" href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener"><i class="fa fa-hand-holding-heart"></i> <span class="fl-label">Donate Now</span></a>
 </div>
 
 <script>

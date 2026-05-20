@@ -51,6 +51,7 @@
   --serif:"Newsreader",Georgia,serif;
 }
 html{scroll-behavior:smooth}
+html{overflow-x:hidden;max-width:100%}
 body{font-family:var(--sans);color:var(--ink-700);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
@@ -443,6 +444,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
   .pic-card{grid-template-columns:1fr;gap:1.6rem;padding:1.6rem;text-align:center}
   .pic-photo{margin:auto;width:200px;height:240px}
   .pic-actions{justify-content:center}
+  .hcf.f1,.hcf.f2{display:none}
 }
 @media(max-width:640px){
   .sec{padding:4rem 0}
@@ -453,7 +455,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
   .hcf.f1,.hcf.f2{display:none}
   .about-card{left:50%;transform:translateX(-50%);bottom:-22px}
   .about-media{padding-bottom:2.5rem}
-  .about-img{aspect-ratio:4/3;max-height:320px}
+  .about-img{aspect-ratio:3/4!important;max-height:none}
   .evt-grid{grid-template-columns:1fr}
   .evt-card.featured{grid-column:auto}
   .gal-thumbs{grid-template-columns:repeat(3,1fr)}
@@ -523,7 +525,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
 @keyframes donateGlow{0%,100%{box-shadow:0 4px 18px rgba(171,26,31,.5),0 0 0 0 rgba(171,26,31,0)}50%{box-shadow:0 6px 28px rgba(171,26,31,.85),0 0 24px rgba(171,26,31,.5),0 0 0 8px rgba(171,26,31,.13)}}
 @keyframes waGlow{0%,100%{box-shadow:0 4px 18px rgba(37,211,102,.45),0 0 0 0 rgba(37,211,102,0)}50%{box-shadow:0 6px 28px rgba(37,211,102,.8),0 0 24px rgba(37,211,102,.45),0 0 0 8px rgba(37,211,102,.13)}}
 .btn-coral{animation:donateGlow 2.5s ease-in-out infinite}
-.donate-img{height:1.1em;width:auto;vertical-align:middle;display:inline-block;filter:brightness(0) invert(1) drop-shadow(0 0 4px rgba(255,255,255,.6))}
+.donate-img{height:1.1em;width:auto;display:block;filter:brightness(0) invert(1) drop-shadow(0 0 4px rgba(255,255,255,.6))}
 .donate-img-plain{height:1.1em;width:auto;vertical-align:middle;display:inline-block}
 /* MAP SECTION */
 .map-section{padding:0}
@@ -545,7 +547,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
 .map-cta i{font-size:1.4rem}
 .map-cta .mc-t{font-weight:700;font-size:.88rem}
 .map-cta .mc-s{font-size:.75rem;color:rgba(255,255,255,.78)}
-@media(max-width:768px){.map-body{grid-template-columns:1fr}.map-info{border-left:none;border-top:1px solid var(--line)}.map-iframe-wrap{height:280px}}
+@media(max-width:1024px){.map-body{grid-template-columns:1fr}.map-info{border-left:none;border-top:1px solid var(--line)}.map-iframe-wrap{height:280px}}
 </style>
 
 <!-- ══════════════════════════════════════════════
@@ -1319,7 +1321,7 @@ footer .foot-top { padding-top: 4rem; }
 
 <div class="float-bar">
   <a class="float-wa" href="https://wa.me/60127762911" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> <span class="fl-label">WhatsApp</span></a>
-  <a class="float-donate" href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" alt="" style="height:1.2em;width:auto;display:block;filter:brightness(0) invert(1) drop-shadow(0 0 5px rgba(255,255,255,.65))"> <span class="fl-label">Donate Now</span><span class="donate-tip">Someone is waiting for a kindness only you can give.</span></a>
+  <a class="float-donate" href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener"><i class="fa fa-hand-holding-heart"></i> <span class="fl-label">Donate Now</span><span class="donate-tip">Someone is waiting for a kindness only you can give.</span></a>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
