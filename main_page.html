@@ -548,6 +548,26 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
 .map-cta .mc-t{font-weight:700;font-size:.88rem}
 .map-cta .mc-s{font-size:.75rem;color:rgba(255,255,255,.78)}
 @media(max-width:1024px){.map-body{grid-template-columns:1fr}.map-info{border-left:none;border-top:1px solid var(--line)}.map-iframe-wrap{height:280px}}
+
+/* Mini FAQ */
+.mini-faq{padding:5.5rem 0;background:#fdf2e8;position:relative}
+.mini-faq::before{content:'';position:absolute;inset:0;background:radial-gradient(600px 400px at 90% 10%,rgba(218,165,32,.1),transparent 60%);pointer-events:none}
+.mini-faq .wrap{position:relative}
+.mini-faq .sh{margin-bottom:2.8rem}
+.mfaq-grid{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;margin-bottom:2.4rem}
+.mfaq-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;transition:border-color var(--t),box-shadow var(--t)}
+.mfaq-card:hover{border-color:var(--teal-400);box-shadow:var(--shadow-sm)}
+.mfaq-card.open{border-color:var(--teal-500);box-shadow:0 2px 16px rgba(196,122,74,.1)}
+.mfaq-q{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 1.3rem;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent}
+.mfaq-q-text{font-size:.93rem;font-weight:600;color:var(--ink-900);line-height:1.4;flex:1}
+.mfaq-icon{width:22px;height:22px;flex-shrink:0;border-radius:50%;background:var(--teal-50);color:var(--teal-700);display:flex;align-items:center;justify-content:center;font-size:.6rem;transition:transform var(--t),background var(--t)}
+.mfaq-card.open .mfaq-icon{transform:rotate(180deg);background:var(--teal-700);color:#fff}
+.mfaq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.mfaq-card.open .mfaq-a{max-height:400px}
+.mfaq-a-inner{padding:0 1.3rem 1.1rem;border-top:1px solid var(--line);padding-top:.9rem;font-size:.88rem;color:var(--ink-500);line-height:1.75}
+.mfaq-a-inner strong{color:var(--ink-700)}
+.mfaq-foot{display:flex;justify-content:center}
+@media(max-width:720px){.mfaq-grid{grid-template-columns:1fr}}
 </style>
 
 <!-- ══════════════════════════════════════════════
@@ -1252,6 +1272,83 @@ footer .foot-top { padding-top: 4rem; }
 
 <button class="admin-toggle" id="adminQuickToggle" title="Toggle admin mode" style="display:none"><i class="fa fa-user-shield"></i></button>
 
+<!-- MINI FAQ -->
+<section class="mini-faq">
+  <div class="wrap">
+    <div class="sh">
+      <div class="eyebrow">Common Questions</div>
+      <h2 class="section-h">Answers for <em>families</em>.</h2>
+      <p class="section-p">A few things families ask us most often. For the full list, visit our FAQ page.</p>
+    </div>
+    <div class="mfaq-grid">
+
+      <div class="mfaq-card" onclick="toggleMfaq(this)">
+        <div class="mfaq-q">
+          <span class="mfaq-q-text">How much does it cost for a resident to stay?</span>
+          <span class="mfaq-icon"><i class="fa fa-chevron-down"></i></span>
+        </div>
+        <div class="mfaq-a"><div class="mfaq-a-inner">
+          Monthly fees range from <strong>RM 1,800 to RM 2,500</strong> depending on the resident's level of care. Many residents receive subsidies — some stay for free. No one is turned away due to financial hardship.
+        </div></div>
+      </div>
+
+      <div class="mfaq-card" onclick="toggleMfaq(this)">
+        <div class="mfaq-q">
+          <span class="mfaq-q-text">What types of elderly can be accommodated?</span>
+          <span class="mfaq-icon"><i class="fa fa-chevron-down"></i></span>
+        </div>
+        <div class="mfaq-a"><div class="mfaq-a-inner">
+          We welcome elderly who are <strong>mobile</strong>, <strong>wheelchair-bound</strong>, or <strong>bedridden</strong>, including those with <strong>dementia or special needs</strong>. Care is tailored to each resident's condition.
+        </div></div>
+      </div>
+
+      <div class="mfaq-card" onclick="toggleMfaq(this)">
+        <div class="mfaq-q">
+          <span class="mfaq-q-text">Do residents need to be Buddhist to stay here?</span>
+          <span class="mfaq-icon"><i class="fa fa-chevron-down"></i></span>
+        </div>
+        <div class="mfaq-a"><div class="mfaq-a-inner">
+          Not at all. <strong>All races and religions are welcome.</strong> Residents are free to practise their own beliefs. Our care is open to everyone equally.
+        </div></div>
+      </div>
+
+      <div class="mfaq-card" onclick="toggleMfaq(this)">
+        <div class="mfaq-q">
+          <span class="mfaq-q-text">What are the visitation hours?</span>
+          <span class="mfaq-icon"><i class="fa fa-chevron-down"></i></span>
+        </div>
+        <div class="mfaq-a"><div class="mfaq-a-inner">
+          Families are welcome to visit <strong>daily from 9am – 5pm</strong>. Our office operates <strong>Monday to Friday, 9am – 5pm</strong>.
+        </div></div>
+      </div>
+
+      <div class="mfaq-card" onclick="toggleMfaq(this)">
+        <div class="mfaq-q">
+          <span class="mfaq-q-text">How do I apply for my family member to stay?</span>
+          <span class="mfaq-icon"><i class="fa fa-chevron-down"></i></span>
+        </div>
+        <div class="mfaq-a"><div class="mfaq-a-inner">
+          Complete an <strong>application form</strong> and arrange a basic <strong>medical check-up</strong> to confirm the absence of communicable illnesses. Required documents: IC, completed form, and latest medical results.
+        </div></div>
+      </div>
+
+      <div class="mfaq-card" onclick="toggleMfaq(this)">
+        <div class="mfaq-q">
+          <span class="mfaq-q-text">Is there tax relief for donations?</span>
+          <span class="mfaq-icon"><i class="fa fa-chevron-down"></i></span>
+        </div>
+        <div class="mfaq-a"><div class="mfaq-a-inner">
+          Yes. The Amitabha Foundation is <strong>registered under LHDN</strong>, so qualifying monetary donations are eligible for tax exemption. Please retain your receipt for tax filing.
+        </div></div>
+      </div>
+
+    </div>
+    <div class="mfaq-foot">
+      <a href="faq.html" class="btn btn-primary"><i class="fa fa-circle-question"></i> See all FAQs</a>
+    </div>
+  </div>
+</section>
+
 <!-- LOCATION MAP -->
 <div class="map-section" id="location">
   <div class="map-header">
@@ -1292,6 +1389,7 @@ footer .foot-top { padding-top: 4rem; }
     </div>
     <div class="foot-col">
       <h4>The Home</h4>
+      <a href="faq.html">FAQ</a>
       <a href="blog.html">News</a>
       <a href="main_page.html">Home</a>
       <a href="about.html">About</a>
@@ -1634,6 +1732,19 @@ document.querySelectorAll('.aos,.aos-l,.aos-r').forEach(el => aosObs.observe(el)
   if (authEl) authEl.innerHTML = `<a href="${dest}" class="btn btn-ghost"><i class="fa fa-user"></i> ${first}</a>`;
   if (mobEl)  { mobEl.href = dest; mobEl.innerHTML = `<i class="fa fa-user"></i> ${first}`; }
 })();
+
+function toggleMfaq(card) {
+  const panel = card.querySelector('.mfaq-a');
+  const isOpen = card.classList.contains('open');
+  document.querySelectorAll('.mfaq-card.open').forEach(c => {
+    c.classList.remove('open');
+    c.querySelector('.mfaq-a').style.maxHeight = '0';
+  });
+  if (!isOpen) {
+    card.classList.add('open');
+    panel.style.maxHeight = panel.scrollHeight + 'px';
+  }
+}
 </script>
 <script src="animations.js"></script>
 

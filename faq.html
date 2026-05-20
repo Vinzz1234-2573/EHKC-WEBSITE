@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>FAQ – Amitabha Foundation Elder Home</title>
+<meta name="description" content="Frequently asked questions about elder care, admission, fees, donations, and daily life at Amitabha Foundation Elder Home in Kuala Lumpur.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="animations.css">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --teal-900:#1a242f;--teal-800:#2c3e50;--teal-700:#c47a4a;
+  --teal-600:#d68d5b;--teal-500:#e3a681;--teal-400:#eec4a3;
+  --teal-100:#f9e6d4;--teal-50:#fdf2e8;--teal-25:#fffaf3;
+  --gold:#daa520;--gold-d:#b8881a;--gold-l:#f0c75e;
+  --ink-900:#0c1a1c;--ink-700:#1f3034;--ink-500:#4d6065;--ink-400:#6e8087;--ink-300:#9aa9ae;
+  --line:#e3ecee;--bg:#fffbf2;--surface:#ffffff;
+  --r-sm:10px;--r:14px;--r-lg:22px;--r-xl:28px;
+  --shadow-sm:0 1px 2px rgba(10,40,45,.04),0 2px 8px rgba(10,40,45,.04);
+  --shadow:0 4px 16px rgba(10,40,45,.06),0 18px 48px rgba(10,40,45,.06);
+  --shadow-lg:0 24px 64px rgba(6,59,61,.14);
+  --t:.32s cubic-bezier(.4,0,.2,1);
+  --max:1240px;--header-h:72px;
+  --sans:"Plus Jakarta Sans",system-ui,sans-serif;
+  --serif:"Newsreader",Georgia,serif;
+}
+html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%}
+body{font-family:var(--sans);color:var(--ink-700);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+/* ─── Header ─── */
+header{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.86);backdrop-filter:saturate(160%) blur(18px);-webkit-backdrop-filter:saturate(160%) blur(18px);border-bottom:1px solid var(--line);transition:box-shadow var(--t),background var(--t)}
+header.scrolled{background:rgba(255,255,255,.96);box-shadow:0 2px 18px rgba(10,40,45,.06)}
+.hdr{max-width:var(--max);margin:auto;padding:0 1.5rem;height:var(--header-h);display:flex;align-items:center;justify-content:space-between;gap:1.2rem}
+.brand{display:flex;align-items:center;gap:.7rem}
+.brand img{height:54px;width:auto;display:block;object-fit:contain}
+.nav{display:flex;gap:.1rem;align-items:center}
+.nav a{font-size:.86rem;font-weight:500;color:var(--ink-700);padding:.5rem .85rem;border-radius:8px;transition:color .3s ease,background .3s ease}
+.nav a:hover{background:rgba(247,230,233,.5);color:#ab1b25}
+.nav a.on{color:#ab1b25;background:transparent}
+.nav a.on::after{content:"";display:block;width:18px;height:2px;border-radius:2px;background:#ab1b25;margin:2px auto -6px}
+.hdr-r{display:flex;align-items:center;gap:.55rem}
+.btn{display:inline-flex;align-items:center;gap:.45rem;font-family:inherit;font-weight:600;font-size:.86rem;padding:.62rem 1.15rem;border-radius:999px;transition:all var(--t);white-space:nowrap}
+.btn-ghost{color:var(--teal-800);border:1px solid var(--line)}
+.btn-ghost:hover{background:rgba(196,122,74,.13);border-color:var(--teal-700);color:var(--teal-700)}
+.btn-primary{background:var(--teal-700);color:#fff;box-shadow:0 6px 18px rgba(196,122,74,.32)}
+.btn-primary:hover{background:var(--teal-600)}
+.burger{display:none;flex-direction:column;gap:5px;padding:.5rem;cursor:pointer}
+.burger span{width:22px;height:2px;background:var(--teal-800);border-radius:2px;transition:all var(--t)}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mob-menu{display:none;flex-direction:column;background:#fff;border-top:1px solid var(--line);padding:.6rem 1.5rem 1.2rem}
+.mob-menu.open{display:flex}
+.mob-menu a{padding:.7rem .3rem;font-size:.95rem;color:var(--ink-700);border-bottom:1px solid var(--line)}
+.mob-menu a:last-child{border-bottom:none}
+.donate-img{height:17px;width:auto;display:inline-block;vertical-align:middle;margin-right:.1rem}
+.donate-img-plain{height:15px;width:auto;display:inline-block;vertical-align:middle;margin-right:.25rem}
+
+/* ─── Page Hero ─── */
+.page-hero{background:linear-gradient(125deg,var(--teal-900) 0%,var(--teal-800) 42%,var(--teal-700) 100%);padding:5rem 1.5rem 4.5rem;text-align:center;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 50%,rgba(218,165,32,.15),transparent 50%),radial-gradient(circle at 80% 50%,rgba(255,255,255,.05),transparent 50%)}
+.page-hero-in{position:relative;z-index:1;max-width:760px;margin:auto}
+.page-pill{display:inline-flex;align-items:center;gap:.45rem;background:rgba(196,122,74,.18);border:1px solid rgba(196,122,74,.35);color:#eec4a3;padding:.32rem .95rem;border-radius:50px;font-size:.73rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.2rem}
+.page-hero h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.6rem);font-weight:500;color:#fff;line-height:1.1;margin-bottom:.8rem}
+.page-hero h1 em{font-style:italic;color:#eec4a3}
+.page-hero p{font-size:1rem;color:rgba(255,255,255,.82);max-width:560px;margin:0 auto 1.6rem;line-height:1.8}
+.breadcrumb{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;color:rgba(255,255,255,.55)}
+.breadcrumb a{color:rgba(255,255,255,.72);transition:color var(--t)}
+.breadcrumb a:hover{color:#eec4a3}
+.breadcrumb i{font-size:.6rem}
+
+/* ─── FAQ Layout ─── */
+.faq-body{max-width:860px;margin:0 auto;padding:4rem 1.5rem 6rem}
+
+/* Category label */
+.faq-cat{display:flex;align-items:center;gap:10px;margin:3rem 0 .85rem;font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-700)}
+.faq-cat:first-child{margin-top:0}
+.faq-cat::before{content:'';width:24px;height:2px;background:var(--teal-500);border-radius:2px;flex-shrink:0}
+.faq-cat::after{content:'';flex:1;height:.5px;background:var(--line)}
+
+/* Accordion card */
+.faq-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);margin-bottom:.55rem;overflow:hidden;transition:border-color var(--t),box-shadow var(--t)}
+.faq-card:hover{border-color:var(--teal-400);box-shadow:var(--shadow-sm)}
+.faq-card.open{border-color:var(--teal-500);box-shadow:0 2px 16px rgba(196,122,74,.1)}
+
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 1.3rem;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent}
+.faq-q-text{font-size:.95rem;font-weight:600;color:var(--ink-900);line-height:1.45;flex:1}
+.faq-icon{width:22px;height:22px;flex-shrink:0;border-radius:50%;background:var(--teal-50);color:var(--teal-700);display:flex;align-items:center;justify-content:center;font-size:.62rem;transition:transform var(--t),background var(--t)}
+.faq-card.open .faq-icon{transform:rotate(180deg);background:var(--teal-700);color:#fff}
+
+.faq-a{max-height:0;overflow:hidden;transition:max-height .38s ease}
+.faq-card.open .faq-a{max-height:800px}
+.faq-a-inner{padding:0 1.3rem 1.2rem;border-top:1px solid var(--line);padding-top:1rem;font-size:.92rem;color:var(--ink-500);line-height:1.78}
+.faq-a-inner strong{color:var(--ink-700);font-weight:600}
+.faq-highlight{background:var(--teal-50);border-left:3px solid var(--teal-500);border-radius:0 8px 8px 0;padding:.75rem 1rem;margin-top:.85rem;font-size:.88rem;color:var(--ink-700);line-height:1.65}
+
+/* ─── CTA Band ─── */
+.faq-cta{background:linear-gradient(135deg,var(--teal-800),var(--teal-900));padding:4.5rem 1.5rem;text-align:center;position:relative;overflow:hidden}
+.faq-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(600px 400px at 60% 40%,rgba(218,165,32,.14),transparent 60%)}
+.faq-cta-in{position:relative;z-index:1;max-width:600px;margin:auto}
+.faq-cta h2{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:500;color:#fff;margin-bottom:.65rem;line-height:1.2}
+.faq-cta h2 em{font-style:italic;color:var(--teal-400)}
+.faq-cta p{color:rgba(255,255,255,.72);font-size:.97rem;max-width:500px;margin:0 auto 2rem;line-height:1.7}
+.faq-cta-btns{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+.btn-wa{background:#25d366;color:#fff;box-shadow:0 6px 18px rgba(37,211,102,.38)}
+.btn-wa:hover{background:#1ebe5a}
+
+/* ─── Footer ─── */
+footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
+.foot-top{max-width:var(--max);margin:auto;padding:4rem 1.5rem 2.6rem;display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:3rem}
+.foot-brand img{height:54px;width:auto;margin-bottom:1.2rem;display:block;object-fit:contain}
+.foot-brand p{font-size:.86rem;line-height:1.65;color:rgba(255,255,255,.5);max-width:320px;margin-bottom:1.2rem}
+.foot-soc{display:flex;gap:.4rem}
+.foot-soc a{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);font-size:.8rem;transition:all var(--t)}
+.foot-soc a:hover{background:var(--teal-700);color:#fff;border-color:var(--teal-700)}
+.foot-col h4{font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.8);margin-bottom:1rem}
+.foot-col a{display:block;padding:.32rem 0;font-size:.86rem;color:rgba(255,255,255,.55);transition:color var(--t)}
+.foot-col a:hover{color:var(--teal-400)}
+.fci{display:flex;gap:.6rem;font-size:.86rem;color:rgba(255,255,255,.55);padding:.3rem 0}
+.fci i{color:var(--teal-400);font-size:.78rem;width:14px;margin-top:.32rem}
+.foot-bot{border-top:1px solid rgba(255,255,255,.08);max-width:var(--max);margin:auto;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;font-size:.76rem;color:rgba(255,255,255,.32)}
+.foot-bot a{color:rgba(255,255,255,.32);transition:color var(--t)}
+.foot-bot a:hover{color:var(--teal-400)}
+
+/* ─── Float bar ─── */
+.float-bar{position:fixed;bottom:1.6rem;left:50%;transform:translateX(-50%);z-index:999;display:flex;gap:.65rem;align-items:center}
+.float-wa-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.78rem 1.55rem;border-radius:999px;font-weight:700;font-size:.92rem;font-family:var(--sans);white-space:nowrap;transition:all var(--t);background:#25d366;color:#fff;box-shadow:0 6px 24px rgba(37,211,102,.42);text-decoration:none}
+.float-wa-btn:hover{background:#1ebe5a;transform:translateY(-3px)}
+.float-donate-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.78rem 1.55rem;border-radius:999px;font-weight:700;font-size:.92rem;font-family:var(--sans);white-space:nowrap;transition:all var(--t);background:linear-gradient(135deg,#c52525,#ab1a1f);color:#fff;box-shadow:0 6px 28px rgba(171,26,31,.6);text-decoration:none;animation:donatePulse 2.8s ease-in-out infinite}
+.float-donate-btn:hover{background:#8f1419;transform:translateY(-3px);animation-play-state:paused}
+@keyframes donatePulse{0%,100%{box-shadow:0 6px 28px rgba(171,26,31,.6),0 0 0 0 rgba(171,26,31,.0)}50%{box-shadow:0 8px 36px rgba(171,26,31,.8),0 0 0 10px rgba(171,26,31,.12)}}
+.fl-label{}
+
+/* ─── Responsive ─── */
+@media(max-width:1024px){
+  .nav{display:none}
+  .burger{display:flex}
+  .hdr-r .btn-ghost{display:none}
+  .foot-top{grid-template-columns:1fr 1fr;gap:2rem}
+}
+@media(max-width:640px){
+  .foot-top{grid-template-columns:1fr}
+  .faq-body{padding:3rem 1rem 5rem}
+  .faq-cta{padding:3.5rem 1rem}
+  .float-bar{left:auto;right:1.2rem;transform:none;bottom:1.4rem;flex-direction:column;gap:.5rem}
+  .float-wa-btn,.float-donate-btn{width:52px;height:52px;padding:0;border-radius:50%;justify-content:center;font-size:1.35rem}
+  .float-wa-btn .fl-label,.float-donate-btn .fl-label{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div class="hdr">
+    <a href="main_page.html" class="brand">
+      <img src="Photo/AF_EH%20ARGB%20LOGO%20.png" alt="Amitabha Foundation Elder Home">
+    </a>
+    <nav class="nav">
+      <a href="main_page.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="stories.html">Stories</a>
+      <a href="blog.html">News</a>
+      <a href="jobs.html">Careers</a>
+      <a href="faq.html" class="on">FAQ</a>
+    </nav>
+    <div class="hdr-r">
+      <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="btn btn-ghost"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" class="btn" style="background:#ab1a1f;color:#fff;border-radius:999px;padding:.62rem 1.15rem" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> Donate</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <nav class="mob-menu" id="mob-menu">
+    <a href="main_page.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="stories.html">Stories</a>
+    <a href="blog.html">News</a>
+    <a href="jobs.html">Careers</a>
+    <a href="faq.html">FAQ</a>
+    <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." style="color:var(--teal-700);font-weight:700"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
+    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1b25;font-weight:700"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img-plain" alt=""> Donate Now</a>
+  </nav>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-in">
+    <div class="page-pill"><i class="fa fa-circle-question"></i> Common Questions</div>
+    <h1>Everything you need<br>to <em>know</em>.</h1>
+    <p>Clear answers about elder care, admission, daily life, and donations at Amitabha Foundation Elder Home.</p>
+    <div class="breadcrumb"><a href="main_page.html">Home</a><i class="fa fa-chevron-right"></i><span>FAQ</span></div>
+  </div>
+</div>
+
+<!-- FAQ CONTENT -->
+<div class="faq-body">
+
+  <!-- ── Donations ── -->
+  <div class="faq-cat">Donations</div>
+
+  <div class="faq-card" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span class="faq-q-text">Where do monetary donations go?</span>
+      <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-a"><div class="faq-a-inner">
+      Donations directly support the elderly in our care — covering meals, medicine, caregiver wages, and daily living needs. A portion is also channelled to the Amitabha Foundation, which is shared across other departments including the <strong>Children's Home</strong>, <strong>Dialysis Centre</strong>, and <strong>Amitabha Assist</strong>.
+    </div></div>
+  </div>
+
+  <div class="faq-card" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span class="faq-q-text">Where do extra donation-in-kind supplies go?</span>
+      <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-a"><div class="faq-a-inner">
+      Extra in-kind supplies such as food, diapers, and daily essentials are channelled to the Amitabha Foundation and distributed across departments — including the <strong>Children's Home</strong>, <strong>Dialysis Centre</strong>, and <strong>Amitabha Assist</strong> — wherever the need is greatest.
+    </div></div>
+  </div>
+
+  <div class="faq-card" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span class="faq-q-text">Can a donation be made in someone else's name — including someone who has passed away?</span>
+      <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-a"><div class="faq-a-inner">
+      Yes. We can arrange a donation on behalf of another person, including as a dedication or blessing for someone who has passed away.
+      <div class="faq-highlight"><strong>Please note:</strong> donations made in another person's name are <strong>not eligible for tax exemption</strong>.</div>
+    </div></div>
+  </div>
+
+  <div class="faq-card" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span class="faq-q-text">Is there tax relief for donations?</span>
+      <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-a"><div class="faq-a-inner">
+      Yes. The Amitabha Foundation is <strong>registered under LHDN</strong>, so qualifying monetary donations made directly by the donor are eligible for tax exemption. Please retain your receipt for tax filing purposes.
+    </div></div>
+  </div>
+
+  <!-- ── About Amitabha Assist ── -->
+  <div class="faq-cat">About Amitabha Assist</div>
+
+  <div class="faq-card" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span class="faq-q-text">What is Amitabha Assist?</span>
+      <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-a"><div class="faq-a-inner">
+      Amitabha Assist is a community outreach department of the Amitabha Foundation. Their work includes:<br><br>
+      <strong>Disaster relief</strong> — responding to communities affected by floods and emergencies<br>
+      <strong>Supply distribution</strong> — delivering food and essentials to those in need<br>
+      <strong>School outreach</strong> — supporting schools in remote areas with minimal government assistance
+    </div></div>
+  </div>
+
+  <!-- ── Elder Care — Subsidies ── -->
+  <div class="faq-cat">Elder Care — Subsidies</div>
+
+  <div class="faq-card" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span class="faq-q-text">How much does it cost for a resident to stay?</span>
+      <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-a"><div class="faq-a-inner">
+      Monthly fees range from <strong>RM 1,800 to RM 2,500</strong>, depending on the level of care and condition of the resident. Please contact us directly for a personalised quote based on your loved one's needs.
+    </div></div>
+  </div>
+
+  <div class="faq-card" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span class="faq-q-text">If it's a charity home, why is there a fee?</span>
+      <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-a"><div class="faq-a-inner">
+      The listed fees are the unsubsidised rate — in practice, many residents receive financial assistance from the Amitabha Foundation. Some residents stay <strong>entirely for free</strong>, while others pay only a few hundred ringgit a month. At least one resident is fully sponsored by an external charity (Tzu Chi).<br><br>
+      Even the full-rate fee is already partially subsidised by the Foundation. Fees paid by full-rate residents also contribute back to the charity, helping fund care for those who cannot afford to pay.
+      <div class="faq-highlight">No one is turned away due to financial hardship. Please reach out to discuss your situation.</div>
+    </div></div>
+  </div>
+
+  <!-- ── About the Centre ── -->
+  <div class="faq-cat">About the Centre</div>
+
+  <div class="faq-card" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span class="faq-q-text">Where is the elder care centre located?</span>
+      <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-a"><div class="faq-a-inner">
+      Our centre is located at <strong>A14, Jalan Rukun 7, Taman Gembira, 58200 Kuala Lumpur</strong>. We are easily accessible by car and are open for visits daily from 9am to 5pm.
+    </div></div>
+  </div>
+
+  <div class="faq-card" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span class="faq-q-text">How many residents can the centre accommodate?</span>
+      <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-a"><div class="faq-a-inner">
+      Our centre can accommodate up to <strong>35 elderly residents</strong> at one time. If all beds are occupied, we will place your loved one on a waiting list and contact you as soon as a space becomes available.
+    </div></div>
+  </div>
+
+  <div class="faq-card" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span class="faq-q-text">What types of elderly can be accommodated?</span>
+      <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-a"><div class="faq-a-inner">
+      We welcome elderly residents who are <strong>mobile</strong>, <strong>wheelchair-bound</strong>, or <strong>bedridden</strong>. We also accommodate elderly with <strong>dementia or other special needs</strong>. Each resident receives a level of care tailored to their condition.
+    </div></div>
+  </div>
+
+  <div class="faq-card" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span class="faq-q-text">Is there an age restriction to stay at the centre?</span>
+      <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-a"><div class="faq-a-inner">
+      There is <strong>no minimum or maximum age requirement</strong>. Any elderly individual who requires care and support is welcome to apply for a place at our centre.
+    </div></div>
+  </div>
+
+  <div class="faq-card" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span class="faq-q-text">Do residents need to be Buddhist to stay here?</span>
+      <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-a"><div class="faq-a-inner">
+      Not at all. <strong>All races and religions are welcome</strong> at our centre. Residents are free to pray and observe their own beliefs. While our foundation has Buddhist roots, our care is extended to everyone equally.
+    </div></div>
+  </div>
+
+  <!-- ── Care & Medical ── -->
+  <div class="faq-cat">Care &amp; Medical</div>
+
+  <div class="faq-card" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span class="faq-q-text">Do you have nurses on duty?</span>
+      <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-a"><div class="faq-a-inner">
+      Currently we have <strong>trained caregivers on duty</strong> around the clock. We are actively exploring the engagement of qualified nurses to further strengthen our medical care provision.
+    </div></div>
+  </div>
+
+  <div class="faq-card" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span class="faq-q-text">What happens during a medical emergency?</span>
+      <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-a"><div class="faq-a-inner">
+      In the event of a medical emergency, our staff will immediately:<br><br>
+      <strong>1.</strong> Call an ambulance<br>
+      <strong>2.</strong> Notify the centre manager<br>
+      <strong>3.</strong> Inform the resident's guardian or family members<br><br>
+      Our centre manager will also accompany the elderly resident to the hospital if necessary to ensure continuity of care.
+    </div></div>
+  </div>
+
+  <div class="faq-card" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span class="faq-q-text">Do you assist with medication management?</span>
+      <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-a"><div class="faq-a-inner">
+      Yes. We ensure that all medications are <strong>properly organised and scheduled</strong>. Our caregivers will ensure medication is administered to each resident on time, every day.
+    </div></div>
+  </div>
+
+  <!-- ── Admission ── -->
+  <div class="faq-cat">Admission</div>
+
+  <div class="faq-card" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span class="faq-q-text">How do I apply for my family member to stay?</span>
+      <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-a"><div class="faq-a-inner">
+      You will need to complete an <strong>application form</strong>. The elderly applicant will also be required to undergo a simple <strong>medical check-up</strong> to confirm they do not have any communicable illnesses. We will provide you with a list of the required health screenings.
+    </div></div>
+  </div>
+
+  <div class="faq-card" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span class="faq-q-text">What documents are required for admission?</span>
+      <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-a"><div class="faq-a-inner">
+      The following documents are required at the time of admission:<br><br>
+      <strong>•&nbsp; MyKad (Identity Card)</strong><br>
+      <strong>•&nbsp; Completed application form</strong><br>
+      <strong>•&nbsp; Latest medical results</strong>
+    </div></div>
+  </div>
+
+  <!-- ── Fees & Payment ── -->
+  <div class="faq-cat">Fees &amp; Payment</div>
+
+  <div class="faq-card" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span class="faq-q-text">What payment methods are accepted?</span>
+      <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-a"><div class="faq-a-inner">
+      We accept payment via <strong>cash</strong>, <strong>bank transfer</strong>, or <strong>credit card</strong>.
+    </div></div>
+  </div>
+
+  <div class="faq-card" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span class="faq-q-text">When is the monthly payment due?</span>
+      <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-a"><div class="faq-a-inner">
+      The monthly payment cycle is based on the <strong>resident's arrival date</strong> at the centre. For example, if a resident moves in on the 10th, subsequent payments are due on the 10th of each month.
+    </div></div>
+  </div>
+
+  <div class="faq-card" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span class="faq-q-text">Is a deposit required upon admission?</span>
+      <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-a"><div class="faq-a-inner">
+      Yes. A deposit equivalent to <strong>one month's fee</strong> is required upon admission. This deposit is fully refundable when the resident decides to move out, and will be returned via bank transfer within one month of departure.
+    </div></div>
+  </div>
+
+  <!-- ── Communication & Family ── -->
+  <div class="faq-cat">Communication &amp; Family</div>
+
+  <div class="faq-card" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span class="faq-q-text">How will families be updated on their loved one's condition?</span>
+      <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-a"><div class="faq-a-inner">
+      We provide regular updates on residents' conditions. Whenever there are any <strong>changes, concerns, or notable developments</strong>, we will contact the family promptly. You are also welcome to call us at any time during office hours.
+    </div></div>
+  </div>
+
+  <div class="faq-card" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span class="faq-q-text">Can family members call or contact the elderly?</span>
+      <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-a"><div class="faq-a-inner">
+      Yes, family members are encouraged to stay in touch. As long as the resident has their own mobile phone, calls can be made freely. We kindly ask that calls be made <strong>before 9:00 pm</strong> to respect residents' rest time.
+    </div></div>
+  </div>
+
+  <!-- ── Elder Care — Daily Life ── -->
+  <div class="faq-cat">Elder Care — Daily Life</div>
+
+  <div class="faq-card" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span class="faq-q-text">What is provided for residents?</span>
+      <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-a"><div class="faq-a-inner">
+      All residents receive:<br><br>
+      <strong>4 meals a day</strong> (breakfast, lunch, tea time, and dinner)<br>
+      <strong>24-hour caregiver coverage</strong> throughout the facility<br>
+      <strong>Diapers</strong> are provided initially; families will be asked to replenish supplies as needed
+    </div></div>
+  </div>
+
+  <div class="faq-card" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span class="faq-q-text">What kind of meals are served?</span>
+      <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-a"><div class="faq-a-inner">
+      All meals served at the centre are <strong>fully vegetarian</strong>. If you would like to bring non-vegetarian food specifically for your own family member during a visit, you are welcome to do so.
+    </div></div>
+  </div>
+
+  <div class="faq-card" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span class="faq-q-text">What are the visitation hours?</span>
+      <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-a"><div class="faq-a-inner">
+      Family and friends are welcome to visit <strong>daily from 9:00 am to 5:00 pm</strong>.<br>
+      Our administrative office operates <strong>Monday to Friday, 9:00 am to 5:00 pm</strong>.
+    </div></div>
+  </div>
+
+  <div class="faq-card" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span class="faq-q-text">Can residents go out with their families?</span>
+      <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-a"><div class="faq-a-inner">
+      Yes. Residents may go out with their <strong>guardian or family</strong>. We simply ask that you inform the centre <strong>at least one day in advance</strong> before taking a resident out, so we can prepare accordingly.
+    </div></div>
+  </div>
+
+</div><!-- end .faq-body -->
+
+<!-- CTA -->
+<div class="faq-cta">
+  <div class="faq-cta-in">
+    <h2>Still have <em>questions?</em></h2>
+    <p>Our team is always happy to help. Reach out via WhatsApp or call us directly — no question is too small.</p>
+    <div class="faq-cta-btns">
+      <a href="https://wa.me/60127762911?text=Hi%2C%20I%20have%20a%20question%20about%20elder%20care." class="btn btn-wa" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> <span class="fl-label">WhatsApp Us</span></a>
+      <a href="tel:+60127762911" class="btn" style="background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2)"><i class="fa fa-phone"></i> 012-776 2911</a>
+      <a href="tel:+60378903700" class="btn" style="background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2)"><i class="fa fa-phone"></i> +603-7890 3700</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-top">
+    <div class="foot-brand">
+      <img src="Photo/AF_EH%20ARGB%20LOGO%20.png" alt="Amitabha Foundation">
+      <p>Amitabha Foundation Elder Home. 24/7 compassionate care, financial assistance, and home placement for seniors in Kuala Lumpur. Est. 2000.</p>
+      <div class="foot-soc">
+        <a href="https://www.facebook.com/people/Amitabha-Foundation-Elder-Home/61578688747686/" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/amitabhafoundation" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@amitabhafoundation" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h4>The Home</h4>
+      <a href="faq.html">FAQ</a>
+      <a href="blog.html">News</a>
+      <a href="main_page.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener">Donate</a>
+      <a href="services.html">Services</a>
+    </div>
+    <div class="foot-col">
+      <h4>Amitabha Foundation</h4>
+      <a href="jobs.html">Careers</a>
+      <a href="https://wa.me/60127762911" target="_blank" rel="noopener">Volunteer</a>
+      <a href="#">Dialysis Centre</a>
+      <a href="#">Children's Home</a>
+    </div>
+    <div class="foot-col">
+      <h4>Contact</h4>
+      <div class="fci"><i class="fa fa-phone"></i><a href="tel:+60378903700">+603-7890 3700</a></div>
+      <div class="fci"><i class="fa fa-headset"></i><a href="tel:+60127762911">012-776 2911 (hotline)</a></div>
+      <div class="fci"><i class="fa fa-clock"></i><span>Mon–Sun 9am–5pm</span></div>
+      <div class="fci"><i class="fa fa-location-dot"></i><span>A14, Jalan Rukun 7, Taman Gembira, 58200 Kuala Lumpur</span></div>
+    </div>
+  </div>
+  <div class="foot-bot">
+    <p>© 2026 Amitabha Foundation · Elder Care Programme · All rights reserved.</p>
+  </div>
+</footer>
+
+<div class="float-bar">
+  <a class="float-wa-btn" href="https://wa.me/60127762911" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> <span class="fl-label">WhatsApp</span></a>
+  <a class="float-donate-btn" href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener"><i class="fa fa-hand-holding-heart"></i> <span class="fl-label">Donate Now</span></a>
+</div>
+
+<script>
+const hdr = document.getElementById('hdr');
+const burger = document.getElementById('burger');
+const mob = document.getElementById('mob-menu');
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  mob.classList.toggle('open');
+});
+mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  burger.classList.remove('open');
+  mob.classList.remove('open');
+}));
+window.addEventListener('scroll', () => {
+  hdr.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+function toggleFaq(card) {
+  const panel = card.querySelector('.faq-a');
+  const isOpen = card.classList.contains('open');
+  // Close all open cards
+  document.querySelectorAll('.faq-card.open').forEach(c => {
+    c.classList.remove('open');
+    c.querySelector('.faq-a').style.maxHeight = '0';
+  });
+  // Open clicked card if it was closed
+  if (!isOpen) {
+    card.classList.add('open');
+    panel.style.maxHeight = panel.scrollHeight + 'px';
+  }
+}
+</script>
+</body>
+</html>
