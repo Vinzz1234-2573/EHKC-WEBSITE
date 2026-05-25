@@ -42,6 +42,7 @@
   --serif:"Newsreader",Georgia,serif;
 }
 html{scroll-behavior:smooth}
+html{overflow-x:hidden;max-width:100%}
 body{font-family:var(--sans);color:var(--ink-700);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
@@ -105,7 +106,7 @@ header.scrolled{background:rgba(255,255,255,.98);box-shadow:0 2px 18px rgba(10,4
 .tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.71rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-700);margin-bottom:.65rem}
 .tag::before{content:'';display:block;width:16px;height:2px;background:var(--gold);border-radius:2px}
 .sec-h{font-family:var(--serif);font-size:clamp(2rem,4vw,2.9rem);font-weight:500;color:var(--ink-900);line-height:1.18;margin-bottom:.8rem}
-.sec-h em{color:var(--teal-700);font-style:italic}
+.sec-h em{color:#c47a4a;font-style:italic;background:none!important;-webkit-background-clip:unset!important;background-clip:unset!important;animation:none!important;text-shadow:none!important;overflow:visible;padding-bottom:.12em;display:inline-block;line-height:1.35}
 .sec-p{font-size:.97rem;color:var(--ink-500);max-width:560px;line-height:1.85}
 .sh{margin-bottom:3rem}
 .sh.c{text-align:center}.sh.c .tag{justify-content:center}.sh.c .sec-p{margin:0 auto}
@@ -222,14 +223,16 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 }
 @media(max-width:480px){
   .sec{padding:2.5rem 0}
-  .nums-grid{grid-template-columns:1fr 1fr}
+  .nums-grid{grid-template-columns:1fr 1fr;gap:.75rem}
+  .num-item .n{font-size:2rem}
+  .num-item .n sup{font-size:1rem}
   .cta-btns>*{width:100%;justify-content:center}
 }
 </style>
 <style>
 @keyframes donateGlow{0%,100%{box-shadow:0 4px 18px rgba(171,26,31,.5),0 0 0 0 rgba(171,26,31,0)}50%{box-shadow:0 6px 28px rgba(171,26,31,.85),0 0 24px rgba(171,26,31,.5),0 0 0 8px rgba(171,26,31,.13)}}
 .btn-donate,.btn-cta-gold{animation:donateGlow 2.5s ease-in-out infinite}
-.donate-img{height:1.1em;width:auto;vertical-align:middle;display:inline-block;filter:brightness(0) invert(1) drop-shadow(0 0 4px rgba(255,255,255,.6))}
+.donate-img{height:1.1em;width:auto;display:block;filter:brightness(0) invert(1) drop-shadow(0 0 4px rgba(255,255,255,.6))}
 .donate-img-plain{height:1.1em;width:auto;vertical-align:middle;display:inline-block}
 
 /* PHOTO GALLERY SECTION */
@@ -256,27 +259,23 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 @media(max-width:640px){.photo-grid{grid-template-columns:1fr 1fr}.video-grid{grid-template-columns:1fr}.photo-wide{grid-column:1/-1;aspect-ratio:4/3}}
 @media(max-width:480px){.photo-grid{grid-template-columns:1fr}.photo-wide{aspect-ratio:4/3}}
 
-/* ── Story square decorators (Anime.js animated) ── */
-.story-card .square {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: 38px;
-  height: 38px;
-  border-radius: 8px;
-  pointer-events: none;
-  z-index: 0;
-  will-change: transform;
-}
-#stories .story-card:nth-child(1) .square { background: rgba(196,122,74,.55); }
-#stories .story-card:nth-child(2) .square { background: rgba(218,165,32,.5); }
-#stories .story-card:nth-child(3) .square { background: rgba(44,62,80,.45); }
 
 /* LATEST SCENES — dynamic gallery */
 .scenes-loading{grid-column:1/-1;text-align:center;padding:3.5rem 1rem;font-size:2rem;color:var(--teal-700)}
 .scenes-empty{grid-column:1/-1;text-align:center;padding:3.5rem 1rem;color:var(--ink-300)}
 .scenes-empty i{font-size:2.5rem;display:block;margin-bottom:.8rem;color:var(--teal-100)}
 .scenes-empty p{font-size:.9rem}
+
+/* Task 22: Full-frame photo in featured story side */
+.story-feat-side{position:relative;overflow:hidden;padding:0}
+.story-feat-content{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:space-between;flex:1;padding:3rem 2.4rem}
+.story-feat-av{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;border-radius:0!important;z-index:0!important;margin-bottom:0!important}
+.story-feat-av img{border-radius:0!important;width:100%!important;height:100%!important;object-fit:cover!important}
+.story-feat-name,.story-feat-meta,.story-feat-quote{text-shadow:0 1px 6px rgba(0,0,0,.75)}
+
+/* Task 25: USP icons */
+.num-item{display:flex;align-items:center;gap:1rem;text-align:left}
+.num-icon{width:44px;height:44px;border-radius:10px;background:rgba(196,122,74,.18);border:1px solid rgba(196,122,74,.3);display:flex;align-items:center;justify-content:center;color:var(--teal-400);font-size:1.05rem;flex-shrink:0}
 </style>
 </head>
 <body>
@@ -295,11 +294,12 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 
       <a href="blog.html">News</a>
       <a href="jobs.html">Careers</a>
+      <a href="faq.html">FAQ</a>
     </nav>
     <div class="hdr-r">
       <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="btn btn-ghost"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
       <div id="nav-auth"><a href="login.html" class="btn btn-ghost"><i class="fa fa-user"></i> Sign In</a></div>
-      <a href="https://wa.me/60127762911?text=I%20want%20to%20donate%20to%20Amitabha%20Foundation%20Elder%20Home." class="btn btn-donate" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> Donate</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" class="btn btn-donate" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> Donate</a>
       <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -311,9 +311,10 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 
     <a href="blog.html">News</a>
     <a href="jobs.html">Careers</a>
+    <a href="faq.html">FAQ</a>
     <a href="login.html" id="mob-signin"><i class="fa fa-user"></i> Sign In</a>
     <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." style="color:var(--teal-700);font-weight:700"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
-    <a href="https://wa.me/60127762911?text=I%20want%20to%20donate%20to%20Amitabha%20Foundation%20Elder%20Home." target="_blank" rel="noopener" style="color:#ab1b25;font-weight:700"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img-plain" alt=""> Donate Now</a>
+    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1b25;font-weight:700"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img-plain" alt=""> Donate Now</a>
   </nav>
 </header>
 
@@ -343,12 +344,14 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
       <div class="feat-slide active">
         <div class="story-featured">
           <div class="story-feat-side">
-            <div>
-              <div class="story-feat-av" style="background:none;padding:0;overflow:hidden"><img src="Photo/Elder%20Photo/_DSC3598.JPG" alt="Uncle Loh Keng Seng" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
-              <div class="story-feat-name">Uncle Loh Keng Seng</div>
-              <div class="story-feat-meta"><i class="fa fa-location-dot"></i> Amitabha Elder Home</div>
+            <div class="story-feat-av" style="background:none;padding:0;overflow:hidden"><img src="Photo/Elder%20Photo/_DSC3598.JPG" alt="Uncle Loh Keng Seng" style="width:100%;height:100%;object-fit:cover;object-position:45% 25%"></div>
+            <div class="story-feat-content">
+              <div class="story-feat-quote">"</div>
+              <div>
+                <div class="story-feat-name">Uncle Loh Keng Seng</div>
+                <div class="story-feat-meta"><i class="fa fa-location-dot"></i> Amitabha Elder Home</div>
+              </div>
             </div>
-            <div class="story-feat-quote">"</div>
           </div>
           <div class="story-feat-body">
             <div class="story-cat"><i class="fa fa-hand-holding-heart"></i> Giving Back</div>
@@ -361,12 +364,14 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
       <div class="feat-slide">
         <div class="story-featured">
           <div class="story-feat-side">
-            <div>
-              <div class="story-feat-av" style="background:none;padding:0;overflow:hidden"><img src="Photo/Elder%20Photo/_DSC3626.JPG" alt="Aunty Wong Pek Lin" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
-              <div class="story-feat-name">Aunty Wong Pek Lin</div>
-              <div class="story-feat-meta"><i class="fa fa-location-dot"></i> Amitabha Elder Home</div>
+            <div class="story-feat-av" style="background:none;padding:0;overflow:hidden"><img src="Photo/Elder%20Photo/_DSC3626.JPG" alt="Aunty Wong Pek Lin" style="width:100%;height:100%;object-fit:cover;object-position:40% 40%"></div>
+            <div class="story-feat-content">
+              <div class="story-feat-quote">"</div>
+              <div>
+                <div class="story-feat-name">Aunty Wong Pek Lin</div>
+                <div class="story-feat-meta"><i class="fa fa-location-dot"></i> Amitabha Elder Home</div>
+              </div>
             </div>
-            <div class="story-feat-quote">"</div>
           </div>
           <div class="story-feat-body">
             <div class="story-cat"><i class="fa fa-people-roof"></i> Community</div>
@@ -379,12 +384,14 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
       <div class="feat-slide">
         <div class="story-featured">
           <div class="story-feat-side">
-            <div>
-              <div class="story-feat-av" style="background:none;padding:0;overflow:hidden"><img src="Photo/Elder%20Photo/Gemini_Generated_Image_a51dvra51dvra51d.png" alt="Uncle Hok Keng Sang" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
-              <div class="story-feat-name">Uncle Hok Keng Sang</div>
-              <div class="story-feat-meta"><i class="fa fa-location-dot"></i> Amitabha Elder Home</div>
+            <div class="story-feat-av" style="background:none;padding:0;overflow:hidden"><img src="Photo/Elder%20Photo/Gemini_Generated_Image_a51dvra51dvra51d.png" alt="Uncle Hok Keng Sang" style="width:100%;height:100%;object-fit:cover;object-position:center 20%"></div>
+            <div class="story-feat-content">
+              <div class="story-feat-quote">"</div>
+              <div>
+                <div class="story-feat-name">Uncle Hok Keng Sang</div>
+                <div class="story-feat-meta"><i class="fa fa-location-dot"></i> Amitabha Elder Home</div>
+              </div>
             </div>
-            <div class="story-feat-quote">"</div>
           </div>
           <div class="story-feat-body">
             <div class="story-cat"><i class="fa fa-heart-pulse"></i> Resilience</div>
@@ -414,7 +421,6 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
     <div class="stories-main">
 
       <div class="story-card">
-        <div class="square" data-x="170"></div>
         <div class="story-cat"><i class="fa fa-hand-holding-heart"></i> Giving Back</div>
         <p class="story-q">For years, Uncle Loh quietly showed up, fixing old electronics and donating every single ringgit back to the elder home. He never asked for recognition, never expected anything in return. Now it is our turn to care for him, and we do so with all the love and gratitude he deserves.</p>
         <div class="story-attr">
@@ -427,7 +433,6 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
       </div>
 
       <div class="story-card">
-        <div class="square" data-x="80"></div>
         <div class="story-cat"><i class="fa fa-people-roof"></i> Community</div>
         <p class="story-q">Aunty Wong arrived with no family to call her own. What we found was a woman full of life, laughter, and endless stories. She has given this home something priceless: her warmth, her joy, and her spirit.</p>
         <div class="story-attr">
@@ -440,7 +445,6 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
       </div>
 
       <div class="story-card">
-        <div class="square" data-x="270"></div>
         <div class="story-cat"><i class="fa fa-heart-pulse"></i> Resilience</div>
         <p class="story-q">At 55, a stroke changed Uncle Hok's life and left him to face it alone. Every day he gets up, walks, and exercises, half his body weakened but his spirit unbroken. In his quiet resilience, he reminds us that the human spirit, when treated with love, never truly falls.</p>
         <div class="story-attr">
@@ -460,10 +464,10 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 <div class="nums-band">
   <div class="wrap">
     <div class="nums-grid">
-      <div class="num-item aos"><div class="n">25<sup>yrs</sup></div><div class="l">Of compassionate service</div></div>
-      <div class="num-item aos d1"><div class="n">200<sup>+</sup></div><div class="l">Seniors cared for</div></div>
-      <div class="num-item aos d2"><div class="n">24<sup>/7</sup></div><div class="l">Nursing & support</div></div>
-      <div class="num-item aos d3"><div class="n">100<sup>%</sup></div><div class="l">Donations to care</div></div>
+      <div class="num-item aos"><div class="num-icon"><i class="fa fa-calendar-check"></i></div><div><div class="n">25<sup>yrs</sup></div><div class="l">Of compassionate service</div></div></div>
+      <div class="num-item aos d1"><div class="num-icon"><i class="fa fa-people-group"></i></div><div><div class="n">550<sup>+</sup></div><div class="l">Seniors cared for</div></div></div>
+      <div class="num-item aos d2"><div class="num-icon"><i class="fa fa-clock"></i></div><div><div class="n">24<sup>/7</sup></div><div class="l">Nursing &amp; support</div></div></div>
+      <div class="num-item aos d3"><div class="num-icon"><i class="fa fa-hand-holding-heart"></i></div><div><div class="n">100<sup>%</sup></div><div class="l">Dedication to care</div></div></div>
     </div>
   </div>
 </div>
@@ -544,32 +548,32 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
     <div class="photo-grid" id="photo-grid">
 
       <div class="photo-item aos">
-        <img src="Photo/Ehkc%20photo/578266000_1255117486651654_746305696392418520_n.jpg" alt="Elderly residents gathering together at Amitabha Foundation" loading="lazy">
+        <img src="Photo/Ehkc%20photo/8dda01ee-8ec4-465a-a508-507c498b0c2b.jpg" alt="Elderly residents gathering together at Amitabha Foundation" loading="lazy">
         <div class="photo-overlay"><span class="photo-cap-label"><i class="fa fa-people-roof"></i> Community &amp; togetherness</span></div>
       </div>
 
       <div class="photo-item aos d1">
-        <img src="Photo/Ehkc%20photo/580483994_1255117513318318_8739772323857189486_n.jpg" alt="Smiling senior resident at Amitabha Foundation Elder Home" loading="lazy">
+        <img src="Photo/Ehkc%20photo/70e4f7ef-42e4-4ef6-9b81-c9b5303a3f74.jpg" alt="Smiling senior resident at Amitabha Foundation Elder Home" loading="lazy">
         <div class="photo-overlay"><span class="photo-cap-label"><i class="fa fa-heart"></i> Resident portrait</span></div>
       </div>
 
       <div class="photo-item aos d2">
-        <img src="Photo/Ehkc%20photo/518273979_1155337183296352_5109620366727311983_n.jpg" alt="Amitabha staff providing health screening to elderly resident" loading="lazy">
+        <img src="Photo/Ehkc%20photo/360c62fb-2c12-4528-87b7-41db60cba424.jpg" alt="Amitabha staff providing health screening to elderly resident" loading="lazy">
         <div class="photo-overlay"><span class="photo-cap-label"><i class="fa fa-stethoscope"></i> Health care</span></div>
       </div>
 
       <div class="photo-item aos">
-        <img src="Photo/Ehkc%20photo/518314613_1155337173296353_3119445954625747259_n.jpg" alt="Blood pressure check for elderly resident at Amitabha Foundation" loading="lazy">
+        <img src="Photo/Ehkc%20photo/29ea42fd-8e8b-46cd-844f-1847871966ea.jpg" alt="Blood pressure check for elderly resident at Amitabha Foundation" loading="lazy">
         <div class="photo-overlay"><span class="photo-cap-label"><i class="fa fa-heart-pulse"></i> Daily wellness check</span></div>
       </div>
 
       <div class="photo-item aos d1">
-        <img src="Photo/Ehkc%20photo/518370891_1155337169963020_8597303498565769090_n.jpg" alt="Amitabha caregiver with bedridden elderly resident" loading="lazy">
+        <img src="Photo/Ehkc%20photo/1fef1433-ddda-43ba-a259-e089049e3ff3.jpg" alt="Amitabha caregiver with bedridden elderly resident" loading="lazy">
         <div class="photo-overlay"><span class="photo-cap-label"><i class="fa fa-hands-holding-heart"></i> Compassionate care</span></div>
       </div>
 
       <div class="photo-item aos d2">
-        <img src="Photo/Ehkc%20photo/571637955_122133181136956291_2100804067212332444_n.jpg" alt="Amitabha Foundation staff at medical and pharmacy area" loading="lazy">
+        <img src="Photo/Ehkc%20photo/First%20picture.png" alt="Amitabha Foundation staff at medical and pharmacy area" loading="lazy">
         <div class="photo-overlay"><span class="photo-cap-label"><i class="fa fa-pills"></i> Medical support</span></div>
       </div>
 
@@ -579,12 +583,12 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
       </div>
 
       <div class="photo-item aos d1">
-        <img src="Photo/Ehkc%20photo/2.png" alt="Children and volunteers visiting Amitabha Foundation Elder Home" loading="lazy">
+        <img src="Photo/Ehkc%20photo/Second%20picture.jpg" alt="Children and volunteers visiting Amitabha Foundation Elder Home" loading="lazy">
         <div class="photo-overlay"><span class="photo-cap-label"><i class="fa fa-children"></i> Youth outreach visit</span></div>
       </div>
 
       <div class="photo-item aos d2">
-        <img src="Photo/Ehkc%20photo/4.png" alt="Community visit to Amitabha Foundation Elder Home" loading="lazy">
+        <img src="Photo/Ehkc%20photo/c39dbd38-0fa7-4c6a-a1f9-08c2cff6bbff.png" alt="Community visit to Amitabha Foundation Elder Home" loading="lazy">
         <div class="photo-overlay"><span class="photo-cap-label"><i class="fa fa-handshake-angle"></i> Community connection</span></div>
       </div>
 
@@ -628,7 +632,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
     <h2>Be part of the next story.</h2>
     <p>Your donation, your time, or simply referring a senior in need; every action writes a new chapter of compassion.</p>
     <div class="cta-btns">
-      <a href="https://wa.me/60127762911?text=I%20want%20to%20donate%20to%20Amitabha%20Foundation%20Elder%20Home." class="btn-cta-gold" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> Donate Now</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" class="btn-cta-gold" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> Donate Now</a>
       <a href="https://wa.me/60127762911?text=Hello%2C%20I%20need%20help%20with%20Elder%20Support." class="btn-cta-wa" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
       <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="btn-cta-out"><i class="fa fa-hand-holding-heart"></i> Seek Help</a>
     </div>
@@ -650,10 +654,11 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
     </div>
     <div class="foot-col">
       <h4>The Home</h4>
+      <a href="faq.html">FAQ</a>
       <a href="blog.html">News</a>
       <a href="main_page.html">Home</a>
       <a href="about.html">About</a>
-      <a href="https://wa.me/60127762911?text=I%20want%20to%20donate%20to%20Amitabha%20Foundation%20Elder%20Home." target="_blank" rel="noopener">Donate</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener">Donate</a>
 
       <a href="services.html">Services</a>
     </div>
@@ -680,7 +685,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 <!-- FLOATING WHATSAPP -->
 <div class="float-bar">
   <a class="float-wa" href="https://wa.me/60127762911?text=Hello%20Amitabha%20Foundation%2C%20I%20would%20like%20to%20enquire%20about%20Elder%20Support." target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> <span class="fl-label">WhatsApp</span></a>
-  <a class="float-donate" href="https://wa.me/60127762911?text=I%20want%20to%20donate%20to%20Amitabha%20Foundation%20Elder%20Home." target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" alt="" style="height:1.2em;width:auto;display:block;filter:brightness(0) invert(1) drop-shadow(0 0 5px rgba(255,255,255,.65))"> <span class="fl-label">Donate Now</span></a>
+  <a class="float-donate" href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener"><i class="fa fa-hand-holding-heart"></i> <span class="fl-label">Donate Now</span></a>
 </div>
 
 <script>
@@ -767,137 +772,5 @@ loadScenes();
 })();
 </script>
 <script src="animations.js"></script>
-
-<!-- Anime.js v4 — Stories section: square morphs on cursor enter/leave -->
-<script type="module">
-import { animate } from 'https://esm.sh/animejs';
-(function () {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const stories = document.getElementById('stories');
-  if (!stories) return;
-  const sq = document.createElement('div');
-  sq.setAttribute('aria-hidden', 'true');
-  Object.assign(sq.style, {
-    position:      'absolute',
-    width:         '52px',
-    height:        '52px',
-    top:           '2.2rem',
-    left:          '1rem',
-    background:    'rgba(196,122,74,0.55)',
-    borderRadius:  '8px',
-    zIndex:        '0',
-    pointerEvents: 'none',
-    opacity:       '0',
-    willChange:    'left, border-radius, background-color, filter, opacity',
-  });
-  stories.appendChild(sq);
-  let anim = null;
-  stories.addEventListener('mouseenter', () => {
-    if (anim) anim.cancel();
-    anim = animate(sq, {
-      opacity:            [0, 1],
-      left:               'calc(7.75rem * 2)',
-      borderRadius:       64,
-      'background-color': '#F9F640',
-      filter:             'blur(5px)',
-      duration:           1200,
-      ease:               'outExpo',
-    });
-  });
-  stories.addEventListener('mouseleave', () => {
-    if (anim) anim.cancel();
-    anim = animate(sq, {
-      opacity:            [1, 0],
-      left:               '1rem',
-      borderRadius:       8,
-      'background-color': 'rgba(196,122,74,0.55)',
-      filter:             'blur(0px)',
-      duration:           700,
-      ease:               'outExpo',
-    });
-  });
-})();
-</script>
-
-<!-- Anime.js v4 — Stories: square decorators animate on scroll -->
-<script type="module">
-import { animate, utils } from 'https://esm.sh/animejs';
-(function () {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const storiesSection = document.getElementById('stories');
-  if (!storiesSection) return;
-  new IntersectionObserver((entries, obs) => {
-    if (!entries[0].isIntersecting) return;
-    obs.disconnect();
-    animate('#stories .square', {
-      x:            $el => $el.getAttribute('data-x'),
-      y:            (_, i) => 50 + (-50 * i),
-      scale:        (_, i, t) => (t.length - i) * .75,
-      rotate:       () => utils.random(-360, 360),
-      borderRadius: () => `+=${utils.random(0, 8)}`,
-      duration:     () => utils.random(1200, 1800),
-      delay:        () => utils.random(0, 400),
-      ease:         'outElastic(1, .5)',
-    });
-  }, { threshold: 0.15 }).observe(storiesSection);
-})();
-</script>
-
-<!-- Anime.js v4 — Stories photos: composition replace pulse + hover cancel -->
-<script type="module">
-import { animate } from 'https://esm.sh/animejs';
-(function () {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const photos = [...document.querySelectorAll('#stories .story-av')];
-  if (!photos.length) return;
-  photos.forEach(photo => {
-    animate(photo, {
-      scale:       [.5, 1],
-      alternate:   true,
-      loop:        true,
-      duration:    750,
-      composition: 'replace',
-    });
-    photo.addEventListener('mouseenter', () => animate(photo, {
-      scale:       1.5,
-      duration:    350,
-      composition: 'replace',
-    }));
-    photo.addEventListener('mouseleave', () => animate(photo, {
-      scale:       1.0,
-      duration:    250,
-      composition: 'replace',
-    }));
-  });
-})();
-</script>
-
-<!-- Anime.js v4 — Stories: slideX + rotate entrance for heading and cards -->
-<script type="module">
-import { animate, stagger } from 'https://esm.sh/animejs';
-(function () {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const storiesSection = document.getElementById('stories');
-  if (!storiesSection) return;
-  const targets = [
-    storiesSection.querySelector('.tag'),
-    storiesSection.querySelector('.sec-h'),
-    storiesSection.querySelector('.sec-p'),
-    ...storiesSection.querySelectorAll('.story-card'),
-  ].filter(Boolean);
-  new IntersectionObserver((entries, obs) => {
-    if (!entries[0].isIntersecting) return;
-    obs.disconnect();
-    animate(targets, {
-      opacity:    { from: 0.5 },
-      translateX: { from: '16rem' },
-      rotate:     { from: '-.75turn', ease: 'inOutQuad' },
-      duration:   900,
-      ease:       'outExpo',
-      delay:      stagger(120),
-    });
-  }, { threshold: 0.15 }).observe(storiesSection);
-})();
-</script>
 </body>
 </html>

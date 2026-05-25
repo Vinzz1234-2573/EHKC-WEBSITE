@@ -13,6 +13,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="animations.css">
 <style>
+@font-face{font-family:'Handlee';src:url('Handlee-Regular.ttf') format('truetype');font-weight:normal;font-style:normal;font-display:swap}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --teal-900:#1a242f;
@@ -42,6 +43,7 @@
   --serif:"Newsreader",Georgia,serif;
 }
 html{scroll-behavior:smooth}
+html{overflow-x:hidden;max-width:100%}
 body{font-family:var(--sans);color:var(--ink-700);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
@@ -100,7 +102,18 @@ header.scrolled{background:rgba(255,255,255,.98);box-shadow:0 2px 18px rgba(10,4
 .tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.71rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-700);margin-bottom:.65rem}
 .tag::before{content:'';display:block;width:16px;height:2px;background:var(--gold);border-radius:2px}
 .sec-h{font-family:var(--serif);font-size:clamp(2rem,4vw,2.9rem);font-weight:500;color:var(--ink-900);line-height:1.18;margin-bottom:.8rem}
-.sec-h em{color:var(--teal-700);font-style:italic}
+.sec-h em{
+  color:#c47a4a !important;
+  font-style:italic;
+  font-family:'Handlee',cursive !important;
+  animation:none !important;
+  background:none !important;
+  -webkit-background-clip:unset !important;
+  background-clip:unset !important;
+  -webkit-text-fill-color:#c47a4a !important;
+  display:inline;
+  overflow:visible;
+}
 .sec-p{font-size:.97rem;color:var(--ink-500);max-width:560px;line-height:1.85}
 .sh{margin-bottom:3rem}
 .sh.c{text-align:center}.sh.c .tag{justify-content:center}.sh.c .sec-p{margin:0 auto}
@@ -111,10 +124,10 @@ header.scrolled{background:rgba(255,255,255,.98);box-shadow:0 2px 18px rgba(10,4
 .svc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal-700),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform var(--t)}
 .svc-card:hover{transform:translateY(-7px);box-shadow:0 20px 48px rgba(196,122,74,.12);border-color:rgba(196,122,74,.15)}
 .svc-card:hover::after{transform:scaleX(1)}
-.svc-icon{width:56px;height:56px;border-radius:14px;background:var(--teal-700);border:none;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.35rem;margin-bottom:1.3rem;transition:all var(--t)}
-.svc-card:hover .svc-icon{background:var(--teal-600);box-shadow:0 6px 18px rgba(196,122,74,.3)}
-.svc-png-icon{width:30px;height:30px;object-fit:contain;display:block;filter:brightness(0) invert(1)}
-.svc-card:hover .svc-png-icon{filter:brightness(0) invert(1)}
+.svc-icon{width:100%;height:190px;border-radius:10px;background:transparent;border:none;display:flex;align-items:center;justify-content:center;margin-bottom:1.4rem;overflow:hidden;transition:transform var(--t)}
+.svc-card:hover .svc-icon{transform:scale(1.04)}
+.svc-png-icon{width:100%;height:100%;object-fit:contain;display:block;filter:none}
+.svc-card:hover .svc-png-icon{filter:none}
 .svc-card h3{font-family:var(--serif);font-size:1.2rem;font-weight:500;color:var(--ink-900);margin-bottom:.65rem}
 .svc-card p{font-size:.93rem;color:var(--ink-500);line-height:1.82;flex:1}
 .svc-more{display:inline-flex;align-items:center;gap:.4rem;color:var(--teal-700);font-weight:700;font-size:.84rem;margin-top:1.3rem;transition:gap var(--t)}
@@ -218,7 +231,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 <style>
 @keyframes donateGlow{0%,100%{box-shadow:0 4px 18px rgba(171,26,31,.5),0 0 0 0 rgba(171,26,31,0)}50%{box-shadow:0 6px 28px rgba(171,26,31,.85),0 0 24px rgba(171,26,31,.5),0 0 0 8px rgba(171,26,31,.13)}}
 .btn-donate,.btn-cta-gold,.trans-wa{animation:donateGlow 2.5s ease-in-out infinite}
-.donate-img{height:1.1em;width:auto;vertical-align:middle;display:inline-block;filter:brightness(0) invert(1) drop-shadow(0 0 4px rgba(255,255,255,.6))}
+.donate-img{height:1.1em;width:auto;display:block;filter:brightness(0) invert(1) drop-shadow(0 0 4px rgba(255,255,255,.6))}
 .donate-img-plain{height:1.1em;width:auto;vertical-align:middle;display:inline-block}
 </style>
 </head>
@@ -238,11 +251,12 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 
       <a href="blog.html">News</a>
       <a href="jobs.html">Careers</a>
+      <a href="faq.html">FAQ</a>
     </nav>
     <div class="hdr-r">
       <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="btn btn-ghost"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
       <div id="nav-auth"><a href="login.html" class="btn btn-ghost"><i class="fa fa-user"></i> Sign In</a></div>
-      <a href="https://wa.me/60127762911?text=I%20want%20to%20donate%20to%20Amitabha%20Foundation%20Elder%20Home." class="btn btn-donate" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> Donate</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" class="btn btn-donate" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> Donate</a>
       <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -254,9 +268,10 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 
     <a href="blog.html">News</a>
     <a href="jobs.html">Careers</a>
+    <a href="faq.html">FAQ</a>
     <a href="login.html" id="mob-signin"><i class="fa fa-user"></i> Sign In</a>
     <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." style="color:var(--teal-700);font-weight:700"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
-    <a href="https://wa.me/60127762911?text=I%20want%20to%20donate%20to%20Amitabha%20Foundation%20Elder%20Home." target="_blank" rel="noopener" style="color:#ab1b25;font-weight:700"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img-plain" alt=""> Donate Now</a>
+    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1b25;font-weight:700"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img-plain" alt=""> Donate Now</a>
   </nav>
 </header>
 
@@ -284,19 +299,19 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
     </div>
     <div class="svc-grid">
       <div class="svc-card aos">
-        <div class="svc-icon"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" alt="" class="svc-png-icon"></div>
+        <div class="svc-icon"><img src="Photo/Repair%20scenshot%20website/Financial-assistance.svg" alt="Financial assistance" class="svc-png-icon" loading="lazy"></div>
         <h3>Financial Assistance</h3>
         <p>We provide meaningful financial support to elderly individuals facing hardship, covering essential medical expenses and daily living costs so they can live with security, stability, and peace of mind throughout their golden years.</p>
         <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="svc-more">Get Assistance <i class="fa fa-arrow-right fa-xs"></i></a>
       </div>
       <div class="svc-card aos d1">
-        <div class="svc-icon"><img src="Photo/Repair%20scenshot%20website/Elderly%20Home%20Placement.png" alt="" class="svc-png-icon"></div>
+        <div class="svc-icon"><img src="Photo/Repair%20scenshot%20website/Elderly-home.svg" alt="Elderly home placement" class="svc-png-icon" loading="lazy"></div>
         <h3>Elderly Home Placement</h3>
         <p>We offer a compassionate and loving space in our elderly home for seniors in need: a safe and supportive environment complete with full-time care, dedicated staff, and comprehensive medical assistance to ensure their complete wellbeing.</p>
         <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="svc-more">Enquire Now <i class="fa fa-arrow-right fa-xs"></i></a>
       </div>
       <div class="svc-card aos d2">
-        <div class="svc-icon"><img src="Photo/Repair%20scenshot%20website/Compassion.png" alt="" class="svc-png-icon"></div>
+        <div class="svc-icon"><img src="Photo/Repair%20scenshot%20website/partner-network.svg" alt="Partner network" class="svc-png-icon" loading="lazy"></div>
         <h3>Collaborative Support</h3>
         <p>We actively collaborate with partner elderly homes to expand our care network, providing mutual support to seniors across communities throughout Malaysia, because no elder should ever be without help or companionship.</p>
         <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="svc-more">Learn More <i class="fa fa-arrow-right fa-xs"></i></a>
@@ -346,7 +361,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
         <div class="tag">Transparency &amp; Trust</div>
         <h2><i class="fa fa-house"></i> How Your<br>Support Helps</h2>
         <p>Every ringgit donated to our Elder Support programme goes directly to improving the lives of vulnerable seniors. Here is how your generous contributions are put to work.</p>
-        <a href="https://wa.me/60127762911?text=I%20want%20to%20donate%20to%20Amitabha%20Foundation%20Elder%20Home." class="trans-wa" target="_blank" rel="noopener" style="background:#ab1b25"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> Donate Now</a>
+        <a href="https://m.amitabhafoundation.my/en/donation" class="trans-wa" target="_blank" rel="noopener" style="background:#ab1b25"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> Donate Now</a>
       </div>
       <div class="aos-r d1">
         <ul class="fund-list">
@@ -367,7 +382,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
     <h2>Ready to Help or Need Help?</h2>
     <p>Reach out today. Our compassionate team is here to listen, guide, and support you every step of the way.</p>
     <div class="cta-btns">
-      <a href="https://wa.me/60127762911?text=I%20want%20to%20donate%20to%20Amitabha%20Foundation%20Elder%20Home." class="btn-cta-gold" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> Donate Now</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" class="btn-cta-gold" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> Donate Now</a>
       <a href="https://wa.me/60127762911?text=Hello%2C%20I%20need%20help%20with%20Elder%20Support." class="btn-cta-wa" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
       <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="btn-cta-out"><i class="fa fa-hand-holding-heart"></i> Seek Help</a>
     </div>
@@ -389,10 +404,11 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
     </div>
     <div class="foot-col">
       <h4>The Home</h4>
+      <a href="faq.html">FAQ</a>
       <a href="blog.html">News</a>
       <a href="main_page.html">Home</a>
       <a href="about.html">About</a>
-      <a href="https://wa.me/60127762911?text=I%20want%20to%20donate%20to%20Amitabha%20Foundation%20Elder%20Home." target="_blank" rel="noopener">Donate</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener">Donate</a>
 
       <a href="services.html">Services</a>
     </div>
@@ -419,7 +435,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 <!-- FLOATING WHATSAPP -->
 <div class="float-bar">
   <a class="float-wa" href="https://wa.me/60127762911?text=Hello%20Amitabha%20Foundation%2C%20I%20would%20like%20to%20enquire%20about%20Elder%20Support." target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> <span class="fl-label">WhatsApp</span></a>
-  <a class="float-donate" href="https://wa.me/60127762911?text=I%20want%20to%20donate%20to%20Amitabha%20Foundation%20Elder%20Home." target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" alt="" style="height:1.2em;width:auto;display:block;filter:brightness(0) invert(1) drop-shadow(0 0 5px rgba(255,255,255,.65))"> <span class="fl-label">Donate Now</span></a>
+  <a class="float-donate" href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener"><i class="fa fa-hand-holding-heart"></i> <span class="fl-label">Donate Now</span></a>
 </div>
 
 <script>

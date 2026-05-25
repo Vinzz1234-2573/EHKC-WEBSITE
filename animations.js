@@ -728,8 +728,13 @@
     }
 
     /* 1 ── Eyebrow labels — slide in from left as section scrolls up */
-    scrollAnim('.eyebrow, .sec-eyebrow, .hero-eyebrow, .gal-cap-eyebrow, .pic-eyebrow', {
+    scrollAnim('.eyebrow:not(.pic-eyebrow), .sec-eyebrow, .hero-eyebrow, .gal-cap-eyebrow', {
       x: ['-1.8rem', '0rem'],
+    }, { sync: 0.65, enter: 'bottom-=60 top', leave: 'top+=110 bottom' });
+
+    /* 1b ── Person-in-charge eyebrow — fade only, no directional slide */
+    scrollAnim('.pic-eyebrow', {
+      opacity: [0, 1],
     }, { sync: 0.65, enter: 'bottom-=60 top', leave: 'top+=110 bottom' });
 
     /* 2 ── Section headings — y drift, feels like content rising */
@@ -764,8 +769,8 @@
       x: ['1.5rem', '0rem'],
     }, { sync: 0.50, enter: 'bottom-=40 top', leave: 'top+=80 bottom' });
 
-    /* 8 ── About / pic-band photos — inner parallax float */
-    scrollAnim('.about-img, .pic-photo', {
+    /* 8 ── About photo — inner parallax float */
+    scrollAnim('.about-img', {
       y: ['-1.4rem', '1.4rem'],
     }, { sync: 0.20, enter: 'bottom top', leave: 'top bottom' });
 
