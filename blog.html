@@ -54,7 +54,7 @@ header.scrolled{background:rgba(255,255,255,.96);box-shadow:0 2px 18px rgba(10,4
 .btn{display:inline-flex;align-items:center;gap:.45rem;font-family:inherit;font-weight:600;font-size:.86rem;padding:.62rem 1.15rem;border-radius:999px;transition:all var(--t);white-space:nowrap}
 .btn-ghost{color:var(--teal-800);border:1px solid var(--line)}
 .btn-ghost:hover{background:rgba(196,122,74,.13);border-color:var(--teal-700);color:var(--teal-700)}
-.btn-coral{color:#fff;background:#ab1b25;box-shadow:0 6px 18px rgba(171,26,31,.32)}
+.btn-coral{color:#fff;background:#ab1b25;box-shadow:0 6px 18px rgba(171,26,31,.32);animation:donateGlow 2.5s ease-in-out infinite}
 .btn-coral:hover{background:#8f1619}
 .burger{display:none;flex-direction:column;gap:5px;padding:.5rem;cursor:pointer}
 .burger span{width:22px;height:2px;background:var(--teal-800);border-radius:2px;transition:all var(--t)}
@@ -202,12 +202,11 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
 
       <a href="blog.html" class="on">News</a>
       <a href="jobs.html">Careers</a>
-      <a href="faq.html">FAQ</a>
     </nav>
     <div class="hdr-r">
       <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="btn btn-ghost"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
       <div id="nav-auth"><a href="login.html" class="btn btn-ghost"><i class="fa fa-user"></i> Sign In</a></div>
-      <a href="https://m.amitabhafoundation.my/en/donation" class="btn btn-donate-nav-a" style="background:#ab1b25;color:#fff;border-radius:999px;padding:.62rem 1.15rem;animation:donateGlow 2.5s ease-in-out infinite" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> Donate</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" class="btn btn-coral" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> Donate</a>
       <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -219,7 +218,6 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.6)}
 
     <a href="blog.html" class="on">News</a>
     <a href="jobs.html">Careers</a>
-    <a href="faq.html">FAQ</a>
     <a href="login.html" id="mob-signin"><i class="fa fa-user"></i> Sign In</a>
     <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." style="color:var(--teal-700);font-weight:700"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
     <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1b25;font-weight:700"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img-plain" alt=""> Donate Now</a>
