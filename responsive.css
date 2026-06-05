@@ -180,7 +180,25 @@ main {
   }
 }
 @media (max-width: 360px) {
-  .about-img  { transform: none !important; }
   .pb-c       { animation: none; }
   .hero-trust { display: none; }
+}
+
+/* 24. About image — desktop keeps 5/6 ratio + 3D tilt
+        mobile gets elongated 9/16 (phone-screen ratio) with no tilt */
+@media (max-width: 640px) {
+  .about-img {
+    aspect-ratio: 9 / 16 !important;
+    max-height: none !important;
+    transform: none !important;
+    border-radius: 28px !important;
+    box-shadow:
+      0 24px 60px rgba(0,0,0,.22),
+      0 4px 16px rgba(196,122,74,.18) !important;
+    background-position: center top !important;
+  }
+  .about-media:hover .about-img {
+    transform: none !important;
+  }
+  .about-media { padding-bottom: 1rem !important; }
 }
