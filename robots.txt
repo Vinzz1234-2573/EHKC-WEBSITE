@@ -1,8 +1,11 @@
 User-agent: *
+Allow: /
+
 Disallow: /admin.html
-Disallow: /dashboard.html
 Disallow: /login.html
 Disallow: /signup.html
+Disallow: /dashboard.html
+Disallow: /googlec5c6c608f0d51b54.html
+Disallow: /supabase-config.js
 
-User-agent: *
-Allow: /
+Sitemap: https://ehkc-website-ctp2.vercel.app/sitemap.xml
