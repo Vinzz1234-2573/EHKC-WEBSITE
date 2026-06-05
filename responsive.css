@@ -1,0 +1,186 @@
+/* ======================================================
+   EHKC — Global Responsive Overrides (clamp-first)
+   Link this LAST in <head> after all inline <style> blocks
+   ====================================================== */
+
+/* 1. Overflow guard — missing on dashboard, login, signup, admin */
+html, body { overflow-x: hidden; max-width: 100%; }
+
+/* 2. Hide cursor-glow on touch devices — better than JS width check */
+@media (pointer: coarse) {
+  #cursor-glow { display: none !important; }
+}
+
+/* 3. Burger tap target (appears at ≤1024px) */
+@media (max-width: 1024px) {
+  .burger {
+    padding: 0.7rem;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* 4. Fluid container padding — replaces all wrap/section breakpoint overrides */
+.wrap {
+  padding-left:  clamp(0.7rem, 3.5vw, 1.5rem) !important;
+  padding-right: clamp(0.7rem, 3.5vw, 1.5rem) !important;
+}
+
+/* 5. Fluid section vertical spacing */
+.sec, .section {
+  padding-top:    clamp(2rem, 7vw, 6rem) !important;
+  padding-bottom: clamp(2rem, 7vw, 6rem) !important;
+}
+.sec-tight {
+  padding-top:    clamp(1.5rem, 5vw, 4rem) !important;
+  padding-bottom: clamp(1.5rem, 5vw, 4rem) !important;
+}
+
+/* 6. Fluid hero min-height — no more fixed 760px on 320px screens */
+.hero { min-height: clamp(380px, 60vh, 760px) !important; }
+.hero-in {
+  padding: clamp(1.8rem, 6vw, 4.5rem) clamp(0.7rem, 3.5vw, 1.5rem)
+           clamp(2.5rem, 8vw, 6rem) !important;
+}
+
+/* 7. Fluid hero heading — fills the range below existing clamp floors */
+.hero h1  { font-size: clamp(1.55rem, 7vw, 4.6rem) !important; }
+.hero-sub { font-size: clamp(0.88rem, 2.5vw, 1.05rem) !important; }
+
+/* 8. Hero shapes scale down fluidly — prevents right-edge overflow on narrow screens */
+.hero-shape.s1 {
+  width:  clamp(140px, 35vw, 420px) !important;
+  height: clamp(140px, 35vw, 420px) !important;
+}
+.hero-shape.s2 {
+  width:  clamp(120px, 28vw, 340px) !important;
+  height: clamp(120px, 28vw, 340px) !important;
+}
+@media (max-width: 360px) {
+  .hero-shape.s3 { display: none; }
+}
+
+/* 9. Page hero heading (services, about, faq, jobs, stories) */
+.page-hero h1 { font-size: clamp(1.5rem, 7vw, 3.5rem) !important; }
+
+/* 10. Section headings and body copy */
+h2.section-h { font-size: clamp(1.25rem, 4.5vw, 2.8rem) !important; }
+.section-p   { font-size: clamp(0.88rem, 2vw, 1.05rem) !important; }
+
+/* 11. Fluid grid gap — all multi-column grids */
+.svc-grid, .why-grid, .story-grid, .stats-in,
+.milestones-grid, .nums-grid, .vol-grid, .news-grid,
+.steps-grid, .evt-grid, .photo-grid {
+  gap: clamp(0.75rem, 2.5vw, 1.6rem) !important;
+}
+
+/* 12. Fluid card padding */
+.svc-card, .why-card, .story-card, .stat,
+.about-card, .mfaq-card {
+  padding: clamp(1rem, 3vw, 2rem) !important;
+}
+
+/* 13. Auto-collapsing grids — column count driven by available space, not breakpoints
+       min(Xpx, 100%) ensures single-column on screens narrower than X */
+.svc-grid  { grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)) !important; }
+.why-grid  { grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)) !important; }
+.stats-in  { grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)) !important; }
+
+/* 14. Footer fluid padding */
+.foot-top {
+  padding: clamp(2rem, 5vw, 4.5rem) clamp(0.7rem, 3.5vw, 1.5rem) !important;
+}
+.foot-bot {
+  padding:   clamp(0.8rem, 2vw, 1.2rem) clamp(0.7rem, 3.5vw, 1.5rem) !important;
+  font-size: clamp(0.68rem, 1.8vw, 0.82rem) !important;
+}
+
+/* 15. CTA band and parallax break */
+.cta-band, .pb-in {
+  padding: clamp(2rem, 6vw, 5rem) clamp(0.7rem, 3.5vw, 1.5rem) !important;
+}
+.pb-quote { font-size: clamp(1.3rem, 4vw, 2.6rem) !important; }
+
+/* 16. Map iframe — fluid height */
+.map-iframe-wrap { height: clamp(200px, 40vw, 400px) !important; }
+
+/* 17. Gallery thumbnails — fluid min column width */
+.gal-thumbs {
+  grid-template-columns: repeat(auto-fill, minmax(min(120px, 100%), 1fr)) !important;
+}
+
+/* 18. Auth pages (login / signup) — fluid card padding */
+.auth-card {
+  padding: clamp(1.2rem, 5vw, 2.8rem) !important;
+}
+.auth-logo { height: clamp(44px, 10vw, 70px) !important; }
+.auth-card h1 { font-size: clamp(1.2rem, 4.5vw, 1.7rem) !important; }
+.page-wrap {
+  padding: clamp(1rem, 4vw, 2rem) clamp(0.5rem, 3vw, 1.5rem) !important;
+}
+
+/* 19. Form inputs — 16px prevents iOS viewport zoom on focus */
+@media (max-width: 480px) {
+  .f-group input, .f-group select, .f-group textarea,
+  .fld input, .fld select, .fld textarea {
+    font-size: 16px;
+    min-height: 44px;
+    padding: 0.75rem 0.85rem;
+  }
+}
+
+/* 20. Admin page — fluid padding throughout */
+.admin-main { padding: clamp(0.6rem, 2.5vw, 1.5rem) !important; }
+.form-card  { padding: clamp(0.9rem, 3vw, 1.8rem) !important; }
+.stat-card  { padding: clamp(0.7rem, 2.5vw, 1.2rem) !important; }
+.stat-card .num { font-size: clamp(1.3rem, 4vw, 1.8rem) !important; }
+.modal      { padding: clamp(1rem, 3.5vw, 2rem) !important; }
+
+/* Fix mob-tabs sliding under sticky header (header = 60px) */
+@media (max-width: 720px) {
+  .mob-tabs { top: 60px; }
+}
+
+/* Admin mobile form buttons */
+@media (max-width: 480px) {
+  .btn-row { flex-direction: column; gap: 0.6rem; }
+  .btn-row .btn { width: 100%; justify-content: center; }
+  .mob-tab {
+    padding:   clamp(0.4rem, 1.8vw, 0.8rem) clamp(0.4rem, 2vw, 1rem);
+    font-size: clamp(0.72rem, 1.8vw, 0.88rem);
+  }
+}
+
+/* 21. Dashboard — fluid padding */
+main {
+  padding: clamp(1rem, 3.5vw, 2rem) clamp(0.6rem, 3vw, 1.5rem)
+           clamp(1.8rem, 5vw, 3rem) !important;
+}
+.dash-card { padding: clamp(0.9rem, 3vw, 1.5rem) !important; }
+.info-card { padding: clamp(1rem, 3vw, 1.8rem) !important; }
+.dash-hero { padding: clamp(1rem, 3.5vw, 2rem) !important; }
+.dash-hero-info h1 { font-size: clamp(1.2rem, 4vw, 1.8rem) !important; }
+
+/* 22. Jobs page */
+.job-card  { padding: clamp(1rem, 3vw, 2rem) !important; }
+.job-apply { min-height: 44px; }
+@media (max-width: 480px) {
+  .job-apply { width: 100%; justify-content: center; }
+  .hb-cta a  { width: 100%; justify-content: center; min-height: 44px; }
+}
+
+/* 23. Suppress heavy 3D/animation effects on narrow screens */
+@media (max-width: 480px) {
+  .depth-section { transform: none !important; opacity: 1 !important; }
+  .stat:hover, .svc-card:hover, .why-card:hover, .story-card:hover {
+    transform: translateY(-3px);
+  }
+}
+@media (max-width: 360px) {
+  .about-img  { transform: none !important; }
+  .pb-c       { animation: none; }
+  .hero-trust { display: none; }
+}
