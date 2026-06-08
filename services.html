@@ -3,25 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Our Services – Amitabha Foundation Elder Care</title>
+<title>Elder Care Services | Amitabha Foundation, Kuala Lumpur</title>
 <meta name="description" content="Comprehensive elder care services from Amitabha Foundation: financial assistance, home placement, and collaborative partner network in Kuala Lumpur.">
+<meta name="keywords" content="elder care services, care home, elder home, Amitabha Foundation, KL care center, care center, old folk home, financial assistance elderly, home placement seniors, Kuala Lumpur elder care, senior care Malaysia, elder care centre services">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://ehkc-website-ctp2.vercel.app/services.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Amitabha Foundation Elder Home">
 <meta property="og:url" content="https://ehkc-website-ctp2.vercel.app/services.html">
-<meta property="og:title" content="Our Services – Amitabha Foundation Elder Care">
+<meta property="og:title" content="Elder Care Services | Amitabha Foundation, Kuala Lumpur">
 <meta property="og:description" content="Comprehensive elder care services from Amitabha Foundation: financial assistance, home placement, and collaborative partner network in Kuala Lumpur.">
 <meta property="og:image" content="https://res.cloudinary.com/dwznza6l9/image/upload/q_auto/f_auto/v1778743537/Gemini_Generated_Image_l4ia4zl4ia4zl4ia_1_a6lpzp.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_MY">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Our Services – Amitabha Foundation Elder Care">
+<meta name="twitter:title" content="Elder Care Services | Amitabha Foundation KL">
 <meta name="twitter:description" content="Comprehensive elder care services from Amitabha Foundation: financial assistance, home placement, and collaborative partner network in Kuala Lumpur.">
 <meta name="twitter:image" content="https://res.cloudinary.com/dwznza6l9/image/upload/q_auto/f_auto/v1778743537/Gemini_Generated_Image_l4ia4zl4ia4zl4ia_1_a6lpzp.png">
 <link rel="icon" type="image/png" href="Photo/AF_EH%20ARGB%20LOGO%20.png">
 <link rel="apple-touch-icon" href="Photo/AF_EH%20ARGB%20LOGO%20.png">
+<link rel="manifest" href="/site.webmanifest">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="supabase-config.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -255,21 +257,47 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Elder Care Services",
-  "provider": {
-    "@type": "Organization",
-    "name": "Amitabha Foundation Elder Home",
-    "url": "https://ehkc-website-ctp2.vercel.app/main_page.html"
-  },
-  "areaServed": {
-    "@type": "City",
-    "name": "Kuala Lumpur",
-    "addressCountry": "MY"
-  },
-  "serviceType": ["Elder Care", "Financial Assistance", "Home Placement", "24/7 Residential Care"],
-  "description": "Comprehensive elder care services including 24/7 residential care, financial assistance for seniors, and collaborative home placement in Kuala Lumpur.",
-  "url": "https://ehkc-website-ctp2.vercel.app/services.html"
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "Elder Care Services",
+      "provider": {
+        "@type": "Organization",
+        "name": "Amitabha Foundation Elder Home",
+        "url": "https://ehkc-website-ctp2.vercel.app/main_page.html"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Kuala Lumpur",
+        "addressCountry": "MY"
+      },
+      "serviceType": [
+        "Elder Care",
+        "Financial Assistance",
+        "Home Placement",
+        "24/7 Residential Care"
+      ],
+      "description": "Comprehensive elder care services including 24/7 residential care, financial assistance for seniors, and collaborative home placement in Kuala Lumpur.",
+      "url": "https://ehkc-website-ctp2.vercel.app/services.html"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://ehkc-website-ctp2.vercel.app/main_page.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Our Services",
+          "item": "https://ehkc-website-ctp2.vercel.app/services.html"
+        }
+      ]
+    }
+  ]
 }
 </script>
 </head>
@@ -500,10 +528,4 @@ document.querySelectorAll('.aos,.aos-l,.aos-r').forEach(el => aosObs.observe(el)
   const dest = profile?.role === 'admin' ? 'admin.html' : 'dashboard.html';
   const authEl = document.getElementById('nav-auth');
   const mobEl  = document.getElementById('mob-signin');
-  if (authEl) authEl.innerHTML = `<a href="${dest}" class="btn btn-ghost"><i class="fa fa-user"></i> ${first}</a>`;
-  if (mobEl)  { mobEl.href = dest; mobEl.innerHTML = `<i class="fa fa-user"></i> ${first}`; }
-})();
-</script>
-<script src="animations.js"></script>
-</body>
-</html>
+  if (authEl) au

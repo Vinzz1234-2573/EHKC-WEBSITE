@@ -1,0 +1,18 @@
+{
+  "name": "Amitabha Foundation Elder Home",
+  "short_name": "AFEH",
+  "description": "24/7 compassionate elder care in Kuala Lumpur — home placement, financial assistance, and a loving community for Malaysia's seniors.",
+  "icons": [
+    {
+      "src": "Photo/AF_EH%20ARGB%20LOGO%20.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#2c3e50",
+  "background_color": "#fffaf3",
+  "display": "standalone",
+  "start_url": "/main_page.html",
+  "scope": "/"
+}
