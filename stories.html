@@ -3,27 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Stories & Experiences | Amitabha Foundation Elder Home</title>
-<meta name="description" content="Real stories from seniors, families, and volunteers whose lives have been touched by Amitabha Foundation Elder Home in Kuala Lumpur, Malaysia.">
-<meta name="keywords" content="elder care stories, Amitabha Foundation, elder home, care home, old folk home, KL care center, care center, senior care testimonials, elderly home Malaysia, Kuala Lumpur care centre">
+<title>Stories: Amitabha Foundation Elder Home</title>
+<meta name="description" content="Real stories from seniors, families, and volunteers whose lives have been touched by Amitabha Foundation Elder Home.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://ehkc-website-ctp2.vercel.app/stories.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Amitabha Foundation Elder Home">
 <meta property="og:url" content="https://ehkc-website-ctp2.vercel.app/stories.html">
-<meta property="og:title" content="Stories & Experiences | Amitabha Foundation Elder Home">
-<meta property="og:description" content="Real stories from seniors, families, and volunteers whose lives have been touched by Amitabha Foundation Elder Home in Kuala Lumpur, Malaysia.">
+<meta property="og:title" content="Stories: Amitabha Foundation Elder Home">
+<meta property="og:description" content="Real stories from seniors, families, and volunteers whose lives have been touched by Amitabha Foundation Elder Home.">
 <meta property="og:image" content="https://res.cloudinary.com/dwznza6l9/image/upload/q_auto/f_auto/v1778743537/Gemini_Generated_Image_l4ia4zl4ia4zl4ia_1_a6lpzp.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_MY">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Stories & Experiences | Amitabha Foundation">
-<meta name="twitter:description" content="Real stories from seniors, families, and volunteers whose lives have been touched by Amitabha Foundation Elder Home in Kuala Lumpur, Malaysia.">
+<meta name="twitter:title" content="Stories: Amitabha Foundation Elder Home">
+<meta name="twitter:description" content="Real stories from seniors, families, and volunteers whose lives have been touched by Amitabha Foundation Elder Home.">
 <meta name="twitter:image" content="https://res.cloudinary.com/dwznza6l9/image/upload/q_auto/f_auto/v1778743537/Gemini_Generated_Image_l4ia4zl4ia4zl4ia_1_a6lpzp.png">
 <link rel="icon" type="image/png" href="Photo/AF_EH%20ARGB%20LOGO%20.png">
 <link rel="apple-touch-icon" href="Photo/AF_EH%20ARGB%20LOGO%20.png">
-<link rel="manifest" href="/site.webmanifest">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="supabase-config.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -297,42 +295,6 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 .num-icon{width:44px;height:44px;border-radius:10px;background:rgba(196,122,74,.18);border:1px solid rgba(196,122,74,.3);display:flex;align-items:center;justify-content:center;color:var(--teal-400);font-size:1.05rem;flex-shrink:0}
 </style>
 <link rel="stylesheet" href="responsive.css">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "CollectionPage",
-      "@id": "https://ehkc-website-ctp2.vercel.app/stories.html#collection",
-      "name": "Stories & Experiences \u2013 Amitabha Foundation Elder Home",
-      "description": "Real stories from seniors, families, and volunteers at Amitabha Foundation Elder Home.",
-      "url": "https://ehkc-website-ctp2.vercel.app/stories.html",
-      "publisher": {
-        "@type": "Organization",
-        "@id": "https://ehkc-website-ctp2.vercel.app/#organization"
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://ehkc-website-ctp2.vercel.app/main_page.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Stories",
-          "item": "https://ehkc-website-ctp2.vercel.app/stories.html"
-        }
-      ]
-    }
-  ]
-}
-</script>
 </head>
 <body>
 
@@ -821,4 +783,10 @@ loadScenes();
   const dest = profile?.role === 'admin' ? 'admin.html' : 'dashboard.html';
   const authEl = document.getElementById('nav-auth');
   const mobEl  = document.getElementById('mob-signin');
-  if (authEl) authEl.innerHTML = `<a href="${dest}" class="btn btn-ghos
+  if (authEl) authEl.innerHTML = `<a href="${dest}" class="btn btn-ghost"><i class="fa fa-user"></i> ${first}</a>`;
+  if (mobEl)  { mobEl.href = dest; mobEl.innerHTML = `<i class="fa fa-user"></i> ${first}`; }
+})();
+</script>
+<script src="animations.js"></script>
+</body>
+</html>

@@ -4,26 +4,24 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>News &amp; Updates: Amitabha Foundation Elder Care</title>
-<meta name="description" content="Latest news, events, announcements and fundraising updates from Amitabha Foundation Elder Care in Kuala Lumpur. Stay connected with our senior care community."/>
-<meta name="keywords" content="elder care news, Amitabha Foundation, elder home, care home, KL care center, care center, old folk home, elderly fundraising Malaysia, senior care updates Kuala Lumpur, elder care events KL">
+<meta name="description" content="Latest news, events, announcements and fundraising updates from Amitabha Foundation Elder Care."/>
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://ehkc-website-ctp2.vercel.app/blog.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Amitabha Foundation Elder Home">
 <meta property="og:url" content="https://ehkc-website-ctp2.vercel.app/blog.html">
 <meta property="og:title" content="News &amp; Updates: Amitabha Foundation Elder Care">
-<meta property="og:description" content="Latest news, events, announcements and fundraising updates from Amitabha Foundation Elder Care in Kuala Lumpur. Stay connected with our senior care community.">
+<meta property="og:description" content="Latest news, events, announcements and fundraising updates from Amitabha Foundation Elder Care.">
 <meta property="og:image" content="https://res.cloudinary.com/dwznza6l9/image/upload/q_auto/f_auto/v1778743537/Gemini_Generated_Image_l4ia4zl4ia4zl4ia_1_a6lpzp.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_MY">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="News &amp; Updates: Amitabha Foundation Elder Care">
-<meta name="twitter:description" content="Latest news, events, announcements and fundraising updates from Amitabha Foundation Elder Care in Kuala Lumpur. Stay connected with our senior care community.">
+<meta name="twitter:description" content="Latest news, events, announcements and fundraising updates from Amitabha Foundation Elder Care.">
 <meta name="twitter:image" content="https://res.cloudinary.com/dwznza6l9/image/upload/q_auto/f_auto/v1778743537/Gemini_Generated_Image_l4ia4zl4ia4zl4ia_1_a6lpzp.png">
 <link rel="icon" type="image/png" href="Photo/AF_EH%20ARGB%20LOGO%20.png">
 <link rel="apple-touch-icon" href="Photo/AF_EH%20ARGB%20LOGO%20.png">
-<link rel="manifest" href="/site.webmanifest">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="supabase-config.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -205,42 +203,6 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 .donate-img-plain{height:1.1em;width:auto;vertical-align:middle;display:inline-block}
 </style>
 <link rel="stylesheet" href="responsive.css">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Blog",
-      "@id": "https://ehkc-website-ctp2.vercel.app/blog.html#blog",
-      "name": "News & Updates \u2013 Amitabha Foundation Elder Care",
-      "description": "Latest news, events, and announcements from Amitabha Foundation Elder Care.",
-      "url": "https://ehkc-website-ctp2.vercel.app/blog.html",
-      "publisher": {
-        "@type": "Organization",
-        "@id": "https://ehkc-website-ctp2.vercel.app/#organization"
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://ehkc-website-ctp2.vercel.app/main_page.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "News & Updates",
-          "item": "https://ehkc-website-ctp2.vercel.app/blog.html"
-        }
-      ]
-    }
-  ]
-}
-</script>
 </head>
 <body>
 
@@ -541,4 +503,10 @@ loadPosts();
   const dest = profile?.role === 'admin' ? 'admin.html' : 'dashboard.html';
   const authEl = document.getElementById('nav-auth');
   const mobEl  = document.getElementById('mob-signin');
-  if (authEl) authEl.innerHTML = `<a href="${dest}" class="btn 
+  if (authEl) authEl.innerHTML = `<a href="${dest}" class="btn btn-ghost"><i class="fa fa-user"></i> ${first}</a>`;
+  if (mobEl)  { mobEl.href = dest; mobEl.innerHTML = `<i class="fa fa-user"></i> ${first}`; }
+})();
+</script>
+<script src="animations.js"></script>
+</body>
+</html>
