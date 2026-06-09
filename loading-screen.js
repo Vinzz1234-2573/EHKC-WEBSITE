@@ -266,8 +266,8 @@
       exitLoader(loader, stopParallax, msgTimer);
     }, { once: true });
 
-    /* Attach nav curtain AFTER loader is gone */
-    setTimeout(function () { setupNavTransition(); }, DURATION + 900);
+    /* Nav curtain disabled — loader only runs on main_page */
+    /* setTimeout(function () { setupNavTransition(); }, DURATION + 900); */
   }
 
   /* ── Entry point ────────────────────────────────────────────── */
