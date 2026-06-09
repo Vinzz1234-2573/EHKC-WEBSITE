@@ -2019,12 +2019,12 @@ if (!pr) {
 <script type="module">
 import { createTimeline, stagger, animate, utils, createLayout, splitText, createDraggable } from 'https://esm.sh/animejs';
 
-const pr = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const _pr = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ── Hero first photo elastic entry ── */
 {
   const slide = document.querySelector('.hero-slide.active');
-  if (slide && !pr) {
+  if (slide && !_pr) {
     slide.style.transition = 'none';
     slide.style.willChange = 'transform, opacity';
     utils.set(slide, { opacity: 0, scale: 1.08 });
@@ -2036,7 +2036,7 @@ const pr = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
 /* ── Hero interactive cards modal ── */
-if (!pr) {
+if (!_pr) {
   const cards = [...document.querySelectorAll('.hi-card')];
   if (cards.length) {
     const $dialog = document.createElement('dialog');
@@ -2075,7 +2075,7 @@ if (!pr) {
 /* ── Hero h1 cinematic word reveal ── */
 {
   const h1 = document.querySelector('.hero h1');
-  if (h1 && !pr) {
+  if (h1 && !_pr) {
     setTimeout(() => {
       const { words } = splitText(h1, { words: { wrap: 'clip' } });
       createTimeline({
@@ -2095,12 +2095,12 @@ if (!pr) {
 }
 
 /* ── Draggable donate button ── */
-if (!pr) createDraggable('.float-donate', { container: document.documentElement });
+if (!_pr) createDraggable('.float-donate', { container: document.documentElement });
 
 /* ── Why Us icon staggered morph on scroll ── */
 {
   const icons = [...document.querySelectorAll('.why-ic')];
-  if (icons.length && !pr) {
+  if (icons.length && !_pr) {
     utils.set(icons, {
       '--radius': '12px', '--glow-scale': '0', '--glow-opacity': '0',
       borderRadius: () => 'var(--radius)',
