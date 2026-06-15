@@ -1618,8 +1618,10 @@ document.querySelectorAll('.aos,.aos-l,.aos-r').forEach(el => aosObs.observe(el)
     if (manual) restart();
   }
 
-  document.getElementById('galPrev').addEventListener('click', () => go(cur - 1, true));
-  document.getElementById('galNext').addEventListener('click', () => go(cur + 1, true));
+  const galPrev = document.getElementById('galPrev');
+  const galNext = document.getElementById('galNext');
+  if (galPrev) galPrev.addEventListener('click', () => go(cur - 1, true));
+  if (galNext) galNext.addEventListener('click', () => go(cur + 1, true));
   thumbs.forEach((t, i) => t.addEventListener('click', () => go(i, true)));
 
   function restart(){ clearInterval(autoTimer); autoTimer = setInterval(() => go(cur + 1, false), 6000); }
@@ -1659,7 +1661,7 @@ document.querySelectorAll('.aos,.aos-l,.aos-r').forEach(el => aosObs.observe(el)
   gal.addEventListener('touchstart', e => { sx = e.changedTouches[0].screenX; }, {passive:true});
   gal.addEventListener('touchend', e => {
     const dx = e.changedTouches[0].screenX - sx;
-    if (Math.abs(dx) > 40) document.getElementById(dx < 0 ? 'galNext' : 'galPrev').click();
+    if (Math.abs(dx) > 40) { const btn = document.getElementById(dx < 0 ? 'galNext' : 'galPrev'); if (btn) btn.click(); }
   }, {passive:true});
 })();
 

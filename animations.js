@@ -106,6 +106,8 @@
       document.head.appendChild(style);
     }
   })();
+  /* ─────────────────────────────────────────────────────────────────
+     1. CURSOR GLOW
      A warm gradient orb that follows the cursor with smooth lag
   ───────────────────────────────────────────────────────────────── */
   (function cursorGlow() {
