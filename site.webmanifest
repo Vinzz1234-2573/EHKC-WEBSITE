@@ -4,8 +4,13 @@
   "description": "24/7 compassionate elder care in Kuala Lumpur — home placement, financial assistance, and a loving community for Malaysia's seniors.",
   "icons": [
     {
-      "src": "Photo/AF_EH%20ARGB%20LOGO%20.png",
-      "sizes": "any",
+      "src": "/favicon_io/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon_io/android-chrome-512x512.png",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     }
