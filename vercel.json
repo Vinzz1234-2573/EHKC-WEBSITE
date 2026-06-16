@@ -1,6 +1,3 @@
 {
-  "cleanUrls": true,
-  "rewrites": [
-    { "source": "/", "destination": "/main_page.html" }
-  ]
+  "cleanUrls": true
 }
