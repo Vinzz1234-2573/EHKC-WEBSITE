@@ -327,33 +327,6 @@ h2.section-h em, .sec-h em {
   }
 }
 
-/* ── 3D float keyframe with rotateY depth ── */
-@keyframes float3DDeep {
-  0%,100% { transform: translateY(0)   translateZ(0)   rotateX(0deg) rotateY(0deg); }
-  25%      { transform: translateY(-10px) translateZ(8px)  rotateX(1.5deg) rotateY(3deg); }
-  50%      { transform: translateY(-16px) translateZ(14px) rotateX(2deg)   rotateY(-2deg); }
-  75%      { transform: translateY(-8px)  translateZ(6px)  rotateX(-1deg)  rotateY(2.5deg); }
-}
-
-/* ── About-card uses 3D float ── */
-.about-card {
-  animation: float3DDeep 8s ease-in-out infinite;
-}
-.about-card:hover {
-  animation-play-state: paused;
-}
-
-/* ── Perspective container hints for grids (JS also sets these) ── */
-.svc-grid, .why-grid, .story-grid, .news-grid, .evt-grid, .stats-in {
-  perspective: 1600px;
-  perspective-origin: 50% -20%;
-}
-
-/* ── Scroll-tilt active state (JS toggles this) ── */
-.grid-tilt-active {
-  will-change: transform;
-  transition: transform 0.5s cubic-bezier(.2,.7,.3,1);
-}
 
 /* ── 3D stat icon on hover ── */
 @media (prefers-reduced-motion: no-preference) {
@@ -363,17 +336,6 @@ h2.section-h em, .sec-h em {
   }
 }
 
-/* ── 3D floating hcf float cards ── */
-@keyframes hcfFloat3D {
-  0%,100% { transform: translateY(0) rotateX(0) rotateY(0); }
-  40%      { transform: translateY(-10px) rotateX(3deg) rotateY(-4deg); }
-  70%      { transform: translateY(-6px)  rotateX(-2deg) rotateY(3deg); }
-}
-.hcf {
-  animation: hcfFloat3D 6s ease-in-out infinite;
-}
-.hcf.f2 { animation-delay: -2.5s; }
-.hcf:hover { animation-play-state: paused; }
 
 /* ── Reduced-motion guard ── */
 @media (prefers-reduced-motion: reduce) {

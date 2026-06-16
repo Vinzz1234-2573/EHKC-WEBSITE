@@ -1539,45 +1539,9 @@ mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   });
 })();
 
-/* Parallax (rAF-throttled, cached positions to avoid reflow on scroll) */
-const pbBg   = document.getElementById('pbBg');
-const pxNodes = document.querySelectorAll('[data-px]');
-let scrollY = window.scrollY, ticking = false;
-let pbBgCache = null, pxCache = [];
-
-function cacheParallaxPositions(){
-  const sy = window.scrollY;
-  if (pbBg){
-    const r = pbBg.parentElement.getBoundingClientRect();
-    pbBgCache = { top: r.top + sy, height: r.height };
-  }
-  pxCache = [];
-  pxNodes.forEach(el => {
-    const r = el.getBoundingClientRect();
-    pxCache.push({ el, top: r.top + sy, height: r.height, speed: parseFloat(el.dataset.px || '0.1') });
-  });
-}
-
-function applyParallax(){
-  if (pbBg && pbBgCache){
-    const off = (window.innerHeight/2 - (pbBgCache.top - scrollY + pbBgCache.height/2)) * 0.18;
-    pbBg.style.transform = `translate3d(0,${off}px,0)`;
-  }
-  pxCache.forEach(({ el, top, height, speed }) => {
-    const dist = window.innerHeight/2 - (top - scrollY + height/2);
-    el.style.transform = `translate3d(0,${dist * speed}px,0)`;
-  });
-  ticking = false;
-}
-
 window.addEventListener('scroll', () => {
-  scrollY = window.scrollY;
-  hdr.classList.toggle('scrolled', scrollY > 30);
-  if (!ticking){ requestAnimationFrame(applyParallax); ticking = true; }
+  hdr.classList.toggle('scrolled', window.scrollY > 30);
 }, { passive: true });
-window.addEventListener('resize', cacheParallaxPositions, { passive: true });
-cacheParallaxPositions();
-applyParallax();
 
 /* AOS */
 const aosObs = new IntersectionObserver(entries => {
