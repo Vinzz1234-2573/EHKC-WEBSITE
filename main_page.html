@@ -780,26 +780,18 @@ h2.section-h {
   background: linear-gradient(140deg, rgba(196,122,74,.12) 0%, transparent 45%, rgba(0,0,0,.22) 100%);
   pointer-events: none;
 }
-/* Mr Lai photo — inset cream frame builds in after portrait slides in */
 .pic-photo::before {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  box-shadow: inset 0 0 0 0 transparent;
+  box-shadow: inset 0 0 0 2vw #FCF8F4;
 }
-@keyframes picFrameBuild {
-  from { box-shadow: inset 0 0 0 0 rgba(252,248,244,0); }
-  to   { box-shadow: inset 0 0 0 2vw #FCF8F4; }
-}
-@media(min-width:600px)  { @keyframes picFrameBuild { to { box-shadow: inset 0 0 0 2.8vw #FCF8F4; } } }
-@media(min-width:900px)  { @keyframes picFrameBuild { to { box-shadow: inset 0 0 0 2.2vw #FCF8F4; } } }
-@media(min-width:1200px) { @keyframes picFrameBuild { to { box-shadow: inset 0 0 0 1.8vw #FCF8F4; } } }
-@media(min-width:1500px) { @keyframes picFrameBuild { to { box-shadow: inset 0 0 0 1.5vw #FCF8F4; } } }
-.pic-photo.frame-in::before {
-  animation: picFrameBuild 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 1.4s both;
-}
+@media(min-width:600px)  { .pic-photo::before { box-shadow: inset 0 0 0 2.8vw #FCF8F4; } }
+@media(min-width:900px)  { .pic-photo::before { box-shadow: inset 0 0 0 2.2vw #FCF8F4; } }
+@media(min-width:1200px) { .pic-photo::before { box-shadow: inset 0 0 0 1.8vw #FCF8F4; } }
+@media(min-width:1500px) { .pic-photo::before { box-shadow: inset 0 0 0 1.5vw #FCF8F4; } }
 .pic-name {
   text-shadow: 0 2px 8px rgba(0,0,0,.2);
 }
@@ -849,10 +841,7 @@ h2.section-h {
   pointer-events: none;
 }
 
-/* ── Person-in-charge: fade-in only (no directional slide) ── */
-.pic-band .aos-l,
-.pic-band .aos-r,
-.pic-band .aos { transform: none; }
+
 
 /* ── Reduced-motion overrides ── */
 @media (prefers-reduced-motion: reduce) {
@@ -1258,13 +1247,13 @@ h2.section-h {
   <div class="wrap">
     <div class="pic-grid">
       <div class="pic-card">
-        <div class="pic-photo aos-l"><img src="Photo/EHKC%20CORPORATE/_DSC3358.jpg" alt="Mr. Lai Kian Seng, Manager of Amitabha Foundation Elder Home" loading="lazy"></div>
+        <div class="pic-photo"><img src="Photo/EHKC%20CORPORATE/_DSC3358.jpg" alt="Mr. Lai Kian Seng, Manager of Amitabha Foundation Elder Home" loading="lazy"></div>
         <div class="pic-meta">
-          <div class="pic-eyebrow aos"><span class="dot"></span> Person in charge</div>
-          <h3 class="pic-name aos d1">Mr. Lai Kian Seng</h3>
-          <div class="pic-role aos d2">Manager · Amitabha Foundation Elder Home</div>
-          <p class="pic-bio aos d3">Day-to-day operations, family liaison, and resident wellbeing. For placement enquiries, financial assistance applications, or to arrange a visit, Mr. Lai Kian Seng is your first point of contact.</p>
-          <div class="pic-actions aos d4">
+          <div class="pic-eyebrow"><span class="dot"></span> Person in charge</div>
+          <h3 class="pic-name">Mr. Lai Kian Seng</h3>
+          <div class="pic-role">Manager · Amitabha Foundation Elder Home</div>
+          <p class="pic-bio">Day-to-day operations, family liaison, and resident wellbeing. For placement enquiries, financial assistance applications, or to arrange a visit, Mr. Lai Kian Seng is your first point of contact.</p>
+          <div class="pic-actions">
             <a href="https://wa.me/60127762911" class="btn btn-primary" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp Mr. Lai</a>
             <a href="tel:+60127762911" class="btn btn-ghost" style="background:rgba(255,255,255,.06);color:#fff;border-color:rgba(255,255,255,.2)"><i class="fa fa-phone"></i> 012-776 2911</a>
           </div>
@@ -1979,42 +1968,6 @@ if (!pr) {
 
 
 
-<!-- Anime.js v4 — Person-in-charge section: function-based staggered entrance -->
-<script>
-(function () {
-  const picBand = document.querySelector('.pic-band');
-  if (!picBand) return;
-
-  const fadeEls = [
-    document.querySelector('.pic-photo'),
-    ...document.querySelectorAll('.pic-eyebrow, .pic-name, .pic-role, .pic-bio, .pic-actions .btn')
-  ].filter(Boolean);
-
-  fadeEls.forEach((el, i) => {
-    el.style.opacity = '0';
-    el.style.transition = `opacity 0.7s ease ${i * 0.1}s`;
-  });
-
-  new IntersectionObserver((entries, obs) => {
-    if (!entries[0].isIntersecting) return;
-    obs.disconnect();
-    fadeEls.forEach(el => { el.style.opacity = '1'; });
-  }, { threshold: 0.2 }).observe(picBand);
-})();
-</script>
-
-<!-- Mr Lai photo — cream frame build-in on scroll -->
-<script>
-(function(){
-  var ph = document.querySelector('.pic-photo');
-  if (!ph || window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-  new IntersectionObserver(function(entries, obs){
-    if (!entries[0].isIntersecting) return;
-    ph.classList.add('frame-in');
-    obs.disconnect();
-  }, { threshold: 0.25 }).observe(ph);
-})();
-</script>
 
 <!-- draggable donate button handled in consolidated module below -->
 
