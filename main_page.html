@@ -1966,8 +1966,26 @@ if (!pr) {
 </style>
 <!-- h1 reveal handled in consolidated module below -->
 
-
-
+<!-- Person-in-charge section: fade-in entrance -->
+<script>
+(function () {
+  const picBand = document.querySelector('.pic-band');
+  if (!picBand) return;
+  const fadeEls = [
+    document.querySelector('.pic-photo'),
+    ...document.querySelectorAll('.pic-eyebrow, .pic-name, .pic-role, .pic-bio, .pic-actions .btn')
+  ].filter(Boolean);
+  fadeEls.forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transition = `opacity 0.7s ease ${i * 0.1}s`;
+  });
+  new IntersectionObserver((entries, obs) => {
+    if (!entries[0].isIntersecting) return;
+    obs.disconnect();
+    fadeEls.forEach(el => { el.style.opacity = '1'; });
+  }, { threshold: 0.2 }).observe(picBand);
+})();
+</script>
 
 <!-- draggable donate button handled in consolidated module below -->
 
