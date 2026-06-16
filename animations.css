@@ -184,7 +184,6 @@ html {
 
 /* ── Depth reveal — 3D rotateX flip as sections enter viewport ── */
 .depth-section {
-  will-change: transform, opacity;
   opacity: 0.80;
   transform: perspective(2000px) rotateX(5deg) translateY(26px) scale(0.985);
   transform-origin: center 100%;
@@ -273,7 +272,6 @@ h2.section-h em, .sec-h em {
   transition: transform 0.65s cubic-bezier(.2,.7,.3,1), box-shadow 0.65s ease;
 }
 .pic-photo:hover {
-  will-change: transform;
   transform: perspective(900px) rotateY(-6deg) translateZ(14px) scale(1.02);
   box-shadow: 24px 24px 64px rgba(6,47,49,.32), -6px -6px 24px rgba(196,122,74,.12);
 }
@@ -289,10 +287,6 @@ h2.section-h em, .sec-h em {
   transform: none;
 }
 
-/* ── Magnetic button: base setup (JS drives the translate) ── */
-.btn-primary, .btn-coral, .float-wa, .float-donate {
-  will-change: transform;
-}
 
 /* ── Pic-band inner element reveal: override default aos Y-shift for horizontal ── */
 .pic-photo.aos-l {

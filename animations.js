@@ -366,37 +366,15 @@
     ].join(';');
     document.body.appendChild(bar);
 
+    const doc = document.documentElement;
+    let total = doc.scrollHeight - doc.clientHeight;
+    window.addEventListener('resize', () => { total = doc.scrollHeight - doc.clientHeight; }, { passive: true });
+
     window.addEventListener('scroll', () => {
-      const doc  = document.documentElement;
-      const scrolled = window.scrollY;
-      const total = doc.scrollHeight - doc.clientHeight;
-      bar.style.width = total > 0 ? `${(scrolled / total) * 100}%` : '0%';
+      bar.style.width = total > 0 ? `${(window.scrollY / total) * 100}%` : '0%';
     }, { passive: true });
   })();
 
-  /* ─────────────────────────────────────────────────────────────────
-     8.2 MAGNETIC BUTTON EFFECT
-     Primary / coral buttons subtly follow the cursor for a premium feel
-  ───────────────────────────────────────────────────────────────── */
-  (function magneticButtons() {
-    if (reducedMotion || mobile()) return;
-
-    const btns = document.querySelectorAll(
-      '.btn-primary, .btn-coral, .float-wa, .float-donate, .map-cta'
-    );
-
-    btns.forEach(btn => {
-      btn.addEventListener('mousemove', e => {
-        const r = btn.getBoundingClientRect();
-        const x = (e.clientX - r.left - r.width  / 2) * 0.22;
-        const y = (e.clientY - r.top  - r.height / 2) * 0.22;
-        btn.style.transform = `translate(${x}px, ${y}px) scale(1.03)`;
-      });
-      btn.addEventListener('mouseleave', () => {
-        btn.style.transform = '';
-      });
-    });
-  })();
 
   /* ─────────────────────────────────────────────────────────────────
      8.3 STAGGERED INNER-ELEMENT REVEAL FOR DARK BAND SECTIONS
