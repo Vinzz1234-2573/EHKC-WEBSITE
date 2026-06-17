@@ -902,32 +902,34 @@ h2.section-h {
       <img src="Photo/AF_EH%20ARGB%20LOGO%20.png" alt="Amitabha Foundation Elder Home">
     </a>
     <nav class="nav">
-      <a href="/main_page" class="on">Home</a>
-      <a href="/services">Services</a>
-      <a href="/about">About</a>
-      <a href="/stories">Stories</a>
+      <a href="/main_page" class="on" data-i18n="nav.home">Home</a>
+      <a href="/services" data-i18n="nav.services">Services</a>
+      <a href="/about" data-i18n="nav.about">About</a>
+      <a href="/stories" data-i18n="nav.stories">Stories</a>
 
-      <a href="/blog">News</a>
-      <a href="/jobs">Careers</a>
+      <a href="/blog" data-i18n="nav.news">News</a>
+      <a href="/jobs" data-i18n="nav.careers">Careers</a>
     </nav>
     <div class="hdr-r">
-      <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="btn btn-ghost"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
-      <div id="nav-auth"><a href="/login" class="btn btn-ghost"><i class="fa fa-user"></i> Sign In</a></div>
-      <a href="https://m.amitabhafoundation.my/en/donation" class="btn" style="background:#ab1a1f;color:#fff;border-radius:999px;padding:.62rem 1.15rem;animation:donateGlow 2.5s ease-in-out infinite" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> Donate</a>
+      <button class="lang-toggle btn btn-ghost" id="lang-toggle-desk">中文</button>
+      <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="btn btn-ghost"><i class="fa fa-hand-holding-medical"></i> <span data-i18n="nav.seekHelp">Seek Help</span></a>
+      <div id="nav-auth"><a href="/login" class="btn btn-ghost"><i class="fa fa-user"></i> <span data-i18n="nav.signIn">Sign In</span></a></div>
+      <a href="https://m.amitabhafoundation.my/en/donation" class="btn" style="background:#ab1a1f;color:#fff;border-radius:999px;padding:.62rem 1.15rem;animation:donateGlow 2.5s ease-in-out infinite" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> <span data-i18n="nav.donate">Donate</span></a>
       <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
   <nav class="mob-menu" id="mob-menu">
-    <a href="/main_page">Home</a>
-    <a href="/services">Services</a>
-    <a href="/about">About</a>
-    <a href="/stories">Stories</a>
+    <a href="/main_page" data-i18n="nav.home">Home</a>
+    <a href="/services" data-i18n="nav.services">Services</a>
+    <a href="/about" data-i18n="nav.about">About</a>
+    <a href="/stories" data-i18n="nav.stories">Stories</a>
 
-    <a href="/blog">News</a>
-    <a href="/jobs">Careers</a>
-    <a href="/login" id="mob-signin"><i class="fa fa-user"></i> Sign In</a>
-    <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." style="color:var(--teal-700);font-weight:700"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
-    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1a1f;font-weight:700"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img-plain" alt=""> Donate Now</a>
+    <a href="/blog" data-i18n="nav.news">News</a>
+    <a href="/jobs" data-i18n="nav.careers">Careers</a>
+    <a href="/login" id="mob-signin"><i class="fa fa-user"></i> <span data-i18n="nav.signIn">Sign In</span></a>
+    <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." style="color:var(--teal-700);font-weight:700"><i class="fa fa-hand-holding-medical"></i> <span data-i18n="nav.seekHelp">Seek Help</span></a>
+    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1a1f;font-weight:700"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img-plain" alt=""> <span data-i18n="nav.donateNow">Donate Now</span></a>
+    <button class="lang-toggle btn btn-ghost" style="width:100%;text-align:left;margin-top:.5rem">中文</button>
   </nav>
 </header>
 
@@ -946,36 +948,36 @@ h2.section-h {
   <div class="hero-grain"></div>
 
   <div class="hero-in">
-    <div class="hero-eyebrow"><span class="dot"></span> Est. 2000 · Kuala Lumpur</div>
-    <h1>Care that comes home,<br><em>at every age</em><span class="sw">.</span></h1>
-    <p class="hero-sub">Amitabha Foundation Elder Home provides 24/7 compassionate care, financial assistance, and home placement, so every senior in Malaysia can live their later years with dignity, comfort, and purpose.</p>
+    <div class="hero-eyebrow"><span class="dot"></span> <span data-i18n="hero.eyebrow">Est. 2000 · Kuala Lumpur</span></div>
+    <h1 data-i18n-html="hero.h1">Care that comes home,<br><em>at every age</em><span class="sw">.</span></h1>
+    <p class="hero-sub" data-i18n="hero.sub">Amitabha Foundation Elder Home provides 24/7 compassionate care, financial assistance, and home placement, so every senior in Malaysia can live their later years with dignity, comfort, and purpose.</p>
     <div class="hero-items" id="heroItems">
       <button class="hi-card" data-layout-id="hi-explore" data-duration="520">
         <i class="fa fa-hand-holding-heart" data-layout-id="hi-explore-ic"></i>
-        <span class="hi-title" data-layout-id="hi-explore-ttl">Explore our care</span>
-        <p>Discover our full range of elder care services — residential stays, home placement, and personalised medical support tailored to every resident's needs.</p>
-        <a class="hi-link" href="/services"><i class="fa fa-arrow-right"></i> View services</a>
+        <span class="hi-title" data-layout-id="hi-explore-ttl" data-i18n="hero.c1.title">Explore our care</span>
+        <p data-i18n="hero.c1.body">Discover our full range of elder care services — residential stays, home placement, and personalised medical support tailored to every resident's needs.</p>
+        <a class="hi-link" href="/services"><i class="fa fa-arrow-right"></i> <span data-i18n="hero.c1.link">View services</span></a>
       </button>
       <button class="hi-card" data-layout-id="hi-speak" data-duration="520">
         <i class="fa fa-phone-volume" data-layout-id="hi-speak-ic"></i>
-        <span class="hi-title" data-layout-id="hi-speak-ttl">Speak to us</span>
-        <p>Our care advisors are available now. Reach us on WhatsApp for a free consultation about placement, fees, and personalised care plans.</p>
-        <a class="hi-link" href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." target="_blank"><i class="fa fa-arrow-right"></i> Chat on WhatsApp</a>
+        <span class="hi-title" data-layout-id="hi-speak-ttl" data-i18n="hero.c2.title">Speak to us</span>
+        <p data-i18n="hero.c2.body">Our care advisors are available now. Reach us on WhatsApp for a free consultation about placement, fees, and personalised care plans.</p>
+        <a class="hi-link" href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." target="_blank"><i class="fa fa-arrow-right"></i> <span data-i18n="hero.c2.link">Chat on WhatsApp</span></a>
       </button>
       <button class="hi-card" data-layout-id="hi-nursing" data-duration="480">
         <i class="fa fa-clock" data-layout-id="hi-nursing-ic"></i>
-        <span class="hi-title" data-layout-id="hi-nursing-ttl">24/7 nursing</span>
-        <p>Trained nurses on duty around the clock — monitoring vitals, administering medication, and responding immediately to any situation.</p>
+        <span class="hi-title" data-layout-id="hi-nursing-ttl" data-i18n="hero.c3.title">24/7 nursing</span>
+        <p data-i18n="hero.c3.body">Trained nurses on duty around the clock — monitoring vitals, administering medication, and responding immediately to any situation.</p>
       </button>
       <button class="hi-card" data-layout-id="hi-medical" data-duration="480">
         <i class="fa fa-stethoscope" data-layout-id="hi-medical-ic"></i>
-        <span class="hi-title" data-layout-id="hi-medical-ttl">Medical support</span>
-        <p>Regular doctor visits, specialist referrals, and in-house physiotherapy to maintain and improve each resident's health every day.</p>
+        <span class="hi-title" data-layout-id="hi-medical-ttl" data-i18n="hero.c4.title">Medical support</span>
+        <p data-i18n="hero.c4.body">Regular doctor visits, specialist referrals, and in-house physiotherapy to maintain and improve each resident's health every day.</p>
       </button>
       <button class="hi-card" data-layout-id="hi-meals" data-duration="480">
         <i class="fa fa-utensils" data-layout-id="hi-meals-ic"></i>
-        <span class="hi-title" data-layout-id="hi-meals-ttl">4 daily meals</span>
-        <p>Nutritionist-planned menus four times a day — breakfast, lunch, tea, and dinner — with dietary restrictions and preferences accommodated.</p>
+        <span class="hi-title" data-layout-id="hi-meals-ttl" data-i18n="hero.c5.title">4 daily meals</span>
+        <p data-i18n="hero.c5.body">Nutritionist-planned menus four times a day — breakfast, lunch, tea, and dinner — with dietary restrictions and preferences accommodated.</p>
       </button>
     </div>
   </div>
@@ -987,10 +989,10 @@ h2.section-h {
 <!-- STATS -->
 <div class="stats">
   <div class="stats-in">
-    <div class="stat aos"><div class="stat-ic"><i class="fa fa-calendar-check"></i></div><div><div class="stat-n">25<sup style="font-size:.7em;color:var(--teal-500)">yrs</sup></div><div class="stat-l">Of compassionate care</div></div></div>
-    <div class="stat aos d1"><div class="stat-ic"><i class="fa fa-people-group"></i></div><div><div class="stat-n">550<sup style="font-size:.7em;color:var(--teal-500)">+</sup></div><div class="stat-l">Seniors supported</div></div></div>
-    <div class="stat aos d2"><div class="stat-ic"><i class="fa fa-bowl-food"></i></div><div><div class="stat-n">1,460</div><div class="stat-l">Meals served / year</div></div></div>
-    <div class="stat aos d3"><div class="stat-ic"><i class="fa fa-hand-holding-heart"></i></div><div><div class="stat-n">100<sup style="font-size:.7em;color:var(--teal-500)">%</sup></div><div class="stat-l">Dedication to care</div></div></div>
+    <div class="stat aos"><div class="stat-ic"><i class="fa fa-calendar-check"></i></div><div><div class="stat-n">25<sup style="font-size:.7em;color:var(--teal-500)" data-i18n="stat.years.unit">yrs</sup></div><div class="stat-l" data-i18n="stat.years.label">Of compassionate care</div></div></div>
+    <div class="stat aos d1"><div class="stat-ic"><i class="fa fa-people-group"></i></div><div><div class="stat-n">550<sup style="font-size:.7em;color:var(--teal-500)">+</sup></div><div class="stat-l" data-i18n="stat.seniors.label">Seniors supported</div></div></div>
+    <div class="stat aos d2"><div class="stat-ic"><i class="fa fa-bowl-food"></i></div><div><div class="stat-n">1,460</div><div class="stat-l" data-i18n="stat.meals.label">Meals served / year</div></div></div>
+    <div class="stat aos d3"><div class="stat-ic"><i class="fa fa-hand-holding-heart"></i></div><div><div class="stat-n">100<sup style="font-size:.7em;color:var(--teal-500)">%</sup></div><div class="stat-l" data-i18n="stat.pct.label">Dedication to care</div></div></div>
   </div>
 </div>
 
@@ -998,31 +1000,31 @@ h2.section-h {
 <section class="sec" id="services">
   <div class="wrap">
     <div class="sh">
-      <div class="eyebrow">What we do</div>
-      <h2 class="section-h">Three quiet pillars of <em>elder support</em>.</h2>
-      <p class="section-p">From the moment a senior reaches out, we tailor care across financial relief, residential placement, and a partner network, so no one is left without help.</p>
+      <div class="eyebrow" data-i18n="svc.eyebrow">What we do</div>
+      <h2 class="section-h" data-i18n="svc.h2">Three quiet pillars of <em>elder support</em>.</h2>
+      <p class="section-p" data-i18n="svc.p">From the moment a senior reaches out, we tailor care across financial relief, residential placement, and a partner network, so no one is left without help.</p>
     </div>
     <div class="svc-grid">
       <div class="svc-card aos">
         <div class="svc-num">01</div>
         <div class="svc-ic"><img src="Photo/Repair%20scenshot%20website/Financial-assistance.svg" alt="Financial assistance" loading="lazy"></div>
-        <h3>Financial assistance</h3>
-        <p>Direct relief for medical bills, daily essentials, and recurring costs, given confidentially and without bureaucracy, to seniors facing hardship.</p>
-        <a href="/services" class="svc-link">Apply for support <i class="fa fa-arrow-right"></i></a>
+        <h3 data-i18n="svc.s1.h3">Financial assistance</h3>
+        <p data-i18n="svc.s1.p">Direct relief for medical bills, daily essentials, and recurring costs, given confidentially and without bureaucracy, to seniors facing hardship.</p>
+        <a href="/services" class="svc-link"><span data-i18n="svc.s1.link">Apply for support</span> <i class="fa fa-arrow-right"></i></a>
       </div>
       <div class="svc-card aos d1">
         <div class="svc-num">02</div>
         <div class="svc-ic"><img src="Photo/Repair%20scenshot%20website/Elderly-home.svg" alt="Elderly home placement" loading="lazy"></div>
-        <h3>Elderly home placement</h3>
-        <p>A safe, loving residence with full-time staff, four meals a day, and medical assistance, for seniors with no family support to fall back on.</p>
-        <a href="/services" class="svc-link">View our home <i class="fa fa-arrow-right"></i></a>
+        <h3 data-i18n="svc.s2.h3">Elderly home placement</h3>
+        <p data-i18n="svc.s2.p">A safe, loving residence with full-time staff, four meals a day, and medical assistance, for seniors with no family support to fall back on.</p>
+        <a href="/services" class="svc-link"><span data-i18n="svc.s2.link">View our home</span> <i class="fa fa-arrow-right"></i></a>
       </div>
       <div class="svc-card aos d2">
         <div class="svc-num">03</div>
         <div class="svc-ic"><img src="Photo/Repair%20scenshot%20website/partner-network.svg" alt="Partner network" loading="lazy"></div>
-        <h3>Partner network</h3>
-        <p>We collaborate with elderly homes across Malaysia, sharing resources and extending our reach so help is always within travel distance.</p>
-        <a href="/services" class="svc-link">See partners <i class="fa fa-arrow-right"></i></a>
+        <h3 data-i18n="svc.s3.h3">Partner network</h3>
+        <p data-i18n="svc.s3.p">We collaborate with elderly homes across Malaysia, sharing resources and extending our reach so help is always within travel distance.</p>
+        <a href="/services" class="svc-link"><span data-i18n="svc.s3.link">See partners</span> <i class="fa fa-arrow-right"></i></a>
       </div>
     </div>
   </div>
@@ -1040,24 +1042,24 @@ h2.section-h {
         </div>
       </div>
       <div class="aos-r d1">
-        <div class="eyebrow">Who we are</div>
-        <h2 class="section-h">A quiet promise, kept for <em>twenty-five years</em>.</h2>
-        <p class="section-p">Amitabha Foundation Elder Home opened on Old Klang Road in 2000 with one simple commitment: that every elder we welcome lives the rest of their life in dignity. That promise has not changed.</p>
+        <div class="eyebrow" data-i18n="about.eyebrow">Who we are</div>
+        <h2 class="section-h" data-i18n="about.h2">A quiet promise, kept for <em>twenty-five years</em>.</h2>
+        <p class="section-p" data-i18n="about.p">Amitabha Foundation Elder Home opened on Old Klang Road in 2000 with one simple commitment: that every elder we welcome lives the rest of their life in dignity. That promise has not changed.</p>
         <div class="values">
           <div class="v-row">
             <div class="v-ic"><i class="fa fa-heart-pulse"></i></div>
-            <div><strong>Compassion as practice</strong><p>Care isn't a service we sell; it's a discipline our team renews every shift.</p></div>
+            <div><strong data-i18n="about.v1.title">Compassion as practice</strong><p data-i18n="about.v1.p">Care isn't a service we sell; it's a discipline our team renews every shift.</p></div>
           </div>
           <div class="v-row">
             <div class="v-ic"><i class="fa fa-shield-halved"></i></div>
-            <div><strong>Dignity by design</strong><p>From private moments to public meals, residents are treated as family members, not patients.</p></div>
+            <div><strong data-i18n="about.v2.title">Dignity by design</strong><p data-i18n="about.v2.p">From private moments to public meals, residents are treated as family members, not patients.</p></div>
           </div>
           <div class="v-row">
             <div class="v-ic"><i class="fa fa-receipt"></i></div>
-            <div><strong>Transparent giving</strong><p>Every donation is tax-deductible and traceable to the care it funds.</p></div>
+            <div><strong data-i18n="about.v3.title">Transparent giving</strong><p data-i18n="about.v3.p">Every donation is tax-deductible and traceable to the care it funds.</p></div>
           </div>
         </div>
-        <a href="/about" class="btn btn-primary btn-lg" style="margin-top:1.8rem">Read our story <i class="fa fa-arrow-right"></i></a>
+        <a href="/about" class="btn btn-primary btn-lg" style="margin-top:1.8rem"><span data-i18n="about.cta">Read our story</span> <i class="fa fa-arrow-right"></i></a>
       </div>
     </div>
   </div>
@@ -1067,9 +1069,9 @@ h2.section-h {
 <section class="sec gallery-band" id="gallery">
   <div class="wrap">
     <div class="sh c">
-      <div class="eyebrow aos">Life at the Home</div>
-      <h2 class="section-h aos d1">Where ordinary days become <em>quietly extraordinary</em></h2>
-      <p class="section-p aos d2">Morning chai on the verandah, afternoon games in the day room, garden walks before dinner. A glimpse of the moments that make Amitabha feel like home.</p>
+      <div class="eyebrow aos" data-i18n="gal.eyebrow">Life at the Home</div>
+      <h2 class="section-h aos d1" data-i18n="gal.h2">Where ordinary days become <em>quietly extraordinary</em></h2>
+      <p class="section-p aos d2" data-i18n="gal.p">Morning chai on the verandah, afternoon games in the day room, garden walks before dinner. A glimpse of the moments that make Amitabha feel like home.</p>
     </div>
 
     <div class="gal-track-wrap aos d3" id="gal">
@@ -1077,41 +1079,41 @@ h2.section-h {
         <div class="gal-slide">
           <img src="Photo/Ehkc%20photo/8dda01ee-8ec4-465a-a508-507c498b0c2b.jpg" alt="Residents enjoying time together at Amitabha Foundation Elder Home" loading="lazy">
           <div class="gal-cap">
-            <div class="gal-cap-eyebrow"><i class="fa fa-people-roof"></i> Community life</div>
-            <h3>Togetherness every day</h3>
-            <p>Residents gather in the shaded courtyard for morning tea, afternoon chats, and the slow pace that makes this home feel like family.</p>
+            <div class="gal-cap-eyebrow"><i class="fa fa-people-roof"></i> <span data-i18n="gal.s1.eyebrow">Community life</span></div>
+            <h3 data-i18n="gal.s1.h3">Togetherness every day</h3>
+            <p data-i18n="gal.s1.p">Residents gather in the shaded courtyard for morning tea, afternoon chats, and the slow pace that makes this home feel like family.</p>
           </div>
         </div>
         <div class="gal-slide">
           <img src="Photo/Ehkc%20photo/70e4f7ef-42e4-4ef6-9b81-c9b5303a3f74.jpg" alt="Smiling senior resident at Amitabha Foundation Elder Home" loading="lazy">
           <div class="gal-cap">
-            <div class="gal-cap-eyebrow"><i class="fa fa-heart"></i> Resident portrait</div>
-            <h3>Every face tells a story</h3>
-            <p>Behind every smile is a life fully lived. Our residents bring decades of wisdom, warmth, and resilience to our home every single day.</p>
+            <div class="gal-cap-eyebrow"><i class="fa fa-heart"></i> <span data-i18n="gal.s2.eyebrow">Resident portrait</span></div>
+            <h3 data-i18n="gal.s2.h3">Every face tells a story</h3>
+            <p data-i18n="gal.s2.p">Behind every smile is a life fully lived. Our residents bring decades of wisdom, warmth, and resilience to our home every single day.</p>
           </div>
         </div>
         <div class="gal-slide">
           <img src="Photo/Ehkc%20photo/29ea42fd-8e8b-46cd-844f-1847871966ea.jpg" alt="Amitabha staff conducting health screening for elderly resident" loading="lazy">
           <div class="gal-cap">
-            <div class="gal-cap-eyebrow"><i class="fa fa-stethoscope"></i> Health care</div>
-            <h3>Wellness checked, every day</h3>
-            <p>Our staff conduct regular health screenings: blood pressure, oxygen, blood glucose, so every resident stays monitored and cared for.</p>
+            <div class="gal-cap-eyebrow"><i class="fa fa-stethoscope"></i> <span data-i18n="gal.s3.eyebrow">Health care</span></div>
+            <h3 data-i18n="gal.s3.h3">Wellness checked, every day</h3>
+            <p data-i18n="gal.s3.p">Our staff conduct regular health screenings: blood pressure, oxygen, blood glucose, so every resident stays monitored and cared for.</p>
           </div>
         </div>
         <div class="gal-slide">
           <img src="Photo/Ehkc%20photo/Second%20picture.jpg" alt="Children visiting Amitabha Foundation Elder Home for community outreach" loading="lazy" style="object-position:center top">
           <div class="gal-cap">
-            <div class="gal-cap-eyebrow"><i class="fa fa-children"></i> Community visits</div>
-            <h3>Bridging generations</h3>
-            <p>School groups and youth volunteers visit regularly, bringing energy, laughter, and a reminder that the wider community cares for its elders.</p>
+            <div class="gal-cap-eyebrow"><i class="fa fa-children"></i> <span data-i18n="gal.s4.eyebrow">Community visits</span></div>
+            <h3 data-i18n="gal.s4.h3">Bridging generations</h3>
+            <p data-i18n="gal.s4.p">School groups and youth volunteers visit regularly, bringing energy, laughter, and a reminder that the wider community cares for its elders.</p>
           </div>
         </div>
         <div class="gal-slide">
           <img src="Photo/Ehkc%20photo/_DSC3587.jpg" alt="Prayer and altar room at Amitabha Foundation Elder Home" loading="lazy">
           <div class="gal-cap">
-            <div class="gal-cap-eyebrow"><i class="fa fa-om"></i> Spiritual wellbeing</div>
-            <h3>A space for peace &amp; reflection</h3>
-            <p>Our prayer room offers residents a quiet sanctuary for daily devotion. Spiritual care is part of whole-person wellbeing at Amitabha.</p>
+            <div class="gal-cap-eyebrow"><i class="fa fa-om"></i> <span data-i18n="gal.s5.eyebrow">Spiritual wellbeing</span></div>
+            <h3 data-i18n="gal.s5.h3">A space for peace &amp; reflection</h3>
+            <p data-i18n="gal.s5.p">Our prayer room offers residents a quiet sanctuary for daily devotion. Spiritual care is part of whole-person wellbeing at Amitabha.</p>
           </div>
         </div>
       </div>
@@ -1144,8 +1146,8 @@ h2.section-h {
   </div>
   <div class="pb-in">
     <div>
-      <div class="eyebrow" style="color:var(--teal-400)">Our promise</div>
-      <p class="pb-quote">
+      <div class="eyebrow" style="color:var(--teal-400)" data-i18n="promise.eyebrow">Our promise</div>
+      <p class="pb-quote" data-i18n="promise.quote">
         "I have someone that is reliable to look after my father.
         <span>They're really genuine and caring — that is my biggest concern.</span>
         They are doing a very good job here."
@@ -1153,14 +1155,14 @@ h2.section-h {
       <div class="pb-attr">
         <div class="av" style="overflow:hidden;background:none"><img src="Photo/DSC03520.JPG" alt="Mrs. Evon" style="width:100%;height:100%;object-fit:cover;display:block"></div>
         <div>
-          <div style="color:#fff;font-weight:600">Mrs. Evon, daughter of resident</div>
+          <div style="color:#fff;font-weight:600" data-i18n="promise.attr">Mrs. Evon, daughter of resident</div>
         </div>
       </div>
     </div>
     <div class="pb-side">
-      <div class="pb-row aos d1"><div class="ic"><i class="fa fa-stethoscope"></i></div><div><strong>On-site medical visits</strong><p>Weekly clinics, ongoing chronic-care plans, and 24/7 nursing for every resident.</p></div></div>
-      <div class="pb-row aos d2"><div class="ic"><i class="fa fa-om"></i></div><div><strong>Spiritual care</strong><p>Daily chanting and counsel, open to all faiths and respectful of every tradition.</p></div></div>
-      <div class="pb-row aos d3"><div class="ic"><i class="fa fa-people-arrows"></i></div><div><strong>Family channels</strong><p>Visits encouraged. Phone, video and in-person updates available on request.</p></div></div>
+      <div class="pb-row aos d1"><div class="ic"><i class="fa fa-stethoscope"></i></div><div><strong data-i18n="promise.f1.title">On-site medical visits</strong><p data-i18n="promise.f1.p">Weekly clinics, ongoing chronic-care plans, and 24/7 nursing for every resident.</p></div></div>
+      <div class="pb-row aos d2"><div class="ic"><i class="fa fa-om"></i></div><div><strong data-i18n="promise.f2.title">Spiritual care</strong><p data-i18n="promise.f2.p">Daily chanting and counsel, open to all faiths and respectful of every tradition.</p></div></div>
+      <div class="pb-row aos d3"><div class="ic"><i class="fa fa-people-arrows"></i></div><div><strong data-i18n="promise.f3.title">Family channels</strong><p data-i18n="promise.f3.p">Visits encouraged. Phone, video and in-person updates available on request.</p></div></div>
     </div>
   </div>
 </section>
@@ -1169,15 +1171,15 @@ h2.section-h {
 <section class="sec sec-teal">
   <div class="wrap">
     <div class="sh c">
-      <div class="eyebrow">Why families choose us</div>
-      <h2 class="section-h">A standard of care that <em>holds up</em>.</h2>
-      <p class="section-p">No corners cut. No waiting room scripts. Just trained, present caregivers who know each resident by name.</p>
+      <div class="eyebrow" data-i18n="whyus.eyebrow">Why families choose us</div>
+      <h2 class="section-h" data-i18n="whyus.h2">A standard of care that <em>holds up</em>.</h2>
+      <p class="section-p" data-i18n="whyus.p">No corners cut. No waiting room scripts. Just trained, present caregivers who know each resident by name.</p>
     </div>
     <div class="why-grid">
-      <div class="why-card aos"><div class="why-ic"><i class="fa fa-shield-heart"></i></div><h4>24/7 staffing</h4><p>Caregivers on shift around the clock, every day of the year, no exceptions.</p></div>
-      <div class="why-card aos d1"><div class="why-ic"><i class="fa fa-stethoscope"></i></div><h4>Medical access</h4><p>Regular doctor visits, medication oversight, and hospital coordination when needed.</p></div>
-      <div class="why-card aos d2"><div class="why-ic"><i class="fa fa-utensils"></i></div><h4>Four daily meals</h4><p>Nutritious, dietitian-aware meals, adaptable to medical and cultural needs.</p></div>
-      <div class="why-card aos d3"><div class="why-ic"><i class="fa fa-receipt"></i></div><h4>Tax-deductible giving</h4><p>Every donation qualifies for Malaysian tax exemption and is fully transparent.</p></div>
+      <div class="why-card aos"><div class="why-ic"><i class="fa fa-shield-heart"></i></div><h4 data-i18n="whyus.c1.h4">24/7 staffing</h4><p data-i18n="whyus.c1.p">Caregivers on shift around the clock, every day of the year, no exceptions.</p></div>
+      <div class="why-card aos d1"><div class="why-ic"><i class="fa fa-stethoscope"></i></div><h4 data-i18n="whyus.c2.h4">Medical access</h4><p data-i18n="whyus.c2.p">Regular doctor visits, medication oversight, and hospital coordination when needed.</p></div>
+      <div class="why-card aos d2"><div class="why-ic"><i class="fa fa-utensils"></i></div><h4 data-i18n="whyus.c3.h4">Four daily meals</h4><p data-i18n="whyus.c3.p">Nutritious, dietitian-aware meals, adaptable to medical and cultural needs.</p></div>
+      <div class="why-card aos d3"><div class="why-ic"><i class="fa fa-receipt"></i></div><h4 data-i18n="whyus.c4.h4">Tax-deductible giving</h4><p data-i18n="whyus.c4.p">Every donation qualifies for Malaysian tax exemption and is fully transparent.</p></div>
     </div>
   </div>
 </section>
@@ -1186,41 +1188,41 @@ h2.section-h {
 <section class="sec" id="stories" style="background:#fdf2e8">
   <div class="wrap">
     <div class="sh">
-      <div class="eyebrow">Resident Stories</div>
-      <h2 class="section-h">Lives changed, <em>one at a time</em>.</h2>
-      <p class="section-p">Every resident arrives with a unique story. Here are the voices of the people at the heart of everything we do.</p>
+      <div class="eyebrow" data-i18n="stories.eyebrow">Resident Stories</div>
+      <h2 class="section-h" data-i18n="stories.h2">Lives changed, <em>one at a time</em>.</h2>
+      <p class="section-p" data-i18n="stories.p">Every resident arrives with a unique story. Here are the voices of the people at the heart of everything we do.</p>
     </div>
     <div class="story-grid">
       <div class="story-card aos">
-        <div class="story-cat"><i class="fa fa-hand-holding-heart"></i> Giving Back</div>
-        <p class="story-q">For years, Uncle Loh quietly showed up, fixing old electronics and donating every single ringgit back to the elder home. He never asked for recognition, never expected anything in return. Now it is our turn to care for him, and we do so with all the love and gratitude he deserves.</p>
+        <div class="story-cat"><i class="fa fa-hand-holding-heart"></i> <span data-i18n="stories.s1.cat">Giving Back</span></div>
+        <p class="story-q" data-i18n="stories.s1.q">For years, Uncle Loh quietly showed up, fixing old electronics and donating every single ringgit back to the elder home. He never asked for recognition, never expected anything in return. Now it is our turn to care for him, and we do so with all the love and gratitude he deserves.</p>
         <div class="story-attr">
           <div class="story-av" style="background:none;overflow:hidden"><img src="Photo/Elder%20Photo/_DSC3598.JPG" alt="Uncle Loh Keng Seng" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div>
           <div>
-            <div class="story-name">Uncle Loh Keng Seng</div>
-            <div class="story-meta"><i class="fa fa-location-dot"></i> Amitabha Elder Home</div>
+            <div class="story-name" data-i18n="stories.s1.name">Uncle Loh Keng Seng</div>
+            <div class="story-meta"><i class="fa fa-location-dot"></i> <span data-i18n="stories.s1.meta">Amitabha Elder Home</span></div>
           </div>
         </div>
       </div>
       <div class="story-card aos d1">
-        <div class="story-cat"><i class="fa fa-people-roof"></i> Community</div>
-        <p class="story-q">Aunty Wong arrived with no family to call her own. What we found was a woman full of life, laughter, and endless stories. She has given this home something priceless: her warmth, her joy, and her spirit.</p>
+        <div class="story-cat"><i class="fa fa-people-roof"></i> <span data-i18n="stories.s2.cat">Community</span></div>
+        <p class="story-q" data-i18n="stories.s2.q">Aunty Wong arrived with no family to call her own. What we found was a woman full of life, laughter, and endless stories. She has given this home something priceless: her warmth, her joy, and her spirit.</p>
         <div class="story-attr">
           <div class="story-av" style="background:none;overflow:hidden"><img src="Photo/Elder%20Photo/_DSC3626.JPG" alt="Aunty Wong Pek Lin" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div>
           <div>
-            <div class="story-name">Aunty Wong Pek Lin</div>
-            <div class="story-meta"><i class="fa fa-location-dot"></i> Amitabha Elder Home</div>
+            <div class="story-name" data-i18n="stories.s2.name">Aunty Wong Pek Lin</div>
+            <div class="story-meta"><i class="fa fa-location-dot"></i> <span data-i18n="stories.s2.meta">Amitabha Elder Home</span></div>
           </div>
         </div>
       </div>
       <div class="story-card aos d2">
-        <div class="story-cat"><i class="fa fa-heart-pulse"></i> Resilience</div>
-        <p class="story-q">At 55, a stroke changed Uncle Hok's life and left him to face it alone. Every day he gets up, walks, and exercises, half his body weakened but his spirit unbroken. In his quiet resilience, he reminds us that the human spirit, when treated with love, never truly falls.</p>
+        <div class="story-cat"><i class="fa fa-heart-pulse"></i> <span data-i18n="stories.s3.cat">Resilience</span></div>
+        <p class="story-q" data-i18n="stories.s3.q">At 55, a stroke changed Uncle Hok's life and left him to face it alone. Every day he gets up, walks, and exercises, half his body weakened but his spirit unbroken. In his quiet resilience, he reminds us that the human spirit, when treated with love, never truly falls.</p>
         <div class="story-attr">
           <div class="story-av" style="background:none;overflow:hidden"><img src="Photo/Elder%20Photo/Gemini_Generated_Image_a51dvra51dvra51d.png" alt="Uncle Hok Keng Sang" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div>
           <div>
-            <div class="story-name">Uncle Hok Keng Sang</div>
-            <div class="story-meta"><i class="fa fa-location-dot"></i> Amitabha Elder Home</div>
+            <div class="story-name" data-i18n="stories.s3.name">Uncle Hok Keng Sang</div>
+            <div class="story-meta"><i class="fa fa-location-dot"></i> <span data-i18n="stories.s3.meta">Amitabha Elder Home</span></div>
           </div>
         </div>
       </div>
@@ -1231,12 +1233,12 @@ h2.section-h {
 <!-- CTA -->
 <div class="cta-band" id="donate">
   <div class="wrap">
-    <h2>In compassion, <em>we change a life</em>.</h2>
-    <p>Your gift funds meals, medicine, and the unhurried care that makes a house a home for someone's grandparent.</p>
+    <h2 data-i18n="cta.h2">In compassion, <em>we change a life</em>.</h2>
+    <p data-i18n="cta.p">Your gift funds meals, medicine, and the unhurried care that makes a house a home for someone's grandparent.</p>
     <div class="cta-btns">
-      <a href="https://m.amitabhafoundation.my/en/donation" class="btn btn-lg" style="background:#ab1a1f;color:#fff;animation:donateGlow 2.5s ease-in-out infinite;box-shadow:0 6px 22px rgba(171,26,31,.38)" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> Donate now</a>
-      <a href="https://wa.me/60127762911" class="btn btn-lg" style="background:#25d366;color:#fff;animation:waGlow 2.5s ease-in-out infinite;box-shadow:0 6px 22px rgba(37,211,102,.38)" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Volunteer</a>
-      <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="btn btn-outline-white btn-lg"><i class="fa fa-hand-holding-medical"></i> Seek help</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" class="btn btn-lg" style="background:#ab1a1f;color:#fff;animation:donateGlow 2.5s ease-in-out infinite;box-shadow:0 6px 22px rgba(171,26,31,.38)" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> <span data-i18n="cta.donate">Donate now</span></a>
+      <a href="https://wa.me/60127762911" class="btn btn-lg" style="background:#25d366;color:#fff;animation:waGlow 2.5s ease-in-out infinite;box-shadow:0 6px 22px rgba(37,211,102,.38)" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> <span data-i18n="cta.volunteer">Volunteer</span></a>
+      <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="btn btn-outline-white btn-lg"><i class="fa fa-hand-holding-medical"></i> <span data-i18n="cta.seekHelp">Seek help</span></a>
     </div>
   </div>
 </div>
@@ -1248,12 +1250,12 @@ h2.section-h {
       <div class="pic-card">
         <div class="pic-photo"><img src="Photo/EHKC%20CORPORATE/_DSC3358.jpg" alt="Mr. Lai Kian Seng, Manager of Amitabha Foundation Elder Home" loading="lazy"></div>
         <div class="pic-meta">
-          <div class="pic-eyebrow"><span class="dot"></span> Person in charge</div>
-          <h3 class="pic-name">Mr. Lai Kian Seng</h3>
-          <div class="pic-role">Manager · Amitabha Foundation Elder Home</div>
-          <p class="pic-bio">Day-to-day operations, family liaison, and resident wellbeing. For placement enquiries, financial assistance applications, or to arrange a visit, Mr. Lai Kian Seng is your first point of contact.</p>
+          <div class="pic-eyebrow"><span class="dot"></span> <span data-i18n="pic.eyebrow">Person in charge</span></div>
+          <h3 class="pic-name" data-i18n="pic.name">Mr. Lai Kian Seng</h3>
+          <div class="pic-role" data-i18n="pic.role">Manager · Amitabha Foundation Elder Home</div>
+          <p class="pic-bio" data-i18n="pic.bio">Day-to-day operations, family liaison, and resident wellbeing. For placement enquiries, financial assistance applications, or to arrange a visit, Mr. Lai Kian Seng is your first point of contact.</p>
           <div class="pic-actions">
-            <a href="https://wa.me/60127762911" class="btn btn-primary" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp Mr. Lai</a>
+            <a href="https://wa.me/60127762911" class="btn btn-primary" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> <span data-i18n="pic.cta">WhatsApp Mr. Lai</span></a>
             <a href="tel:+60127762911" class="btn btn-ghost" style="background:rgba(255,255,255,.06);color:#fff;border-color:rgba(255,255,255,.2)"><i class="fa fa-phone"></i> 012-776 2911</a>
           </div>
         </div>
@@ -1341,75 +1343,75 @@ h2.section-h {
 <section class="mini-faq">
   <div class="wrap">
     <div class="sh">
-      <div class="eyebrow">Common Questions</div>
-      <h2 class="section-h">Answers for <em>families</em>.</h2>
-      <p class="section-p">A few things families ask us most often. For the full list, visit our FAQ page.</p>
+      <div class="eyebrow" data-i18n="faq.eyebrow">Common Questions</div>
+      <h2 class="section-h" data-i18n="faq.h2">Answers for <em>families</em>.</h2>
+      <p class="section-p" data-i18n="faq.p">A few things families ask us most often. For the full list, visit our FAQ page.</p>
     </div>
     <div class="mfaq-grid">
 
       <div class="mfaq-card" onclick="toggleMfaq(this)">
         <div class="mfaq-q">
-          <span class="mfaq-q-text">How much does it cost for a resident to stay?</span>
+          <span class="mfaq-q-text" data-i18n="faq.q1">How much does it cost for a resident to stay?</span>
           <span class="mfaq-icon"><i class="fa fa-chevron-down"></i></span>
         </div>
-        <div class="mfaq-a"><div class="mfaq-a-inner">
+        <div class="mfaq-a"><div class="mfaq-a-inner" data-i18n="faq.a1">
           Monthly fees range from <strong>RM 1,800 to RM 2,500</strong> depending on the resident's level of care. Many residents receive subsidies — some stay for free. No one is turned away due to financial hardship.
         </div></div>
       </div>
 
       <div class="mfaq-card" onclick="toggleMfaq(this)">
         <div class="mfaq-q">
-          <span class="mfaq-q-text">What types of elderly can be accommodated?</span>
+          <span class="mfaq-q-text" data-i18n="faq.q2">What types of elderly can be accommodated?</span>
           <span class="mfaq-icon"><i class="fa fa-chevron-down"></i></span>
         </div>
-        <div class="mfaq-a"><div class="mfaq-a-inner">
+        <div class="mfaq-a"><div class="mfaq-a-inner" data-i18n="faq.a2">
           We welcome elderly who are <strong>mobile</strong>, <strong>wheelchair-bound</strong>, or <strong>bedridden</strong>, including those with <strong>dementia or special needs</strong>. Care is tailored to each resident's condition.
         </div></div>
       </div>
 
       <div class="mfaq-card" onclick="toggleMfaq(this)">
         <div class="mfaq-q">
-          <span class="mfaq-q-text">Do residents need to be Buddhist to stay here?</span>
+          <span class="mfaq-q-text" data-i18n="faq.q3">Do residents need to be Buddhist to stay here?</span>
           <span class="mfaq-icon"><i class="fa fa-chevron-down"></i></span>
         </div>
-        <div class="mfaq-a"><div class="mfaq-a-inner">
+        <div class="mfaq-a"><div class="mfaq-a-inner" data-i18n="faq.a3">
           Not at all. <strong>All races and religions are welcome.</strong> Residents are free to practise their own beliefs. Our care is open to everyone equally.
         </div></div>
       </div>
 
       <div class="mfaq-card" onclick="toggleMfaq(this)">
         <div class="mfaq-q">
-          <span class="mfaq-q-text">What are the visitation hours?</span>
+          <span class="mfaq-q-text" data-i18n="faq.q4">What are the visitation hours?</span>
           <span class="mfaq-icon"><i class="fa fa-chevron-down"></i></span>
         </div>
-        <div class="mfaq-a"><div class="mfaq-a-inner">
+        <div class="mfaq-a"><div class="mfaq-a-inner" data-i18n="faq.a4">
           Families are welcome to visit <strong>daily from 9am – 5pm</strong>. Our office operates <strong>Monday to Friday, 9am – 5pm</strong>.
         </div></div>
       </div>
 
       <div class="mfaq-card" onclick="toggleMfaq(this)">
         <div class="mfaq-q">
-          <span class="mfaq-q-text">How do I apply for my family member to stay?</span>
+          <span class="mfaq-q-text" data-i18n="faq.q5">How do I apply for my family member to stay?</span>
           <span class="mfaq-icon"><i class="fa fa-chevron-down"></i></span>
         </div>
-        <div class="mfaq-a"><div class="mfaq-a-inner">
+        <div class="mfaq-a"><div class="mfaq-a-inner" data-i18n="faq.a5">
           Complete an <strong>application form</strong> and arrange a basic <strong>medical check-up</strong> to confirm the absence of communicable illnesses. Required documents: IC, completed form, and latest medical results.
         </div></div>
       </div>
 
       <div class="mfaq-card" onclick="toggleMfaq(this)">
         <div class="mfaq-q">
-          <span class="mfaq-q-text">Is there tax relief for donations?</span>
+          <span class="mfaq-q-text" data-i18n="faq.q6">Is there tax relief for donations?</span>
           <span class="mfaq-icon"><i class="fa fa-chevron-down"></i></span>
         </div>
-        <div class="mfaq-a"><div class="mfaq-a-inner">
+        <div class="mfaq-a"><div class="mfaq-a-inner" data-i18n="faq.a6">
           Yes. The Amitabha Foundation is <strong>registered under LHDN</strong>, so qualifying monetary donations are eligible for tax exemption. Please retain your receipt for tax filing.
         </div></div>
       </div>
 
     </div>
     <div class="mfaq-foot">
-      <a href="/faq" class="btn btn-primary"><i class="fa fa-circle-question"></i> See all FAQs</a>
+      <a href="/faq" class="btn btn-primary"><i class="fa fa-circle-question"></i> <span data-i18n="faq.seeAll">See all FAQs</span></a>
     </div>
   </div>
 </section>
@@ -1417,23 +1419,23 @@ h2.section-h {
 <!-- LOCATION MAP -->
 <div class="map-section" id="location">
   <div class="map-header">
-    <div class="eyebrow" style="display:inline-flex;align-items:center;gap:.4rem;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#eec4a3;margin-bottom:.6rem">Our Location</div>
-    <h2>Find Our Centre</h2>
-    <p>Visit us at our centre in Kuala Lumpur. Our team is ready to welcome you and your loved ones.</p>
+    <div class="eyebrow" style="display:inline-flex;align-items:center;gap:.4rem;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#eec4a3;margin-bottom:.6rem" data-i18n="loc.eyebrow">Our Location</div>
+    <h2 data-i18n="loc.h2">Find Our Centre</h2>
+    <p data-i18n="loc.p">Visit us at our centre in Kuala Lumpur. Our team is ready to welcome you and your loved ones.</p>
   </div>
   <div class="map-body">
     <div class="map-iframe-wrap">
       <iframe src="https://maps.google.com/maps?q=Taman+Gembira+Jalan+Rukun+7+58200+Kuala+Lumpur+Malaysia&output=embed&z=16" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Amitabha Foundation Location"></iframe>
     </div>
     <div class="map-info">
-      <h3>Amitabha Foundation<br>Elder Care Centre</h3>
-      <div class="mi-row"><div class="mi-ico"><i class="fa fa-location-dot"></i></div><div class="mi-body"><div class="lb">Address</div><div class="vl">A14, Jalan Rukun 7<br>Taman Gembira<br>58200 Kuala Lumpur, Malaysia</div></div></div>
-      <div class="mi-row"><div class="mi-ico"><i class="fa fa-phone"></i></div><div class="mi-body"><div class="lb">Phone</div><div class="vl"><a href="tel:+60378903700">+603-7890 3700</a></div></div></div>
-      <div class="mi-row"><div class="mi-ico"><i class="fa fa-headset"></i></div><div class="mi-body"><div class="lb">Hotline</div><div class="vl"><a href="tel:+60127762911">012-776 2911</a></div></div></div>
-      <div class="mi-row"><div class="mi-ico"><i class="fa fa-clock"></i></div><div class="mi-body"><div class="lb">Opening Hours</div><div class="vl">Mon – Sun: 9:00am – 5:00pm</div></div></div>
+      <h3 data-i18n-html="loc.name">Amitabha Foundation<br>Elder Care Centre</h3>
+      <div class="mi-row"><div class="mi-ico"><i class="fa fa-location-dot"></i></div><div class="mi-body"><div class="lb" data-i18n="loc.addr.lb">Address</div><div class="vl">A14, Jalan Rukun 7<br>Taman Gembira<br>58200 Kuala Lumpur, Malaysia</div></div></div>
+      <div class="mi-row"><div class="mi-ico"><i class="fa fa-phone"></i></div><div class="mi-body"><div class="lb" data-i18n="loc.phone.lb">Phone</div><div class="vl"><a href="tel:+60378903700">+603-7890 3700</a></div></div></div>
+      <div class="mi-row"><div class="mi-ico"><i class="fa fa-headset"></i></div><div class="mi-body"><div class="lb" data-i18n="loc.hotline.lb">Hotline</div><div class="vl"><a href="tel:+60127762911">012-776 2911</a></div></div></div>
+      <div class="mi-row"><div class="mi-ico"><i class="fa fa-clock"></i></div><div class="mi-body"><div class="lb" data-i18n="loc.hours.lb">Opening Hours</div><div class="vl" data-i18n="loc.hours.val">Mon – Sun: 9:00am – 5:00pm</div></div></div>
       <a class="map-cta" href="https://wa.me/60127762911?text=Hello%2C%20I%20would%20like%20to%20visit%20the%20Amitabha%20Foundation%20centre." target="_blank" rel="noopener">
         <i class="fab fa-whatsapp"></i>
-        <div><div class="mc-t">Ask for Directions</div><div class="mc-s">WhatsApp us for help</div></div>
+        <div><div class="mc-t" data-i18n="loc.dir.title">Ask for Directions</div><div class="mc-s" data-i18n="loc.dir.sub">WhatsApp us for help</div></div>
       </a>
     </div>
   </div>
@@ -1444,7 +1446,7 @@ h2.section-h {
   <div class="foot-top">
     <div class="foot-brand">
       <a href="https://amitabhafoundation.my/" target="_blank" rel="noopener"><img src="Photo/AF_EH%20ARGB%20LOGO%20.png" alt="Amitabha Foundation"></a>
-      <p>Amitabha Foundation Elder Home. 24/7 compassionate care, financial assistance, and home placement for seniors in Kuala Lumpur. Est. 2000.</p>
+      <p data-i18n="foot.p">Amitabha Foundation Elder Home. 24/7 compassionate care, financial assistance, and home placement for seniors in Kuala Lumpur. Est. 2000.</p>
       <div class="foot-soc">
         <a href="https://www.facebook.com/people/Amitabha-Foundation-Elder-Home/61578688747686/" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
         <a href="https://www.instagram.com/amitabhafoundation" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
@@ -1453,42 +1455,43 @@ h2.section-h {
       </div>
     </div>
     <div class="foot-col">
-      <h4>The Home</h4>
-      <a href="/faq">FAQ</a>
-      <a href="/blog">News</a>
-      <a href="/main_page">Home</a>
-      <a href="/about">About</a>
-      <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener">Donate</a>
+      <h4 data-i18n="foot.c1.h4">The Home</h4>
+      <a href="/faq" data-i18n="foot.c1.faq">FAQ</a>
+      <a href="/blog" data-i18n="foot.c1.news">News</a>
+      <a href="/main_page" data-i18n="foot.c1.home">Home</a>
+      <a href="/about" data-i18n="foot.c1.about">About</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" data-i18n="foot.c1.donate">Donate</a>
 
-      <a href="/services">Services</a>
+      <a href="/services" data-i18n="foot.c1.services">Services</a>
     </div>
     <div class="foot-col">
-      <h4><a href="https://amitabhafoundation.my/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Amitabha Foundation</a></h4>
-      <a href="/jobs">Careers</a>
-      <a href="https://wa.me/60127762911" target="_blank" rel="noopener">Volunteer</a>
-      <a href="https://amitabhafoundation.my/" target="_blank" rel="noopener">Dialysis Centre</a>
-      <a href="https://amitabhafoundation.my/" target="_blank" rel="noopener">Children's Home</a>
+      <h4><a href="https://amitabhafoundation.my/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none" data-i18n="foot.c2.h4">Amitabha Foundation</a></h4>
+      <a href="/jobs" data-i18n="foot.c2.careers">Careers</a>
+      <a href="https://wa.me/60127762911" target="_blank" rel="noopener" data-i18n="foot.c2.volunteer">Volunteer</a>
+      <a href="https://amitabhafoundation.my/" target="_blank" rel="noopener" data-i18n="foot.c2.dialysis">Dialysis Centre</a>
+      <a href="https://amitabhafoundation.my/" target="_blank" rel="noopener" data-i18n="foot.c2.children">Children's Home</a>
     </div>
     <div class="foot-col">
-      <h4>Contact</h4>
+      <h4 data-i18n="foot.c3.h4">Contact</h4>
       <div class="fci"><i class="fa fa-phone"></i><a href="tel:+60378903700">+603-7890 3700</a></div>
       <div class="fci"><i class="fa fa-headset"></i><a href="tel:+60127762911">012-776 2911 (hotline)</a></div>
-      <div class="fci"><i class="fa fa-clock"></i><span>Mon–Sun 9am–5pm</span></div>
+      <div class="fci"><i class="fa fa-clock"></i><span data-i18n="foot.c3.hours">Mon–Sun 9am–5pm</span></div>
       <div class="fci"><i class="fa fa-location-dot"></i><span>A14, Jalan Rukun 7, Taman Gembira, 58200 Kuala Lumpur</span></div>
     </div>
   </div>
   <div class="foot-bot">
-    <p>© 2026 Amitabha Foundation · Elder Care Programme · All rights reserved.</p>
+    <p data-i18n="foot.copyright">© 2026 Amitabha Foundation · Elder Care Programme · All rights reserved.</p>
   </div>
 </footer>
 
 <div class="float-bar">
   <a class="float-wa" href="https://wa.me/60127762911" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> <span class="fl-label">WhatsApp</span></a>
-  <a class="float-donate" href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener"><i class="fa fa-hand-holding-heart"></i> <span class="fl-label">Donate Now</span><span class="donate-tip">Someone is waiting for a kindness only you can give.</span></a>
+  <a class="float-donate" href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener"><i class="fa fa-hand-holding-heart"></i> <span class="fl-label" data-i18n="float.donate">Donate Now</span><span class="donate-tip" data-i18n="float.tip">Someone is waiting for a kindness only you can give.</span></a>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="supabase-config.js"></script>
+<script src="lang.js"></script>
 <script>
 /* Header scroll + burger */
 const hdr = document.getElementById('hdr');
@@ -2059,5 +2062,6 @@ if (!_pr) createDraggable('.float-donate', { container: document.documentElement
   }
 }
 </script>
+<script>initLang();</script>
 </body>
 </html>
