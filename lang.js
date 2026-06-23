@@ -199,7 +199,109 @@
 
     /* Float Bar */
     'float.donate': '立即捐款',
-    'float.tip':    '您的善举，能为长者带来温暖与希望。'
+    'float.tip':    '您的善举，能为长者带来温暖与希望。',
+
+    /* ── Stories page (st.*) ─────────────────────────────────────────────── */
+
+    /* Meta */
+    'st.meta.title':       '故事分享｜阿弥陀佛慈善敬老院',
+    'st.meta.description': '来自长者、家庭及志愿者的真实故事——他们的生命因阿弥陀佛老人院而改变。',
+
+    /* Hero */
+    'st.hero.pill': '<i class="fa fa-heart"></i> 每一个生命，都值得被看见',
+    'st.hero.h1':   '来自敬老院的故事',
+    'st.hero.p':    '每一位走进我们大门的长者，都承载着一生的故事。这些是他们与我们分享的故事：关于坚韧、尊严，以及被关爱所带来的温暖力量。',
+
+    /* Featured Stories section */
+    'st.feat.tag': '精选故事',
+    'st.feat.h2':  '来自院舍的真实心声',
+
+    /* Featured Story 1 — Uncle Loh Keng Seng */
+    'st.feat1.name': '罗庆成叔叔',
+    'st.feat1.meta': '<i class="fa fa-location-dot"></i> 阿弥陀佛慈善敬老院',
+    'st.feat1.cat':  '<i class="fa fa-hand-holding-heart"></i> 回馈社会',
+    'st.feat1.h3':   '他默默奉献多年，现在轮到我们回报他了。',
+    'st.feat1.p':    '多年来，罗叔叔默默付出，修理旧电器，将其收集回收，并将每一分钱收益捐回给老人院。他从不求认可，从不期望任何回报，只是默默付出。如今，命运完成了一个温暖的循环。这位曾经照顾我们的人，如今已成为我们这个大家庭的一员。现在轮到我们照顾他了，我们怀着满满的爱与感恩，细心照顾他。',
+
+    /* Featured Story 2 — Aunty Wong Pek Lin */
+    'st.feat2.name': '王碧莲阿姨',
+    'st.feat2.meta': '<i class="fa fa-location-dot"></i> 阿弥陀佛慈善敬老院',
+    'st.feat2.cat':  '<i class="fa fa-people-roof"></i> 社区',
+    'st.feat2.h3':   '她独自来到这里，却成了这个家的灵魂人物。',
+    'st.feat2.p':    '王阿姨来到我们这里时没有任何家人可以依靠。我们确保她永远不会感到被遗弃，永远不会独自面对这个世界。而我们发现的，是一位充满生气、欢笑和无尽故事的女性。她是这个大家庭最温暖的核心，分享着她的经历，照亮她所到之处的每个角落。她也许来时一无所有，但她给这个家带来了无价的东西：她的温暖、她的喜悦和她的精神。',
+
+    /* Featured Story 3 — Uncle Hok Keng Sang */
+    'st.feat3.name': '霍庆生叔叔',
+    'st.feat3.meta': '<i class="fa fa-location-dot"></i> 阿弥陀佛慈善敬老院',
+    'st.feat3.cat':  '<i class="fa fa-heart-pulse"></i> 坚韧',
+    'st.feat3.h3':   '中风夺走了他一半的力气，却夺不走他的精神。',
+    'st.feat3.p':    '55 岁时，中风永远改变了霍叔叔的生活。不幸的是，他独自面对这一切。是慈济发现了他，让我们有机会照顾他。他话不多，但他的行动说明一切。每天他起床、行走、锻炼，身体一半虚弱但精神依然不屈。他在力所能及时帮助照护人员，在访客来临时温暖地微笑。他无声的坚韧提醒我们，只要被爱包围，再艰难的人生也不会失去希望。',
+
+    /* Resident Stories section paragraph */
+    'st.stories.p': '每位居民都带着独特的故事入住。以下是这些长者的真实心声，他们也是我们坚持付出的原因。',
+
+    /* Numbers band */
+    'st.stat.nursing.label':    '护理与支持',
+    'st.stat.dedication.label': '用心守护',
+
+    /* Families & Volunteers */
+    'st.vol.tag': '家庭与志愿者',
+    'st.vol.h2':  '一路同行的家人与伙伴',
+    'st.vol.p':   '我们的故事，也来自每一个信任我们的家庭，以及每一位无私奉献的志愿者。',
+
+    'st.vol1.h4': '女儿的安心',
+    'st.vol1.p':  '我父亲很固执，拒绝接受任何帮助。但在阿弥陀佛入住短短两周后，他已经主动邀请工作人员陪他散步。自从他搬进去，我再也没有为他担心过一次。',
+    'st.vol1.by': '<i class="fa fa-user"></i> Sarah Ooi · 居民之女，八打灵再也',
+
+    'st.vol2.h4': '为什么我一直坚持回来',
+    'st.vol2.p':  '我在大学时开始在这里做志愿者，那是四年前的事。每个星期六我都带领音乐活动，居民们脸上的喜悦胜过我曾经获得的任何考试成绩。',
+    'st.vol2.by': '<i class="fa fa-user"></i> Amirul Hadi · 志愿者，马来亚大学学生',
+
+    'st.vol3.h4': '超越期待的医疗照护',
+    'st.vol3.p':  '作为一名退休护士，我起初持怀疑态度。但这里的护理标准——详尽的护理交班记录、每一个细微动作中的爱心——丝毫不逊于我 30 年护理生涯中见过的最佳照护标准。',
+    'st.vol3.by': '<i class="fa fa-user"></i> Fatimah 护士（退休）· 医疗志愿者',
+
+    'st.vol4.h4': '放心地奉献',
+    'st.vol4.p':  '我每月捐款，总想知道钱用在哪里。阿弥陀佛每季度给我一份详细说明。知道我的每一令吉买来了餐食、药物和笑容，这让我持续捐献。',
+    'st.vol4.by': '<i class="fa fa-user"></i> 陈志荣 · 月度捐款人，巴生',
+
+    /* Latest Scenes */
+    'st.scenes.tag':   '<i class="fa fa-images"></i> 最新快照',
+    'st.scenes.h2':    '来自老人院的最新快照',
+    'st.scenes.p':     '阿弥陀佛基金会日常生活的最新片刻，由团队持续记录与分享。',
+    'st.scenes.empty': '暂无照片，请稍后再来查看。',
+    'st.scenes.error': '照片目前无法加载。',
+
+    /* Photo Gallery */
+    'st.gal.tag': '<i class="fa fa-camera"></i> 图片展览',
+    'st.gal.h2':  '镜头下的院所生活',
+    'st.gal.p':   '阿弥陀佛慈善敬老院日常生活的真实瞬间：照护、社区、信仰，以及在爱与陪伴中安然老去的尊严与从容。',
+
+    /* Photo captions */
+    'st.cap1':  '<i class="fa fa-people-roof"></i> 社区与共融',
+    'st.cap2':  '<i class="fa fa-heart"></i> 居民写照',
+    'st.cap3':  '<i class="fa fa-stethoscope"></i> 医疗保健',
+    'st.cap4':  '<i class="fa fa-heart-pulse"></i> 每日健康检查',
+    'st.cap5':  '<i class="fa fa-hands-holding-heart"></i> 悉心照护',
+    'st.cap6':  '<i class="fa fa-pills"></i> 医疗支持',
+    'st.cap7':  '<i class="fa fa-om"></i> 心灵圣所',
+    'st.cap8':  '<i class="fa fa-children"></i> 青年探访活动',
+    'st.cap9':  '<i class="fa fa-handshake-angle"></i> 社区联系',
+    'st.cap10': '<i class="fa fa-house-medical"></i> 我们的院所 · 吉隆坡旧巴生路',
+
+    /* Video section */
+    'st.vid.tag':      '<i class="fa fa-film"></i> 来自我们的家',
+    'st.vid.h2':       '走进阿弥陀佛慈善敬老院的日常',
+    'st.vid.p':        '走进我们院所的日常生活，了解那些让它充满家的温度的人们。',
+    'st.vid1.label':   '<i class="fa fa-play"></i> 我们的日常',
+    'st.vid2.label':   '<i class="fa fa-play"></i> 我们的社区',
+    'st.vid.fallback': '您的浏览器不支持视频标签。',
+
+    /* CTA Band */
+    'st.cta.h2':   '一起书写下一个温暖故事。',
+    'st.cta.p':    '您的捐款、您的时间，或仅仅是转介一位有需要的长者——每一个善举，都能为长者的人生写下新的希望篇章。',
+    'st.cta.wa':   '<i class="fab fa-whatsapp"></i> 联系我们的 WhatsApp',
+    'st.cta.help': '<i class="fa fa-hand-holding-heart"></i> 寻求帮助'
   };
 
   /* ─── Core: apply / restore translations ────────────────────────────────── */
@@ -231,10 +333,12 @@
       }
     });
 
-    /* Page meta */
+    /* Page meta — use page-specific overrides if declared on <html> */
     if (lang === 'zh') {
-      document.title = ZH['meta.title'];
-      if (_descMeta) _descMeta.setAttribute('content', ZH['meta.description']);
+      var titleKey = document.documentElement.dataset.zhTitle || 'meta.title';
+      var descKey  = document.documentElement.dataset.zhDesc  || 'meta.description';
+      document.title = ZH[titleKey] || ZH['meta.title'];
+      if (_descMeta) _descMeta.setAttribute('content', ZH[descKey] || ZH['meta.description']);
       document.documentElement.lang = 'zh';
     } else {
       document.title = _origTitle;
