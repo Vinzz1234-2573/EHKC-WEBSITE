@@ -1,8 +1,5 @@
 {
   "cleanUrls": true,
-  "rewrites": [
-    { "source": "/", "destination": "/main_page" }
-  ],
   "redirects": [
     { "source": "/main_page", "destination": "/", "permanent": true }
   ]
