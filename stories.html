@@ -300,7 +300,6 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 .num-icon{width:44px;height:44px;border-radius:10px;background:rgba(196,122,74,.18);border:1px solid rgba(196,122,74,.3);display:flex;align-items:center;justify-content:center;color:var(--teal-400);font-size:1.05rem;flex-shrink:0}
 </style>
 <link rel="stylesheet" href="responsive.css">
-<script src="lang.js"></script>
 </head>
 <body>
 
@@ -320,9 +319,9 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
       <a href="/jobs" data-i18n="nav.careers">Careers</a>
     </nav>
     <div class="hdr-r">
-      <button class="btn btn-ghost lang-toggle" id="lang-toggle-desk">中文</button>
-      <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="btn btn-ghost" data-i18n-html="nav.seekHelp"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
-      <div id="nav-auth"><a href="/login" class="btn btn-ghost" data-i18n-html="nav.signIn"><i class="fa fa-user"></i> Sign In</a></div>
+      <button class="lang-toggle btn btn-ghost" id="lang-toggle-desk">中文</button>
+      <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="btn btn-ghost"><i class="fa fa-hand-holding-medical"></i> <span data-i18n="nav.seekHelp">Seek Help</span></a>
+      <div id="nav-auth"><a href="/login" class="btn btn-ghost"><i class="fa fa-user"></i> <span data-i18n="nav.signIn">Sign In</span></a></div>
       <a href="https://m.amitabhafoundation.my/en/donation" class="btn btn-donate" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> <span data-i18n="nav.donate">Donate</span></a>
       <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
@@ -335,10 +334,10 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 
     <a href="/blog" data-i18n="nav.news">News</a>
     <a href="/jobs" data-i18n="nav.careers">Careers</a>
-    <a href="/login" id="mob-signin" data-i18n-html="nav.signIn"><i class="fa fa-user"></i> Sign In</a>
-    <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." style="color:var(--teal-700);font-weight:700" data-i18n-html="nav.seekHelp"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
+    <a href="/login" id="mob-signin"><i class="fa fa-user"></i> <span data-i18n="nav.signIn">Sign In</span></a>
+    <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." style="color:var(--teal-700);font-weight:700"><i class="fa fa-hand-holding-medical"></i> <span data-i18n="nav.seekHelp">Seek Help</span></a>
     <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1b25;font-weight:700"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img-plain" alt=""> <span data-i18n="nav.donateNow">Donate Now</span></a>
-    <button class="btn btn-ghost lang-toggle" style="margin-top:.5rem;align-self:flex-start">中文</button>
+    <button class="lang-toggle btn btn-ghost" style="width:100%;text-align:left;margin-top:.5rem">中文</button>
   </nav>
 </header>
 
@@ -658,7 +657,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
     <div class="cta-btns">
       <a href="https://m.amitabhafoundation.my/en/donation" class="btn-cta-gold" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> <span data-i18n="nav.donateNow">Donate Now</span></a>
       <a href="https://wa.me/60127762911?text=Hello%2C%20I%20need%20help%20with%20Elder%20Support." class="btn-cta-wa" target="_blank" rel="noopener" data-i18n-html="st.cta.wa"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
-      <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="btn-cta-out" data-i18n-html="st.cta.help"><i class="fa fa-hand-holding-heart"></i> Seek Help</a>
+      <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="btn-cta-out"><i class="fa fa-hand-holding-heart"></i> <span data-i18n="cta.seekHelp">Seek Help</span></a>
     </div>
   </div>
 </div>
@@ -712,6 +711,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
   <a class="float-donate" href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener"><i class="fa fa-hand-holding-heart"></i> <span class="fl-label" data-i18n="float.donate">Donate Now</span></a>
 </div>
 
+<script src="lang.js"></script>
 <script>
 /* Featured story rotator */
 (function(){

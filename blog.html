@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-zh-title="blog.meta.title" data-zh-desc="blog.meta.description">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
@@ -218,51 +218,53 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
       <img src="Photo/AF_EH%20ARGB%20LOGO%20.png" alt="Amitabha Foundation Elder Home">
     </a>
     <nav class="nav">
-      <a href="/">Home</a>
-      <a href="/services">Services</a>
-      <a href="/about">About</a>
-      <a href="/stories">Stories</a>
+      <a href="/" data-i18n="nav.home">Home</a>
+      <a href="/services" data-i18n="nav.services">Services</a>
+      <a href="/about" data-i18n="nav.about">About</a>
+      <a href="/stories" data-i18n="nav.stories">Stories</a>
 
-      <a href="/blog" class="on">News</a>
-      <a href="/jobs">Careers</a>
+      <a href="/blog" class="on" data-i18n="nav.news">News</a>
+      <a href="/jobs" data-i18n="nav.careers">Careers</a>
     </nav>
     <div class="hdr-r">
-      <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="btn btn-ghost"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
-      <div id="nav-auth"><a href="/login" class="btn btn-ghost"><i class="fa fa-user"></i> Sign In</a></div>
-      <a href="https://m.amitabhafoundation.my/en/donation" class="btn btn-coral" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> Donate</a>
+      <button class="lang-toggle btn btn-ghost" id="lang-toggle-desk">中文</button>
+      <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="btn btn-ghost"><i class="fa fa-hand-holding-medical"></i> <span data-i18n="nav.seekHelp">Seek Help</span></a>
+      <div id="nav-auth"><a href="/login" class="btn btn-ghost"><i class="fa fa-user"></i> <span data-i18n="nav.signIn">Sign In</span></a></div>
+      <a href="https://m.amitabhafoundation.my/en/donation" class="btn btn-coral" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> <span data-i18n="nav.donate">Donate</span></a>
       <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
   <nav class="mob-menu" id="mob-menu">
-    <a href="/">Home</a>
-    <a href="/services">Services</a>
-    <a href="/about">About</a>
-    <a href="/stories">Stories</a>
+    <a href="/" data-i18n="nav.home">Home</a>
+    <a href="/services" data-i18n="nav.services">Services</a>
+    <a href="/about" data-i18n="nav.about">About</a>
+    <a href="/stories" data-i18n="nav.stories">Stories</a>
 
-    <a href="/blog" class="on">News</a>
-    <a href="/jobs">Careers</a>
-    <a href="/login" id="mob-signin"><i class="fa fa-user"></i> Sign In</a>
-    <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." style="color:var(--teal-700);font-weight:700"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
-    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1b25;font-weight:700"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img-plain" alt=""> Donate Now</a>
+    <a href="/blog" class="on" data-i18n="nav.news">News</a>
+    <a href="/jobs" data-i18n="nav.careers">Careers</a>
+    <a href="/login" id="mob-signin"><i class="fa fa-user"></i> <span data-i18n="nav.signIn">Sign In</span></a>
+    <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." style="color:var(--teal-700);font-weight:700"><i class="fa fa-hand-holding-medical"></i> <span data-i18n="nav.seekHelp">Seek Help</span></a>
+    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1b25;font-weight:700"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img-plain" alt=""> <span data-i18n="nav.donateNow">Donate Now</span></a>
+    <button class="lang-toggle btn btn-ghost" style="width:100%;text-align:left;margin-top:.5rem">中文</button>
   </nav>
 </header>
 
 <!-- PAGE TITLE -->
 <section class="page-title-section">
   <div class="page-title-inner">
-    <h1>News &amp; Updates</h1>
+    <h1 data-i18n="blog.hero.h1">News &amp; Updates</h1>
     <div class="title-accent"></div>
-    <p>Stay informed about our latest events, announcements and community programmes at Amitabha Foundation Elder Care.</p>
+    <p data-i18n="blog.hero.p">Stay informed about our latest events, announcements and community programmes at Amitabha Foundation Elder Care.</p>
   </div>
 </section>
 
 <!-- FILTER BAR -->
 <div class="filter-bar" role="group" aria-label="Filter posts by category">
-  <button class="filter-btn active" data-cat="All" onclick="setFilter('All',this)">All</button>
-  <button class="filter-btn" data-cat="Event" onclick="setFilter('Event',this)">Events</button>
-  <button class="filter-btn" data-cat="News" onclick="setFilter('News',this)">News</button>
-  <button class="filter-btn" data-cat="Announcement" onclick="setFilter('Announcement',this)">Announcements</button>
-  <button class="filter-btn" data-cat="Fundraising" onclick="setFilter('Fundraising',this)">Fundraising</button>
+  <button class="filter-btn active" data-cat="All" onclick="setFilter('All',this)"><span data-i18n="blog.filter.all">All</span></button>
+  <button class="filter-btn" data-cat="Event" onclick="setFilter('Event',this)"><span data-i18n="blog.cat.event">Events</span></button>
+  <button class="filter-btn" data-cat="News" onclick="setFilter('News',this)"><span data-i18n="blog.cat.news">News</span></button>
+  <button class="filter-btn" data-cat="Announcement" onclick="setFilter('Announcement',this)"><span data-i18n="blog.cat.announcement">Announcements</span></button>
+  <button class="filter-btn" data-cat="Fundraising" onclick="setFilter('Fundraising',this)"><span data-i18n="blog.cat.fundraising">Fundraising</span></button>
 </div>
 
 <!-- POSTS GRID -->
@@ -275,7 +277,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
   <div class="foot-top">
     <div class="foot-brand">
       <a href="https://amitabhafoundation.my/" target="_blank" rel="noopener"><img src="Photo/AF_EH%20ARGB%20LOGO%20.png" alt="Amitabha Foundation"></a>
-      <p>Amitabha Foundation Elder Home. 24/7 compassionate care, financial assistance, and home placement for seniors in Kuala Lumpur. Est. 2000.</p>
+      <p data-i18n="foot.p">Amitabha Foundation Elder Home. 24/7 compassionate care, financial assistance, and home placement for seniors in Kuala Lumpur. Est. 2000.</p>
       <div class="foot-soc">
         <a href="https://www.facebook.com/people/Amitabha-Foundation-Elder-Home/61578688747686/" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
         <a href="https://www.instagram.com/amitabhafoundation" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
@@ -284,32 +286,32 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
       </div>
     </div>
     <div class="foot-col">
-      <h4>The Home</h4>
-      <a href="/faq">FAQ</a>
-      <a href="/blog">News</a>
-      <a href="/">Home</a>
-      <a href="/about">About</a>
-      <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener">Donate</a>
+      <h4 data-i18n="foot.c1.h4">The Home</h4>
+      <a href="/faq" data-i18n="foot.c1.faq">FAQ</a>
+      <a href="/blog" data-i18n="foot.c1.news">News</a>
+      <a href="/" data-i18n="foot.c1.home">Home</a>
+      <a href="/about" data-i18n="foot.c1.about">About</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" data-i18n="foot.c1.donate">Donate</a>
 
-      <a href="/services">Services</a>
+      <a href="/services" data-i18n="foot.c1.services">Services</a>
     </div>
     <div class="foot-col">
-      <h4><a href="https://amitabhafoundation.my/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Amitabha Foundation</a></h4>
-      <a href="/jobs">Careers</a>
-      <a href="https://wa.me/60127762911" target="_blank" rel="noopener">Volunteer</a>
-      <a href="https://amitabhafoundation.my/" target="_blank" rel="noopener">Dialysis Centre</a>
-      <a href="https://amitabhafoundation.my/" target="_blank" rel="noopener">Children's Home</a>
+      <h4><a href="https://amitabhafoundation.my/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none" data-i18n="foot.c2.h4">Amitabha Foundation</a></h4>
+      <a href="/jobs" data-i18n="foot.c2.careers">Careers</a>
+      <a href="https://wa.me/60127762911" target="_blank" rel="noopener" data-i18n="foot.c2.volunteer">Volunteer</a>
+      <a href="https://amitabhafoundation.my/" target="_blank" rel="noopener" data-i18n="foot.c2.dialysis">Dialysis Centre</a>
+      <a href="https://amitabhafoundation.my/" target="_blank" rel="noopener" data-i18n="foot.c2.children">Children's Home</a>
     </div>
     <div class="foot-col">
-      <h4>Contact</h4>
+      <h4 data-i18n="foot.c3.h4">Contact</h4>
       <div class="fci"><i class="fa fa-phone"></i><a href="tel:+60378903700">+603-7890 3700</a></div>
       <div class="fci"><i class="fa fa-headset"></i><a href="tel:+60127762911">012-776 2911 (hotline)</a></div>
-      <div class="fci"><i class="fa fa-clock"></i><span>Mon–Sun 9am–5pm</span></div>
+      <div class="fci"><i class="fa fa-clock"></i><span data-i18n="foot.c3.hours">Mon–Sun 9am–5pm</span></div>
       <div class="fci"><i class="fa fa-location-dot"></i><span>A14, Jalan Rukun 7, Taman Gembira, 58200 Kuala Lumpur</span></div>
     </div>
   </div>
   <div class="foot-bot">
-    <p>© 2026 Amitabha Foundation · Elder Care Programme · All rights reserved.</p>
+    <p data-i18n="foot.copyright">© 2026 Amitabha Foundation · Elder Care Programme · All rights reserved.</p>
   </div>
 </footer>
 
@@ -341,7 +343,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
             <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
           </svg>
-          View Full Details
+          <span data-i18n="blog.modal.viewFull">View Full Details</span>
         </a>
       </div>
     </div>
@@ -350,7 +352,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 
 <div class="float-bar">
   <a class="float-wa" href="https://wa.me/60127762911" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> <span class="fl-label">WhatsApp</span></a>
-  <a class="float-donate" href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener"><i class="fa fa-hand-holding-heart"></i> <span class="fl-label">Donate Now</span></a>
+  <a class="float-donate" href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener"><i class="fa fa-hand-holding-heart"></i> <span class="fl-label" data-i18n="float.donate">Donate Now</span></a>
 </div>
 
 <script>
@@ -365,6 +367,11 @@ window.addEventListener('scroll',()=>{hdr.classList.toggle('scrolled',window.scr
 /* State */
 let _allPosts=[];
 let activeFilter='All';
+
+/* i18n helper for JS-generated strings */
+function tt(en,zh){ return localStorage.getItem('site_lang')==='zh' ? zh : en; }
+const CAT_ZH={Event:'活动',News:'新闻',Announcement:'公告',Fundraising:'筹款'};
+function catLabel(cat){ return tt(cat, CAT_ZH[cat]||cat); }
 
 /* Filter */
 function setFilter(cat,btn){
@@ -422,13 +429,13 @@ function buildCard(p,i){
     <div class="card-img">${imgHtml}</div>
     <div class="card-body">
       <div class="card-meta">
-        <span class="cat-badge cat-${escAttr(cat)}">${escHtml(cat)}</span>
+        <span class="cat-badge cat-${escAttr(cat)}">${escHtml(catLabel(cat))}</span>
         ${dateStr?`<span class="card-date">${escHtml(dateStr)}</span>`:''}
         ${evtDate}
       </div>
       <h3 class="card-title">${escHtml(p.title_en||'Untitled')}</h3>
       ${exc?`<p class="card-excerpt">${escHtml(exc)}</p>`:''}
-      <span class="card-read-more" aria-hidden="true">Read more
+      <span class="card-read-more" aria-hidden="true">${tt('Read more','阅读更多')}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
         </svg>
@@ -439,14 +446,16 @@ function buildCard(p,i){
 
 function buildEmpty(){
   const isFiltered=activeFilter!=='All';
+  const isZh=localStorage.getItem('site_lang')==='zh';
+  const noCatTitle=isZh?('暂无'+catLabel(activeFilter)+'文章'):('No '+activeFilter+' posts yet');
   return`<div class="empty-state">
     <div class="empty-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
       <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/>
       <path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/>
     </svg></div>
-    <h3>${isFiltered?'No '+activeFilter+' posts yet':'No posts yet'}</h3>
-    <p>${isFiltered?'There are currently no posts in this category. Check back soon or browse all updates.':'We have not published any news or updates yet. Check back soon!'}</p>
-    ${isFiltered?`<button class="empty-cta" onclick="setFilter('All',document.querySelector('[data-cat=All]'))">View all posts</button>`:`<a class="empty-cta" href="/">Visit main site</a>`}
+    <h3>${isFiltered?escHtml(noCatTitle):tt('No posts yet','暂无文章')}</h3>
+    <p>${isFiltered?tt('There are currently no posts in this category. Check back soon or browse all updates.','此类别目前暂无文章，请稍后再来查看，或浏览所有新闻与动态。'):tt('We have not published any news or updates yet. Check back soon!','我们尚未发布任何新闻或动态，请稍后再来查看！')}</p>
+    ${isFiltered?`<button class="empty-cta" onclick="setFilter('All',document.querySelector('[data-cat=All]'))">${tt('View all posts','查看所有文章')}</button>`:`<a class="empty-cta" href="/">${tt('Visit main site','访问主网站')}</a>`}
   </div>`;
 }
 
@@ -486,7 +495,7 @@ function escAttr(s){return String(s).replace(/"/g,'&quot;').replace(/'/g,'&#39;'
 /* Load posts from Supabase */
 async function loadPosts(){
   const grid=document.getElementById('posts-grid');
-  grid.innerHTML='<div class="empty-state"><div class="empty-icon"><i class="fa fa-spinner fa-spin" style="font-size:2rem;color:var(--teal-700)"></i></div><p style="color:var(--muted);margin-top:.5rem">Loading…</p></div>';
+  grid.innerHTML=`<div class="empty-state"><div class="empty-icon"><i class="fa fa-spinner fa-spin" style="font-size:2rem;color:var(--teal-700)"></i></div><p style="color:var(--muted);margin-top:.5rem">${tt('Loading…','加载中…')}</p></div>`;
   try{
     const{data:posts,error}=await sb.from('posts').select('*').order('posted',{ascending:false});
     if(error)throw error;
@@ -511,6 +520,11 @@ loadPosts();
   if (authEl) authEl.innerHTML = `<a href="${dest}" class="btn btn-ghost"><i class="fa fa-user"></i> ${first}</a>`;
   if (mobEl)  { mobEl.href = dest; mobEl.innerHTML = `<i class="fa fa-user"></i> ${first}`; }
 })();
+</script>
+<script src="lang.js"></script>
+<script>
+if (typeof initLang === 'function') initLang();
+document.querySelectorAll('.lang-toggle').forEach(function(btn){ btn.addEventListener('click', function(){ renderGrid(); }); });
 </script>
 <script src="animations.js"></script>
 </body>

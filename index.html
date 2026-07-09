@@ -1491,7 +1491,6 @@ h2.section-h {
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="supabase-config.js"></script>
-<script src="lang.js"></script>
 <script>
 /* Header scroll + burger */
 const hdr = document.getElementById('hdr');
@@ -2062,6 +2061,7 @@ if (!_pr) createDraggable('.float-donate', { container: document.documentElement
   }
 }
 </script>
-<script>initLang();</script>
+<script src="lang.js"></script>
+<script>if (typeof initLang === 'function') initLang();</script>
 </body>
 </html>

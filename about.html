@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-zh-title="about.meta.title" data-zh-desc="about.meta.description">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -247,42 +247,44 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
       <img src="Photo/AF_EH%20ARGB%20LOGO%20.png" alt="Amitabha Foundation Elder Home">
     </a>
     <nav class="nav">
-      <a href="/">Home</a>
-      <a href="/services">Services</a>
-      <a href="/about" class="on">About</a>
-      <a href="/stories">Stories</a>
+      <a href="/" data-i18n="nav.home">Home</a>
+      <a href="/services" data-i18n="nav.services">Services</a>
+      <a href="/about" class="on" data-i18n="nav.about">About</a>
+      <a href="/stories" data-i18n="nav.stories">Stories</a>
 
-      <a href="/blog">News</a>
-      <a href="/jobs">Careers</a>
+      <a href="/blog" data-i18n="nav.news">News</a>
+      <a href="/jobs" data-i18n="nav.careers">Careers</a>
     </nav>
     <div class="hdr-r">
-      <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="btn btn-ghost"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
-      <div id="nav-auth"><a href="/login" class="btn btn-ghost"><i class="fa fa-user"></i> Sign In</a></div>
-      <a href="https://m.amitabhafoundation.my/en/donation" class="btn btn-coral" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> Donate</a>
+      <button class="lang-toggle btn btn-ghost" id="lang-toggle-desk">中文</button>
+      <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="btn btn-ghost"><i class="fa fa-hand-holding-medical"></i> <span data-i18n="nav.seekHelp">Seek Help</span></a>
+      <div id="nav-auth"><a href="/login" class="btn btn-ghost"><i class="fa fa-user"></i> <span data-i18n="nav.signIn">Sign In</span></a></div>
+      <a href="https://m.amitabhafoundation.my/en/donation" class="btn btn-coral" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> <span data-i18n="nav.donate">Donate</span></a>
       <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
   <nav class="mob-menu" id="mob-menu">
-    <a href="/">Home</a>
-    <a href="/services">Services</a>
-    <a href="/about">About</a>
-    <a href="/stories">Stories</a>
+    <a href="/" data-i18n="nav.home">Home</a>
+    <a href="/services" data-i18n="nav.services">Services</a>
+    <a href="/about" data-i18n="nav.about">About</a>
+    <a href="/stories" data-i18n="nav.stories">Stories</a>
 
-    <a href="/blog">News</a>
-    <a href="/jobs">Careers</a>
-    <a href="/login" id="mob-signin"><i class="fa fa-user"></i> Sign In</a>
-    <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." style="color:var(--teal-700);font-weight:700"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
-    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1b25;font-weight:700"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img-plain" alt=""> Donate Now</a>
+    <a href="/blog" data-i18n="nav.news">News</a>
+    <a href="/jobs" data-i18n="nav.careers">Careers</a>
+    <a href="/login" id="mob-signin"><i class="fa fa-user"></i> <span data-i18n="nav.signIn">Sign In</span></a>
+    <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." style="color:var(--teal-700);font-weight:700"><i class="fa fa-hand-holding-medical"></i> <span data-i18n="nav.seekHelp">Seek Help</span></a>
+    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1b25;font-weight:700"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img-plain" alt=""> <span data-i18n="nav.donateNow">Donate Now</span></a>
+    <button class="lang-toggle btn btn-ghost" style="width:100%;text-align:left;margin-top:.5rem">中文</button>
   </nav>
 </header>
 
 <!-- PAGE HERO -->
 <div class="page-hero">
   <div class="page-hero-in">
-    <div class="page-pill"><i class="fa fa-heart"></i> Our Story</div>
-    <h1>In Compassion,<br>We <em>Change The World</em></h1>
-    <p>Founded in 2000, Amitabha Foundation has dedicated over two decades to giving Malaysia's elderly the dignity, love, and care they truly deserve.</p>
-    <div class="breadcrumb"><a href="/">Home</a><i class="fa fa-chevron-right"></i><span>About</span></div>
+    <div class="page-pill"><i class="fa fa-heart"></i> <span data-i18n="about.hero.pill">Our Story</span></div>
+    <h1 data-i18n-html="about.hero.h1">In Compassion,<br>We <em>Change The World</em></h1>
+    <p data-i18n="about.hero.p">Founded in 2000, Amitabha Foundation has dedicated over two decades to giving Malaysia's elderly the dignity, love, and care they truly deserve.</p>
+    <div class="breadcrumb"><a href="/" data-i18n="nav.home">Home</a><i class="fa fa-chevron-right"></i><span data-i18n="nav.about">About</span></div>
   </div>
 </div>
 
@@ -294,14 +296,14 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
         <img src="Photo/Ehkc%20photo/Gemini_Generated_Image_gl22dmgl22dmgl22.png" alt="Caretakers of Amitabha Foundation Elder Home" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;display:block">
       </div>
       <div class="aos-r d1">
-        <div class="eyebrow">The Heart of Amitabha</div>
-        <h2 class="section-h">Our Story &amp;<br><em>Our Mission</em></h2>
-        <p class="section-p">Founded in 2000, Amitabha Foundation Elder Home (Old Klang Road) has been providing four daily meals, 24/7 round-the-clock care, and spiritual support to seniors, so that every elder lives their golden years with dignity. Donations are welcome and are tax-deductible.</p>
+        <div class="eyebrow" data-i18n="about.story.eyebrow">The Heart of Amitabha</div>
+        <h2 class="section-h" data-i18n-html="about.story.h2">Our Story &amp;<br><em>Our Mission</em></h2>
+        <p class="section-p" data-i18n="about.story.p">Founded in 2000, Amitabha Foundation Elder Home (Old Klang Road) has been providing four daily meals, 24/7 round-the-clock care, and spiritual support to seniors, so that every elder lives their golden years with dignity. Donations are welcome and are tax-deductible.</p>
         <ul class="value-list">
-          <li class="v-item"><div class="v-icon"><i class="fa fa-calendar-check"></i></div><span><strong>Est. 2000:</strong> Over 25 years of dedicated elder care on Old Klang Road, Kuala Lumpur.</span></li>
-          <li class="v-item"><div class="v-icon"><i class="fa fa-utensils"></i></div><span><strong>4 Meals Daily:</strong> Nutritious meals served four times a day to every resident in our care.</span></li>
-          <li class="v-item"><div class="v-icon"><i class="fa fa-shield-heart"></i></div><span><strong>24/7 Care &amp; Spiritual Support:</strong> Full-time staff and compassionate spiritual guidance throughout.</span></li>
-          <li class="v-item"><div class="v-icon"><i class="fa fa-receipt"></i></div><span><strong>Tax-Deductible Donations:</strong> Your contributions are welcome and qualify for tax exemption.</span></li>
+          <li class="v-item"><div class="v-icon"><i class="fa fa-calendar-check"></i></div><span data-i18n-html="about.value1"><strong>Est. 2000:</strong> Over 25 years of dedicated elder care on Old Klang Road, Kuala Lumpur.</span></li>
+          <li class="v-item"><div class="v-icon"><i class="fa fa-utensils"></i></div><span data-i18n-html="about.value2"><strong>4 Meals Daily:</strong> Nutritious meals served four times a day to every resident in our care.</span></li>
+          <li class="v-item"><div class="v-icon"><i class="fa fa-shield-heart"></i></div><span data-i18n-html="about.value3"><strong>24/7 Care &amp; Spiritual Support:</strong> Full-time staff and compassionate spiritual guidance throughout.</span></li>
+          <li class="v-item"><div class="v-icon"><i class="fa fa-receipt"></i></div><span data-i18n-html="about.value4"><strong>Tax-Deductible Donations:</strong> Your contributions are welcome and qualify for tax exemption.</span></li>
         </ul>
       </div>
     </div>
@@ -312,42 +314,42 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 <section class="sec sec-alt">
   <div class="wrap">
     <div style="text-align:center;margin-bottom:3rem">
-      <div class="eyebrow aos" style="justify-content:center">Our Impact</div>
-      <h2 class="section-h aos d1">Over Two Decades of <em>Compassionate Care</em> 💕</h2>
+      <div class="eyebrow aos" style="justify-content:center" data-i18n="about.mile.eyebrow">Our Impact</div>
+      <h2 class="section-h aos d1" data-i18n-html="about.mile.h2">Over Two Decades of <em>Compassionate Care</em> 💕</h2>
     </div>
     <div class="milestones-grid">
       <div class="milestone-card aos">
         <div class="milestone-icon"><img src="Photo/Repair%20scenshot%20website/Elderly%20Home%20Placement.png" alt="Elderly Home Placement" style="width:26px;height:26px;object-fit:contain;filter:brightness(0) invert(1)"></div>
         <div class="milestone-num">25<sup>+</sup></div>
-        <div class="milestone-label">Years of Service</div>
+        <div class="milestone-label" data-i18n="about.mile1.label">Years of Service</div>
       </div>
       <div class="milestone-card aos d1">
         <div class="milestone-icon"><i class="fa fa-people-group"></i></div>
         <div class="milestone-num">550<sup>+</sup></div>
-        <div class="milestone-label">Seniors Supported</div>
+        <div class="milestone-label" data-i18n="about.mile2.label">Seniors Supported</div>
       </div>
       <div class="milestone-card aos d2">
         <div class="milestone-icon"><i class="fa fa-clock"></i></div>
         <div class="milestone-num">24<sup>/7</sup></div>
-        <div class="milestone-label">Hours of Care Daily</div>
+        <div class="milestone-label" data-i18n="about.mile3.label">Hours of Care Daily</div>
       </div>
       <div class="milestone-card aos d3">
         <div class="milestone-icon"><i class="fa fa-bowl-food"></i></div>
         <div class="milestone-num">4<sup>x</sup></div>
-        <div class="milestone-label">Nutritious Meals / Day</div>
+        <div class="milestone-label" data-i18n="about.mile4.label">Nutritious Meals / Day</div>
       </div>
     </div>
 
     <div class="mission-strip">
       <div>
-        <p class="mission-quote">"Every elderly person deserves to live with dignity, respect, and the warmth of a caring family, and we are committed to making that a reality."</p>
-        <p class="mission-attr"><strong>Amitabha Foundation</strong> · Est. 2000, Old Klang Road, KL</p>
+        <p class="mission-quote" data-i18n="about.mission.quote">"Every elderly person deserves to live with dignity, respect, and the warmth of a caring family, and we are committed to making that a reality."</p>
+        <p class="mission-attr" data-i18n-html="about.mission.attr"><strong>Amitabha Foundation</strong> · Est. 2000, Old Klang Road, KL</p>
       </div>
       <div class="mission-points">
-        <div class="mp"><div class="mp-icon"><img src="Photo/Repair%20scenshot%20website/Compassion.png" alt="" style="width:18px;height:18px;object-fit:contain;filter:brightness(0) invert(1)"></div><span>Compassionate, person-centred care for every resident</span></div>
-        <div class="mp"><div class="mp-icon"><i class="fa fa-network-wired"></i></div><span>Collaborative network with partner homes across Malaysia</span></div>
-        <div class="mp"><div class="mp-icon"><i class="fa fa-hand-holding-dollar"></i></div><span>Tax-deductible donations that directly support lives</span></div>
-        <div class="mp"><div class="mp-icon"><i class="fa fa-om"></i></div><span>Spiritual support and meaningful community for seniors</span></div>
+        <div class="mp"><div class="mp-icon"><img src="Photo/Repair%20scenshot%20website/Compassion.png" alt="" style="width:18px;height:18px;object-fit:contain;filter:brightness(0) invert(1)"></div><span data-i18n="about.mp1">Compassionate, person-centred care for every resident</span></div>
+        <div class="mp"><div class="mp-icon"><i class="fa fa-network-wired"></i></div><span data-i18n="about.mp2">Collaborative network with partner homes across Malaysia</span></div>
+        <div class="mp"><div class="mp-icon"><i class="fa fa-hand-holding-dollar"></i></div><span data-i18n="about.mp3">Tax-deductible donations that directly support lives</span></div>
+        <div class="mp"><div class="mp-icon"><i class="fa fa-om"></i></div><span data-i18n="about.mp4">Spiritual support and meaningful community for seniors</span></div>
       </div>
     </div>
   </div>
@@ -356,12 +358,12 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 <!-- CTA BAND -->
 <div class="cta-band">
   <div class="wrap">
-    <h2>Be Part of Our Story</h2>
-    <p>Whether you donate, volunteer, or refer a senior in need; every act of compassion changes a life.</p>
+    <h2 data-i18n="about.cta.h2">Be Part of Our Story</h2>
+    <p data-i18n="about.cta.p">Whether you donate, volunteer, or refer a senior in need; every act of compassion changes a life.</p>
     <div class="cta-btns">
-      <a href="https://m.amitabhafoundation.my/en/donation" class="btn-cta-gold" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> Donate Now</a>
-      <a href="https://wa.me/60127762911?text=Hello%2C%20I%20need%20help%20with%20Elder%20Support." class="btn-cta-wa" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
-      <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="btn-cta-out"><i class="fa fa-hand-holding-heart"></i> Seek Help</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" class="btn-cta-gold" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> <span data-i18n="nav.donateNow">Donate Now</span></a>
+      <a href="https://wa.me/60127762911?text=Hello%2C%20I%20need%20help%20with%20Elder%20Support." class="btn-cta-wa" target="_blank" rel="noopener" data-i18n-html="st.cta.wa"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+      <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="btn-cta-out"><i class="fa fa-hand-holding-heart"></i> <span data-i18n="cta.seekHelp">Seek Help</span></a>
     </div>
   </div>
 </div>
@@ -371,7 +373,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
   <div class="foot-top">
     <div class="foot-brand">
       <a href="https://amitabhafoundation.my/" target="_blank" rel="noopener"><img src="Photo/AF_EH%20ARGB%20LOGO%20.png" alt="Amitabha Foundation"></a>
-      <p>Amitabha Foundation Elder Home. 24/7 compassionate care, financial assistance, and home placement for seniors in Kuala Lumpur. Est. 2000.</p>
+      <p data-i18n="foot.p">Amitabha Foundation Elder Home. 24/7 compassionate care, financial assistance, and home placement for seniors in Kuala Lumpur. Est. 2000.</p>
       <div class="foot-soc">
         <a href="https://www.facebook.com/people/Amitabha-Foundation-Elder-Home/61578688747686/" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
         <a href="https://www.instagram.com/amitabhafoundation" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
@@ -380,38 +382,38 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
       </div>
     </div>
     <div class="foot-col">
-      <h4>The Home</h4>
-      <a href="/faq">FAQ</a>
-      <a href="/blog">News</a>
-      <a href="/">Home</a>
-      <a href="/about">About</a>
-      <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener">Donate</a>
+      <h4 data-i18n="foot.c1.h4">The Home</h4>
+      <a href="/faq" data-i18n="foot.c1.faq">FAQ</a>
+      <a href="/blog" data-i18n="foot.c1.news">News</a>
+      <a href="/" data-i18n="foot.c1.home">Home</a>
+      <a href="/about" data-i18n="foot.c1.about">About</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" data-i18n="foot.c1.donate">Donate</a>
 
-      <a href="/services">Services</a>
+      <a href="/services" data-i18n="foot.c1.services">Services</a>
     </div>
     <div class="foot-col">
-      <h4><a href="https://amitabhafoundation.my/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Amitabha Foundation</a></h4>
-      <a href="/jobs">Careers</a>
-      <a href="https://wa.me/60127762911" target="_blank" rel="noopener">Volunteer</a>
-      <a href="https://amitabhafoundation.my/" target="_blank" rel="noopener">Dialysis Centre</a>
-      <a href="https://amitabhafoundation.my/" target="_blank" rel="noopener">Children's Home</a>
+      <h4><a href="https://amitabhafoundation.my/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none" data-i18n="foot.c2.h4">Amitabha Foundation</a></h4>
+      <a href="/jobs" data-i18n="foot.c2.careers">Careers</a>
+      <a href="https://wa.me/60127762911" target="_blank" rel="noopener" data-i18n="foot.c2.volunteer">Volunteer</a>
+      <a href="https://amitabhafoundation.my/" target="_blank" rel="noopener" data-i18n="foot.c2.dialysis">Dialysis Centre</a>
+      <a href="https://amitabhafoundation.my/" target="_blank" rel="noopener" data-i18n="foot.c2.children">Children's Home</a>
     </div>
     <div class="foot-col">
-      <h4>Contact</h4>
+      <h4 data-i18n="foot.c3.h4">Contact</h4>
       <div class="fci"><i class="fa fa-phone"></i><a href="tel:+60378903700">+603-7890 3700</a></div>
       <div class="fci"><i class="fa fa-headset"></i><a href="tel:+60127762911">012-776 2911 (hotline)</a></div>
-      <div class="fci"><i class="fa fa-clock"></i><span>Mon–Sun 9am–5pm</span></div>
+      <div class="fci"><i class="fa fa-clock"></i><span data-i18n="foot.c3.hours">Mon–Sun 9am–5pm</span></div>
       <div class="fci"><i class="fa fa-location-dot"></i><span>A14, Jalan Rukun 7, Taman Gembira, 58200 Kuala Lumpur</span></div>
     </div>
   </div>
   <div class="foot-bot">
-    <p>© 2026 Amitabha Foundation · Elder Care Programme · All rights reserved.</p>
+    <p data-i18n="foot.copyright">© 2026 Amitabha Foundation · Elder Care Programme · All rights reserved.</p>
   </div>
 </footer>
 
 <div class="float-bar">
   <a class="float-wa" href="https://wa.me/60127762911" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> <span class="fl-label">WhatsApp</span></a>
-  <a class="float-donate" href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener"><i class="fa fa-hand-holding-heart"></i> <span class="fl-label">Donate Now</span></a>
+  <a class="float-donate" href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener"><i class="fa fa-hand-holding-heart"></i> <span class="fl-label" data-i18n="float.donate">Donate Now</span></a>
 </div>
 
 <script>
@@ -435,6 +437,8 @@ document.querySelectorAll('.aos,.aos-l,.aos-r').forEach(el=>aosObs.observe(el));
   if (mobEl)  { mobEl.href = dest; mobEl.innerHTML = `<i class="fa fa-user"></i> ${first}`; }
 })();
 </script>
+<script src="lang.js"></script>
+<script>if (typeof initLang === 'function') initLang();</script>
 <script src="animations.js"></script>
 </body>
 </html>

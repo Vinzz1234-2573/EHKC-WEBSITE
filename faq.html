@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-zh-title="faq.meta.title" data-zh-desc="faq.meta.description">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -258,40 +258,42 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
       <img src="Photo/AF_EH%20ARGB%20LOGO%20.png" alt="Amitabha Foundation Elder Home">
     </a>
     <nav class="nav">
-      <a href="/">Home</a>
-      <a href="/services">Services</a>
-      <a href="/about">About</a>
-      <a href="/stories">Stories</a>
-      <a href="/blog">News</a>
-      <a href="/jobs">Careers</a>
+      <a href="/" data-i18n="nav.home">Home</a>
+      <a href="/services" data-i18n="nav.services">Services</a>
+      <a href="/about" data-i18n="nav.about">About</a>
+      <a href="/stories" data-i18n="nav.stories">Stories</a>
+      <a href="/blog" data-i18n="nav.news">News</a>
+      <a href="/jobs" data-i18n="nav.careers">Careers</a>
     </nav>
     <div class="hdr-r">
-      <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="btn btn-ghost"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
-      <div id="nav-auth"><a href="/login" class="btn btn-ghost"><i class="fa fa-user"></i> Sign In</a></div>
-      <a href="https://m.amitabhafoundation.my/en/donation" class="btn btn-donate" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> Donate</a>
+      <button class="lang-toggle btn btn-ghost" id="lang-toggle-desk">中文</button>
+      <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." class="btn btn-ghost"><i class="fa fa-hand-holding-medical"></i> <span data-i18n="nav.seekHelp">Seek Help</span></a>
+      <div id="nav-auth"><a href="/login" class="btn btn-ghost"><i class="fa fa-user"></i> <span data-i18n="nav.signIn">Sign In</span></a></div>
+      <a href="https://m.amitabhafoundation.my/en/donation" class="btn btn-donate" target="_blank" rel="noopener"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img" alt=""> <span data-i18n="nav.donate">Donate</span></a>
       <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
   <nav class="mob-menu" id="mob-menu">
-    <a href="/">Home</a>
-    <a href="/services">Services</a>
-    <a href="/about">About</a>
-    <a href="/stories">Stories</a>
-    <a href="/blog">News</a>
-    <a href="/jobs">Careers</a>
-    <a href="/login" id="mob-signin"><i class="fa fa-user"></i> Sign In</a>
-    <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." style="color:var(--teal-700);font-weight:700"><i class="fa fa-hand-holding-medical"></i> Seek Help</a>
-    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1b25;font-weight:700"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img-plain" alt=""> Donate Now</a>
+    <a href="/" data-i18n="nav.home">Home</a>
+    <a href="/services" data-i18n="nav.services">Services</a>
+    <a href="/about" data-i18n="nav.about">About</a>
+    <a href="/stories" data-i18n="nav.stories">Stories</a>
+    <a href="/blog" data-i18n="nav.news">News</a>
+    <a href="/jobs" data-i18n="nav.careers">Careers</a>
+    <a href="/login" id="mob-signin"><i class="fa fa-user"></i> <span data-i18n="nav.signIn">Sign In</span></a>
+    <a href="https://wa.me/60127762911?text=I%20need%20help%20with%20elder%20care%20and%20support." style="color:var(--teal-700);font-weight:700"><i class="fa fa-hand-holding-medical"></i> <span data-i18n="nav.seekHelp">Seek Help</span></a>
+    <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" style="color:#ab1b25;font-weight:700"><img src="Photo/Repair%20scenshot%20website/Donation%201.png" class="donate-img-plain" alt=""> <span data-i18n="nav.donateNow">Donate Now</span></a>
+    <button class="lang-toggle btn btn-ghost" style="width:100%;text-align:left;margin-top:.5rem">中文</button>
   </nav>
 </header>
 
 <!-- PAGE HERO -->
 <div class="page-hero">
   <div class="page-hero-in">
-    <div class="page-pill"><i class="fa fa-circle-question"></i> Common Questions</div>
-    <h1>Everything you need<br>to <em>know</em>.</h1>
-    <p>Clear answers about elder care, admission, daily life, and donations at Amitabha Foundation Elder Home.</p>
-    <div class="breadcrumb"><a href="/">Home</a><i class="fa fa-chevron-right"></i><span>FAQ</span></div>
+    <div class="page-pill"><i class="fa fa-circle-question"></i> <span data-i18n="faq.hero.pill">Common Questions</span></div>
+    <h1 data-i18n-html="faq.hero.h1">Everything you need<br>to <em>know</em>.</h1>
+    <p data-i18n="faq.hero.p">Clear answers about elder care, admission, daily life, and donations at Amitabha Foundation Elder Home.</p>
+    <div class="breadcrumb"><a href="/" data-i18n="nav.home">Home</a><i class="fa fa-chevron-right"></i><span data-i18n="faq.crumb">FAQ</span></div>
   </div>
 </div>
 
@@ -299,34 +301,34 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 <div class="faq-body">
 
   <!-- ── Donations ── -->
-  <div class="faq-cat">Donations</div>
+  <div class="faq-cat" data-i18n="faq.cat.donations">Donations</div>
 
   <div class="faq-card" onclick="toggleFaq(this)">
     <div class="faq-q">
-      <span class="faq-q-text">Where do monetary donations go?</span>
+      <span class="faq-q-text" data-i18n="faq.q1">Where do monetary donations go?</span>
       <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
     </div>
-    <div class="faq-a"><div class="faq-a-inner">
+    <div class="faq-a"><div class="faq-a-inner" data-i18n-html="faq.a1">
       Donations directly support the elderly in our care — covering meals, medicine, caregiver wages, and daily living needs. A portion is also channelled to the Amitabha Foundation, which is shared across other departments including the <strong>Children's Home</strong>, <strong>Dialysis Centre</strong>, and <strong>Amitabha Assist</strong>.
     </div></div>
   </div>
 
   <div class="faq-card" onclick="toggleFaq(this)">
     <div class="faq-q">
-      <span class="faq-q-text">Where do extra donation-in-kind supplies go?</span>
+      <span class="faq-q-text" data-i18n="faq.q2">Where do extra donation-in-kind supplies go?</span>
       <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
     </div>
-    <div class="faq-a"><div class="faq-a-inner">
+    <div class="faq-a"><div class="faq-a-inner" data-i18n-html="faq.a2">
       Extra in-kind supplies such as food, diapers, and daily essentials are channelled to the Amitabha Foundation and distributed across departments — including the <strong>Children's Home</strong>, <strong>Dialysis Centre</strong>, and <strong>Amitabha Assist</strong> — wherever the need is greatest.
     </div></div>
   </div>
 
   <div class="faq-card" onclick="toggleFaq(this)">
     <div class="faq-q">
-      <span class="faq-q-text">Can a donation be made in someone else's name — including someone who has passed away?</span>
+      <span class="faq-q-text" data-i18n="faq.q3">Can a donation be made in someone else's name — including someone who has passed away?</span>
       <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
     </div>
-    <div class="faq-a"><div class="faq-a-inner">
+    <div class="faq-a"><div class="faq-a-inner" data-i18n-html="faq.a3">
       Yes. We can arrange a donation on behalf of another person, including as a dedication or blessing for someone who has passed away.
       <div class="faq-highlight"><strong>Please note:</strong> donations made in another person's name are <strong>not eligible for tax exemption</strong>.</div>
     </div></div>
@@ -334,23 +336,23 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 
   <div class="faq-card" onclick="toggleFaq(this)">
     <div class="faq-q">
-      <span class="faq-q-text">Is there tax relief for donations?</span>
+      <span class="faq-q-text" data-i18n="faq.q4">Is there tax relief for donations?</span>
       <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
     </div>
-    <div class="faq-a"><div class="faq-a-inner">
+    <div class="faq-a"><div class="faq-a-inner" data-i18n-html="faq.a4">
       Yes. The Amitabha Foundation is <strong>registered under LHDN</strong>, so qualifying monetary donations made directly by the donor are eligible for tax exemption. Please retain your receipt for tax filing purposes.
     </div></div>
   </div>
 
   <!-- ── About Amitabha Assist ── -->
-  <div class="faq-cat">About Amitabha Assist</div>
+  <div class="faq-cat" data-i18n="faq.cat.assist">About Amitabha Assist</div>
 
   <div class="faq-card" onclick="toggleFaq(this)">
     <div class="faq-q">
-      <span class="faq-q-text">What is Amitabha Assist?</span>
+      <span class="faq-q-text" data-i18n="faq.q5">What is Amitabha Assist?</span>
       <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
     </div>
-    <div class="faq-a"><div class="faq-a-inner">
+    <div class="faq-a"><div class="faq-a-inner" data-i18n-html="faq.a5">
       Amitabha Assist is a community outreach department of the Amitabha Foundation. Their work includes:<br><br>
       <strong>Disaster relief</strong> — responding to communities affected by floods and emergencies<br>
       <strong>Supply distribution</strong> — delivering food and essentials to those in need<br>
@@ -359,24 +361,24 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
   </div>
 
   <!-- ── Elder Care — Subsidies ── -->
-  <div class="faq-cat">Elder Care — Subsidies</div>
+  <div class="faq-cat" data-i18n="faq.cat.subsidies">Elder Care — Subsidies</div>
 
   <div class="faq-card" onclick="toggleFaq(this)">
     <div class="faq-q">
-      <span class="faq-q-text">How much does it cost for a resident to stay?</span>
+      <span class="faq-q-text" data-i18n="faq.q6">How much does it cost for a resident to stay?</span>
       <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
     </div>
-    <div class="faq-a"><div class="faq-a-inner">
+    <div class="faq-a"><div class="faq-a-inner" data-i18n-html="faq.a6">
       Monthly fees range from <strong>RM 1,800 to RM 2,500</strong>, depending on the level of care and condition of the resident. Please contact us directly for a personalised quote based on your loved one's needs.
     </div></div>
   </div>
 
   <div class="faq-card" onclick="toggleFaq(this)">
     <div class="faq-q">
-      <span class="faq-q-text">If it's a charity home, why is there a fee?</span>
+      <span class="faq-q-text" data-i18n="faq.q7">If it's a charity home, why is there a fee?</span>
       <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
     </div>
-    <div class="faq-a"><div class="faq-a-inner">
+    <div class="faq-a"><div class="faq-a-inner" data-i18n-html="faq.a7">
       The listed fees are the unsubsidised rate — in practice, many residents receive financial assistance from the Amitabha Foundation. Some residents stay <strong>entirely for free</strong>, while others pay only a few hundred ringgit a month. At least one resident is fully sponsored by an external charity (Tzu Chi).<br><br>
       Even the full-rate fee is already partially subsidised by the Foundation. Fees paid by full-rate residents also contribute back to the charity, helping fund care for those who cannot afford to pay.
       <div class="faq-highlight">No one is turned away due to financial hardship. Please reach out to discuss your situation.</div>
@@ -384,77 +386,77 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
   </div>
 
   <!-- ── About the Centre ── -->
-  <div class="faq-cat">About the Centre</div>
+  <div class="faq-cat" data-i18n="faq.cat.centre">About the Centre</div>
 
   <div class="faq-card" onclick="toggleFaq(this)">
     <div class="faq-q">
-      <span class="faq-q-text">Where is the elder care centre located?</span>
+      <span class="faq-q-text" data-i18n="faq.q8">Where is the elder care centre located?</span>
       <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
     </div>
-    <div class="faq-a"><div class="faq-a-inner">
+    <div class="faq-a"><div class="faq-a-inner" data-i18n-html="faq.a8">
       Our centre is located at <strong>A14, Jalan Rukun 7, Taman Gembira, 58200 Kuala Lumpur</strong>. We are easily accessible by car and are open for visits daily from 9am to 5pm.
     </div></div>
   </div>
 
   <div class="faq-card" onclick="toggleFaq(this)">
     <div class="faq-q">
-      <span class="faq-q-text">How many residents can the centre accommodate?</span>
+      <span class="faq-q-text" data-i18n="faq.q9">How many residents can the centre accommodate?</span>
       <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
     </div>
-    <div class="faq-a"><div class="faq-a-inner">
+    <div class="faq-a"><div class="faq-a-inner" data-i18n-html="faq.a9">
       Our centre can accommodate up to <strong>35 elderly residents</strong> at one time. If all beds are occupied, we will place your loved one on a waiting list and contact you as soon as a space becomes available.
     </div></div>
   </div>
 
   <div class="faq-card" onclick="toggleFaq(this)">
     <div class="faq-q">
-      <span class="faq-q-text">What types of elderly can be accommodated?</span>
+      <span class="faq-q-text" data-i18n="faq.q10">What types of elderly can be accommodated?</span>
       <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
     </div>
-    <div class="faq-a"><div class="faq-a-inner">
+    <div class="faq-a"><div class="faq-a-inner" data-i18n-html="faq.a10">
       We welcome elderly residents who are <strong>mobile</strong>, <strong>wheelchair-bound</strong>, or <strong>bedridden</strong>. We also accommodate elderly with <strong>dementia or other special needs</strong>. Each resident receives a level of care tailored to their condition.
     </div></div>
   </div>
 
   <div class="faq-card" onclick="toggleFaq(this)">
     <div class="faq-q">
-      <span class="faq-q-text">Is there an age restriction to stay at the centre?</span>
+      <span class="faq-q-text" data-i18n="faq.q11">Is there an age restriction to stay at the centre?</span>
       <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
     </div>
-    <div class="faq-a"><div class="faq-a-inner">
+    <div class="faq-a"><div class="faq-a-inner" data-i18n-html="faq.a11">
       There is <strong>no minimum or maximum age requirement</strong>. Any elderly individual who requires care and support is welcome to apply for a place at our centre.
     </div></div>
   </div>
 
   <div class="faq-card" onclick="toggleFaq(this)">
     <div class="faq-q">
-      <span class="faq-q-text">Do residents need to be Buddhist to stay here?</span>
+      <span class="faq-q-text" data-i18n="faq.q12">Do residents need to be Buddhist to stay here?</span>
       <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
     </div>
-    <div class="faq-a"><div class="faq-a-inner">
+    <div class="faq-a"><div class="faq-a-inner" data-i18n-html="faq.a12">
       Not at all. <strong>All races and religions are welcome</strong> at our centre. Residents are free to pray and observe their own beliefs. While our foundation has Buddhist roots, our care is extended to everyone equally.
     </div></div>
   </div>
 
   <!-- ── Care & Medical ── -->
-  <div class="faq-cat">Care &amp; Medical</div>
+  <div class="faq-cat" data-i18n="faq.cat.medical">Care &amp; Medical</div>
 
   <div class="faq-card" onclick="toggleFaq(this)">
     <div class="faq-q">
-      <span class="faq-q-text">Do you have nurses on duty?</span>
+      <span class="faq-q-text" data-i18n="faq.q13">Do you have nurses on duty?</span>
       <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
     </div>
-    <div class="faq-a"><div class="faq-a-inner">
+    <div class="faq-a"><div class="faq-a-inner" data-i18n-html="faq.a13">
       Currently we have <strong>trained caregivers on duty</strong> around the clock. We are actively exploring the engagement of qualified nurses to further strengthen our medical care provision.
     </div></div>
   </div>
 
   <div class="faq-card" onclick="toggleFaq(this)">
     <div class="faq-q">
-      <span class="faq-q-text">What happens during a medical emergency?</span>
+      <span class="faq-q-text" data-i18n="faq.q14">What happens during a medical emergency?</span>
       <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
     </div>
-    <div class="faq-a"><div class="faq-a-inner">
+    <div class="faq-a"><div class="faq-a-inner" data-i18n-html="faq.a14">
       In the event of a medical emergency, our staff will immediately:<br><br>
       <strong>1.</strong> Call an ambulance<br>
       <strong>2.</strong> Notify the centre manager<br>
@@ -465,33 +467,33 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 
   <div class="faq-card" onclick="toggleFaq(this)">
     <div class="faq-q">
-      <span class="faq-q-text">Do you assist with medication management?</span>
+      <span class="faq-q-text" data-i18n="faq.q15">Do you assist with medication management?</span>
       <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
     </div>
-    <div class="faq-a"><div class="faq-a-inner">
+    <div class="faq-a"><div class="faq-a-inner" data-i18n-html="faq.a15">
       Yes. We ensure that all medications are <strong>properly organised and scheduled</strong>. Our caregivers will ensure medication is administered to each resident on time, every day.
     </div></div>
   </div>
 
   <!-- ── Admission ── -->
-  <div class="faq-cat">Admission</div>
+  <div class="faq-cat" data-i18n="faq.cat.admission">Admission</div>
 
   <div class="faq-card" onclick="toggleFaq(this)">
     <div class="faq-q">
-      <span class="faq-q-text">How do I apply for my family member to stay?</span>
+      <span class="faq-q-text" data-i18n="faq.q16">How do I apply for my family member to stay?</span>
       <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
     </div>
-    <div class="faq-a"><div class="faq-a-inner">
+    <div class="faq-a"><div class="faq-a-inner" data-i18n-html="faq.a16">
       You will need to complete an <strong>application form</strong>. The elderly applicant will also be required to undergo a simple <strong>medical check-up</strong> to confirm they do not have any communicable illnesses. We will provide you with a list of the required health screenings.
     </div></div>
   </div>
 
   <div class="faq-card" onclick="toggleFaq(this)">
     <div class="faq-q">
-      <span class="faq-q-text">What documents are required for admission?</span>
+      <span class="faq-q-text" data-i18n="faq.q17">What documents are required for admission?</span>
       <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
     </div>
-    <div class="faq-a"><div class="faq-a-inner">
+    <div class="faq-a"><div class="faq-a-inner" data-i18n-html="faq.a17">
       The following documents are required at the time of admission:<br><br>
       <strong>•&nbsp; MyKad (Identity Card)</strong><br>
       <strong>•&nbsp; Completed application form</strong><br>
@@ -500,70 +502,70 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
   </div>
 
   <!-- ── Fees & Payment ── -->
-  <div class="faq-cat">Fees &amp; Payment</div>
+  <div class="faq-cat" data-i18n="faq.cat.fees">Fees &amp; Payment</div>
 
   <div class="faq-card" onclick="toggleFaq(this)">
     <div class="faq-q">
-      <span class="faq-q-text">What payment methods are accepted?</span>
+      <span class="faq-q-text" data-i18n="faq.q18">What payment methods are accepted?</span>
       <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
     </div>
-    <div class="faq-a"><div class="faq-a-inner">
+    <div class="faq-a"><div class="faq-a-inner" data-i18n-html="faq.a18">
       We accept payment via <strong>cash</strong>, <strong>bank transfer</strong>, or <strong>credit card</strong>.
     </div></div>
   </div>
 
   <div class="faq-card" onclick="toggleFaq(this)">
     <div class="faq-q">
-      <span class="faq-q-text">When is the monthly payment due?</span>
+      <span class="faq-q-text" data-i18n="faq.q19">When is the monthly payment due?</span>
       <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
     </div>
-    <div class="faq-a"><div class="faq-a-inner">
+    <div class="faq-a"><div class="faq-a-inner" data-i18n-html="faq.a19">
       The monthly payment cycle is based on the <strong>resident's arrival date</strong> at the centre. For example, if a resident moves in on the 10th, subsequent payments are due on the 10th of each month.
     </div></div>
   </div>
 
   <div class="faq-card" onclick="toggleFaq(this)">
     <div class="faq-q">
-      <span class="faq-q-text">Is a deposit required upon admission?</span>
+      <span class="faq-q-text" data-i18n="faq.q20">Is a deposit required upon admission?</span>
       <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
     </div>
-    <div class="faq-a"><div class="faq-a-inner">
+    <div class="faq-a"><div class="faq-a-inner" data-i18n-html="faq.a20">
       Yes. A deposit equivalent to <strong>one month's fee</strong> is required upon admission. This deposit is fully refundable when the resident decides to move out, and will be returned via bank transfer within one month of departure.
     </div></div>
   </div>
 
   <!-- ── Communication & Family ── -->
-  <div class="faq-cat">Communication &amp; Family</div>
+  <div class="faq-cat" data-i18n="faq.cat.comms">Communication &amp; Family</div>
 
   <div class="faq-card" onclick="toggleFaq(this)">
     <div class="faq-q">
-      <span class="faq-q-text">How will families be updated on their loved one's condition?</span>
+      <span class="faq-q-text" data-i18n="faq.q21">How will families be updated on their loved one's condition?</span>
       <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
     </div>
-    <div class="faq-a"><div class="faq-a-inner">
+    <div class="faq-a"><div class="faq-a-inner" data-i18n-html="faq.a21">
       We provide regular updates on residents' conditions. Whenever there are any <strong>changes, concerns, or notable developments</strong>, we will contact the family promptly. You are also welcome to call us at any time during office hours.
     </div></div>
   </div>
 
   <div class="faq-card" onclick="toggleFaq(this)">
     <div class="faq-q">
-      <span class="faq-q-text">Can family members call or contact the elderly?</span>
+      <span class="faq-q-text" data-i18n="faq.q22">Can family members call or contact the elderly?</span>
       <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
     </div>
-    <div class="faq-a"><div class="faq-a-inner">
+    <div class="faq-a"><div class="faq-a-inner" data-i18n-html="faq.a22">
       Yes, family members are encouraged to stay in touch. As long as the resident has their own mobile phone, calls can be made freely. We kindly ask that calls be made <strong>before 9:00 pm</strong> to respect residents' rest time.
     </div></div>
   </div>
 
   <!-- ── Elder Care — Daily Life ── -->
-  <div class="faq-cat">Elder Care — Daily Life</div>
+  <div class="faq-cat" data-i18n="faq.cat.daily">Elder Care — Daily Life</div>
 
   <div class="faq-card" onclick="toggleFaq(this)">
     <div class="faq-q">
-      <span class="faq-q-text">What is provided for residents?</span>
+      <span class="faq-q-text" data-i18n="faq.q23">What is provided for residents?</span>
       <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
     </div>
-    <div class="faq-a"><div class="faq-a-inner">
+    <div class="faq-a"><div class="faq-a-inner" data-i18n-html="faq.a23">
       All residents receive:<br><br>
       <strong>4 meals a day</strong> (breakfast, lunch, tea time, and dinner)<br>
       <strong>24-hour caregiver coverage</strong> throughout the facility<br>
@@ -573,20 +575,20 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 
   <div class="faq-card" onclick="toggleFaq(this)">
     <div class="faq-q">
-      <span class="faq-q-text">What kind of meals are served?</span>
+      <span class="faq-q-text" data-i18n="faq.q24">What kind of meals are served?</span>
       <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
     </div>
-    <div class="faq-a"><div class="faq-a-inner">
+    <div class="faq-a"><div class="faq-a-inner" data-i18n-html="faq.a24">
       All meals served at the centre are <strong>fully vegetarian</strong>. If you would like to bring non-vegetarian food specifically for your own family member during a visit, you are welcome to do so.
     </div></div>
   </div>
 
   <div class="faq-card" onclick="toggleFaq(this)">
     <div class="faq-q">
-      <span class="faq-q-text">What are the visitation hours?</span>
+      <span class="faq-q-text" data-i18n="faq.q25">What are the visitation hours?</span>
       <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
     </div>
-    <div class="faq-a"><div class="faq-a-inner">
+    <div class="faq-a"><div class="faq-a-inner" data-i18n-html="faq.a25">
       Family and friends are welcome to visit <strong>daily from 9:00 am to 5:00 pm</strong>.<br>
       Our administrative office operates <strong>Monday to Friday, 9:00 am to 5:00 pm</strong>.
     </div></div>
@@ -594,10 +596,10 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 
   <div class="faq-card" onclick="toggleFaq(this)">
     <div class="faq-q">
-      <span class="faq-q-text">Can residents go out with their families?</span>
+      <span class="faq-q-text" data-i18n="faq.q26">Can residents go out with their families?</span>
       <span class="faq-icon"><i class="fa fa-chevron-down"></i></span>
     </div>
-    <div class="faq-a"><div class="faq-a-inner">
+    <div class="faq-a"><div class="faq-a-inner" data-i18n-html="faq.a26">
       Yes. Residents may go out with their <strong>guardian or family</strong>. We simply ask that you inform the centre <strong>at least one day in advance</strong> before taking a resident out, so we can prepare accordingly.
     </div></div>
   </div>
@@ -607,10 +609,10 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 <!-- CTA -->
 <div class="faq-cta">
   <div class="faq-cta-in">
-    <h2>Still have <em>questions?</em></h2>
-    <p>Our team is always happy to help. Reach out via WhatsApp or call us directly — no question is too small.</p>
+    <h2 data-i18n-html="faq.cta.h2">Still have <em>questions?</em></h2>
+    <p data-i18n="faq.cta.p">Our team is always happy to help. Reach out via WhatsApp or call us directly — no question is too small.</p>
     <div class="faq-cta-btns">
-      <a href="https://wa.me/60127762911?text=Hi%2C%20I%20have%20a%20question%20about%20elder%20care." class="btn btn-wa" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> <span class="fl-label">WhatsApp Us</span></a>
+      <a href="https://wa.me/60127762911?text=Hi%2C%20I%20have%20a%20question%20about%20elder%20care." class="btn btn-wa" target="_blank" rel="noopener" data-i18n-html="st.cta.wa"><i class="fab fa-whatsapp"></i> <span class="fl-label">WhatsApp Us</span></a>
       <a href="tel:+60127762911" class="btn" style="background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2)"><i class="fa fa-phone"></i> 012-776 2911</a>
       <a href="tel:+60378903700" class="btn" style="background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2)"><i class="fa fa-phone"></i> +603-7890 3700</a>
     </div>
@@ -622,7 +624,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
   <div class="foot-top">
     <div class="foot-brand">
       <a href="https://amitabhafoundation.my/" target="_blank" rel="noopener"><img src="Photo/AF_EH%20ARGB%20LOGO%20.png" alt="Amitabha Foundation"></a>
-      <p>Amitabha Foundation Elder Home. 24/7 compassionate care, financial assistance, and home placement for seniors in Kuala Lumpur. Est. 2000.</p>
+      <p data-i18n="foot.p">Amitabha Foundation Elder Home. 24/7 compassionate care, financial assistance, and home placement for seniors in Kuala Lumpur. Est. 2000.</p>
       <div class="foot-soc">
         <a href="https://www.facebook.com/people/Amitabha-Foundation-Elder-Home/61578688747686/" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
         <a href="https://www.instagram.com/amitabhafoundation" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
@@ -631,37 +633,37 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
       </div>
     </div>
     <div class="foot-col">
-      <h4>The Home</h4>
-      <a href="/faq">FAQ</a>
-      <a href="/blog">News</a>
-      <a href="/">Home</a>
-      <a href="/about">About</a>
-      <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener">Donate</a>
-      <a href="/services">Services</a>
+      <h4 data-i18n="foot.c1.h4">The Home</h4>
+      <a href="/faq" data-i18n="foot.c1.faq">FAQ</a>
+      <a href="/blog" data-i18n="foot.c1.news">News</a>
+      <a href="/" data-i18n="foot.c1.home">Home</a>
+      <a href="/about" data-i18n="foot.c1.about">About</a>
+      <a href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener" data-i18n="foot.c1.donate">Donate</a>
+      <a href="/services" data-i18n="foot.c1.services">Services</a>
     </div>
     <div class="foot-col">
-      <h4><a href="https://amitabhafoundation.my/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Amitabha Foundation</a></h4>
-      <a href="/jobs">Careers</a>
-      <a href="https://wa.me/60127762911" target="_blank" rel="noopener">Volunteer</a>
-      <a href="https://amitabhafoundation.my/" target="_blank" rel="noopener">Dialysis Centre</a>
-      <a href="https://amitabhafoundation.my/" target="_blank" rel="noopener">Children's Home</a>
+      <h4><a href="https://amitabhafoundation.my/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none" data-i18n="foot.c2.h4">Amitabha Foundation</a></h4>
+      <a href="/jobs" data-i18n="foot.c2.careers">Careers</a>
+      <a href="https://wa.me/60127762911" target="_blank" rel="noopener" data-i18n="foot.c2.volunteer">Volunteer</a>
+      <a href="https://amitabhafoundation.my/" target="_blank" rel="noopener" data-i18n="foot.c2.dialysis">Dialysis Centre</a>
+      <a href="https://amitabhafoundation.my/" target="_blank" rel="noopener" data-i18n="foot.c2.children">Children's Home</a>
     </div>
     <div class="foot-col">
-      <h4>Contact</h4>
+      <h4 data-i18n="foot.c3.h4">Contact</h4>
       <div class="fci"><i class="fa fa-phone"></i><a href="tel:+60378903700">+603-7890 3700</a></div>
       <div class="fci"><i class="fa fa-headset"></i><a href="tel:+60127762911">012-776 2911 (hotline)</a></div>
-      <div class="fci"><i class="fa fa-clock"></i><span>Mon–Sun 9am–5pm</span></div>
+      <div class="fci"><i class="fa fa-clock"></i><span data-i18n="foot.c3.hours">Mon–Sun 9am–5pm</span></div>
       <div class="fci"><i class="fa fa-location-dot"></i><span>A14, Jalan Rukun 7, Taman Gembira, 58200 Kuala Lumpur</span></div>
     </div>
   </div>
   <div class="foot-bot">
-    <p>© 2026 Amitabha Foundation · Elder Care Programme · All rights reserved.</p>
+    <p data-i18n="foot.copyright">© 2026 Amitabha Foundation · Elder Care Programme · All rights reserved.</p>
   </div>
 </footer>
 
 <div class="float-bar">
   <a class="float-wa" href="https://wa.me/60127762911" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> <span class="fl-label">WhatsApp</span></a>
-  <a class="float-donate" href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener"><i class="fa fa-hand-holding-heart"></i> <span class="fl-label">Donate Now</span></a>
+  <a class="float-donate" href="https://m.amitabhafoundation.my/en/donation" target="_blank" rel="noopener"><i class="fa fa-hand-holding-heart"></i> <span class="fl-label" data-i18n="float.donate">Donate Now</span></a>
 </div>
 
 <script>
@@ -695,5 +697,7 @@ function toggleFaq(card) {
   }
 }
 </script>
+<script src="lang.js"></script>
+<script>if (typeof initLang === 'function') initLang();</script>
 </body>
 </html>
