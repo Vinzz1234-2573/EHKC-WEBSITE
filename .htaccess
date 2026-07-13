@@ -1,0 +1,30 @@
+# ============================================================
+# EHKC-WEBSITE — Apache equivalent of the old vercel.json
+# (cleanUrls: true + /main_page -> / redirect)
+# ============================================================
+
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Legacy redirect: /main_page -> /
+  RewriteCond %{REQUEST_URI} ^/main_page/?$ [NC]
+  RewriteRule ^ /? [L,R=301]
+
+  # Clean URLs: if /about is requested and about.html exists, serve it
+  # (but leave real files/folders and /api, /auth, /uploads alone)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}\.html -f
+  RewriteRule ^([^.]+)$ $1.html [L]
+</IfModule>
+
+# Don't expose directory listings
+Options -Indexes
+
+# Sensible defaults
+<IfModule mod_mime.c>
+  AddCharset utf-8 .html .css .js
+</IfModule>
