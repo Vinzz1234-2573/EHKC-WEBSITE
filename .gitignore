@@ -1,0 +1,7 @@
+# Real DB credentials — never commit. Use api/config.example.php as the template.
+api/config.php
+
+# User-uploaded files (resumes, blog/gallery images) — runtime data, not code.
+uploads/*
+!uploads/*/.gitkeep
+!uploads/resumes/.htaccess

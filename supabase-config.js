@@ -1,121 +1,216 @@
 /*
   supabase-config.js
-  ------------------
-  Replace SUPABASE_URL and SUPABASE_ANON_KEY with your real project values.
-  Get them from: https://supabase.com → your project → Settings → API
+  -------------------
+  NOTE: despite the filename (kept unchanged so no other file needed to be
+  edited except removing the old Supabase CDN <script> tag), this file no
+  longer talks to Supabase. It's a lightweight compatibility shim that
+  gives every page the same `sb.auth.*` / `sb.from(...)` / `sbUploadFile`
+  API they already call, but backed by the PHP + MySQL API in /api and
+  /auth instead. This kept every page's existing JS working unchanged.
 
-  SQL SCHEMA (run once in Supabase SQL Editor):
-  ─────────────────────────────────────────────
-  -- Profiles table (auto-populated via trigger on auth.users insert)
-  create table if not exists public.profiles (
-    id          uuid primary key references auth.users(id) on delete cascade,
-    email       text,
-    name        text,
-    role        text default 'user',
-    created_at  timestamptz default now()
-  );
-
-  -- Trigger: auto-create profile row when a new user signs up
-  create or replace function public.handle_new_user()
-  returns trigger as $$
-  begin
-    insert into public.profiles (id, email, name, role)
-    values (new.id, new.email, new.raw_user_meta_data->>'name', 'user')
-    on conflict (id) do nothing;
-    return new;
-  end;
-  $$ language plpgsql security definer;
-
-  create or replace trigger on_auth_user_created
-    after insert on auth.users
-    for each row execute procedure public.handle_new_user();
-
-  -- Jobs table
-  create table if not exists jobs (
-    id          uuid primary key default gen_random_uuid(),
-    title_en    text not null,
-    title_zh    text,
-    type        text default 'Full-Time',
-    location    text default 'Old Klang Road, Kuala Lumpur',
-    salary      text,
-    wa          text default '60127762911',
-    desc_en     text,
-    desc_zh     text,
-    posted      date default current_date,
-    created_at  timestamptz default now()
-  );
-
-  -- Applications table
-  create table if not exists applications (
-    id          uuid primary key default gen_random_uuid(),
-    job_id      uuid references jobs(id) on delete set null,
-    job_title   text,
-    name        text not null,
-    email       text not null,
-    phone       text,
-    message     text,
-    cv_name     text,
-    cv_path     text,
-    status      text default 'new',
-    created_at  timestamptz default now()
-  );
-
-  -- Blog posts table
-  create table if not exists posts (
-    id          uuid primary key default gen_random_uuid(),
-    title_en    text not null,
-    title_zh    text,
-    category    text default 'News',
-    event_date  date,
-    content     text,
-    content_zh  text,
-    link        text,
-    image_path  text,
-    posted      date default current_date,
-    created_at  timestamptz default now()
-  );
-
-  -- Gallery table
-  create table if not exists gallery (
-    id          uuid primary key default gen_random_uuid(),
-    src         text not null,
-    caption     text,
-    sort_order  int default 0,
-    posted      date default current_date,
-    created_at  timestamptz default now()
-  );
-
-  -- Storage buckets (create in Supabase Storage panel):
-  --   "resumes"       → private (admin-only download)
-  --   "blog-images"   → public
-  --   "gallery-images"→ public
-
-  -- Row-level security: enable RLS on all tables then:
-  -- applications: allow insert for anon; select/update/delete for authenticated
-  -- jobs/posts/gallery: allow select for anon; all for authenticated
-  -- (or disable RLS for quick start — enable before going live)
-
-  -- Edge Function for email trigger (optional):
-  -- Create function "notify-application" in Supabase Edge Functions.
-  -- It fires on insert to applications via a Database Webhook.
+  API base path — adjust if you deploy the api/ and auth/ folders
+  somewhere other than the site root.
 */
+const API_BASE = '';
 
-const SUPABASE_URL      = 'https://gdswyxjmrqtwrbslgykw.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_wURpSXWfiXJYDlyOVyekBg_WR5zk5ZP';
-
-const { createClient } = supabase;
-const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-/* Public URL helper for storage files */
-function sbPublicUrl(bucket, path) {
-  return `${SUPABASE_URL}/storage/v1/object/public/${bucket}/${path}`;
+async function apiCall(path, opts = {}) {
+  const res = await fetch(API_BASE + path, {
+    credentials: 'include',
+    headers: opts.body ? { 'Content-Type': 'application/json' } : {},
+    ...opts,
+  });
+  let json = {};
+  try { json = await res.json(); } catch (e) { /* no body */ }
+  return { res, json };
 }
 
-/* Upload a File object to a storage bucket; returns the public URL or null */
+/* ───────────────────────── auth ───────────────────────── */
+const auth = {
+  async getSession() {
+    const { json } = await apiCall('/auth/session.php');
+    const session = json.user ? { user: { id: json.user.id, email: json.user.email } } : null;
+    return { data: { session }, error: null };
+  },
+
+  async signInWithPassword({ email, password }) {
+    const { res, json } = await apiCall('/auth/login.php', {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+    });
+    if (!res.ok) return { data: null, error: { message: json.error || 'Login failed.' } };
+    return { data: { user: json.user }, error: null };
+  },
+
+  async signUp({ email, password, options }) {
+    const name = options?.data?.name || '';
+    const { res, json } = await apiCall('/auth/signup.php', {
+      method: 'POST',
+      body: JSON.stringify({ email, password, name }),
+    });
+    if (!res.ok) return { data: null, error: { message: json.error || 'Sign up failed.' } };
+    // Signup logs the user in immediately (no email confirmation step).
+    return { data: { user: json.user, session: { user: json.user } }, error: null };
+  },
+
+  async signOut() {
+    await apiCall('/auth/logout.php', { method: 'POST' });
+    return { error: null };
+  },
+};
+
+/* ───────────────────── table query builder ───────────────────── */
+const TABLE_ENDPOINTS = {
+  jobs: '/api/jobs.php',
+  applications: '/api/applications.php',
+  posts: '/api/posts.php',
+  gallery: '/api/gallery.php',
+  profiles: '/api/profiles.php',
+};
+
+class QueryBuilder {
+  constructor(table) {
+    this.table = table;
+    this.endpoint = TABLE_ENDPOINTS[table];
+    this._op = null;
+    this._payload = null;
+    this._filters = [];
+    this._single = false;
+  }
+  select() { if (!this._op) this._op = 'select'; return this; }
+  insert(payload) { this._op = 'insert'; this._payload = payload; return this; }
+  update(payload) { this._op = 'update'; this._payload = payload; return this; }
+  upsert(payload) { this._op = 'upsert'; this._payload = payload; return this; }
+  delete() { this._op = 'delete'; return this; }
+  eq(col, val) { this._filters.push(['eq', col, val]); return this; }
+  is(col, val) { this._filters.push(['is', col, val]); return this; }
+  order() { return this; } // server already returns rows in the right order
+  single() { this._single = true; return this; }
+
+  _idFilter() {
+    const f = this._filters.find(f => f[0] === 'eq' && f[1] === 'id');
+    return f ? f[2] : null;
+  }
+
+  then(resolve, reject) {
+    return this._exec().then(resolve, reject);
+  }
+
+  async _exec() {
+    try {
+      if (this._op === 'select') {
+        if (this.table === 'profiles') {
+          const id = this._idFilter();
+          const { json } = await apiCall(this.endpoint + (id ? `?id=${encodeURIComponent(id)}` : ''));
+          return { data: json.data ?? null, error: null };
+        }
+        const { json } = await apiCall(this.endpoint);
+        const rows = json.data || [];
+        return { data: this._single ? (rows[0] || null) : rows, error: null };
+      }
+
+      if (this._op === 'insert') {
+        const { res, json } = await apiCall(this.endpoint, {
+          method: 'POST',
+          body: JSON.stringify(this._payload),
+        });
+        if (!res.ok) return { data: null, error: { message: json.error || 'Insert failed.' } };
+        const row = json.data;
+        return { data: this._single ? row : [row], error: null };
+      }
+
+      if (this._op === 'update') {
+        const id = this._idFilter();
+        if (id) {
+          const { res, json } = await apiCall(`${this.endpoint}?id=${encodeURIComponent(id)}`, {
+            method: 'PUT',
+            body: JSON.stringify(this._payload),
+          });
+          if (!res.ok) return { data: null, error: { message: json.error || 'Update failed.' } };
+          return { data: null, error: null };
+        }
+        // Bulk update via .is(col, null) — fetch matching rows then update one by one.
+        const isFilter = this._filters.find(f => f[0] === 'is');
+        if (isFilter) {
+          const [, col, val] = isFilter;
+          const { json: listJson } = await apiCall(this.endpoint);
+          const rows = (listJson.data || []).filter(r => r[col] === val);
+          for (const r of rows) {
+            await apiCall(`${this.endpoint}?id=${encodeURIComponent(r.id)}`, {
+              method: 'PUT',
+              body: JSON.stringify(this._payload),
+            });
+          }
+          return { data: null, error: null };
+        }
+        return { data: null, error: { message: 'Update requires .eq("id", ...) or .is(...)' } };
+      }
+
+      if (this._op === 'upsert') {
+        // Profile rows are created server-side on signup already; nothing to do.
+        return { data: null, error: null };
+      }
+
+      if (this._op === 'delete') {
+        const id = this._idFilter();
+        if (!id) return { data: null, error: { message: 'Delete requires .eq("id", ...)' } };
+        const { res, json } = await apiCall(`${this.endpoint}?id=${encodeURIComponent(id)}`, { method: 'DELETE' });
+        if (!res.ok) return { data: null, error: { message: json.error || 'Delete failed.' } };
+        return { data: null, error: null };
+      }
+
+      return { data: null, error: { message: 'No operation specified.' } };
+    } catch (e) {
+      return { data: null, error: { message: e.message || 'Network error.' } };
+    }
+  }
+}
+
+const sb = {
+  auth,
+  from(table) { return new QueryBuilder(table); },
+  storage: {
+    from(bucket) {
+      return {
+        async upload(path, file) {
+          const form = new FormData();
+          form.append('file', file);
+          form.append('bucket', bucket);
+          try {
+            const res = await fetch('/api/upload.php', { method: 'POST', credentials: 'include', body: form });
+            const json = await res.json();
+            if (!res.ok) return { error: { message: json.error || 'Upload failed.' } };
+            return { data: { path: json.path, url: json.url }, error: null };
+          } catch (e) {
+            return { error: { message: e.message || 'Upload failed.' } };
+          }
+        },
+        async download(path) {
+          try {
+            const res = await fetch(`/api/download.php?path=${encodeURIComponent(path)}`, { credentials: 'include' });
+            if (!res.ok) {
+              let msg = 'Download failed.';
+              try { msg = (await res.json()).error || msg; } catch (e) {}
+              return { data: null, error: { message: msg } };
+            }
+            const blob = await res.blob();
+            return { data: blob, error: null };
+          } catch (e) {
+            return { data: null, error: { message: e.message || 'Download failed.' } };
+          }
+        },
+      };
+    },
+  },
+};
+
+/* Public URL helper for storage files (blog-images / gallery-images only). */
+function sbPublicUrl(bucket, path) {
+  return `/uploads/${bucket}/${path.split('/').pop()}`;
+}
+
+/* Upload a File object to a storage bucket; returns the path or null. */
 async function sbUploadFile(bucket, file, folder) {
-  const ext  = file.name.split('.').pop();
-  const path = `${folder}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
-  const { error } = await sb.storage.from(bucket).upload(path, file, { upsert: false });
+  const { data, error } = await sb.storage.from(bucket).upload(`${folder}/placeholder`, file);
   if (error) { console.error('Upload error:', error); return null; }
-  return path;
+  return data.path;
 }
