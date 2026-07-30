@@ -27,7 +27,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="manifest" href="/site.webmanifest" />
-<script src="supabase-config.js"></script>
+<script src="api-client.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
@@ -491,7 +491,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()
 function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 function escAttr(s){return String(s).replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 
-/* Load posts from Supabase */
+/* Load posts from the API */
 async function loadPosts(){
   const grid=document.getElementById('posts-grid');
   grid.innerHTML=`<div class="empty-state"><div class="empty-icon"><i class="fa fa-spinner fa-spin" style="font-size:2rem;color:var(--teal-700)"></i></div><p style="color:var(--muted);margin-top:.5rem">${tt('Loading…','加载中…')}</p></div>`;

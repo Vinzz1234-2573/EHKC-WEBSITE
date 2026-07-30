@@ -27,7 +27,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="manifest" href="/site.webmanifest" />
-<script src="supabase-config.js"></script>
+<script src="api-client.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
@@ -132,18 +132,8 @@ header.scrolled{background:rgba(255,255,255,.98);box-shadow:0 2px 18px rgba(10,4
 .sh{margin-bottom:3rem}
 .sh.c{text-align:center}.sh.c .tag{justify-content:center}.sh.c .sec-p{margin:0 auto}
 
-/* STORY CARDS - FEATURED */
-.stories-main{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem}
-.story-card{background:#fff;border-radius:var(--r-lg);padding:2.4rem 2rem;border:1px solid var(--line);display:flex;flex-direction:column;gap:1.4rem;transition:all var(--t);position:relative;overflow:hidden}
-.story-card::before{content:'"';font-family:var(--serif);font-size:6rem;line-height:.7;color:var(--teal-100);position:absolute;top:1.2rem;right:1.4rem;pointer-events:none;transition:color var(--t)}
-.story-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(196,122,74,.12);border-color:rgba(196,122,74,.2)}
-.story-card:hover::before{color:rgba(196,122,74,.18)}
+/* STORY CATEGORY TAG */
 .story-cat{display:inline-flex;align-items:center;gap:.4rem;font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .7rem;border-radius:999px;background:var(--teal-t);color:var(--teal-700)}
-.story-q{font-family:var(--serif);font-size:1.05rem;font-style:italic;color:var(--ink-700);line-height:1.75;flex:1}
-.story-attr{display:flex;align-items:center;gap:.85rem;padding-top:1.1rem;border-top:1px solid var(--line)}
-.story-av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--teal-700),var(--teal-500));display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;flex-shrink:0}
-.story-name{font-weight:700;font-size:.9rem;color:var(--ink-900)}
-.story-meta{font-size:.78rem;color:var(--ink-300);display:flex;align-items:center;gap:.3rem;margin-top:.15rem}
 
 /* LONG STORY - FEATURED ROW */
 .story-featured{background:#fff;border-radius:var(--r-lg);border:1px solid var(--line);display:grid;grid-template-columns:1fr 1.6fr;overflow:hidden;transition:all var(--t)}
@@ -158,14 +148,38 @@ header.scrolled{background:rgba(255,255,255,.98);box-shadow:0 2px 18px rgba(10,4
 .story-feat-body h3{font-family:var(--serif);font-size:1.3rem;font-weight:500;color:var(--ink-900);margin-bottom:1rem;line-height:1.4}
 .story-feat-body p{font-size:.95rem;color:var(--ink-500);line-height:1.85}
 
-/* VOLUNTEER / FAMILY STORIES */
-.vol-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.8rem}
-.vol-card{background:#fff;border-radius:var(--r-lg);padding:2rem 1.8rem;border:1px solid var(--line);display:flex;gap:1.4rem;transition:all var(--t)}
-.vol-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(196,122,74,.1);border-color:rgba(196,122,74,.2)}
-.vol-icon{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--teal-700),var(--teal-500));display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;flex-shrink:0}
-.vol-body h4{font-family:var(--serif);font-size:1.05rem;font-weight:500;color:var(--ink-900);margin-bottom:.5rem}
-.vol-body p{font-size:.9rem;color:var(--ink-500);line-height:1.8}
-.vol-body .vol-by{font-size:.78rem;color:var(--ink-300);margin-top:.75rem;display:flex;align-items:center;gap:.35rem}
+/* OUR PROMISE (parallax break) */
+.parallax-break{position:relative;min-height:540px;display:flex;align-items:center;overflow:hidden;isolation:isolate;color:#fff}
+.pb-bg{position:absolute;inset:-15% 0;background:linear-gradient(180deg,rgba(26,36,47,.6),rgba(44,62,80,.85)),linear-gradient(135deg,var(--teal-800) 0%,var(--teal-900) 100%);z-index:-3}
+.pb-grid{position:absolute;inset:0;z-index:-2;opacity:.35;background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);background-size:62px 62px}
+.pb-shapes{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.pb-shapes .pb-c{position:absolute;border-radius:50%;border:1px solid rgba(238,196,163,.35)}
+.pb-c.c1{width:520px;height:520px;top:-180px;right:-180px}
+.pb-c.c2{width:320px;height:320px;bottom:-120px;left:-120px;border-color:rgba(255,255,255,.14)}
+.pb-c.c3{width:160px;height:160px;top:18%;left:18%;background:rgba(218,165,32,.1);border:none}
+.pb-in{max-width:var(--max);margin:auto;width:100%;padding:5rem 1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.pb-quote{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.25;color:#fff;letter-spacing:-.01em}
+.pb-quote span{color:var(--teal-400)}
+.pb-attr{margin-top:1.6rem;display:flex;align-items:center;gap:.8rem;color:rgba(255,255,255,.7);font-size:.86rem}
+.pb-attr .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--teal-400),var(--teal-600));border:2px solid rgba(255,255,255,.4)}
+.pb-side{display:flex;flex-direction:column;gap:1rem}
+.pb-row{display:flex;align-items:center;gap:1rem;padding:1.2rem 1.3rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;backdrop-filter:blur(10px);transition:transform var(--t),background var(--t),border-color var(--t)}
+.pb-row:hover{transform:translateX(6px);background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.22)}
+.pb-row .ic{width:46px;height:46px;border-radius:12px;background:rgba(238,196,163,.18);color:var(--teal-400);display:flex;align-items:center;justify-content:center;font-size:1.05rem;flex-shrink:0}
+.pb-row strong{display:block;color:#fff;font-weight:600;font-size:.95rem;margin-bottom:.18rem}
+.pb-row p{color:rgba(255,255,255,.65);font-size:.84rem;line-height:1.5}
+.pb-c{transform-style:preserve-3d;will-change:transform}
+.pb-c.c1{animation:ringOrbit3D 24s ease-in-out infinite}
+.pb-c.c2{animation:ringOrbit3D 19s ease-in-out infinite;animation-delay:-8s}
+.pb-c.c3{animation:ringOrbit3D 30s ease-in-out infinite;animation-delay:-15s}
+@keyframes ringOrbit3D{
+  0%,100%{transform:perspective(1400px) rotateX(0deg) rotateY(0deg) translateZ(0)}
+  25%{transform:perspective(1400px) rotateX(9deg) rotateY(5deg) translateZ(14px)}
+  50%{transform:perspective(1400px) rotateX(-5deg) rotateY(10deg) translateZ(8px)}
+  75%{transform:perspective(1400px) rotateX(7deg) rotateY(-7deg) translateZ(18px)}
+}
+.pb-quote{text-shadow:0 2px 8px rgba(0,0,0,.18),0 6px 28px rgba(0,0,0,.10)}
+@media(prefers-reduced-motion:reduce){.pb-c{animation:none!important}}
 
 /* NUMBERS BAND */
 .nums-band{background:linear-gradient(125deg,var(--teal-900),var(--teal-800));padding:4rem 0}
@@ -223,16 +237,14 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
 
 /* RESPONSIVE */
 @media(max-width:1080px){
-  .stories-main{grid-template-columns:repeat(2,1fr)}
   .story-featured{grid-template-columns:1fr}
   .story-feat-side{padding:2rem 2rem}
   .foot-top{grid-template-columns:1fr 1fr}
+  .pb-in{grid-template-columns:1fr;gap:2.5rem;padding:4rem 1.5rem}
 }
 @media(max-width:768px){
   .sec{padding:3.5rem 0}
   .sh{margin-bottom:2rem}
-  .stories-main{grid-template-columns:1fr}
-  .vol-grid{grid-template-columns:1fr}
   .nums-grid{grid-template-columns:repeat(2,1fr)}
   .cta-band{padding:3rem 0}
   .cta-btns{flex-direction:column;align-items:center}
@@ -248,6 +260,7 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
   .num-item .n{font-size:2rem}
   .num-item .n sup{font-size:1rem}
   .cta-btns>*{width:100%;justify-content:center}
+  .pb-in{padding:3rem 1.1rem}
 }
 </style>
 <style>
@@ -432,56 +445,6 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
   </div>
 </section>
 
-<!-- RESIDENT STORIES -->
-<section class="sec sec-alt" id="stories">
-  <div class="wrap">
-    <div class="sh c">
-      <div class="tag" data-i18n="stories.eyebrow">Resident Stories</div>
-      <h2 class="sec-h" data-i18n-html="stories.h2">Lives changed, <em>one at a time</em></h2>
-      <p class="sec-p" data-i18n="st.stories.p">Every resident arrives with a unique story. Here are the voices of the people at the heart of everything we do.</p>
-    </div>
-    <div class="stories-main">
-
-      <div class="story-card">
-        <div class="story-cat" data-i18n-html="stories.s1.cat"><i class="fa fa-hand-holding-heart"></i> Giving Back</div>
-        <p class="story-q" data-i18n="stories.s1.q">For years, Uncle Loh quietly showed up, fixing old electronics and donating every single ringgit back to the elder home. He never asked for recognition, never expected anything in return. Now it is our turn to care for him, and we do so with all the love and gratitude he deserves.</p>
-        <div class="story-attr">
-          <div class="story-av" style="background:none;overflow:hidden"><img src="Photo/Elder%20Photo/_DSC3598.JPG" alt="Uncle Loh Keng Seng" style="width:100%;height:100%;object-fit:cover"></div>
-          <div>
-            <div class="story-name" data-i18n="stories.s1.name">Uncle Loh Keng Seng</div>
-            <div class="story-meta" data-i18n-html="stories.s1.meta"><i class="fa fa-location-dot"></i> Amitabha Elder Home</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="story-card">
-        <div class="story-cat" data-i18n-html="stories.s2.cat"><i class="fa fa-people-roof"></i> Community</div>
-        <p class="story-q" data-i18n="stories.s2.q">Aunty Wong arrived with no family to call her own. What we found was a woman full of life, laughter, and endless stories. She has given this home something priceless: her warmth, her joy, and her spirit.</p>
-        <div class="story-attr">
-          <div class="story-av" style="background:none;overflow:hidden"><img src="Photo/Elder%20Photo/_DSC3626.JPG" alt="Aunty Wong Pek Lin" style="width:100%;height:100%;object-fit:cover"></div>
-          <div>
-            <div class="story-name" data-i18n="stories.s2.name">Aunty Wong Pek Lin</div>
-            <div class="story-meta" data-i18n-html="stories.s2.meta"><i class="fa fa-location-dot"></i> Amitabha Elder Home</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="story-card">
-        <div class="story-cat" data-i18n-html="stories.s3.cat"><i class="fa fa-heart-pulse"></i> Resilience</div>
-        <p class="story-q" data-i18n="stories.s3.q">At 55, a stroke changed Uncle Hok's life and left him to face it alone. Every day he gets up, walks, and exercises, half his body weakened but his spirit unbroken. In his quiet resilience, he reminds us that the human spirit, when treated with love, never truly falls.</p>
-        <div class="story-attr">
-          <div class="story-av" style="background:none;overflow:hidden"><img src="Photo/Elder%20Photo/Gemini_Generated_Image_a51dvra51dvra51d.png" alt="Uncle Hok Keng Sang" style="width:100%;height:100%;object-fit:cover"></div>
-          <div>
-            <div class="story-name" data-i18n="stories.s3.name">Uncle Hok Keng Sang</div>
-            <div class="story-meta" data-i18n-html="stories.s3.meta"><i class="fa fa-location-dot"></i> Amitabha Elder Home</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
 <!-- NUMBERS -->
 <div class="nums-band">
   <div class="wrap">
@@ -494,52 +457,34 @@ footer{background:var(--teal-900);color:rgba(255,255,255,.5)}
   </div>
 </div>
 
-<!-- VOLUNTEER & FAMILY STORIES -->
-<section class="sec sec-cream">
-  <div class="wrap">
-    <div class="sh">
-      <div class="tag" data-i18n="st.vol.tag">Families &amp; Volunteers</div>
-      <h2 class="sec-h" data-i18n-html="st.vol.h2">The people <em>beside us</em></h2>
-      <p class="sec-p" data-i18n="st.vol.p">Our story is also told by the families who trust us, and the volunteers who give their time.</p>
+<!-- OUR PROMISE -->
+<section class="parallax-break">
+  <div class="pb-bg" id="pbBg"></div>
+  <div class="pb-grid" data-px="0.15"></div>
+  <div class="pb-shapes">
+    <div class="pb-c c1" data-px="0.22"></div>
+    <div class="pb-c c2" data-px="-0.18"></div>
+    <div class="pb-c c3" data-px="0.32"></div>
+  </div>
+  <div class="pb-in">
+    <div>
+      <div class="tag" style="color:var(--teal-400)" data-i18n="promise.eyebrow">Our promise</div>
+      <p class="pb-quote" data-i18n="promise.quote">
+        "I have someone that is reliable to look after my father.
+        <span>They're really genuine and caring — that is my biggest concern.</span>
+        They are doing a very good job here."
+      </p>
+      <div class="pb-attr">
+        <div class="av" style="overflow:hidden;background:none"><img src="Photo/DSC03520.JPG" alt="Mrs. Evon" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+        <div>
+          <div style="color:#fff;font-weight:600" data-i18n="promise.attr">Mrs. Evon, daughter of resident</div>
+        </div>
+      </div>
     </div>
-    <div class="vol-grid">
-
-      <div class="vol-card aos-l">
-        <div class="vol-icon"><i class="fa fa-people-arrows"></i></div>
-        <div class="vol-body">
-          <h4 data-i18n="st.vol1.h4">A daughter's peace of mind</h4>
-          <p data-i18n="st.vol1.p">My father is stubborn and refused all help. But within two weeks at Amitabha he was asking the staff to join his evening walks. I haven't worried about him once since he moved in.</p>
-          <div class="vol-by" data-i18n-html="st.vol1.by"><i class="fa fa-user"></i> Sarah Ooi · Daughter of resident, PJ</div>
-        </div>
-      </div>
-
-      <div class="vol-card aos-r">
-        <div class="vol-icon"><i class="fa fa-hands-helping"></i></div>
-        <div class="vol-body">
-          <h4 data-i18n="st.vol2.h4">Why I keep coming back</h4>
-          <p data-i18n="st.vol2.p">I started volunteering here as a university student. That was four years ago. Every Saturday I lead a music session and the joy on the residents' faces is better than any exam result I ever got.</p>
-          <div class="vol-by" data-i18n-html="st.vol2.by"><i class="fa fa-user"></i> Amirul Hadi · Volunteer, UM student</div>
-        </div>
-      </div>
-
-      <div class="vol-card aos-l d1">
-        <div class="vol-icon"><i class="fa fa-heart-pulse"></i></div>
-        <div class="vol-body">
-          <h4 data-i18n="st.vol3.h4">Medical care that goes beyond</h4>
-          <p data-i18n="st.vol3.p">As a retired nurse, I was sceptical. But the standard of care here — the detailed handover notes, the compassion in every small act, matches the best I saw in 30 years of hospital work.</p>
-          <div class="vol-by" data-i18n-html="st.vol3.by"><i class="fa fa-user"></i> Nurse Fatimah (retd.) · Medical volunteer</div>
-        </div>
-      </div>
-
-      <div class="vol-card aos-r d1">
-        <div class="vol-icon"><i class="fa fa-receipt"></i></div>
-        <div class="vol-body">
-          <h4 data-i18n="st.vol4.h4">Giving with confidence</h4>
-          <p data-i18n="st.vol4.p">I donate monthly and always asked where my money goes. Amitabha gives me a breakdown every quarter. Knowing my ringgit buys meals, medicine, and smiles; that keeps me giving.</p>
-          <div class="vol-by" data-i18n-html="st.vol4.by"><i class="fa fa-user"></i> Tan Chee Weng · Monthly donor, Klang</div>
-        </div>
-      </div>
-
+    <div class="pb-side">
+      <div class="pb-row aos d1"><div class="ic"><i class="fa fa-stethoscope"></i></div><div><strong data-i18n="promise.f1.title">On-site medical visits</strong><p data-i18n="promise.f1.p">Weekly clinics, ongoing chronic-care plans, and 24/7 nursing for every resident.</p></div></div>
+      <div class="pb-row aos d2"><div class="ic"><i class="fa fa-om"></i></div><div><strong data-i18n="promise.f2.title">Spiritual care</strong><p data-i18n="promise.f2.p">Daily chanting and counsel, open to all faiths and respectful of every tradition.</p></div></div>
+      <div class="pb-row aos d3"><div class="ic"><i class="fa fa-people-arrows"></i></div><div><strong data-i18n="promise.f3.title">Family channels</strong><p data-i18n="promise.f3.p">Visits encouraged. Phone, video and in-person updates available on request.</p></div></div>
     </div>
   </div>
 </section>

@@ -27,7 +27,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="manifest" href="/site.webmanifest" />
-<script src="supabase-config.js"></script>
+<script src="api-client.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
@@ -565,13 +565,13 @@ function tt(en,zh){ return localStorage.getItem('site_lang')==='zh' ? zh : en; }
 
 function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-// Returns true only if val is a proper UUID (Supabase-generated).
+// Returns true only if val is a proper UUID (server-generated).
 // localStorage fallback IDs (base-36 strings) return false → we send null instead.
 function isValidUUID(val){
   return typeof val==='string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(val);
 }
 
-/* ── LOAD JOBS FROM SUPABASE ── */
+/* ── LOAD JOBS FROM THE API ── */
 async function renderJobs(){
   const list = document.getElementById('job-listings');
   list.innerHTML = `<div class="no-jobs"><i class="fa fa-spinner fa-spin"></i><p>${tt('Loading…','加载中…')}</p></div>`;
@@ -671,7 +671,7 @@ function setupDragDrop(){
   });
 }
 
-/* ── SUBMIT APPLICATION TO SUPABASE ── */
+/* ── SUBMIT APPLICATION TO THE API ── */
 async function submitApplication(e){
   e.preventDefault();
   const name     = document.getElementById('ap-name').value.trim();

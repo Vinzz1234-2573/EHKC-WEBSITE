@@ -1,12 +1,8 @@
 /*
-  supabase-config.js
-  -------------------
-  NOTE: despite the filename (kept unchanged so no other file needed to be
-  edited except removing the old Supabase CDN <script> tag), this file no
-  longer talks to Supabase. It's a lightweight compatibility shim that
-  gives every page the same `sb.auth.*` / `sb.from(...)` / `sbUploadFile`
-  API they already call, but backed by the PHP + MySQL API in /api and
-  /auth instead. This kept every page's existing JS working unchanged.
+  api-client.js
+  -------------
+  Client for the PHP + MySQL backend in /api and /auth. Exposes a small
+  `sb.auth.*` / `sb.from(...)` / `sbUploadFile` API that every page calls.
 
   API base path — adjust if you deploy the api/ and auth/ folders
   somewhere other than the site root.

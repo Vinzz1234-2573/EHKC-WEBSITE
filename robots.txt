@@ -6,6 +6,6 @@ Disallow: /login.html
 Disallow: /signup.html
 Disallow: /dashboard.html
 Disallow: /googlec5c6c608f0d51b54.html
-Disallow: /supabase-config.js
+Disallow: /api-client.js
 
 Sitemap: https://eldercare.amitabhafoundation.my/sitemap.xml
