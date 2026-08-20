@@ -29,7 +29,7 @@ if ($method === 'POST') {
             $in['type'] ?? 'Full-Time',
             $in['location'] ?? 'Old Klang Road, Kuala Lumpur',
             $in['salary'] ?? null,
-            $in['wa'] ?? '60127762911',
+            $in['wa'] ?? '60127662911',
             $in['desc_en'] ?? null,
             $in['desc_zh'] ?? null,
         ]);

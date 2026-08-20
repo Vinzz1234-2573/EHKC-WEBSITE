@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS jobs (
   type        VARCHAR(50)  DEFAULT 'Full-Time',
   location    VARCHAR(255) DEFAULT 'Old Klang Road, Kuala Lumpur',
   salary      VARCHAR(100),
-  wa          VARCHAR(50)  DEFAULT '60127762911',
+  wa          VARCHAR(50)  DEFAULT '60127662911',
   desc_en     TEXT,
   desc_zh     TEXT,
   posted      DATE         DEFAULT (CURRENT_DATE),

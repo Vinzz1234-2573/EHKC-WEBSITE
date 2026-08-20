@@ -534,7 +534,7 @@
     'jobs.hero.pill': '职业机会',
     'jobs.hero.h1':   '我们正在招聘<br><em>加入我们的团队</em>',
     'jobs.hero.p':    '欢迎加入我们温暖而有意义的团队，您的工作将产生真实的影响，并为马来西亚长者群体的福祉作出贡献。与我们共同成长，同时改变他人的生活。',
-    'jobs.hero.wa':   '<i class="fab fa-whatsapp"></i> WhatsApp 联系我们：012-776 2911',
+    'jobs.hero.wa':   '<i class="fab fa-whatsapp"></i> WhatsApp 联系我们：012-766 2911',
 
     /* Hiring Banner */
     'jobs.banner.title': '我们正在招聘！',
@@ -553,7 +553,7 @@
     'jobs.apply.now':      '立即申请',
     'jobs.loading':        '加载中…',
     'jobs.empty.title':    '目前暂无职缺。',
-    'jobs.empty.body':     '请稍后再来查看，或通过 WhatsApp 联系我们：012-776 2911。',
+    'jobs.empty.body':     '请稍后再来查看，或通过 WhatsApp 联系我们：012-766 2911。',
 
     /* Why Join Us */
     'jobs.why.tag': '为何加入我们',
